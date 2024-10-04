@@ -2,3 +2,16 @@ baseURL = 'https://ngeranio.com/'
 languageCode = 'en-us'
 title = 'Networking Staff'
 theme = 'PaperMod'
+
+# Add any links to things in /content/ here
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 1
+
+[[menu.main]]
+name = "Protocols"
+url = "/protocols/"
+weight = 2
+
+
