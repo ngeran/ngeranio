@@ -1,7 +1,7 @@
 baseURL = 'https://ngeranio.com/'
 languageCode = 'en-us'
 title = 'Lets Talk Networking Staff'
-theme = 'PaperMod'
+theme = 'blowfish'
 
 # Add any links to things in /content/ here
 [[menu.main]]
