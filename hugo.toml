@@ -1,6 +1,8 @@
 baseURL = 'https://ngeranio.com/'
 languageCode = 'en-us'
 title = 'Lets Talk Networking Staff'
+
+#Website theme
 theme = 'blowfish'
 
 # Add any links to things in /content/ here
