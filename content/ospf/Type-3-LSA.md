@@ -1,7 +1,7 @@
 +++
 title = 'Type 3 LSA'
 date = 2024-10-05T16:11:39+03:00
-draft = true
+draft = false
 +++
 
 Type 3 — The Summary LSA

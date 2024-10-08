@@ -1,7 +1,7 @@
 +++
 title = 'Type 2 LSA'
 date = 2024-10-05T16:11:35+03:00
-draft = true
+draft = false
 +++
 
 Originated by the Designated Router and has Area Local Scope

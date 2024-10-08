@@ -1,7 +1,7 @@
 +++
 title = 'Type 5 LSA'
 date = 2024-10-05T16:12:05+03:00
-draft = true
+draft = false
 +++
 
 Type 5— The AS-external LSA

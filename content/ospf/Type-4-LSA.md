@@ -1,7 +1,7 @@
 +++
 title = 'Type 4 LSA'
 date = 2024-10-05T16:11:44+03:00
-draft = true
+draft = false
 +++
 
 Originated by ABR and has Area Scope
