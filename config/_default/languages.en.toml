@@ -17,7 +17,7 @@ title = "ngeranio"
  [params.author]
    name = "ngeran a.k.a nikos"
 #  # email = "youremail@example.com"
-   #image = "img/ngeran-300.png"
+   image = "img/logo.png"
    imageQuality = 96
    headline = "Let's Talk Networking Staff"
    bio = "Welcome to my blog of networking stuff. By day I’m network engineer, and in my spare time I study towards the JNCIE-SP. The JNCIE-SP journey is a long one. It is time consuming, requires dedication and a tons of hard work. During my preparations, I will put my study notes online to help myself study and maybe help somebody else along the way. Enjoy 🙂"
