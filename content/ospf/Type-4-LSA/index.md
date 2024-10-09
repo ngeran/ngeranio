@@ -4,11 +4,16 @@ date = 2024-10-05T16:11:44+03:00
 draft = false
 +++
 
-Originated by ABR and has Area Scope
+<p><em>Originated by ABR and has Area Scope</em></p>
+</blockquote>
 
-Describe the location of a router that is injecting external routes into OSPF. The ASBR will generate a Type 1 LSA with the E bit set, when this LSA is received from other ABRs the Router Type 1 LSA will be converted to a Type 4 LSA when it is flooded into other Areas to let other router know how to reach the External route through the ASBR
 
-0                   1                   2                   3
+
+<p>Describe the location of a router that is injecting external routes into OSPF. The ASBR will generate a Type 1 LSA with the E bit set, when this LSA is received from other ABRs the Router Type 1 LSA will be converted to a Type 4 LSA when it is flooded into other Areas to let other router know how to reach the External route through the ASBR</p>
+
+
+
+<pre class="wp-block-code"><code>0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |            LS age             |     Options   |       4       |
@@ -26,11 +31,11 @@ Describe the location of a router that is injecting external routes into OSPF. T
 |      0        |                  metric                       |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     TOS       |                TOS  metric                    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-Link State ID: Router ID of the ASBR.
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</code></pre>
 
-Advertising Router: Router ID of the ABR advertising the ASBR Summary LSA.
 
-Network Mask: Set to all zeros.
 
-Metric: Cost to reach the ASBR.
+<p id="bbd3"><strong>Link State ID</strong>: Router ID of the ASBR.</p>
+<p id="2293">Advertising Router: Router ID of the ABR advertising the ASBR Summary LSA.</p>
+<p id="9b8d">Network Mask: Set to all zeros.</p>
+<p id="a452">Metric: Cost to reach the ASBR.</p>

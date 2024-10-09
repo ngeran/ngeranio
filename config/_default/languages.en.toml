@@ -16,7 +16,7 @@ title = "ngeranio"
 
  [params.author]
    name = "ngeran a.k.a nikos"
-#   email = "youremail@example.com"
+#  # email = "youremail@example.com"
    #image = "img/ngeran-300.png"
    imageQuality = 96
    headline = "Let's Talk Networking Staff"
