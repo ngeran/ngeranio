@@ -1,5 +1,5 @@
 +++
-title = 'Type 1 LSA'
+title = 'O.S.P.F Type 1 LSA Router'
 date = 2024-10-05T08:45:39+03:00
 draft = false
 +++
@@ -154,7 +154,8 @@ _______________________________________________
 </blockquote>
 
 
-<pre class="wp-block-code"><code>LS age = 697                   
+<pre class="wp-block-code"><code>
+LS age = 697                   
 Options = (B-bit)              
 LS type = 1                    Router-LSA
 ID = 172.30.5.2                RT2's router ID
@@ -189,4 +190,5 @@ expires in = 00:48:23     If not refreshed
 sent = 00:11:35 ago       LSA was flooded
 Last changed = 4d 17:22:47 ago The route was installed
 Change Count = 19         Number of times the route was changed 
-Ours Indicates that this is a local advertisement  </code></pre>
+Ours Indicates that this is a local advertisement  
+</code></pre>
