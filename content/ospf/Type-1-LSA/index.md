@@ -1,5 +1,5 @@
 +++
-title = 'O.S.P.F Type 1 LSA Router'
+title = 'O.S.P.F Type 1 -Router'
 date = 2024-10-05T08:45:39+03:00
 draft = false
 +++
@@ -8,7 +8,8 @@ draft = false
 
 
 
-<pre class="wp-block-code"><code>0                   1                   2                   3
+<pre class="wp-block-code"><code>
+0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |            LS age             |     Options   |       1       |

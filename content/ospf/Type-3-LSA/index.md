@@ -1,5 +1,5 @@
 +++
-title = 'Type 3 LSA'
+title = 'Type 3 LSA - Summary'
 date = 2024-10-05T16:11:39+03:00
 tags = ["OSPF","Posts","New"]
 draft = false
