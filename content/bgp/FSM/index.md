@@ -24,7 +24,7 @@ Six states are involved in the BGP process three for TCP connectivity and three 
 ![Finite State Machine](fsm-v1.png)
 
 ### Idle State
-In this state, BGP refuses all incoming connections for the local system and no resources are allocated. In response to a ManualStart ( manually configure BGP on the local system ) event or an AutomaticStart ( restart existing session) BGP:
+> In this state, BGP refuses all incoming connections for the local system and no resources are allocated. In response to a ManualStart ( manually configure BGP on the local system ) event or an AutomaticStart ( restart existing session) BGP:
 
 - initializes all BGP resources for the peer connection,
 - sets ConncectRetryCounter to zero,
@@ -58,7 +58,7 @@ In case of errors, BGP falls back to the Idle state.
 In case of any other event the state goes back to Idle.
 
 ### Active State
-In this state, BGP is trying to acquire a peer by listening for, and accepting a TCP connection
+> In this state, BGP is trying to acquire a peer by listening for, and accepting a TCP connection
 
 **If the TCP connection succeeds**  
 
@@ -80,7 +80,7 @@ The state might go back to Idle in case of other events, such as a Stop event in
 
 ### OpenSent
 
-In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.
+> In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.
 
 > The OPEN message contains:
 
@@ -110,7 +110,7 @@ In this state, BGP waits for an OPEN message from its peer. Once received checks
 - changes its state to OpenConfirm.
 
 ### OpenConfirm
-In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.
+> In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.
 
 **If a NOTIFICATION message is received,**  
 
@@ -127,7 +127,7 @@ In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.
 The system sends periodic KEEPALIVE messages at the rate set by the KEEPALIVE timer.
 
 ### Established
-In the Established state, BGP can exchange UPDATE, NOTIFICATION and KEEPALIVE messages with its peer.
+> In the Established state, BGP can exchange UPDATE, NOTIFICATION and KEEPALIVE messages with its peer.
 
 If the HoldTimer expires before the local system receives a KEPALIVE, NOTIFICATION or an UPADTE message BGP will change its state to Idle.
 
