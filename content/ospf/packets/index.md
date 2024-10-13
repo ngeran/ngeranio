@@ -27,28 +27,33 @@ OSPF has it’s own IP protocol 89 (L3). Besides Virtual links an OSPF packet us
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-Version #: The current OSPF version number, either 2 or 3.
-Type: Type of OSPF packet ( look below for packet details ).
+- Version #: The current OSPF version number, either 2 or 3.
+- Type: Type of OSPF packet ( look below for packet details ).
 
-## Figure 1. Packet Types
-Packet length: Length of the packet, in bytes, including the header.
-Router ID: IP address of the router from which the packet originated.
-Area ID: Identifier of the area in which the packet is traveling. Each OSPF packet is associated with a single area. Packets traveling over a virtual link are labeled with the backbone area ID, 0.0.0.0. .
-Checksum: Fletcher checksum.
-AuType: Authentication identification ( if any) is being used.
-Authentication: (OSPFv2 only) Authentication scheme and authentication information.
-Hello Packet (Type 1)
+![Packet Types](packet-types.png)
+Figure 1. Packet Types  
 
+- Packet length: Length of the packet, in bytes, including the header.
+- Router ID: IP address of the router from which the packet originated.
+- Area ID: Identifier of the area in which the packet is traveling. Each OSPF packet is associated with a single area. Packets traveling over a virtual link are labeled with the backbone area ID, 0.0.0.0. .
+- Checksum: Fletcher checksum.
+- AuType: Authentication identification ( if any) is being used.
+- Authentication: (OSPFv2 only) Authentication scheme and authentication information.  
 
-## Figure 1. R1 sends the initial OSPF Hello packet and R2 responds with the OSPF Hello Reply packet
+### Hello Packet (Type 1)
+
+![Hallo Packet](hello-packet.png)
+
+Figure 2. R1 sends the initial OSPF Hello packet and R2 responds with the OSPF Hello Reply packet
 Hallo packets are sent periodically in order to establish and maintain adjacencies.  
 
-10 seconds for Point to Point networks ( P2P).  
-30 seconds for NBMA networks.  
+- 10 seconds for Point to Point networks ( P2P).  
+- 30 seconds for NBMA networks.  
+
 Hello packets are multicast on physical networks that have a multicast or broadcast capability, which enables dynamic discovery of neighboring routers.OSPF destination IPs are:  
 
-224.0.0.5 AllSPFRouters.  
-224.0.0.6 AllDRRouters for broadcast links.  
+- 224.0.0.5 AllSPFRouters.  
+- 224.0.0.6 AllDRRouters for broadcast links.  
 
 ```
 0                   1                   2                   3
@@ -80,30 +85,32 @@ Hello packets are multicast on physical networks that have a multicast or broadc
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-Network mask : (OSPFv2 only) Network mask associated with the interface.
-Hello interval : How often the router sends hello packets ( in seconds) . All routers on a shared network must use the same hello interval.
-Options : Optional capabilities of the router.  
+- Network mask : (OSPFv2 only) Network mask associated with the interface.
+- Hello interval : How often the router sends hello packets ( in seconds) . All routers on a shared network must use the same hello interval.  
+
+- Options : Optional capabilities of the router.  
 ```
              +--------------------------------------+
              | DN | O | DC | EA | N/P | MC | E | MT |
              +--------------------------------------+
 ```
-DN-bit: Used to prevent looping in L3 MPLS VPNs.  
-O-bit: Opaque LSAs.  
-DC-bit: Demand circuits.  
-EA-bit: External-Attributes-LSAs.  
-N/P-bit: Type-7 LSAs for NSSA support.  
-MC-bit: IP multicast datagrams are forwarded.  
-E-bit: AS-external-LSAs are flooded.  
-MT-bit: Multi-topology capability.  
-Rtr Pri (Router Priority): The router’s priority to become the designated router.  
-Router Dead Interval : How long the router waits without receiving any OSPF packets from a router before declaring that router to be down. All routers on a shared network must use the same router dead interval.  
-Designated router : IP address of the designated router.  
-Backup Designated Router: IP address of the backup designated router.  
-Neighbor : IP addresses of the routers from which valid hello packets have been received within the time specified by the router dead interval.  
+- DN-bit: Used to prevent looping in L3 MPLS VPNs.  
+- O-bit: Opaque LSAs.  
+- DC-bit: Demand circuits.  
+- EA-bit: External-Attributes-LSAs.  
+- N/P-bit: Type-7 LSAs for NSSA support.  
+- MC-bit: IP multicast datagrams are forwarded.  
+- E-bit: AS-external-LSAs are flooded.  
+- MT-bit: Multi-topology capability.  
+- Rtr Pri (Router Priority): The router’s priority to become the designated router.  
+- Router Dead Interval : How long the router waits without receiving any OSPF packets from a router before declaring that router to be down. All routers on a shared network must use the same router dead interval.  
+- Designated router : IP address of the designated router.  
+- Backup Designated Router: IP address of the backup designated router.  
+- Neighbor : IP addresses of the routers from which valid hello packets have been received within the time specified by the router dead interval.  
 
 ### Database Description Packet (Type 2)
 
+![Database Description Packet](database-description.png)
 
 These packets are exchanged when an adjacency is being initialized. In order to describe the complete topological database multiple packets may be used. When initializing an adjacency, a Master — Slave hierarchical order must be established. The Master router sends Database Description Packets (DBD) updates first while the Slave router listens.The responses are linked to the polls via the packets (DBD) Database Description sequence numbers.
 
@@ -139,14 +146,16 @@ These packets are exchanged when an adjacency is being initialized. In order to 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-Interface MTU: MTU of the interface on the network link.  
-Options: Same field as the options field used in the hello packet. Routers can use the options at this stage to determine if they need to forward certain LSAs due to the functionality of the neighboring router.  
-I-bit (Initial bit): When set this is the first packet in the sequence of Database Description Packets.  
-M-bit (More bit): When set it indicates that more Database Description Packets are to follow.  
-MS-bit (Master/Slave bit):When set it indicates that the router will be the master during the Database exchange process.  
-DD sequence number: Used to sequence all of the Database Description packets.  
-LSA Header: A list of all of the router’s link-state database headers.  
-If the Interface MTU does not match during the database exchange, the exchange will not continue ( Neighbors Stuck in Exstart/Exchange State)
+- Interface MTU: MTU of the interface on the network link.  
+- Options: Same field as the options field used in the hello packet. Routers can use the options at this stage to determine if they need to forward certain LSAs due to the functionality of the neighboring router.  
+- I-bit (Initial bit): When set this is the first packet in the sequence of 
+Database Description Packets.  
+- M-bit (More bit): When set it indicates that more Database Description Packets are to follow.  
+- MS-bit (Master/Slave bit):When set it indicates that the router will be the master during the Database exchange process.  
+- DD sequence number: Used to sequence all of the Database Description packets.  
+- LSA Header: A list of all of the router’s link-state database headers. 
+
+> If the Interface MTU does not match during the database exchange, the exchange will not continue ( Neighbors Stuck in Exstart/Exchange State)
 
 ### Link-State Request Packets (Type 3)
 
@@ -176,13 +185,14 @@ When a router detects that portions of its topological database are out of date,
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-LS Type: The type of the LSA. Each LSA type has a separate advertisement
+- LS Type: The type of the LSA. Each LSA type has a separate advertisement
 format. The LSA types defined in this memo are as follows.  
-Link State ID: The contents of this field depend on the LSA’s LS type, and identifies the portion of the internet environment that is being described by the LSA.  
-Advertising Router:The Router ID of the router that originated the LSA.  
+- Link State ID: The contents of this field depend on the LSA’s LS type, and identifies the portion of the internet environment that is being described by the LSA.  
+- Advertising Router:The Router ID of the router that originated the LSA.  
 
 ### Link-State Update Packets (Type 4)
 
+![Link State Update](link-state-update.png)
 
 Link-state update packets carry one or more link-state advertisements one hop farther from their origin. The router multicasts (floods) these packets on physical networks that support multicast or broadcast 31 mode. The router acknowledges all link-state update packets and, if retransmission is necessary, sends the retransmitted advertisements unicast. Link-state update packets consist of the OSPF header plus the following fields:
 
@@ -211,8 +221,8 @@ Link-state update packets carry one or more link-state advertisements one hop fa
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-LSAs: The number of LSA included in the update.  
-LSAs: List of LSAs, the link-state advertisements themselves.. Each LSA begins with a common 20 byte header.  
+- LSAs: The number of LSA included in the update.  
+- LSAs: List of LSAs, the link-state advertisements themselves.. Each LSA begins with a common 20 byte header.  
 
 ### Link-State Acknowledgment Packets (Type 5)
 
