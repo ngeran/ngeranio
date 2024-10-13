@@ -20,13 +20,13 @@
   weight = 20
 
 [[main]]
-  name = "OSPF"
+  name = "o.s.p.f"
   parent = "posts"
   pageRef = "ospf"
   weight = 20
 
 [[main]]
-  name = "BGP"
+  name = "bgp"
   parent = "posts"
   pageRef = "bgp"
   weight = 20
