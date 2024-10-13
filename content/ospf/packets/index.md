@@ -5,7 +5,7 @@ tags = ["OSPF","Posts","New"]
 draft = false
 +++
 
-### This section is extremely important.
+> This section is extremely important.
 
 OSPF has it’s own IP protocol 89 (L3). Besides Virtual links an OSPF packet usually travels a single hop ( TTL =1). All OSPFv2 packets have a common 24-byte header, that contains all information necessary to determine whether OSPF speaking router should accept the packet. The header consists of the following fields:
 
