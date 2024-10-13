@@ -82,8 +82,7 @@ The state might go back to Idle in case of other events, such as a Stop event in
 
 > In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.
 
-> The OPEN message contains:
-
+**The OPEN message contains:**  
 - BGP version.
 - The autonomous system (AS) number.
 - The source IP address of the configured neighbor.
