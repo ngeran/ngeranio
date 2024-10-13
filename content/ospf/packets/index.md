@@ -40,7 +40,7 @@ Figure 1. Packet Types
 - AuType: Authentication identification ( if any) is being used.
 - Authentication: (OSPFv2 only) Authentication scheme and authentication information.  
 
-### Hello (Type 1)
+### Hello
 
 ![Hallo Packet](hello-packet.png)
 
@@ -108,7 +108,7 @@ Hello packets are multicast on physical networks that have a multicast or broadc
 - Backup Designated Router: IP address of the backup designated router.  
 - Neighbor : IP addresses of the routers from which valid hello packets have been received within the time specified by the router dead interval.  
 
-### Database Description (Type 2)
+### Database Description
 
 ![Database Description Packet](database-description.png)
 
@@ -157,7 +157,7 @@ Database Description Packets.
 
 > If the Interface MTU does not match during the database exchange, the exchange will not continue ( Neighbors Stuck in Exstart/Exchange State)
 
-### Link-State Request (Type 3)
+### Link-State Request
 
 When a router detects that portions of its topological database are out of date, it sends a link-state request packet to a neighbor requesting a precise instance of the database. These packets consist of the OSPF header plus fields that uniquely identify the database information that the router is seeking.
 
@@ -190,7 +190,7 @@ format. The LSA types defined in this memo are as follows.
 - Link State ID: The contents of this field depend on the LSA’s LS type, and identifies the portion of the internet environment that is being described by the LSA.  
 - Advertising Router:The Router ID of the router that originated the LSA.  
 
-### Link-State Update (Type 4)
+### Link-State Update
 
 ![Link State Update](link-state-update.png)
 
@@ -224,7 +224,7 @@ Link-state update packets carry one or more link-state advertisements one hop fa
 - LSAs: The number of LSA included in the update.  
 - LSAs: List of LSAs, the link-state advertisements themselves.. Each LSA begins with a common 20 byte header.  
 
-### Link-State Acknowledgment (Type 5)
+### Link-State Acknowledgment
 
 The router sends link-state acknowledgment packets in response to link-state update packets to verify that the update packets have been received successfully. Multiple LSAs can be acknowledged in a single Link State
 Acknowledgment packet.  
