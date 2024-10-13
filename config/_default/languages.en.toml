@@ -2,14 +2,14 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "ngeranio"
+#title = "ngeranio"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  #logo = "img/networking-staff.png"
+  logo = "/img/ngeranio_logo_inverted@0.25x.png"
   # secondaryLogo = "img/secondary-logo.png"
   # description = "My awesome website"
    copyright = "&copy; 2024 ngeranio. All Rights Reserved."

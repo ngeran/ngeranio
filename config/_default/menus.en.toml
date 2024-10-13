@@ -16,18 +16,18 @@
   weight = 10
 
 [[main]]
-  name = "Protocols"
+  name = "Posts"
   weight = 20
 
 [[main]]
   name = "OSPF"
-  parent = "Protocols"
+  parent = "Posts"
   pageRef = "ospf"
   weight = 20
 
 [[main]]
   name = "BGP"
-  parent = "Protocols"
+  parent = "Posts"
   pageRef = "bgp"
   weight = 20
 
