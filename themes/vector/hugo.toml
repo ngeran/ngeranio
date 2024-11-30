@@ -1,0 +1,94 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-US'
+title = 'Main hugo.toml overites this file'
+paginate = 3
+
+
+#[module]
+#  [module.hugoVersion]
+#    extended = false
+#    min = "0.116.0"
+
+#  [pagination]
+#  disableAliases = false
+#  pagerSize = 10
+#  path = 'page'
+
+
+# -- Markup --
+# These settings are required for the theme to function.
+
+# [goldmark]
+# [goldmark.renderer]
+#  unsafe = true
+
+#[highlight]
+#  noClasses = false
+
+# [tableOfContents]
+#   startLevel = 2
+#   endLevel = 4
+
+# [params.site]
+#  logo = "/site_logo.png"
+
+[params.author]
+#   name = "ngeranio a.k.a nikos"
+#  # email = "youremail@example.com"
+#   image = "/site_logo.png"
+#   imageQuality = 96
+#   headline = "Let’s Talk Networking"
+#   bio = "Welcome to my networking blog! By day, I’m a network engineer, and by night, I’m working toward the JNCIE-SP. This blog is my way of documenting the journey: the highs, the struggles, and the invaluable lessons along the way. I’ll be sharing study notes, tips, and reflections to keep myself on track and, hopefully, to help anyone else navigating a similar path. Thanks for stopping by—explore, learn, and feel free to connect. Let's Talk About Networking Stuff. Enjoy! 🙂"
+#   links = [
+#     { email = "mailto:hello@your_domain.com" },
+#     { link = "https://link-to-some-website.com/" },
+#     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
+#     { apple = "https://www.apple.com" },
+#     { blogger = "https://username.blogspot.com/" },
+#     { bluesky = "https://bsky.app/profile/username" },
+#     { codepen = "https://codepen.io/username" },
+#     { dev = "https://dev.to/username" },
+#     { discord = "https://discord.gg/invitecode" },
+#     { dribbble = "https://dribbble.com/username" },
+#     { facebook = "https://facebook.com/username" },
+#     { flickr = "https://www.flickr.com/photos/username/" },
+#     { foursquare = "https://foursquare.com/username" },
+#     { github = "https://github.com/username" },
+#     { gitlab = "https://gitlab.com/username" },
+#     { google = "https://www.google.com/" },
+#     { hashnode = "https://username.hashnode.dev" },
+#     { instagram = "https://instagram.com/username" },
+#     { itch-io = "https://username.itch.io" },
+#     { keybase = "https://keybase.io/username" },
+#     { kickstarter = "https://www.kickstarter.com/profile/username" },
+#     { lastfm = "https://lastfm.com/user/username" },
+#     { linkedin = "https://linkedin.com/in/username" },
+#     { mastodon = "https://mastodon.instance/@username" },
+#     { medium = "https://medium.com/username" },
+#     { microsoft = "https://www.microsoft.com/" },
+#     { orcid = "https://orcid.org/userid" },
+#     { patreon = "https://www.patreon.com/username" },
+#     { pinterest = "https://pinterest.com/username" },
+#     { reddit = "https://reddit.com/user/username" },
+#     { researchgate = "https://www.researchgate.net/profile/username" },
+#     { slack = "https://workspace.url/team/userid" },
+#     { snapchat = "https://snapchat.com/add/username" },
+#     { soundcloud = "https://soundcloud.com/username" },
+#     { spotify = "https://open.spotify.com/user/userid" },
+#     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
+#     { steam = "https://steamcommunity.com/profiles/userid" },
+#     { telegram = "https://t.me/username" },
+#     { threads = "https://www.threads.net/@username" },
+#     { tiktok = "https://tiktok.com/@username" },
+#     { tumblr = "https://username.tumblr.com" },
+#     { twitch = "https://twitch.tv/username" },
+#     { twitter = "https://twitter.com/username" },
+#     { x-twitter = "https://twitter.com/username" },
+#     { whatsapp = "https://wa.me/phone-number" },
+#     { youtube = "https://youtube.com/username" },
+#     { ko-fi = "https://ko-fi.com/username" },
+#     { codeberg = "https://codeberg.org/username"},
+#   ]
+
+
+

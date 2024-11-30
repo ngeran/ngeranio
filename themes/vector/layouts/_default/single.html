@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" class="scroll-smooth">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="flex flex-col h-screen px-6 m-auto leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-gray-900 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <header>
+    {{ partial "nav.html" . }}
+  </header>
+  <div class="relative flex flex-col grow">
+    <main class="grow">
+      <article>
+        <div id="hero" class="h-[150px] md:h-[200px]"></div>
+        <!--Background Image-->
+       <!-- {{ if .Params.featured_image }}
+        <div class="fixed inset-x-0 top-0 h-[800px]  nozoom" style="background-image:url('{{ .Params.featured_image | relURL }}');">
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+          </div>
+          <div class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+          </div>
+      </div>
+      {{ end }}-->
+        <!--Background Image-->
+        <header class="mt-5 max-w-prose">
+          <h1 class="mt-0 text-4xl font-extrabold text-[#5e81ac] dark:text-neutral">{{.Title}}</h1>
+          <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+            <div class="flex flex-row flex-wrap items-center">
+              {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+              {{ $dateHuman := .Date | time.Format ":date_long" }}
+              <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> 
+              <span class="px-2 text-primary-500">.</span>
+              <span>{{ .WordCount }} words</span>
+              <span class="px-2 text-primary-500">.</span>
+              <span>{{ .ReadingTime }} minutes</span>
+            </div>
+            <div class="flex flex-row flex-wrap items-center">
+              <!--Tags-->
+              {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+            </div>
+          </div>
+          <!--Author-->
+          <div class="flex author">
+            <!--Use Avatar Image from assets folder --> 
+            {{ $image :=  resources.Get "author/avatar.png" }}
+            <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+            alt="{{ $.Site.Params.Author.name | default " Author" }}" src="{{ $image.RelPermalink }}" />
+    
+            <div class="place-self-center">
+              <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div>
+              <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">{{ .Site.Params.author.name }}</div>
+              <div class="text-2xl sm:text-lg"></div>
+            </div>
+          </div>
+          <div class="mb-5"></div>
+        </header>
+
+        <!--Article and Table Of Content-->
+        <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+        <!--Table Of Content-->
+        <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+          <div class=" ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+            <div class="mt-0 overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+                <div class="min-w-[220px] py-2 border-dotted list-none  ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600 text-sm">
+                  {{.TableOfContents}}
+                </div>
+            </div>
+          </div>
+        </div>
+        <!--Single Blog Post-->
+      <div class="min-w-0 min-h-0 max-w-fit">
+        <div class="article-content max-w-prose mb-20 prose-h3:text-[#5e81ac]">
+           <!-- Blog Posts -->
+        {{ .RawContent | .RenderString }}
+        <!-- Blog Posts --> 
+        </div>
+      </div>
+        </section>
+      </article>
+      </main>
+  </div>
+  <footer>
+    {{ partial "footer.html" . }}
+  </footer>
+</body>
+</html>
+

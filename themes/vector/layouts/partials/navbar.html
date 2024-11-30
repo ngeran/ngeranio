@@ -1,0 +1,52 @@
+<nav class="bg-gray-800 text-white fixed w-full top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="/" class="text-lg font-bold">
+        YourLogo
+      </a>
+  
+      <!-- Hamburger Menu (Mobile) -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+  
+      <!-- Menu -->
+      <div id="menu" class="hidden md:flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+        {{ range .Site.Menus.main }}
+        <div class="relative group">
+          <!-- Top-level Menu Item -->
+          <a href="{{ .URL }}" class="block px-3 py-2 rounded-md hover:bg-gray-700">
+            {{ .Name }}
+          </a>
+  
+          <!-- Submenu -->
+          {{ if .Children }}
+          <div
+            class="hidden absolute bg-gray-700 text-white mt-2 rounded-md shadow-md group-hover:block min-w-[200px]">
+            {{ range .Children }}
+            <a href="{{ .URL }}" class="block px-4 py-2 hover:bg-gray-600">
+              {{ .Name }}
+            </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </nav>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+      
+        menuToggle.addEventListener("click", function () {
+          menu.classList.toggle("hidden");
+        });
+      });
+     
+  </script>

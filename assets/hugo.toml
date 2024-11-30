@@ -1,0 +1,125 @@
+baseURL = "https://ngeranio.com/"
+languageCode = 'en-us'
+title = 'ngeran[io]'
+theme = 'vector'
+paginate = 6
+
+
+  [params]
+  mainSections = ['routing']
+
+# -- Site Menu --
+
+[[menus.main]]
+ name = 'home'
+ pageRef = '/'
+ weight = 10
+
+[[menus.main]]
+ name = 'posts'
+ weight = 20
+
+[[menus.main]]
+  name = "o.s.p.f"
+  parent = "posts"
+  pageRef = "/routing/ospf"
+  weight = 20
+
+[[menus.main]]
+  name = "bgp"
+  parent = "posts"
+  pageRef = "/routing/bgp"
+  weight = 20
+
+[[menus.main]]
+  name = "projects"
+  pageRef = '/projects'
+  weight = 30
+
+
+ [params.site]
+  logo = "/networking-dark.png"
+
+[taxonomies]
+  category = "categories"
+
+[permalinlks]
+  categories = "/:section/:slug"
+
+# -- Markup --
+# These settings are required for the theme to function.
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[highlight]
+  noClasses = false
+
+[tableOfContents]
+  startLevel = 2
+  endLevel = 4
+
+
+
+[params.author]
+    name = "ngeranio a.k.a nikos"
+#   email = "youremail@example.com"
+    image = "author/avatar.png"
+    imageQuality = 96
+    headline = "Welcome to My Networking Blog"
+    bio = "I’m a network engineer by day and an aspiring JNCIE-SP by night. The JNCIE-SP journey is demanding—it requires time, dedication, and relentless hard work. To stay organized and focused, I’ll be sharing my study notes here. My hope is that these notes not only aid my own preparation but also help others pursuing the same goal. Thanks for visiting, and enjoy the journey with me!. Enjoy 🙂"
+#   links = [
+#     { email = "mailto:hello@your_domain.com" },
+#     { link = "https://link-to-some-website.com/" },
+#     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
+#     { apple = "https://www.apple.com" },
+#     { blogger = "https://username.blogspot.com/" },
+#     { bluesky = "https://bsky.app/profile/username" },
+#     { codepen = "https://codepen.io/username" },
+#     { dev = "https://dev.to/username" },
+#     { discord = "https://discord.gg/invitecode" },
+#     { dribbble = "https://dribbble.com/username" },
+#     { facebook = "https://facebook.com/username" },
+#     { flickr = "https://www.flickr.com/photos/username/" },
+#     { foursquare = "https://foursquare.com/username" },
+#     { github = "https://github.com/username" },
+#     { gitlab = "https://gitlab.com/username" },
+#     { google = "https://www.google.com/" },
+#     { hashnode = "https://username.hashnode.dev" },
+#     { instagram = "https://instagram.com/username" },
+#     { itch-io = "https://username.itch.io" },
+#     { keybase = "https://keybase.io/username" },
+#     { kickstarter = "https://www.kickstarter.com/profile/username" },
+#     { lastfm = "https://lastfm.com/user/username" },
+#     { linkedin = "https://linkedin.com/in/username" },
+#     { mastodon = "https://mastodon.instance/@username" },
+#     { medium = "https://medium.com/username" },
+#     { microsoft = "https://www.microsoft.com/" },
+#     { orcid = "https://orcid.org/userid" },
+#     { patreon = "https://www.patreon.com/username" },
+#     { pinterest = "https://pinterest.com/username" },
+#     { reddit = "https://reddit.com/user/username" },
+#     { researchgate = "https://www.researchgate.net/profile/username" },
+#     { slack = "https://workspace.url/team/userid" },
+#     { snapchat = "https://snapchat.com/add/username" },
+#     { soundcloud = "https://soundcloud.com/username" },
+#     { spotify = "https://open.spotify.com/user/userid" },
+#     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
+#     { steam = "https://steamcommunity.com/profiles/userid" },
+#     { telegram = "https://t.me/username" },
+#     { threads = "https://www.threads.net/@username" },
+#     { tiktok = "https://tiktok.com/@username" },
+#     { tumblr = "https://username.tumblr.com" },
+#     { twitch = "https://twitch.tv/username" },
+#     { twitter = "https://twitter.com/username" },
+#     { x-twitter = "https://twitter.com/username" },
+#     { whatsapp = "https://wa.me/phone-number" },
+#     { youtube = "https://youtube.com/username" },
+#     { ko-fi = "https://ko-fi.com/username" },
+#     { codeberg = "https://codeberg.org/username"},
+#   ]
+
+
+

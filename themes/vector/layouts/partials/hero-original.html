@@ -1,0 +1,60 @@
+ <!-- Hero Section -->
+            <!-- Background Image-->
+            <div style="background-image: url('img/hero.jpg');" class="flex flex-col items-center justify-center h-[calc(100vh-100px)] min-h-[500px] bg-contain md:bg-cover bg-center bg-no-repeat ">
+                <!-- Avatar or Logo Image Wrapper-->
+                <div class=" py-2 px-4 rounded-full text-center backdrop-blur-md">
+                    <!-- Avatar or Logo -->
+                     <div class="">
+                        <img src="{{ .Site.Params.site.logo }}" width="600" alt="">
+                     </div>
+                     <!-- Brand and sescription-->
+                    </div class="flex flex-col space-y-10 lg:mt-16 ">
+                    <!-- Brand Name -->
+                    <h1 class="text-[#5e81ac] text-3xl mt-3 font-semibold text-center">{{ .Site.Params.author.headline }}</h1>
+                    <!-- Brand Description-->
+                    <p class="  lg:max-w-2xl md:max-w-lg sm:max-w-md text-lg sm:p-3 md:p-3 text-[#ebcb8b] text-center my-10 ">
+                      {{ .Site.Params.author.bio }}
+                    </p>
+                     <div>
+                </div>
+              </div>
+              </div>
+
+
+              <!-- Originanl Hero Section --> 
+              <svg
+              class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+              aria-hidden="true">
+              <defs>
+                <pattern id="983e3e4c-de6d-4c3f-8d64-b9761d1534cc" width="200" height="200" x="100%" y="-1"
+                  patternUnits="userSpaceOnUse">
+                  <path d="M.5 200V.5H200" fill="none"></path>
+                </pattern>
+              </defs>
+              <svg x="50%" y="-1" class="overflow-visible fill-gray-800/20">
+                <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
+                  stroke-width="0"></path>
+              </svg>
+              <rect width="100%" height="100%" stroke-width="0" fill="url(#983e3e4c-de6d-4c3f-8d64-b9761d1534cc)"></rect>
+            </svg>
+               <!-- Background Image-->
+               <div style="background-image: url('img/hero.jpg');" class="flex flex-col items-center justify-center h-[calc(100vh-100px)] min-h-[500px] bg-contain md:bg-cover bg-center bg-no-repeat ">
+                 <!-- Avatar or Logo Image Wrapper-->
+                 <div class=" py-2 px-4 rounded-full text-center backdrop-blur-md">
+                     <!-- Avatar or Logo -->
+                      <div class="">
+                         <img src="{{ .Site.Params.site.logo }}" width="200" alt="">
+                      </div>
+                      <!-- Brand and sescription-->
+                     </div class="flex flex-col space-y-10 lg:mt-16 ">
+                     <!-- Brand Name -->
+                     <h1 class="text-[#5e81ac] text-3xl mt-3 font-semibold text-center">{{ .Site.Params.author.headline }}</h1>
+                     <!-- Brand Description-->
+                     <p class="  lg:max-w-2xl md:max-w-lg sm:max-w-md text-lg sm:p-3 md:p-3 text-[#ebcb8b] text-center my-10 ">
+                       {{ .Site.Params.author.bio }}
+                     </p>
+                      <div>
+                 </div>
+               </div>
+               </div>
+           </div>

@@ -1,0 +1,22 @@
+<div id="scrollUpBtn" class="fixed bottom-8 right-8 z-50 hidden bg-blue-500 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-blue-600 transition-opacity opacity-0">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7-7-7 7"></path>
+    </svg>
+  </div>
+
+  <script>
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    scrollUpBtn.classList.remove('opacity-0');
+    scrollUpBtn.classList.add('opacity-100');
+    scrollUpBtn.classList.remove('hidden');
+  } else {
+    scrollUpBtn.classList.add('opacity-0');
+    scrollUpBtn.classList.remove('opacity-100');
+    setTimeout(() => scrollUpBtn.classList.add('hidden'), 300); // Hides after fade-out
+  }
+};
+
+  </script>
+

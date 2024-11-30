@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="bg-gray-900 ">
+    <!-- Header Section -->
+       <header class="">
+        <!-- Top Hero Container -->
+         <div class="relative flex flex-col grow">
+            <!-- Navigation -->
+            {{ partial "nav.html" . }}
+            </div>
+      </header>
+        <main>
+          <!-- Hero Section --> 
+          {{ partial "hero.html" . }}
+             <!-- Footer -->
+           {{ partial "simple-footer.html" .  }}
+        </main>
+  </body>
+</html>

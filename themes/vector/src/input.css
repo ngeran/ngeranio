@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#TableOfContents {
+    display: block;
+    background: transparent;
+    padding-bottom: 2rem;
+    font-size: 1.2em;
+  
+    ul {
+      display: list-item;
+      padding-left: 0;
+      list-style-type: none;
+      
+      &:not(:first-child) {
+        display: list-item;
+        padding-left: 0.9rem;
+        font-size: 95%;
+      }
+    }
+  
+    li {
+      display: inherit;
+      color: $text-color;
+      a:link { 
+        text-decoration: none; 
+      } 
+      a:visited { 
+        text-decoration: none; 
+      } 
+      a:hover { 
+        text-decoration: none; 
+        color: #5e81ac;
+      } 
+      a:active { 
+        text-decoration: none; 
+      }
+      
+      a {
+        color: inherit;
+        text-align: left;
+        padding: 0;
+        
+  
+        &:hover {
+          color: $highlight-color;
+          background-color: transparent;
+        }
+      }
+    }
+  }

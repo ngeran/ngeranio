@@ -1,0 +1,84 @@
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <nav class="relative max-w-[64rem] ml-auto mr-auto top-3 p-4  lg:px-8  lg:py-3 shadow-lg bg-[#d8dee9] bg-opacity-10 backdrop-blur-lg backdrop-saturate-150 z-50 rounded-2xl  ">
+    <div class="mx-auto flex items-center justify-between">
+      <!-- Logo or Branding -->
+      <div class=" text-xl ">
+       <a href="/" class="text-xl" ><span class="text-[#eceff4] ">ngeran</span><span class="text-[#81a1c1]">[</span><span class="text-[#ebcb8b]">io</span><span class="text-[#81a1c1]">]</span>
+        </a>
+      </div>
+  
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex space-x-6 ">
+        {{ range .Site.Menus.main }}
+          <div class="relative group">
+            <a href="{{ .URL }}" class=" text-[#d8dee9] hover:text-[#ebcb8b] h-full">{{ .Name }}</a>
+            
+            {{ if .HasChildren }}
+ 
+              <div class="absolute  left-0 hidden p-4 mt-0 space-y-2 bg-gray-700  group-hover:block rounded-md bg-opacity-10 backdrop-blur-lg">
+                {{ range .Children }}
+                  <div>
+                    <a href="{{ .URL }}" class="text-[#d8dee9] hover:text-[#ebcb8b]">{{ .Name }}</a>
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+  
+      <!-- Mobile Menu Toggle Button (Hamburger) -->
+      <div class="lg:hidden">
+        <button id="hamburger" class="block text-[#5e81ac] focus:outline-none">
+          <div class="w-6 h-0.5 bg-white mb-1 transition-all duration-300" id="bar1"></div>
+          <div class="w-6 h-0.5 bg-white mb-1 transition-all duration-300" id="bar2"></div>
+          <div class="w-6 h-0.5 bg-white transition-all duration-300" id="bar3"></div>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-gray-800">
+      <div class="p-4">
+        {{ range .Site.Menus.main }}
+          <div class="relative group">
+            <a href="{{ .URL }}" class="block py-2 px-4 text-[#5e81ac] hover:bg-gray-700 rounded">{{ .Name }}</a>
+  
+            {{ if .HasChildren }}
+              <div class="hidden mt-2 space-y-2 bg-gray-700 p-4 group-hover:block">
+                {{ range .Children }}
+                  <div>
+                    <a href="{{ .URL }}" class="block py-2 px-4 text-[#5e81ac] hover:bg-gray-600 rounded">{{ .Name }}</a>
+                  </div>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </nav>
+
+</div>
+
+
+
+  
+  
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const bars = [document.getElementById("bar1"), document.getElementById("bar2"), document.getElementById("bar3")];
+    const mobileMenu = document.getElementById("mobileMenu");
+  
+    hamburger.addEventListener("click", () => {
+      // Toggle mobile menu visibility
+      mobileMenu.classList.toggle("hidden");
+  
+      // Animate hamburger
+      bars[0].classList.toggle("rotate-45", mobileMenu.classList.contains("hidden"));
+      bars[1].classList.toggle("opacity-0", mobileMenu.classList.contains("hidden"));
+      bars[2].classList.toggle("rotate-135", mobileMenu.classList.contains("hidden"));
+    });
+  </script>
+  
+  
