@@ -1,5 +1,5 @@
 +++
-title = 'Type 4 LSA - Network'
+title = 'Type 4 - ASBR Summary'
 date = '2024-11-22T13:13:46-05:00'
 tags = ["OSPF","LSA","Juniper"]
 draft = false

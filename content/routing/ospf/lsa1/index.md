@@ -1,5 +1,5 @@
 +++
-title = 'Type 1 LSA - Router'
+title = 'Type 1 - Router'
 date = '2024-11-22T13:13:23-05:00'
 summary = 'OSPF Type 1 LSA Summary'
 featured_image = '/featured.jpg'

@@ -1,5 +1,5 @@
 +++
-title = 'Packet Header and Packet Types'
+title = 'Headers and Types'
 date = '2024-11-22T13:14:14-05:00'
 tags = ["OSPF","Posts","New"]
 draft = false
