@@ -73,6 +73,9 @@
         {{ .RawContent | .RenderString }}
         <!-- Blog Posts --> 
         </div>
+        {{ if .Site.Params.enableNextPrevPages }}
+        {{ partial "article-prevnext.html" . }}
+      {{ end }}
       </div>
         </section>
       </article>
