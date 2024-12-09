@@ -65,7 +65,7 @@ paginate = 6
 
 
 [params.author]
-    name = "ngeranio a.k.a nikos"
+    name = "ngeran a.k.a nikos"
 #   email = "youremail@example.com"
     image = "author/avatar.png"
     imageQuality = 96
