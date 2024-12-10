@@ -24,7 +24,7 @@ summary = 'BGP uses different attributes to control the advertisement and influe
 **Must** be supported from all BGP neighbors but   
 do not have to be includes in all BGP update messages.
 
-- Local_Pref
+- Local_Preference
 - Atomic-Aggregator
 
 ### Optional transitive 
