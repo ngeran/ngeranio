@@ -1,7 +1,7 @@
 +++
 title = 'Local Preference'
 date = 2024-12-12T17:30:21-05:00
-draft = true
+draft = false
 tags = ["BGP","Routing","Juniper","Attributes"]
 featured_image = 'featured.png'
 summary = 'The Power of Local Preference. The first BGP attribute used to favor one route over another.'

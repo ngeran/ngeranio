@@ -34,7 +34,7 @@ present it must be passed to other neighbors.
 
 - Community
 
-### Optional nontransitive 
+### Optional non-transitive 
 
 Does not have to be supported by all BGP neighbors, but If
 such an attribute is not recognized, it is ignored and not passed to other neighbors.
