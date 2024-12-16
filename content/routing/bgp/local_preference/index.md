@@ -153,7 +153,7 @@ neighbor 10.100.35.2;
 
 ### The Result 
 
-After appling the policy vMX1 chooses the route learned from vMX3 because of the higher Local_Pref value.
+After applying the policy vMX1 chooses the route learned from vMX3 because of the higher Local_Pref value.
 
 ```
 jcluser@vMX1# run show route 192.168.235.0/24 exact detail    
@@ -211,7 +211,7 @@ inet.0: 19 destinations, 20 routes (19 active, 0 holddown, 0 hidden)
                     >  to 10.100.35.2 via ge-0/0/0.0
 ```
 
-> When the route is adveried to a neighbor on a diffrent AS. 
+> When the route is advertised to a neighbor with a diffrent AS. 
 
 ```
 jcluser@vMX3# run show route advertising-protocol bgp 10.100.35.2 
@@ -221,7 +221,7 @@ inet.0: 19 destinations, 20 routes (19 active, 0 holddown, 0 hidden)
 * 192.168.123.0/24        Self                 1                  I
 ```
 
-> The Local Preference resets to the default value. 
+> The Local Preference resets back to the default value. 
 
 ```
 jcluser@vMX5# run show route protocol bgp detail
