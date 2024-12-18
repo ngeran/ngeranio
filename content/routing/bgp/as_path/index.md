@@ -25,4 +25,4 @@ Junos before advertising the route to the next AS peer checks if the peers AS nu
 
 Using policy, we can modify the AS Path attribute before the route is readvertised to other BGP peers, making the path through the local AS more or less attractive to other autonomous systems. The way to alter the AS PATH is by adding to it by prepending.  
 
-**Prepending** = artificialy adding informtion into AS PATH.
+**Prepending** = artificialy adding information into AS PATH.
