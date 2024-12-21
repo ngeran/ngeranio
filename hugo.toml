@@ -2,7 +2,7 @@ baseURL = "https://ngeranio.com/"
 languageCode = 'en-us'
 title = 'ngeran[io]'
 theme = 'vector'
-paginate = 6
+pagerSize = 6
 
 
   [params]
