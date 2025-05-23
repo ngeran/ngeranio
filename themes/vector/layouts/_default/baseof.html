@@ -11,7 +11,12 @@
     {{ block "main" . }}{{ end }}
   </main>
   <footer>
-    {{ partial "footer.html" . }}
+    {{ if .IsHome }}
+      <!-- Footer For The Home Page-->
+      {{ partial "simple-footer.html" .  }}
+    {{ else }}
+      {{ partial "footer.html" . }}
+    {{ end }}
   </footer>
 </body>
 </html>
