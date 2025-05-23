@@ -1,7 +1,21 @@
+{{/* themes/vector/layouts/home.html */}}
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+  {{ partial "hero.html" . }}
+
+  <section class="container mx-auto px-6 py-12 text-white">
+    <h2 class="text-3xl font-bold mb-6 text-center">Latest Content</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {{ range first 6 site.RegularPages.ByDate.Reverse }} {{/* Example: show 6 latest pages */}}
+        <article class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-2"><a href="{{ .RelPermalink }}" class="hover:text-cyan-400">{{ .LinkTitle }}</a></h3>
+          <div class="text-gray-400 text-sm mb-4">{{ .Date.Format "January 2, 2006" }}</div>
+          <p class="text-gray-300">{{ .Summary | plainify | truncate 150 }}</p>
+          <a href="{{ .RelPermalink }}" class="mt-4 inline-block text-cyan-400 hover:text-cyan-500">Read More &rarr;</a>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ .Content }} {{/* This will render content from _index.md in /content if it exists */}}
+
 {{ end }}
