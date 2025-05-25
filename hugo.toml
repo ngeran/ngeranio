@@ -33,6 +33,12 @@ pagerSize = 6
   weight = 20
 
 [[menus.main]]
+  name = "m.p.l.s"
+  parent = "posts"
+  pageRef = "/routing/mpls"
+  weight = 20
+
+[[menus.main]]
   name = "projects"
   pageRef = '/projects'
   weight = 30
