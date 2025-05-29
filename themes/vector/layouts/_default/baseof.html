@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
-  {{ partial "head.html" . }}
+{{ partial "head.html" . }}
 </head>
 <body class="bg-gray-900">
   <header>
-    {{ partial "header.html" . }}
+   {{ partial "header.html" . }}
   </header>
   <main>
-    {{ block "main" . }}{{ end }}
+   {{ block "main" . }}{{ end }}
   </main>
   <footer>
     {{ if .IsHome }}
-      <!-- Footer For The Home Page-->
-      {{ partial "simple-footer.html" .  }}
+      {{ partial "simple-footer.html" . }}
     {{ else }}
       {{ partial "footer.html" . }}
     {{ end }}
   </footer>
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
 </body>
 </html>

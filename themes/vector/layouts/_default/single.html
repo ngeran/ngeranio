@@ -27,7 +27,7 @@
             <div class="flex flex-row flex-wrap items-center">
               {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
               {{ $dateHuman := .Date | time.Format ":date_long" }}
-              <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> 
+              <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
               <span class="px-2 text-primary-500">.</span>
               <span>{{ .WordCount }} words</span>
               <span class="px-2 text-primary-500">.</span>
@@ -40,11 +40,10 @@
           </div>
           <!--Author-->
           <div class="flex author">
-            <!--Use Avatar Image from assets folder --> 
+            <!--Use Avatar Image from assets folder -->
             {{ $image :=  resources.Get "author/avatar.png" }}
             <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
             alt="{{ $.Site.Params.Author.name | default " Author" }}" src="{{ $image.RelPermalink }}" />
-    
             <div class="place-self-center">
               <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div>
               <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">{{ .Site.Params.author.name }}</div>
@@ -71,7 +70,7 @@
         <div class="article-content max-w-prose mb-20 prose-h3:text-[#5e81ac]">
            <!-- Blog Posts -->
         {{ .RawContent | .RenderString }}
-        <!-- Blog Posts --> 
+        <!-- Blog Posts -->
         </div>
         {{ if .Site.Params.enableNextPrevPages }}
         {{ partial "article-prevnext.html" . }}
@@ -79,12 +78,16 @@
       </div>
         </section>
       </article>
-  
       </main>
   </div>
   <footer>
     {{ partial "footer-single.html" . }}
   </footer>
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
 </body>
 </html>
-
