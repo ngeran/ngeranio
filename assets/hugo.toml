@@ -16,19 +16,25 @@ paginate = 6
  weight = 10
 
 [[menus.main]]
- name = 'posts'
+ name = 'blog'
  weight = 20
 
 [[menus.main]]
-  name = "o.s.p.f"
-  parent = "posts"
-  pageRef = "/routing/ospf"
+  name = 'o.s.p.f'
+  parent = 'blog'
+  pageRef = '/routing/ospf'
   weight = 20
 
 [[menus.main]]
-  name = "bgp"
-  parent = "posts"
-  pageRef = "/routing/bgp"
+  name = 'b.g.p'
+  parent = 'blog'
+  pageRef = '/routing/bgp'
+  weight = 20
+
+[[menus.main]]
+  name = 'm.p.l.s'
+  parent = 'blog'
+  pageRef = '/routing/mpls'
   weight = 20
 
 [[menus.main]]
