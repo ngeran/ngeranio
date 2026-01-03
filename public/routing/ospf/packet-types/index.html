@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="robots" content="noindex, nofollow" />
+<title>
+Headers and Types | ngeran[io]
+</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/theme.css">
+
+
+      <script src="/js/main.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-dust-800">
+
+  
+  
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-dust-800 border-b border-gray-700 mb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center h-16">
+
+        
+        <div class="flex items-center">
+          <a href="/" class="flex items-center gap-3">
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-gray-100">ngeran</span>
+              <span class="text-nord-frost-pale">[</span>
+              <span class="text-nord-aurora-yellow">io</span>
+              <span class="text-nord-frost-pale">]</span>
+            </div>
+          </a>
+          
+          <div class="navbar-separator ml-6"></div>
+        </div>
+
+        
+        <div class="hidden lg:flex lg:items-center">
+          
+            
+              
+              <a href="/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                <span class="capitalize">home</span>
+              </a>
+            
+          
+            
+              
+              <div class="relative group">
+                <a href="/routing/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                  <span class="text-moon font-bold text-lg leading-none">+</span>
+                  <span class="capitalize">blog</span>
+                </a>
+
+                
+                <div class="megamenu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 400px;">
+                  <div class="bg-dust-800 shadow-2xl overflow-hidden">
+                    
+                    <div class="px-6 py-4 border-b border-gray-700/50 bg-gradient-to-r from-[#5e81ac]/10 to-[#81a1c1]/10">
+                      <h3 class="text-lg font-semibold text-moon">blog</h3>
+                      <p class="text-sm text-dust-400 mt-1">Routing protocols study materials</p>
+                    </div>
+
+                    
+                    <div class="p-2">
+                      
+                        <a href="/routing/bgp/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">b.g.p</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                        <a href="/routing/mpls/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">m.p.l.s</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                        <a href="/routing/ospf/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">o.s.p.f</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                    </div>
+
+                      
+                      <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center justify-between">
+                        <span class="text-sm text-dust-400">
+                          <span class="text-moon font-semibold">3</span> protocols available
+                        </span>
+                        <a href="/routing/" class="text-sm text-nord-frost-pale hover:text-moon transition-colors duration-200 font-medium inline-flex items-center gap-1">
+                          Browse all
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          
+            
+              
+              <a href="/projects/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                <span class="capitalize">projects</span>
+              </a>
+            
+          
+        </div>
+
+        
+        <div class="lg:hidden">
+          <button id="mobile-menu-button" class="text-gray-100 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      
+      <div id="mobile-menu" class="hidden lg:hidden pb-4">
+        <div class="pt-2 space-y-1">
+          
+            
+              
+              <a href="/" class="block px-3 py-2 text-gray-100 hover:bg-dust-900 rounded-lg font-medium">
+                home
+              </a>
+            
+          
+            
+              
+              <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">blog</div>
+              
+                <a href="/routing/bgp/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  b.g.p
+                </a>
+              
+                <a href="/routing/mpls/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  m.p.l.s
+                </a>
+              
+                <a href="/routing/ospf/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  o.s.p.f
+                </a>
+              
+            
+          
+            
+              
+              <a href="/projects/" class="block px-3 py-2 text-gray-100 hover:bg-dust-900 rounded-lg font-medium">
+                projects
+              </a>
+            
+          
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="relative flex flex-col grow pt-16">
+    <main class="grow">
+      <article>
+        <div class="max-w-4xl pr-6 sm:px-8 lg:px-12" style="padding-left: 4.5rem !important;">
+          
+          <div id="hero" class="h-[50px]"></div>
+
+          
+          <header class="mt-5 max-w-prose" style="padding-left: 4.5rem !important;">
+            <h1 class="mt-0 text-4xl font-extrabold text-[#5e81ac]">Headers and Types</h1>
+            <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+              <div class="flex flex-row flex-wrap items-center">
+                
+                
+                <time datetime="2024-11-22T13:14:14-05:00">November 22, 2024</time>
+                <span class="px-2 text-primary-500">.</span>
+                <span>1496 words</span>
+                <span class="px-2 text-primary-500">.</span>
+                <span>8 minutes</span>
+              </div>
+              <div class="flex flex-row flex-wrap items-center">
+                
+                
+
+
+              </div>
+            </div>
+
+            
+            <div class="flex author">
+              
+              <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+              alt="ngeran a.k.a nikos" src="/author/avatar.png" />
+              <div class="place-self-center">
+                <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div>
+                <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">ngeran a.k.a nikos</div>
+                <div class="text-2xl sm:text-lg"></div>
+              </div>
+            </div>
+            <div class="mb-5"></div>
+          </header>
+
+          
+          <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+            
+            <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+              <div class="ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+                <div class="mt-0 overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+                  <div class="min-w-[220px] py-2 border-dotted list-none ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600 text-sm">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hello">Hello</a></li>
+        <li><a href="#database-description">Database Description</a></li>
+        <li><a href="#link-state-request">Link-State Request</a></li>
+        <li><a href="#link-state-update">Link-State Update</a></li>
+        <li><a href="#link-state-acknowledgment">Link-State Acknowledgment</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="min-w-0 min-h-0 max-w-fit" style="padding-left: 4.5rem !important;">
+              <div class="article-content max-w-prose mb-20 prose-h3:text-[#5e81ac]">
+                
+                <blockquote>
+<p>This section is extremely important.</p>
+</blockquote>
+<p>OSPF has it’s own IP protocol 89 (L3). Besides Virtual links an OSPF packet usually travels a single hop ( TTL =1). All OSPFv2 packets have a common 24-byte header, that contains all information necessary to determine whether OSPF speaking router should accept the packet. The header consists of the following fields:</p>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |     Type      |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><ul>
+<li>Version #: The current OSPF version number, either 2 or 3.</li>
+<li>Type: Type of OSPF packet ( look below for packet details ).</li>
+</ul>
+<p><img src="packet-types.png" alt="Packet Types">
+Figure 1. Packet Types</p>
+<ul>
+<li>Packet length: Length of the packet, in bytes, including the header.</li>
+<li>Router ID: IP address of the router from which the packet originated.</li>
+<li>Area ID: Identifier of the area in which the packet is traveling. Each OSPF packet is associated with a single area. Packets traveling over a virtual link are labeled with the backbone area ID, 0.0.0.0. .</li>
+<li>Checksum: Fletcher checksum.</li>
+<li>AuType: Authentication identification ( if any) is being used.</li>
+<li>Authentication: (OSPFv2 only) Authentication scheme and authentication information.</li>
+</ul>
+<h3 id="hello">Hello</h3>
+<p><img src="hello-packet.png" alt="Hallo Packet"></p>
+<p>Figure 2. R1 sends the initial OSPF Hello packet and R2 responds with the OSPF Hello Reply packet
+Hallo packets are sent periodically in order to establish and maintain adjacencies.</p>
+<ul>
+<li>10 seconds for Point to Point networks ( P2P).</li>
+<li>30 seconds for NBMA networks.</li>
+</ul>
+<p>Hello packets are multicast on physical networks that have a multicast or broadcast capability, which enables dynamic discovery of neighboring routers.OSPF destination IPs are:</p>
+<ul>
+<li>224.0.0.5 AllSPFRouters.</li>
+<li>224.0.0.6 AllDRRouters for broadcast links.</li>
+</ul>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |       1       |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                        Network Mask                           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|         HelloInterval         |    Options    |    Rtr Pri    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     RouterDeadInterval                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      Designated Router                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                   Backup Designated Router                    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Neighbor                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><ul>
+<li>
+<p>Network mask : (OSPFv2 only) Network mask associated with the interface.</p>
+</li>
+<li>
+<p>Hello interval : How often the router sends hello packets ( in seconds) . All routers on a shared network must use the same hello interval.</p>
+</li>
+<li>
+<p>Options : Optional capabilities of the router.</p>
+</li>
+</ul>
+<pre tabindex="0"><code>             +--------------------------------------+
+             | DN | O | DC | EA | N/P | MC | E | MT |
+             +--------------------------------------+
+</code></pre><ul>
+<li>DN-bit: Used to prevent looping in L3 MPLS VPNs.</li>
+<li>O-bit: Opaque LSAs.</li>
+<li>DC-bit: Demand circuits.</li>
+<li>EA-bit: External-Attributes-LSAs.</li>
+<li>N/P-bit: Type-7 LSAs for NSSA support.</li>
+<li>MC-bit: IP multicast datagrams are forwarded.</li>
+<li>E-bit: AS-external-LSAs are flooded.</li>
+<li>MT-bit: Multi-topology capability.</li>
+<li>Rtr Pri (Router Priority): The router’s priority to become the designated router.</li>
+<li>Router Dead Interval : How long the router waits without receiving any OSPF packets from a router before declaring that router to be down. All routers on a shared network must use the same router dead interval.</li>
+<li>Designated router : IP address of the designated router.</li>
+<li>Backup Designated Router: IP address of the backup designated router.</li>
+<li>Neighbor : IP addresses of the routers from which valid hello packets have been received within the time specified by the router dead interval.</li>
+</ul>
+<h3 id="database-description">Database Description</h3>
+<p><img src="database-description.png" alt="Database Description Packet"></p>
+<p>These packets are exchanged when an adjacency is being initialized. In order to describe the complete topological database multiple packets may be used. When initializing an adjacency, a Master — Slave hierarchical order must be established. The Master router sends Database Description Packets (DBD) updates first while the Slave router listens.The responses are linked to the polls via the packets (DBD) Database Description sequence numbers.</p>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |       2       |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|         Interface MTU         |    Options    |0|0|0|0|0|I|M|MS
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     DD sequence number                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++-                                                             -+
+|                                                               |
++-                      An LSA Header                          -+
+|                                                               |
++-                                                             -+
+|                                                               |
++-                                                             -+
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><ul>
+<li>Interface MTU: MTU of the interface on the network link.</li>
+<li>Options: Same field as the options field used in the hello packet. Routers can use the options at this stage to determine if they need to forward certain LSAs due to the functionality of the neighboring router.</li>
+<li>I-bit (Initial bit): When set this is the first packet in the sequence of
+Database Description Packets.</li>
+<li>M-bit (More bit): When set it indicates that more Database Description Packets are to follow.</li>
+<li>MS-bit (Master/Slave bit):When set it indicates that the router will be the master during the Database exchange process.</li>
+<li>DD sequence number: Used to sequence all of the Database Description packets.</li>
+<li>LSA Header: A list of all of the router’s link-state database headers.</li>
+</ul>
+<blockquote>
+<p>If the Interface MTU does not match during the database exchange, the exchange will not continue ( Neighbors Stuck in Exstart/Exchange State)</p>
+</blockquote>
+<h3 id="link-state-request">Link-State Request</h3>
+<p>When a router detects that portions of its topological database are out of date, it sends a link-state request packet to a neighbor requesting a precise instance of the database. These packets consist of the OSPF header plus fields that uniquely identify the database information that the router is seeking.</p>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |       3       |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          LS type                              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Link State ID                           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     Advertising Router                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><ul>
+<li>LS Type: The type of the LSA. Each LSA type has a separate advertisement
+format. The LSA types defined in this memo are as follows.</li>
+<li>Link State ID: The contents of this field depend on the LSA’s LS type, and identifies the portion of the internet environment that is being described by the LSA.</li>
+<li>Advertising Router:The Router ID of the router that originated the LSA.</li>
+</ul>
+<h3 id="link-state-update">Link-State Update</h3>
+<p><img src="link-state-update.png" alt="Link State Update"></p>
+<p>Link-state update packets carry one or more link-state advertisements one hop farther from their origin. The router multicasts (floods) these packets on physical networks that support multicast or broadcast 31 mode. The router acknowledges all link-state update packets and, if retransmission is necessary, sends the retransmitted advertisements unicast. Link-state update packets consist of the OSPF header plus the following fields:</p>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |       4       |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                            # LSAs                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++-                                                            +-+
+|                             LSAs                              |
++-                                                            +-+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><ul>
+<li>LSAs: The number of LSA included in the update.</li>
+<li>LSAs: List of LSAs, the link-state advertisements themselves.. Each LSA begins with a common 20 byte header.</li>
+</ul>
+<h3 id="link-state-acknowledgment">Link-State Acknowledgment</h3>
+<p>The router sends link-state acknowledgment packets in response to link-state update packets to verify that the update packets have been received successfully. Multiple LSAs can be acknowledged in a single Link State
+Acknowledgment packet.</p>
+<p>Link-state request, link-state update, and link-state acknowledgment packets are used to reliably flood link-state advertisement packets. The format of this packet is similar to that of the Data Description packet.</p>
+<p>The body of both packets is simply a list of LSA headers.</p>
+<pre tabindex="0"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Version #   |       5       |         Packet length         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Router ID                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Area ID                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |             AuType            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Authentication                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++-                                                             -+
+|                                                               |
++-                         An LSA Header                       -+
+|                                                               |
++-                                                             -+
+|                                                               |
++-                                                             -+
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre><p>Each acknowledged LSA is described by its LSA header. It contains all the
+information required to uniquely identify both the LSA and the LSA’s
+current instance.</p>
+
+                
+              </div>
+              
+                <div class="flex justify-between">
+  
+  <div class="">
+    
+    <a
+      href="http://localhost:1313/routing/ospf/lsa5/?ref=footer"
+      class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      <svg
+        class="w-3.5 h-3.5 me-2 rtl:rotate-180"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 5H1m0 0 4 4M1 5l4-4"
+        />
+      </svg>
+      Previous
+    </a>
+    
+  </div>
+  
+  <div class="">
+    
+  </div>
+</div>
+
+              
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <footer class="mx-auto w-full  max-w-container text-center" >
+    
+   <div class="max-w-screen-xl sm:pt-5 md:pt-8 pt-0">
+       <div class="border-b border-[#4c566a] mb-5 flex justify-between"></div>
+   </div> 
+   <div class="flex flex-col items-center ">
+       
+       <div id="logo">
+           <span class="text-[#5e81ac]">ngeran[</span><span class="text-[#ebcb8b]">io</span><span class="text-[#5e81ac]">]</span>
+       </div>
+       <p class="mt-5 text-center text-sm leading-6 text-slate-500">© Copyright 2026. All rights reserved.</p>
+       <div class="mt-4 flex items-center justify-center space-x-4 text-sm font-semibold leading-6 text-slate-700"><a href="/privacy-policy">Privacy policy</a>
+           <div class="h-4 w-px bg-slate-500/20"></div><a href="/changelog">Changelog</a>
+       </div>
+   </div>
+</footer>
+  </footer>
+
+
+
+  
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

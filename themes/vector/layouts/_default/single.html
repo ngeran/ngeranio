@@ -38,15 +38,75 @@
                 </a>
 
                 <!-- Mega Menu Dropdown -->
-                <div class="megamenu-container rounded-lg shadow-lg border border-gray-700 z-50" style="top: 100%;">
-                  {{ range .Children }}
-                    <a href="{{ .URL }}" class="megamenu-link" style="text-decoration: none;">
-                      <div class="megamenu-link-col-1">
-                        <div class="megamenu-link-title">{{ .Name }}</div>
-                        <div class="megamenu-link-subtitle">{{ title .Identifier }} routing protocols</div>
+                <div class="megamenu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 400px;">
+                  <div class="bg-dust-800 shadow-2xl overflow-hidden">
+                    <!-- Header -->
+                    <div class="px-6 py-4 border-b border-gray-700/50 bg-gradient-to-r from-[#5e81ac]/10 to-[#81a1c1]/10">
+                      <h3 class="text-lg font-semibold text-moon">{{ .Name }}</h3>
+                      <p class="text-sm text-dust-400 mt-1">Routing protocols study materials</p>
+                    </div>
+
+                    <!-- Content List -->
+                    <div class="p-2">
+                      {{ range .Children }}
+                        <a href="{{ .URL }}" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          <!-- Icon -->
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            {{ if eq .Identifier "ospf" }}
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                              </svg>
+                            {{ else if eq .Identifier "bgp" }}
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                              </svg>
+                            {{ else if eq .Identifier "mpls" }}
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                              </svg>
+                            {{ else }}
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            {{ end }}
+                          </div>
+
+                          <!-- Content -->
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">{{ .Name }}</h4>
+                          </div>
+
+                          <!-- Grid Icon -->
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      {{ end }}
+                    </div>
+
+                      <!-- Footer -->
+                      <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center justify-between">
+                        <span class="text-sm text-dust-400">
+                          <span class="text-moon font-semibold">{{ len .Children }}</span> protocols available
+                        </span>
+                        <a href="{{ .URL }}" class="text-sm text-nord-frost-pale hover:text-moon transition-colors duration-200 font-medium inline-flex items-center gap-1">
+                          Browse all
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                          </svg>
+                        </a>
                       </div>
-                    </a>
-                  {{ end }}
+                    </div>
+                  </div>
                 </div>
               </div>
             {{ else }}

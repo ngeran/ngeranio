@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="robots" content="noindex, nofollow" />
+<title>
+Finite State Machine | ngeran[io]
+</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/theme.css">
+
+
+      <script src="/js/main.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-dust-800">
+
+  
+  
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-dust-800 border-b border-gray-700 mb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center h-16">
+
+        
+        <div class="flex items-center">
+          <a href="/" class="flex items-center gap-3">
+            <div class="flex items-center">
+              <span class="text-lg font-bold text-gray-100">ngeran</span>
+              <span class="text-nord-frost-pale">[</span>
+              <span class="text-nord-aurora-yellow">io</span>
+              <span class="text-nord-frost-pale">]</span>
+            </div>
+          </a>
+          
+          <div class="navbar-separator ml-6"></div>
+        </div>
+
+        
+        <div class="hidden lg:flex lg:items-center">
+          
+            
+              
+              <a href="/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                <span class="capitalize">home</span>
+              </a>
+            
+          
+            
+              
+              <div class="relative group">
+                <a href="/routing/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                  <span class="text-moon font-bold text-lg leading-none">+</span>
+                  <span class="capitalize">blog</span>
+                </a>
+
+                
+                <div class="megamenu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 400px;">
+                  <div class="bg-dust-800 shadow-2xl overflow-hidden">
+                    
+                    <div class="px-6 py-4 border-b border-gray-700/50 bg-gradient-to-r from-[#5e81ac]/10 to-[#81a1c1]/10">
+                      <h3 class="text-lg font-semibold text-moon">blog</h3>
+                      <p class="text-sm text-dust-400 mt-1">Routing protocols study materials</p>
+                    </div>
+
+                    
+                    <div class="p-2">
+                      
+                        <a href="/routing/bgp/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">b.g.p</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                        <a href="/routing/mpls/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">m.p.l.s</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                        <a href="/routing/ospf/" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                          
+                          <div class="w-10 h-10 flex items-center justify-center">
+                            
+                              <svg class="w-5 h-5 text-nord-frost-pale group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                              </svg>
+                            
+                          </div>
+
+                          
+                          <div class="flex-1">
+                            <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">o.s.p.f</h4>
+                          </div>
+
+                          
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
+                            <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
+                            <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
+                            <path d="M9 15C9.55228 15 10 14.5523 10 14C10 13.4477 9.55228 13 9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15Z" fill="currentColor"></path>
+                            <path d="M7 17C7.55228 17 8 16.5523 8 16C8 15.4477 7.55228 15 7 15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17Z" fill="currentColor"></path>
+                            <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" fill="currentColor"></path>
+                            <path d="M16 11C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11Z" fill="currentColor"></path>
+                            <path d="M18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"></path>
+                            <path d="M16 15C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13C15.4477 13 15 13.4477 15 14C15 14.5523 15.4477 15 16 15Z" fill="currentColor"></path>
+                            <path d="M14 17C14.5523 17 15 16.5523 15 16C15 15.4477 14.5523 15 14 15C13.4477 15 13 15.4477 13 16C13 16.5523 13.4477 17 14 17Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      
+                    </div>
+
+                      
+                      <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center justify-between">
+                        <span class="text-sm text-dust-400">
+                          <span class="text-moon font-semibold">3</span> protocols available
+                        </span>
+                        <a href="/routing/" class="text-sm text-nord-frost-pale hover:text-moon transition-colors duration-200 font-medium inline-flex items-center gap-1">
+                          Browse all
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          
+            
+              
+              <a href="/projects/" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                <span class="capitalize">projects</span>
+              </a>
+            
+          
+        </div>
+
+        
+        <div class="lg:hidden">
+          <button id="mobile-menu-button" class="text-gray-100 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      
+      <div id="mobile-menu" class="hidden lg:hidden pb-4">
+        <div class="pt-2 space-y-1">
+          
+            
+              
+              <a href="/" class="block px-3 py-2 text-gray-100 hover:bg-dust-900 rounded-lg font-medium">
+                home
+              </a>
+            
+          
+            
+              
+              <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">blog</div>
+              
+                <a href="/routing/bgp/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  b.g.p
+                </a>
+              
+                <a href="/routing/mpls/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  m.p.l.s
+                </a>
+              
+                <a href="/routing/ospf/" class="block px-4 py-2 text-gray-100 hover:bg-dust-900 rounded-lg">
+                  o.s.p.f
+                </a>
+              
+            
+          
+            
+              
+              <a href="/projects/" class="block px-3 py-2 text-gray-100 hover:bg-dust-900 rounded-lg font-medium">
+                projects
+              </a>
+            
+          
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="relative flex flex-col grow pt-16">
+    <main class="grow">
+      <article>
+        <div class="max-w-4xl pr-6 sm:px-8 lg:px-12" style="padding-left: 4.5rem !important;">
+          
+          <div id="hero" class="h-[50px]"></div>
+
+          
+          <header class="mt-5 max-w-prose" style="padding-left: 4.5rem !important;">
+            <h1 class="mt-0 text-4xl font-extrabold text-[#5e81ac]">Finite State Machine</h1>
+            <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+              <div class="flex flex-row flex-wrap items-center">
+                
+                
+                <time datetime="2024-11-22T13:14:14-05:00">November 22, 2024</time>
+                <span class="px-2 text-primary-500">.</span>
+                <span>797 words</span>
+                <span class="px-2 text-primary-500">.</span>
+                <span>4 minutes</span>
+              </div>
+              <div class="flex flex-row flex-wrap items-center">
+                
+                
+
+
+              </div>
+            </div>
+
+            
+            <div class="flex author">
+              
+              <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+              alt="ngeran a.k.a nikos" src="/author/avatar.png" />
+              <div class="place-self-center">
+                <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">Author</div>
+                <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">ngeran a.k.a nikos</div>
+                <div class="text-2xl sm:text-lg"></div>
+              </div>
+            </div>
+            <div class="mb-5"></div>
+          </header>
+
+          
+          <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+            
+            <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+              <div class="ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+                <div class="mt-0 overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+                  <div class="min-w-[220px] py-2 border-dotted list-none ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600 text-sm">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#idle-state">Idle State</a></li>
+        <li><a href="#connect-state">Connect State</a></li>
+        <li><a href="#active-state">Active State</a></li>
+        <li><a href="#opensent">OpenSent</a></li>
+        <li><a href="#openconfirm">OpenConfirm</a></li>
+        <li><a href="#established">Established</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="min-w-0 min-h-0 max-w-fit" style="padding-left: 4.5rem !important;">
+              <div class="article-content max-w-prose mb-20 prose-h3:text-[#5e81ac]">
+                
+                <p>This article explains the BGP-FSM, the different states during the BGP neighbor negotiation and is based on Based on RFC 4271.  Unlike IGP, BGP does not have its own transport protocol, the BGP peering sessions are manually defined and rely on TCP. TCP eliminates the need to implement explicit update fragmentation, retransmission, acknowledgement, and sequencing.</p>
+<p>BGP listens on TCP port 179 and BGP MUST maintain a separate FSM for each configured peer.</p>
+<p>Each BGP peer paired in a potential connection will attempt to connect to the other, unless configured to remain in the ‘idle’ state, or configured to remain passive. Active or connecting is the side of the TCP connection sending the first TCP SYN packet. Passive or listening side is the sender of the first SYN/ACK.</p>
+<p>BGP Neighbor States
+Six states are involved in the BGP process three for TCP connectivity and three for BGP connectivity as defined by RFC 4271.</p>
+<table>
+  <thead>
+      <tr>
+          <th>TCP Connectivity</th>
+          <th>BGP Connectivity</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Idle</td>
+          <td>OpenSent</td>
+      </tr>
+      <tr>
+          <td>Connect</td>
+          <td>OpenConfirm</td>
+      </tr>
+      <tr>
+          <td>Active</td>
+          <td>Established</td>
+      </tr>
+  </tbody>
+</table>
+<p><img src="fsm-v1.png" alt="Finite State Machine"></p>
+<h3 id="idle-state">Idle State</h3>
+<blockquote>
+<p>In this state, BGP refuses all incoming connections for the local system and no resources are allocated. In response to a ManualStart ( manually configure BGP on the local system ) event or an AutomaticStart ( restart existing session) BGP:</p>
+</blockquote>
+<ul>
+<li>initializes all BGP resources for the peer connection,</li>
+<li>sets ConncectRetryCounter to zero,</li>
+<li>starts the ConnectRetryTimer with the initial value,</li>
+<li>initiates the TCP connection to the other peer,</li>
+<li>listens for a connection that may be initiated by the remote BGP peer and</li>
+<li>changes its state to Connect.<br>
+In case of errors, BGP falls back to the Idle state.</li>
+</ul>
+<h3 id="connect-state">Connect State</h3>
+<blockquote>
+<p>BGP is waiting for the transport protocol connection to be completed.</p>
+</blockquote>
+<p><strong>If the TCP connection succeeds.</strong></p>
+<ul>
+<li>stops the ConnectRetryTimer ( if running ) and sets the ConnectRetryTimer to zero,</li>
+<li>completes the BGP initialization</li>
+<li>sends an OPEN message to its peer,</li>
+<li>sets the HoldTimer to a large value ( the suggestion is 5min), and</li>
+<li>changes its state to OpenSent.</li>
+</ul>
+<p><strong>If the TCP connection fails</strong></p>
+<ul>
+<li>restarts the ConnectRetryTimer,</li>
+<li>changes its state to Active.</li>
+</ul>
+<p><strong>If the ConnectRetry timer expires</strong></p>
+<ul>
+<li>remains in the Connect state</li>
+<li>the timer is reset, and transport connection is initiated</li>
+</ul>
+<p>In case of any other event the state goes back to Idle.</p>
+<h3 id="active-state">Active State</h3>
+<blockquote>
+<p>In this state, BGP is trying to acquire a peer by listening for, and accepting a TCP connection</p>
+</blockquote>
+<p><strong>If the TCP connection succeeds</strong></p>
+<ul>
+<li>clears the BGP ConnectRetryTimer,</li>
+<li>sends an OPEN message to its peer,</li>
+<li>changes its state to OpenSent.</li>
+</ul>
+<p><strong>If the TCP connection fails</strong></p>
+<ul>
+<li>resets the ConnectRetryTimer,</li>
+<li>changes its state to Idle.</li>
+</ul>
+<p><strong>If the ConnectRetry timer expires</strong></p>
+<ul>
+<li>BGP restarts the ConnectRetry timer</li>
+<li>falls back to the Connect.</li>
+</ul>
+<p>The state might go back to Idle in case of other events, such as a Stop event initiated by the system or the operator. If the state is oscillating between Connect and Active indicates that something is wrong with the TCP transport connection.</p>
+<h3 id="opensent">OpenSent</h3>
+<blockquote>
+<p>In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.</p>
+</blockquote>
+<p><strong>The OPEN message contains:</strong></p>
+<ul>
+<li>BGP version.</li>
+<li>The autonomous system (AS) number.</li>
+<li>The source IP address of the configured neighbor.</li>
+<li>Router-ID uniqueness.</li>
+<li>Security parameters ( TTL, password, etc)</li>
+<li>Capabilities.</li>
+</ul>
+<p><strong>If there are errors or capabilities mismatch in the OPEN message the local system:</strong></p>
+<ul>
+<li>the system sends an error NOTIFICATION message</li>
+<li>goes back to Active.</li>
+</ul>
+<p><strong>If there is an error due to TCP event</strong></p>
+<ul>
+<li>the state will change to Active</li>
+<li>will attempt to complete the three-way handshake.</li>
+</ul>
+<p><strong>If there are no errors in the OPEN message the local system:</strong></p>
+<ul>
+<li>resets the DelayOpenTimer to zero,</li>
+<li>sets ConnectRetryTimer to zero,</li>
+<li>sends a KEEPALIVE message, and</li>
+<li>sets the HoldTimer per the negotiated value, and</li>
+<li>changes its state to OpenConfirm.</li>
+</ul>
+<h3 id="openconfirm">OpenConfirm</h3>
+<blockquote>
+<p>In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.</p>
+</blockquote>
+<p><strong>If a NOTIFICATION message is received,</strong></p>
+<ul>
+<li>falls back to the Idle state</li>
+</ul>
+<p><strong>In case of any transport disconnect notification or in response to any stop event</strong></p>
+<ul>
+<li>the state falls back to Idle state</li>
+</ul>
+<p><strong>If the local system receives a KEPALIVE the local system:</strong></p>
+<ul>
+<li>restarts the HoldTimer and</li>
+<li>changes its state to Established.<br>
+The system sends periodic KEEPALIVE messages at the rate set by the KEEPALIVE timer.</li>
+</ul>
+<h3 id="established">Established</h3>
+<blockquote>
+<p>In the Established state, BGP can exchange UPDATE, NOTIFICATION and KEEPALIVE messages with its peer.</p>
+</blockquote>
+<p>If the HoldTimer expires before the local system receives a KEPALIVE, NOTIFICATION or an UPADTE message BGP will change its state to Idle.</p>
+<p>The UPDATE messages are checked for errors or missing attributes such as missing attributes. If errors are found, a NOTIFICATION message is sent to the peer, and the state falls back to Idle.</p>
+<p>If the Hold Timer expires, or a disconnect notification is received from the transport protocol, or a Stop event is received, or in response to any other event, the system falls back to the Idle state.</p>
+
+                
+              </div>
+              
+                <div class="flex justify-between">
+  
+  <div class="">
+    
+  </div>
+  
+  <div class="">
+    
+    <a
+      href="http://localhost:1313/routing/bgp/bgp-route-selection/?ref=footer"
+      class="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      Next
+      <svg
+        class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 5h12m0 0L9 1m4 4L9 9"
+        />
+      </svg>
+    </a>
+    
+  </div>
+</div>
+
+              
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <footer class="mx-auto w-full  max-w-container text-center" >
+    
+   <div class="max-w-screen-xl sm:pt-5 md:pt-8 pt-0">
+       <div class="border-b border-[#4c566a] mb-5 flex justify-between"></div>
+   </div> 
+   <div class="flex flex-col items-center ">
+       
+       <div id="logo">
+           <span class="text-[#5e81ac]">ngeran[</span><span class="text-[#ebcb8b]">io</span><span class="text-[#5e81ac]">]</span>
+       </div>
+       <p class="mt-5 text-center text-sm leading-6 text-slate-500">© Copyright 2026. All rights reserved.</p>
+       <div class="mt-4 flex items-center justify-center space-x-4 text-sm font-semibold leading-6 text-slate-700"><a href="/privacy-policy">Privacy policy</a>
+           <div class="h-4 w-px bg-slate-500/20"></div><a href="/changelog">Changelog</a>
+       </div>
+   </div>
+</footer>
+  </footer>
+
+
+
+  
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

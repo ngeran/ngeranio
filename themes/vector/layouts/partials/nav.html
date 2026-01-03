@@ -8,19 +8,23 @@
       </div>
   
       <!-- Desktop Menu -->
-      <div class="hidden lg:flex space-x-6 ">
+      <div class="hidden lg:flex space-x-6">
         {{ range .Site.Menus.main }}
           <div class="relative group">
-            <a href="{{ .URL }}" class=" text-[#d8dee9] hover:text-[#ebcb8b] h-full">{{ .Name }}</a>
-            
+            <a href="{{ .URL }}" class="text-[#d8dee9] hover:text-[#ebcb8b] px-3 py-2 rounded transition-colors duration-200">{{ .Name }}</a>
+
             {{ if .HasChildren }}
- 
-              <div class="absolute  left-0 hidden p-4 mt-0 space-y-2 bg-gray-700  group-hover:block rounded-md bg-opacity-10 backdrop-blur-lg">
-                {{ range .Children }}
-                  <div>
-                    <a href="{{ .URL }}" class="text-[#d8dee9] hover:text-[#ebcb8b]">{{ .Name }}</a>
-                  </div>
-                {{ end }}
+              <!-- Dropdown Menu -->
+              <div class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 hidden group-hover:block min-w-[200px] bg-[#2e3440] bg-opacity-95 backdrop-blur-lg rounded-lg shadow-xl border border-[#4c566a] overflow-hidden">
+                <div class="py-2">
+                  {{ range .Children }}
+                    <div class="border-b border-[#4c566a] last:border-b-0">
+                      <a href="{{ .URL }}" class="block px-6 py-3 text-[#d8dee9] hover:text-[#ebcb8b] hover:bg-[#3b4252] transition-all duration-200">
+                        {{ .Name }}
+                      </a>
+                    </div>
+                  {{ end }}
+                </div>
               </div>
             {{ end }}
           </div>
@@ -38,17 +42,21 @@
     </div>
   
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="lg:hidden hidden bg-gray-800">
-      <div class="p-4">
+    <div id="mobileMenu" class="lg:hidden hidden mt-4 bg-[#2e3440] bg-opacity-95 backdrop-blur-lg rounded-lg border border-[#4c566a]">
+      <div class="py-2">
         {{ range .Site.Menus.main }}
           <div class="relative group">
-            <a href="{{ .URL }}" class="block py-2 px-4 text-[#5e81ac] hover:bg-gray-700 rounded">{{ .Name }}</a>
-  
+            <a href="{{ .URL }}" class="block px-6 py-3 text-[#d8dee9] hover:text-[#ebcb8b] hover:bg-[#3b4252] border-b border-[#4c566a] last:border-b-0 transition-all duration-200">
+              {{ .Name }}
+            </a>
+
             {{ if .HasChildren }}
-              <div class="hidden mt-2 space-y-2 bg-gray-700 p-4 group-hover:block">
+              <div class="bg-[#3b4252]">
                 {{ range .Children }}
                   <div>
-                    <a href="{{ .URL }}" class="block py-2 px-4 text-[#5e81ac] hover:bg-gray-600 rounded">{{ .Name }}</a>
+                    <a href="{{ .URL }}" class="block px-10 py-3 text-[#d8dee9] hover:text-[#ebcb8b] hover:bg-[#434c5e] border-b border-[#4c566a] last:border-b-0 transition-all duration-200">
+                      {{ .Name }}
+                    </a>
                   </div>
                 {{ end }}
               </div>

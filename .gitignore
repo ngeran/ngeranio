@@ -1,11 +1,40 @@
-# ignore all logs
-.vscode/
-public/
-resources/
-*.log
-node_modules/
-package-lock.json
-package.json
-.env
-*.sh
-.DS_Store
+# ============================================
+# Build Outputs (NEVER commit these)
+# ============================================
+public/              # Hugo build output - syncs to Cloudflare Pages
+resources/_gen/      # Hugo generated files and cache
+.hugo_build.lock     # Hugo build lock file
+
+# ============================================
+# Logs & Temporary Files
+# ============================================
+logs/                # Automation logs
+*.log                # Log files
+tmp/                 # Temporary files
+temp/                # Temporary files
+*.tmp                # Temporary files
+
+# ============================================
+# Environment & Configuration
+# ============================================
+.env                 # Environment variables (API tokens, secrets)
+.env.local           # Local environment overrides
+.env.*.local         # Local environment overrides
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/        # Node.js dependencies
+.vscode/             # VS Code settings
+.DS_Store            # macOS files
+*.swp                # Vim swap files
+*~                   # Backup files
+
+# ============================================
+# Cloudflare & Deployment (Safety)
+# ============================================
+# Never commit files that could auto-deploy and break the site
+.wrangler/           # Wrangler CLI state
+.cloudflare/         # Cloudflare local state
+.functions/          # Cloudflare Functions builds
+dist/                # Distribution builds
