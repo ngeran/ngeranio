@@ -6,4 +6,4 @@ draft = false
 
 # Projects
 
-Coming soon! Check back later for my networking projects.
+Coming soon!! Check back later for my networking projects.

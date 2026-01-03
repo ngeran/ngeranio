@@ -1,0 +1,71 @@
+#!/bin/bash
+# ============================================
+# TUI LAUNCHER
+# ============================================
+# Quick launcher for the automation TUI
+# Uses virtual environment if available,
+# otherwise sets up automatically
+# ============================================
+
+set -o pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+VENV_DIR="${PROJECT_ROOT}/.venv"
+
+# Colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+echo -e "${BLUE}============================================${NC}"
+echo -e "${BLUE}NGERAN[IO] AUTOMATION TUI${NC}"
+echo -e "${BLUE}============================================${NC}"
+echo ""
+
+# ============================================
+# CHECK IF VENV EXISTS
+# ============================================
+if [[ -d "$VENV_DIR" && -f "${VENV_DIR}/bin/activate" ]]; then
+    echo -e "${CYAN}Virtual environment found${NC}"
+
+    # Activate venv
+    source "${VENV_DIR}/bin/activate"
+
+    # Check if textual is installed
+    if python3 -c "import textual" 2>/dev/null; then
+        TEXTUAL_VERSION=$(python3 -c "import textual; print(textual.__version__)")
+        echo -e "${GREEN}✓${NC} Textual $TEXTUAL_VERSION ready"
+        echo ""
+        echo -e "${GREEN}Launching TUI...${NC}"
+        echo ""
+        cd "$PROJECT_ROOT"
+        exec python3 "$SCRIPT_DIR/automation-tui.py"
+    else
+        echo -e "${YELLOW}⚠ Textual not found in venv, reinstalling...${NC}"
+        pip install textual
+        if [[ $? -eq 0 ]]; then
+            echo -e "${GREEN}✓${NC} Textual installed"
+            echo ""
+            echo -e "${GREEN}Launching TUI...${NC}"
+            echo ""
+            cd "$PROJECT_ROOT"
+            exec python3 "$SCRIPT_DIR/automation-tui.py"
+        else
+            echo -e "${RED}Error: Failed to install Textual${NC}"
+            exit 1
+        fi
+    fi
+else
+    echo -e "${YELLOW}No virtual environment found${NC}"
+    echo ""
+    echo -e "${CYAN}Running setup script to create venv and install dependencies...${NC}"
+    echo ""
+
+    # Run the setup script
+    exec "${SCRIPT_DIR}/setup-tui.sh"
+fi
+

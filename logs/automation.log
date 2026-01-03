@@ -4,3 +4,70 @@
 2026-01-02 19:18:48 [INFO] Test info message
 2026-01-02 19:18:48 [ERROR] Required files not found:
 2026-01-02 19:18:48 [ERROR]   → nonexistent.txt
+2026-01-03 09:41:21 [INFO] Script completed successfully
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Validating: content/routing/bgp/as_path/index.md
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Validating frontmatter...
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Validating content structure...
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Checking word count...
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Validating images...
+[2026-01-03 09:43:28] [INFO] [ContentManager] [INFO] Validating links...
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Validating: content/routing/bgp/as_path/index.md
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Validating frontmatter...
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Validating content structure...
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Checking word count...
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Validating images...
+[2026-01-03 09:43:56] [INFO] [ContentManager] [INFO] Validating links...
+[2026-01-03 09:44:03] [INFO] [ContentManager] [INFO] Checking word count...
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] DETAILED VALIDATION REPORT
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] File: content/routing/bgp/as_path/index.md
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] 
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] File Information:
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   Size: 1795 bytes
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   Words: 305
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   Lines: 27
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] 
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Frontmatter:
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   title = 'AS Path'
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   date = 2024-12-17T16:04:48-05:00
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   draft = false
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   tags = ["BGP","Routing","Juniper"]
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   featured_image = 'featured.png'
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO]   summary = 'Indicate path back to the route source and prevents routing loops.'
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] 
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Validating: content/routing/bgp/as_path/index.md
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Validating frontmatter...
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Validating content structure...
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Checking word count...
+[2026-01-03 09:44:09] [INFO] [ContentManager] [INFO] Validating images...
+[2026-01-03 09:50:09] [INFO] [ContentManager] [INFO] Draft posts:
+[2026-01-03 09:50:16] [INFO] [ContentManager] [INFO] Post Information:
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] Creating new post...
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] Category: ospf
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] Title: Test Post for Phase 2
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] Generated slug: test-post-for-phase-2
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] ✓ Featured image created with ImageMagick
+[2026-01-03 09:50:24] [INFO] [ContentManager] [SUCCESS] ✓ Post created: content/routing/ospf/test-post-for-phase-2/index.md
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO] Next steps:
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO]   1. Edit the post: content/routing/ospf/test-post-for-phase-2/index.md
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO]   2. Add content and images to: content/routing/ospf/test-post-for-phase-2/
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO]   3. Validate: ./scripts/quality-gate.sh validate content/routing/ospf/test-post-for-phase-2/index.md
+[2026-01-03 09:50:24] [INFO] [ContentManager] [INFO]   4. Preview: ./scripts/preview.sh
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Validating: /home/nikos/github/ngeran/ngeranio/content/routing/ospf/test-post-for-phase-2/index.md
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] =========================================
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Validating frontmatter...
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Validating content structure...
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Checking word count...
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Validating images...
+[2026-01-03 09:51:51] [INFO] [ContentManager] [INFO] Validating links...
+[2026-01-03 09:51:58] [INFO] [ContentManager] [WARNING] Deleting post: /home/nikos/github/ngeran/ngeranio/content/routing/ospf/test-post-for-phase-2/index.md
+[2026-01-03 09:51:58] [INFO] [ContentManager] [INFO] Backup created: /home/nikos/github/ngeran/ngeranio//tmp/ai-automation-backups/20260103_095158/
+[2026-01-03 09:51:58] [INFO] [ContentManager] [SUCCESS] ✓ Post deleted: /home/nikos/github/ngeran/ngeranio/content/routing/ospf/test-post-for-phase-2

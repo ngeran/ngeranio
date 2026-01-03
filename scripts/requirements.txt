@@ -1,0 +1,2 @@
+# Python dependencies for the automation TUI
+textual>=0.50.0

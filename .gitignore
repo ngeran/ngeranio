@@ -25,6 +25,8 @@ temp/                # Temporary files
 # Dependencies
 # ============================================
 node_modules/        # Node.js dependencies
+.venv/               # Python virtual environment
+venv/                # Python virtual environment (alt name)
 .vscode/             # VS Code settings
 .DS_Store            # macOS files
 *.swp                # Vim swap files
