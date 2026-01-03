@@ -49,7 +49,7 @@
 
                 <!-- Mega Menu Dropdown -->
                 <div class="megamenu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 400px;">
-                  <div class="bg-dust-800 shadow-2xl overflow-hidden">
+                  <div class="bg-dust-800 shadow-2xl overflow-hidden pb-6">
                     <!-- Header -->
                     <div class="px-6 py-4 border-b border-gray-700/50 bg-gradient-to-r from-[#5e81ac]/10 to-[#81a1c1]/10">
                       <h3 class="text-lg font-semibold text-moon">{{ .Name }}</h3>
@@ -104,7 +104,7 @@
                     </div>
 
                       <!-- Footer -->
-                      <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center justify-between">
+                      <div class="mt-6 pt-4 px-6 border-t border-gray-700/50 flex items-center justify-between">
                         <span class="text-sm text-dust-400">
                           <span class="text-moon font-semibold">{{ len .Children }}</span> protocols available
                         </span>
@@ -196,6 +196,31 @@
 
     mobileMenuButton?.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // Mega Menu Hover Script
+    document.addEventListener('DOMContentLoaded', function() {
+      const groupElements = document.querySelectorAll('.relative.group');
+
+      groupElements.forEach(group => {
+        const dropdown = group.querySelector('.megamenu-dropdown');
+
+        if (dropdown) {
+          // Show dropdown on hover
+          group.addEventListener('mouseenter', function() {
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.transform = 'translateY(0)';
+          });
+
+          // Hide dropdown when leaving
+          group.addEventListener('mouseleave', function() {
+            dropdown.style.opacity = '0';
+            dropdown.style.visibility = 'hidden';
+            dropdown.style.transform = 'translateY(0.5rem)';
+          });
+        }
+      });
     });
   </script>
 </body>

@@ -400,15 +400,15 @@ footer {
 }
 
 /* ===== Mega Menu Hover Fix ===== */
-.relative.group:hover .megamenu-dropdown,
-.megamenu-container:hover {
+/* Show mega menu dropdown when hovering over the parent group */
+.relative.group:hover .megamenu-dropdown {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
 }
 
-/* Ensure dropdown is visible on parent hover */
-.group:hover .megamenu-dropdown {
+/* Also work when hovering directly on the dropdown itself */
+.megamenu-dropdown:hover {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
