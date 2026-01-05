@@ -46,3 +46,294 @@
 [2026-01-03 09:51:51] [INFO] [QualityGate] [WARNING] Warnings: 1
 [2026-01-03 09:51:51] [INFO] [QualityGate] [ERROR] Errors:   3
 [2026-01-03 09:51:51] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/MPLS-header/'featured.png'
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required section: Overview
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] First heading should be 'Overview', found: Forwarding Equivalence Class
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Word count: 591 (minimum: 500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/fec/'featured.png'
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  3
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/lsp/'featured.png'
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] DRAFTS VALIDATION SUMMARY
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Total:   6
+[2026-01-04 13:21:29] [INFO] [QualityGate] [INFO] Passed:  0
+[2026-01-04 13:21:29] [INFO] [QualityGate] [ERROR] Failed:  6
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/MPLS-header/'featured.png'
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required section: Overview
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] First heading should be 'Overview', found: Forwarding Equivalence Class
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Word count: 591 (minimum: 500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/fec/'featured.png'
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  3
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/lsp/'featured.png'
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] DRAFTS VALIDATION SUMMARY
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Total:   6
+[2026-01-04 13:27:05] [INFO] [QualityGate] [INFO] Passed:  0
+[2026-01-04 13:27:05] [INFO] [QualityGate] [ERROR] Failed:  6
+[2026-01-04 13:39:18] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/MPLS-header/'featured.png'
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required section: Overview
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] First heading should be 'Overview', found: Forwarding Equivalence Class
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Word count: 591 (minimum: 500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/fec/'featured.png'
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  3
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Frontmatter validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Featured image not found: /home/nikos/github/ngeran/ngeranio/content/routing/mpls/lsp/'featured.png'
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 1
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   3
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ----------------------------------------
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: tags
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Missing recommended field: summary
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Missing required field: featured_image
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] No tags defined
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] No content found
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Word count (0) below minimum (500)
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Image validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] ✓ Link validation passed
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [WARNING] Warnings: 2
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Errors:   4
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Status: FAILED
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] DRAFTS VALIDATION SUMMARY
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] =========================================
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Total:   6
+[2026-01-04 13:39:19] [INFO] [QualityGate] [INFO] Passed:  0
+[2026-01-04 13:39:19] [INFO] [QualityGate] [ERROR] Failed:  6

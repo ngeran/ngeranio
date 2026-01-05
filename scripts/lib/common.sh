@@ -223,16 +223,16 @@ require_command() {
 # Validation Utilities
 # --------------------------------------------
 
-# Validate category against whitelist
+# Validate category by checking if directory exists
 validate_category() {
   local category="$1"
-  local valid_categories=("ospf" "bgp" "mpls" "junos" "routing")
+  local category_dir="${CONTENT_DIR}/${category}"
 
-  if array_contains "${category}" "${valid_categories[@]}"; then
+  if [[ -d "${category_dir}" ]]; then
     return 0
   else
     log_error "Invalid category: ${category}"
-    log_error "Valid categories: ${valid_categories[*]}"
+    log_error "Category directory does not exist: ${category_dir}"
     return 1
   fi
 }

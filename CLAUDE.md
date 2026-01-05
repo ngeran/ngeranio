@@ -539,6 +539,48 @@ The TUI provides an intuitive interface with 8 main screens:
 8. **View Logs** - See all automation logs
 9. **Run Tests** - Run Phase 1 and Phase 2 tests
 
+**Automation Tab - Quick Actions:**
+
+The Automation tab (Phase 1 Complete) provides four main action buttons:
+
+1. **✓ Quality Gate**
+   - **Command**: `bash scripts/quality-gate.sh validate-drafts`
+   - **Purpose**: Validates all draft posts for quality issues
+   - **Checks**: Frontmatter completeness, word count (min 500), image presence, link validity, tag format, category validation
+   - **Output**: Real-time validation showing which posts pass/fail and why
+   - **Use Case**: Run before publishing to ensure content meets quality standards
+   - **Expected**: May show warnings for incomplete drafts - this is normal
+
+2. **▶ Preview**
+   - **Command**: `bash scripts/preview.sh`
+   - **Purpose**: Starts Hugo development server
+   - **Output**: Shows Hugo server startup messages and status
+   - **Note**: Displays server status, not the actual preview interface
+   - **Access**: Open http://localhost:1313 in your browser to see the site
+   - **Use Case**: Test site locally with live reload during development
+
+3. **⚙ Tests**
+   - **Command**: `bash scripts/test-phase2.sh`
+   - **Purpose**: Runs Phase 2 test suite (38-42 tests)
+   - **Tests**: All scripts, configuration, logging, quality gate, AI content manager
+   - **Output**: Real-time test results with pass/fail counts
+   - **Success Rate**: ~95% (0-2 warnings acceptable)
+   - **Use Case**: Verify automation system is working correctly after changes
+
+4. **🔨 Build**
+   - **Command**: `hugo --minify`
+   - **Purpose**: Generates optimized static site
+   - **Output**: Build progress and any errors
+   - **Result**: Static files created in `public/` directory
+   - **Use Case**: Prepare site for deployment to production
+
+**Background Task System:**
+- All automation buttons run asynchronously (non-blocking)
+- UI stays responsive during long operations
+- Real-time log streaming - output appears as it runs
+- Status indicator: "Status: Running..." → "Status: Ready"
+- Exit code handling: ✓ success / ✗ failure messages
+
 **Usage:**
 
 ```bash

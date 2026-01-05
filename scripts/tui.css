@@ -1,0 +1,1062 @@
+/* =============================================
+   NGERAN[IO] AUTOMATION TUI - STYLESHEET
+   =============================================
+   Nord Theme - Clean, Minimalistic Design
+   Version: 2.0.0
+   Last Updated: 2026-01-04
+   ============================================= */
+
+/* =============================================
+   GLOBAL STYLES
+   ============================================= */
+
+Screen {
+    background: #2e3440;
+    layout: vertical;
+}
+
+/* =============================================
+   TOP NAVIGATION BAR
+   ============================================= */
+
+TopNav {
+    height: 3;
+    dock: top;
+}
+
+#nav-bar {
+    height: 3;
+    background: #2e3440;
+    border-bottom: solid #616e88;
+    padding: 0 1;
+}
+
+.nav-btn {
+    height: 1;
+    margin: 1 0 0 0;
+    padding: 0 1;
+    border: none;
+    background: transparent;
+    text-style: none;
+    color: #d8dee9;
+}
+
+.nav-btn:hover {
+    background: #434c5e;
+    text-style: bold;
+}
+
+.nav-btn.active {
+    background: #5e81ac;
+    text-style: bold;
+    color: #eceff4;
+}
+
+.nav-spacer {
+    width: 1fr;
+}
+
+.nav-link {
+    height: 1;
+    margin: 1 1 0 0;
+    padding: 0 1;
+}
+
+.nav-link:hover {
+    text-style: bold;
+}
+
+/* =============================================
+   FILE EXPLORER SIDEBAR
+   ============================================= */
+
+FileTree {
+    width: 35;
+    background: #2e3440;
+    border-right: solid #616e88;
+    content-align: left top;
+}
+
+/* Hide file tree completely when -hidden class is applied */
+FileTree.-hidden {
+    display: none;
+    width: 0;
+}
+
+#main-container {
+    height: 1fr;
+    width: 1fr;
+}
+
+#main-content {
+    height: 100%;
+    width: 1fr;
+}
+
+#sidebar-title {
+    text-style: bold;
+    padding: 1;
+    margin-bottom: 0;
+    border-bottom: solid #616e88;
+    color: #88c0d0;
+    background: #2e3440;
+}
+
+/* Tree Styling */
+Tree {
+    background: transparent;
+}
+
+TreeScreen {
+    background: transparent;
+}
+
+TreeNode {
+    background: transparent;
+}
+
+TreeNode.--highlight {
+    background: #3b4252;
+    text-style: bold;
+    color: #88c0d0;
+}
+
+TreeNode.--cursor {
+    background: #3b4252;
+    text-style: bold;
+    color: #88c0d0;
+}
+
+TreeNode:hover {
+    background: #4c566a;
+}
+
+/* =============================================
+   MAIN CONTENT AREA
+   ============================================= */
+
+ContentArea {
+    height: 1fr;
+    width: 1fr;
+}
+
+#content-container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+/* Hidden widgets should not take any space */
+#content-header.-hidden,
+#content-log.-hidden,
+#inline-editor.-hidden,
+#inline-preview.-hidden,
+#editor-preview-container.-hidden {
+    display: none;
+}
+
+/* Content Header with File Actions */
+#content-header {
+    height: 3;
+    width: 100%;
+    border-bottom: solid #616e88;
+    background: #2e3440;
+    padding: 0 1;
+}
+
+#file-name {
+    width: 2fr;
+    content-align: left middle;
+    text-style: bold;
+    color: #88c0d0;
+    padding: 0 1;
+}
+
+#action-edit, 
+#action-save, 
+#action-preview, 
+#action-close {
+    color: #88c0d0;
+    padding: 0 1;
+    text-style: bold;
+    width: 12;
+    content-align: center middle;
+}
+
+#action-edit:hover, 
+#action-save:hover, 
+#action-preview:hover, 
+#action-close:hover {
+    background: #3b4252;
+    color: #88c0d0;
+    text-style: bold underline;
+}
+
+/* Content Log */
+#content-log {
+    height: 1fr;
+    width: 1fr;
+    border: none;
+    background: #2e3440;
+    padding: 2;
+    color: #d8dee9;
+    overflow-y: auto;
+}
+
+/* =============================================
+   INLINE EDITOR AND PREVIEW
+   ============================================= */
+
+#editor-preview-container {
+    height: 1fr;
+    width: 1fr;
+}
+
+#inline-editor {
+    height: 1fr;
+    width: 1fr;
+    background: #2e3440;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#inline-preview {
+    height: 1fr;
+    width: 1fr;
+    background: #2e3440;
+    border: none;
+    padding: 1;
+    overflow-y: auto;
+}
+
+TextArea {
+    background: #2e3440;
+    color: #d8dee9;
+    border: solid #616e88;
+}
+
+/* =============================================
+   STATUS BAR
+   ============================================= */
+
+StatusBar {
+    height: 1;
+    dock: bottom;
+    background: #2e3440;
+    border-top: solid #616e88;
+    color: #d8dee9;
+    padding: 0 1;
+}
+
+#status-left {
+    width: 2fr;
+    content-align: left middle;
+}
+
+#status-right {
+    width: 1fr;
+    content-align: right middle;
+}
+
+/* =============================================
+   AUTOMATION TAB
+   ============================================= */
+
+AutomationTab {
+    height: 100%;
+    width: 100%;
+    padding: 1;
+}
+
+AutomationTab.-hidden {
+    display: none;
+}
+
+#automation-container {
+    height: 100%;
+    width: 100%;
+    layout: vertical;
+}
+
+#automation-title {
+    text-style: bold;
+    color: #88c0d0;
+    padding: 0 0 1 0;
+    margin-bottom: 1;
+}
+
+#quick-actions {
+    height: 3;
+    margin-bottom: 1;
+}
+
+#quick-actions > Button {
+    width: 1fr;
+    margin-right: 1;
+    height: 3;
+    background: #2e3440;
+    color: #eceff4;
+    border: solid #616e88;
+    text-style: bold;
+}
+
+#quick-actions > Button:hover {
+    background: #3b4252;
+    text-style: bold underline;
+    border: solid #88c0d0;
+}
+
+#quick-actions > Button:last-child {
+    margin-right: 0;
+}
+
+#btn-stop {
+    background: #bf616a !important;
+    border: solid #bf616a !important;
+}
+
+#btn-stop:hover {
+    background: #d08770 !important;
+}
+
+#automation-status {
+    height: 1;
+    margin-bottom: 1;
+    padding: 0 1;
+    border-bottom: solid #616e88;
+}
+
+#status-text {
+    width: 1fr;
+    content-align: left middle;
+    color: #d8dee9;
+}
+
+#status-indicator {
+    width: 10;
+    content-align: right middle;
+}
+
+#log-title {
+    text-style: bold;
+    color: #88c0d0;
+    padding: 1 0 0 0;
+    margin-bottom: 0;
+}
+
+#automation-log {
+    height: 1fr;
+    width: 100%;
+    background: #2e3440;
+    border: solid #616e88;
+    padding: 1;
+    overflow-y: auto;
+}
+
+/* =============================================
+   AI AGENT TAB
+   ============================================= */
+
+AIAgentTab {
+    height: 100%;
+    width: 100%;
+    padding: 1;
+}
+
+AIAgentTab.-hidden {
+    display: none;
+}
+
+#ai-container {
+    height: 100%;
+    width: 100%;
+    layout: vertical;
+}
+
+#ai-title {
+    text-style: bold;
+    color: #88c0d0;
+    padding: 0 0 1 0;
+    margin-bottom: 1;
+}
+
+#ai-actions {
+    height: 3;
+    margin-bottom: 1;
+}
+
+#ai-actions > Button {
+    width: 1fr;
+    margin-right: 1;
+    height: 3;
+    background: #2e3440;
+    color: #eceff4;
+    border: solid #616e88;
+    text-style: bold;
+}
+
+#ai-actions > Button:hover {
+    background: #3b4252;
+    text-style: bold underline;
+    border: solid #88c0d0;
+}
+
+#ai-actions > Button:last-child {
+    margin-right: 0;
+}
+
+#ai-status {
+    height: 1;
+    margin-bottom: 1;
+    padding: 0 1;
+    border-bottom: solid #616e88;
+}
+
+#ai-status-text {
+    width: 1fr;
+    content-align: left middle;
+    color: #d8dee9;
+}
+
+#ai-status-indicator {
+    width: 10;
+    content-align: right middle;
+}
+
+#ai-log-title {
+    text-style: bold;
+    color: #88c0d0;
+    padding: 1 0 0 0;
+    margin-bottom: 0;
+}
+
+#ai-log {
+    height: 1fr;
+    width: 100%;
+    background: #2e3440;
+    border: solid #616e88;
+    padding: 1;
+    overflow-y: auto;
+}
+
+/* =============================================
+   MODAL SCREENS - BASE STYLES
+   ============================================= */
+
+NiceModal {
+    align: center middle;
+}
+
+#modal-container {
+    width: 70;
+    height: auto;
+    border: thick #616e88;
+    background: #2e3440;
+    layout: vertical;
+    padding: 0;
+    overflow-y: auto;
+}
+
+#modal-header {
+    height: 3;
+    border-bottom: solid #616e88;
+    background: #2e3440;
+    padding: 0 1;
+}
+
+#modal-title {
+    content-align: center middle;
+    width: 1fr;
+    color: #88c0d0;
+    text-style: bold;
+}
+
+#btn_close_modal {
+    width: 3;
+    height: 1;
+    margin: 1;
+}
+
+#modal-content {
+    padding: 1 2;
+    height: auto;
+    overflow-y: auto;
+}
+
+/* =============================================
+   FILE MANAGEMENT MODALS
+   ============================================= */
+
+AddItemModal,
+RenameItemModal,
+DeleteItemModal,
+CreateCategoryScreen {
+    align: center middle;
+}
+
+#add-modal,
+#rename-modal,
+#delete-modal,
+#category-modal {
+    width: 75;
+    height: auto;
+    max-height: 35%;
+    border: thick #616e88;
+    background: #2e3440;
+    layout: vertical;
+    padding: 1;
+    overflow-y: auto;
+}
+
+/* Link styling for actions */
+.modal-close {
+    padding: 0 1;
+    text-style: bold;
+    color: #88c0d0;
+}
+
+.modal-close:hover {
+    text-style: bold underline;
+    background: #3b4252;
+}
+
+/* =============================================
+   CREATE POST FULL-SCREEN INTERFACE
+   ============================================= */
+
+#create-post-container {
+    height: 100%;
+    width: 100%;
+}
+
+#create-sidebar {
+    width: 30;
+    height: 100%;
+    background: #2e3440;
+    border-right: solid #616e88;
+    padding: 1;
+}
+
+#sidebar-spacer {
+    height: 1fr;
+}
+
+.cat-btn {
+    width: 100%;
+    height: 1;
+    margin: 0 0 1 0;
+    padding: 0 1;
+    background: transparent;
+    border: none;
+    text-align: left;
+    color: #d8dee9;
+    content-align: left middle;
+}
+
+.cat-btn:hover {
+    background: #3b4252;
+    text-style: bold;
+}
+
+.cat-btn.selected {
+    background: #5e81ac;
+    text-style: bold;
+    color: #eceff4;
+}
+
+#create-content {
+    height: 100%;
+    width: 1fr;
+    padding: 1;
+}
+
+#post-content {
+    height: 1fr;
+    width: 100%;
+    background: #2e3440;
+    border: solid #616e88;
+}
+
+/* Modal Header */
+#modal-header {
+    height: 3;
+    border-bottom: solid #616e88;
+    margin-bottom: 0;
+    padding: 0 1;
+}
+
+#modal-title {
+    content-align: left middle;
+    width: 1fr;
+    color: #88c0d0;
+    text-style: bold;
+}
+
+/* Modal Close Link */
+.modal-close {
+    padding: 0 1;
+    text-style: bold;
+    color: #bf616a;
+}
+
+.modal-close:hover {
+    text-style: bold underline;
+    background: #3b4252;
+}
+
+/* Modal Body */
+#modal-body {
+    padding: 0;
+    overflow-y: auto;
+}
+
+/* Form Elements */
+.field-label,
+Label.field-label {
+    color: #d8dee9;
+    text-style: bold;
+    margin-top: 0;
+    padding: 0;
+}
+
+/* Select Dropdown */
+Select,
+.field-select {
+    width: 1fr;
+    margin-bottom: 0;
+    background: #3b4252;
+    border: solid #616e88;
+    color: #d8dee9;
+}
+
+/* Input Fields */
+Input,
+.field-input {
+    width: 1fr;
+    margin-bottom: 0;
+    background: #3b4252;
+    border: solid #616e88;
+    color: #d8dee9;
+    padding: 0 1;
+}
+
+Input:focus,
+.field-input:focus {
+    border: solid #88c0d0;
+    background: #434c5e;
+}
+
+/* Type Toggle Buttons */
+#type-toggle {
+    width: 1fr;
+    height: 3;
+    margin-bottom: 0;
+}
+
+#type-toggle Button {
+    width: 1fr;
+    margin-right: 1;
+    color: #d8dee9;
+    text-style: bold;
+}
+
+/* Action Buttons Container */
+#actions {
+    height: auto;
+    margin-top: 0;
+    padding-top: 1;
+    border-top: solid #616e88;
+}
+
+#actions > Button {
+    height: 3;
+    min-width: 15;
+    padding: 0 2;
+    margin: 0 1 0 0;
+    color: #eceff4;
+    text-style: bold;
+    background: #5e81ac;
+    border: solid #88c0d0;
+}
+
+#actions > Button:hover {
+    text-style: bold underline;
+    background: #81a1c1;
+}
+
+#actions > Button:last-child {
+    background: #4c566a;
+    border: solid #616e88;
+}
+
+/* Specific Button Styles */
+#btn-create {
+    background: #5e81ac;
+    color: #eceff4;
+    border: solid #88c0d0;
+}
+
+#btn-cancel {
+    background: #4c566a;
+    color: #d8dee9;
+    border: solid #616e88;
+}
+
+#btn-rename {
+    background: #5e81ac;
+    color: #eceff4;
+    border: solid #88c0d0;
+}
+
+#btn-delete {
+    background: #bf616a;
+    color: #eceff4;
+    border: solid #bf616a;
+}
+
+#btn-create:hover,
+#btn-rename:hover {
+    background: #81a1c1;
+}
+
+#btn-cancel:hover {
+    background: #434c5e;
+}
+
+#btn-delete:hover {
+    background: #d08770;
+}
+
+/* Form Hint Text */
+#form-hint {
+    color: #81a1c1;
+    text-style: italic;
+    margin-bottom: 1;
+    padding: 0;
+}
+
+/* Warning in Delete Modal */
+#warning {
+    text-align: center;
+    border: solid #bf616a;
+    padding: 1;
+    margin: 1 0;
+    background: #3b4252;
+    color: #bf616a;
+    text-style: bold;
+}
+
+#current-name, 
+#location, 
+#item-name, 
+#item-count {
+    padding: 0 1;
+    margin: 1 0;
+    text-style: italic;
+    color: #81a1c1;
+}
+
+/* =============================================
+   POST MANAGEMENT MODALS
+   ============================================= */
+
+/* Form Styles */
+.form-label {
+    width: 15;
+    content-align: left middle;
+    padding: 0 1;
+    color: #d8dee9;
+}
+
+#form-row-cat, 
+#form-row-title {
+    height: 3;
+    margin-bottom: 1;
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+}
+
+#cat-buttons {
+    width: 1fr;
+}
+
+.cat-btn {
+    width: 1fr;
+    height: 3;
+    margin: 0 1 0 0;
+    background: #3b4252;
+    color: #d8dee9;
+    border: solid #616e88;
+}
+
+.cat-btn.selected {
+    background: #5e81ac;
+    text-style: bold;
+    color: #eceff4;
+}
+
+.form-input {
+    width: 1fr;
+    margin-bottom: 1;
+    background: #2e3440;
+    border: solid #616e88;
+    color: #d8dee9;
+}
+
+#create-actions,
+#edit-actions {
+    height: 3;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#create-actions Button,
+#edit-actions Button {
+    width: 1fr;
+    margin-right: 1;
+}
+
+/* =============================================
+   OUTPUT AND STATUS DISPLAYS
+   ============================================= */
+
+NiceOutput {
+    height: 15;
+    border: solid #616e88;
+    background: #2e3440;
+    padding: 1;
+    margin-top: 1;
+    overflow-y: auto;
+    color: #d8dee9;
+}
+
+NiceStatus {
+    height: auto;
+    min-height: 1;
+    padding: 1;
+    margin: 1 0;
+    background: #2e3440;
+    text-align: center;
+}
+
+#status {
+    height: auto;
+    min-height: 1;
+    padding: 1;
+    margin: 1 0;
+    background: #2e3440;
+    text-align: center;
+}
+
+/* =============================================
+   DATA TABLE FOR POSTS
+   ============================================= */
+
+DataTable {
+    height: 20;
+    border: solid #616e88;
+    margin-bottom: 1;
+    background: #2e3440;
+}
+
+/* Filter Buttons */
+#filter-buttons {
+    height: 3;
+    margin-bottom: 1;
+    border-bottom: solid #616e88;
+    padding-bottom: 1;
+}
+
+#filter-buttons Button {
+    width: 1fr;
+    height: 1;
+    margin-right: 1;
+    background: #3b4252;
+    color: #d8dee9;
+    border: solid #616e88;
+}
+
+/* Table Actions */
+#table-actions, 
+#preview-actions {
+    height: 3;
+    margin-top: 1;
+    border-top: solid #616e88;
+    padding-top: 1;
+}
+
+#table-actions Button, 
+#preview-actions Button {
+    width: 1fr;
+    margin-right: 1;
+    background: #3b4252;
+    color: #d8dee9;
+    border: solid #616e88;
+}
+
+/* =============================================
+   PREVIEW AND EDITOR MODALS
+   ============================================= */
+
+#preview-scroll {
+    height: 1fr;
+    border: solid #616e88;
+    background: #2e3440;
+    padding: 1;
+    overflow-y: auto;
+}
+
+#preview-markdown {
+    width: 100%;
+    color: #d8dee9;
+}
+
+#preview-title, 
+#edit-title {
+    color: #88c0d0;
+    text-style: bold;
+    padding: 0 1;
+    border-bottom: solid #616e88;
+    padding-bottom: 1;
+    margin-bottom: 1;
+}
+
+#preview-path, 
+#edit-path {
+    color: #616e88;
+    padding: 0 1;
+    margin-bottom: 1;
+}
+
+/* Editor/Preview Split View */
+#editor-preview-split {
+    height: 1fr;
+    border-top: solid #616e88;
+    border-bottom: solid #616e88;
+}
+
+#editor-pane, 
+#preview-pane {
+    width: 1fr;
+    height: 1fr;
+    padding: 1;
+}
+
+#editor-pane {
+    border-right: solid #616e88;
+}
+
+#pane-label-editor, 
+#pane-label-preview {
+    text-style: bold;
+    color: #88c0d0;
+    padding: 0 0 1 0;
+    border-bottom: solid #616e88;
+    margin-bottom: 1;
+}
+
+#editor {
+    height: 1fr;
+    border: solid #616e88;
+    background: #2e3440;
+    margin-top: 1;
+}
+
+#live-preview {
+    height: 1fr;
+    overflow-y: auto;
+    background: #2e3440;
+    padding: 1;
+}
+
+/* =============================================
+   CATEGORY CREATION MODAL
+   ============================================= */
+
+#existing-cats {
+    padding: 0 1;
+    margin-bottom: 1;
+    text-style: italic;
+    color: #81a1c1;
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+}
+
+#form-info {
+    padding: 0 1;
+    margin-bottom: 1;
+    color: #81a1c1;
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+}
+
+/* =============================================
+   GENERAL BUTTON STYLING
+   ============================================= */
+
+Button {
+    color: #d8dee9;
+    text-style: none;
+}
+
+Button:hover {
+    text-style: bold;
+}
+
+/* Ensure modal buttons are visible */
+#add-modal Button,
+#rename-modal Button,
+#delete-modal Button {
+    width: auto;
+    min-width: 15;
+    height: 3;
+    padding: 0 2;
+    margin: 0 1 0 0;
+    color: #eceff4;
+    text-style: bold;
+    border: solid #616e88;
+    background: #3b4252;
+}
+
+#add-modal Button:hover,
+#rename-modal Button:hover,
+#delete-modal Button:hover {
+    text-style: bold underline;
+    background: #4c566a;
+}
+
+/* Fix modal header close button */
+#modal-header > Button {
+    min-width: 5;
+    width: 5;
+    height: 1;
+    background: #bf616a;
+    color: #eceff4;
+    text-style: bold;
+    border: solid #bf616a;
+}
+
+/* =============================================
+   UTILITY CLASSES AND SEPARATORS
+   ============================================= */
+
+#form-row-filename, 
+#form-row-directory, 
+#form-row-newname, 
+#form-row-confirm {
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+    margin-bottom: 1;
+}
+
+/* Modal body spacing */
+#modal-body > Label {
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+#modal-body > Select,
+#modal-body > Input {
+    margin-bottom: 1;
+}

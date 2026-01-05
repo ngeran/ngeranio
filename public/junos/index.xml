@@ -1,19 +1,216 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Junos on ngeran[io]</title>
-    <link>http://localhost:1313/junos/</link>
-    <description>Recent content in Junos on ngeran[io]</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 14 Apr 2025 16:52:11 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/junos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tagging</title>
-      <link>http://localhost:1313/junos/tagging/</link>
-      <pubDate>Mon, 14 Apr 2025 16:52:11 -0400</pubDate>
-      <guid>http://localhost:1313/junos/tagging/</guid>
-      <description>&lt;h2 id=&#34;junos-vlan-tagging-options-explained&#34;&gt;Junos VLAN Tagging Options Explained&lt;/h2&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s a comparison of &lt;code&gt;vlan-tagging&lt;/code&gt;, &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;, and &lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-vlan-tagging&#34;&gt;1. &lt;code&gt;vlan-tagging&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; vlan-tagging&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Enables basic IEEE 802.1Q VLAN tagging support on the physical interface.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Allows logical units (&lt;code&gt;unit&lt;/code&gt;) under this interface to be configured with a &lt;em&gt;single&lt;/em&gt; VLAN ID (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; unit &amp;lt;number&amp;gt; vlan-id &amp;lt;id&amp;gt;&lt;/code&gt;).&lt;/li&gt;&#xA;&lt;li&gt;Supports sending and receiving standard single-tagged Ethernet frames.&lt;/li&gt;&#xA;&lt;li&gt;Can support one untagged VLAN using the &lt;code&gt;native-vlan-id&lt;/code&gt; option on the physical interface.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Does &lt;em&gt;not&lt;/em&gt; natively support receiving or sending double-tagged (QinQ/Stacked VLAN) frames on logical units.&lt;/li&gt;&#xA;&lt;li&gt;Does &lt;em&gt;not&lt;/em&gt; easily support mixing tagged and untagged traffic across &lt;em&gt;different&lt;/em&gt; logical units on the same physical interface (only one native/untagged VLAN is easily supported for the whole port).&lt;/li&gt;&#xA;&lt;li&gt;Limited flexibility in VLAN mapping per logical unit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Standard &amp;ldquo;trunk&amp;rdquo; ports connecting to switches or other routers where multiple VLANs, each identified by a single tag, need to be carried.&lt;/li&gt;&#xA;&lt;li&gt;Simple Layer 2 or Layer 3 sub-interfaces.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-junos&#34; data-lang=&#34;junos&#34;&gt;# Configure the physical interface for basic single-tagging&#xA;set interfaces ge-0/0/1 vlan-tagging&#xA;set interfaces ge-0/0/1 native-vlan-id 10  # Optional: VLAN 10 is untagged&#xA;&#xA;# Configure logical units with single VLAN IDs&#xA;set interfaces ge-0/0/1 unit 100 vlan-id 100&#xA;set interfaces ge-0/0/1 unit 100 family inet address 192.168.100.1/24&#xA;&#xA;set interfaces ge-0/0/1 unit 200 vlan-id 200&#xA;set interfaces ge-0/0/1 unit 200 family inet address 192.168.200.1/24&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2-flexible-vlan-tagging&#34;&gt;2. &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; flexible-vlan-tagging&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Enables advanced VLAN tagging capabilities, allowing for more complex scenarios on a single physical interface.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Supports logical units with &lt;em&gt;single&lt;/em&gt; VLAN IDs (&lt;code&gt;vlan-id&lt;/code&gt;).&lt;/li&gt;&#xA;&lt;li&gt;Supports logical units with &lt;em&gt;double&lt;/em&gt; (stacked/QinQ) VLAN tags (&lt;code&gt;vlan-tags outer &amp;lt;tag&amp;gt; inner &amp;lt;tag&amp;gt;&lt;/code&gt;).&lt;/li&gt;&#xA;&lt;li&gt;Supports logical units accepting &lt;em&gt;untagged&lt;/em&gt; traffic (&lt;code&gt;vlan-id none&lt;/code&gt;, though configuration details vary slightly by platform/scenario).&lt;/li&gt;&#xA;&lt;li&gt;Allows mixing single-tagged, double-tagged, and untagged logical units on the &lt;em&gt;same&lt;/em&gt; physical interface.&lt;/li&gt;&#xA;&lt;li&gt;Supports VLAN ID lists and ranges on logical units (&lt;code&gt;vlan-id-list [ list-of-vlans ]&lt;/code&gt;).&lt;/li&gt;&#xA;&lt;li&gt;Often a prerequisite for advanced Layer 2 features and services.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Slightly more complex configuration as each logical unit&amp;rsquo;s tagging requirement must be explicitly defined.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;QinQ deployments (Service Provider NNI, Enterprise Campus).&lt;/li&gt;&#xA;&lt;li&gt;Interfaces needing to handle a mix of single-tagged customer traffic and double-tagged infrastructure traffic.&lt;/li&gt;&#xA;&lt;li&gt;Interfaces where some services are tagged and others are untagged.&lt;/li&gt;&#xA;&lt;li&gt;Aggregation points requiring flexible VLAN mapping.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-junos&#34; data-lang=&#34;junos&#34;&gt;# Configure the physical interface for advanced tagging&#xA;set interfaces xe-0/1/0 flexible-vlan-tagging&#xA;&#xA;# Configure a logical unit for single-tagged traffic&#xA;set interfaces xe-0/1/0 unit 101 description &amp;#34;Single Tagged Customer A&amp;#34;&#xA;set interfaces xe-0/1/0 unit 101 vlan-id 101&#xA;set interfaces xe-0/1/0 unit 101 family bridge # Example for L2&#xA;&#xA;# Configure a logical unit for double-tagged (QinQ) traffic&#xA;set interfaces xe-0/1/0 unit 500 description &amp;#34;QinQ Customer B (Outer 500, Inner 50)&amp;#34;&#xA;set interfaces xe-0/1/0 unit 500 vlan-tags outer 500 inner 50&#xA;set interfaces xe-0/1/0 unit 500 family bridge # Example for L2&#xA;&#xA;# Configure a logical unit for untagged traffic (config might vary slightly)&#xA;# This often requires specific encapsulation like vlan-bridge or ethenet-bridge&#xA;set interfaces xe-0/1/0 unit 0 description &amp;#34;Untagged Management&amp;#34;&#xA;set interfaces xe-0/1/0 unit 0 encapsulation vlan-bridge&#xA;# Note: No &amp;#39;vlan-id&amp;#39; or &amp;#39;vlan-tags&amp;#39; means it might handle untagged frames if configured correctly&#xA;set interfaces xe-0/1/0 unit 0 family inet address 10.0.0.1/24&#xA;&#xA;# Configure a logical unit accepting a list of VLANs&#xA;set interfaces xe-0/1/0 unit 999 description &amp;#34;VLAN List Service&amp;#34;&#xA;set interfaces xe-0/1/0 unit 999 vlan-id-list [ 200 205-210 300 ]&#xA;set interfaces xe-0/1/0 unit 999 encapsulation vlan-bridge&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;3-encapsulation-flexible-ethernet-services&#34;&gt;3. &lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; encapsulation flexible-ethernet-services&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Primarily used on MX Series routers (and some other platforms) to allow a &lt;em&gt;mix of different Layer 2 encapsulation types&lt;/em&gt; (like bridge, ccc, vpls) on different logical units of the &lt;em&gt;same&lt;/em&gt; physical interface. It fundamentally changes how the interface PFE (Packet Forwarding Engine) processes frames to support this service flexibility.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Allows logical units (&lt;code&gt;unit&lt;/code&gt;) under the same physical interface to have different Ethernet service encapsulations (e.g., &lt;code&gt;encapsulation vlan-bridge&lt;/code&gt;, &lt;code&gt;encapsulation vlan-ccc&lt;/code&gt;, &lt;code&gt;encapsulation vlan-vpls&lt;/code&gt;, &lt;code&gt;encapsulation ethernet-ccc&lt;/code&gt;, etc.).&lt;/li&gt;&#xA;&lt;li&gt;Enables maximum service multiplexing onto a single physical port.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Important Note:&lt;/strong&gt; This option &lt;em&gt;must often be used in conjunction with &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/em&gt; if the services running on the logical units need to handle tagged frames (single or double). &lt;code&gt;flexible-ethernet-services&lt;/code&gt; defines the &lt;em&gt;service type&lt;/em&gt; flexibility, while &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; defines the &lt;em&gt;VLAN tag&lt;/em&gt; flexibility.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Platform-specific (mainly MX Series).&lt;/li&gt;&#xA;&lt;li&gt;Adds configuration complexity.&lt;/li&gt;&#xA;&lt;li&gt;Cannot be combined with &lt;code&gt;vlan-tagging&lt;/code&gt; on the same physical interface.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Service Provider edge routers (PE) terminating multiple customers with different L2VPN service types (E-Line/CCC, E-LAN/VPLS, E-Tree) or bridging requirements on the same physical link (NNI or UNI).&lt;/li&gt;&#xA;&lt;li&gt;Data Center interconnects requiring diverse L2 service types.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-junos&#34; data-lang=&#34;junos&#34;&gt;# Configure the physical interface for flexible service encapsulations AND flexible tagging&#xA;set interfaces xe-0/2/0 encapsulation flexible-ethernet-services&#xA;set interfaces xe-0/2/0 flexible-vlan-tagging&#xA;&#xA;# Logical unit for a bridged service (single tag)&#xA;set interfaces xe-0/2/0 unit 1000 description &amp;#34;Bridged Service VLAN 1000&amp;#34;&#xA;set interfaces xe-0/2/0 unit 1000 encapsulation vlan-bridge&#xA;set interfaces xe-0/2/0 unit 1000 vlan-id 1000&#xA;&#xA;# Logical unit for a VPLS service (QinQ tag)&#xA;set interfaces xe-0/2/0 unit 2000 description &amp;#34;VPLS Service Outer 200 Inner 20&amp;#34;&#xA;set interfaces xe-0/2/0 unit 2000 encapsulation vlan-vpls&#xA;set interfaces xe-0/2/0 unit 2000 vlan-tags outer 200 inner 20&#xA;&#xA;# Logical unit for a CCC/L2Circuit service (single tag)&#xA;set interfaces xe-0/2/0 unit 3000 description &amp;#34;CCC/E-Line Service VLAN 3000&amp;#34;&#xA;set interfaces xe-0/2/0 unit 3000 encapsulation vlan-ccc&#xA;set interfaces xe-0/2/0 unit 3000 vlan-id 3000&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;summary-table&#34;&gt;Summary Table&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;Feature&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;code&gt;vlan-tagging&lt;/code&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt; (+ &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;)&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Config Level&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Physical Interface&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Physical Interface&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Physical Interface&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Primary Purpose&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Basic 802.1Q tagging&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Advanced VLAN tagging (QinQ, Mixed)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Mix different L2 service types on units&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Single Tag Support&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (via &lt;code&gt;vlan-id&lt;/code&gt; on unit)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (via &lt;code&gt;vlan-id&lt;/code&gt; on unit)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (if &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; also used)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Double Tag (QinQ) Support&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;No&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (via &lt;code&gt;vlan-tags&lt;/code&gt; on unit)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (if &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; also used)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Untagged Support&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (one &lt;code&gt;native-vlan-id&lt;/code&gt;)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (per unit, requires specific config)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (per unit, requires specific config)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Mixed Tag/Untagged Units&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;No (except native)&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;VLAN Lists/Ranges&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;No&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Mixed L2 Encapsulations per Port&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;No&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;No&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Yes (e.g., bridge, ccc, vpls on same port)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Common Platforms&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;All Junos platforms&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Most modern Junos platforms&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Primarily MX Series (and some others like PTX, ACX)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Use When&amp;hellip;&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Simple trunk port, single tags only.&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Need QinQ, mix tagged/untagged, VLAN lists.&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Need to mix L2VPN service types (VPLS, CCC, Bridge) on one port (MX).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;In essence:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Junos on ngeran[io]</title><link>https://ngeranio.com/junos/</link><description>Recent content in Junos on ngeran[io]</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 14 Apr 2025 16:52:11 -0400</lastBuildDate><atom:link href="https://ngeranio.com/junos/index.xml" rel="self" type="application/rss+xml"/><item><title>Tagging</title><link>https://ngeranio.com/junos/tagging/</link><pubDate>Mon, 14 Apr 2025 16:52:11 -0400</pubDate><guid>https://ngeranio.com/junos/tagging/</guid><description>&lt;h2 id="junos-vlan-tagging-options-explained"&gt;Junos VLAN Tagging Options Explained&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a comparison of &lt;code&gt;vlan-tagging&lt;/code&gt;, &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;, and &lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="1-vlan-tagging"&gt;1. &lt;code&gt;vlan-tagging&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; vlan-tagging&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Enables basic IEEE 802.1Q VLAN tagging support on the physical interface.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Allows logical units (&lt;code&gt;unit&lt;/code&gt;) under this interface to be configured with a &lt;em&gt;single&lt;/em&gt; VLAN ID (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; unit &amp;lt;number&amp;gt; vlan-id &amp;lt;id&amp;gt;&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Supports sending and receiving standard single-tagged Ethernet frames.&lt;/li&gt;
+&lt;li&gt;Can support one untagged VLAN using the &lt;code&gt;native-vlan-id&lt;/code&gt; option on the physical interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Does &lt;em&gt;not&lt;/em&gt; natively support receiving or sending double-tagged (QinQ/Stacked VLAN) frames on logical units.&lt;/li&gt;
+&lt;li&gt;Does &lt;em&gt;not&lt;/em&gt; easily support mixing tagged and untagged traffic across &lt;em&gt;different&lt;/em&gt; logical units on the same physical interface (only one native/untagged VLAN is easily supported for the whole port).&lt;/li&gt;
+&lt;li&gt;Limited flexibility in VLAN mapping per logical unit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard &amp;ldquo;trunk&amp;rdquo; ports connecting to switches or other routers where multiple VLANs, each identified by a single tag, need to be carried.&lt;/li&gt;
+&lt;li&gt;Simple Layer 2 or Layer 3 sub-interfaces.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-junos" data-lang="junos"&gt;# Configure the physical interface for basic single-tagging
+set interfaces ge-0/0/1 vlan-tagging
+set interfaces ge-0/0/1 native-vlan-id 10 # Optional: VLAN 10 is untagged
+
+# Configure logical units with single VLAN IDs
+set interfaces ge-0/0/1 unit 100 vlan-id 100
+set interfaces ge-0/0/1 unit 100 family inet address 192.168.100.1/24
+
+set interfaces ge-0/0/1 unit 200 vlan-id 200
+set interfaces ge-0/0/1 unit 200 family inet address 192.168.200.1/24
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="2-flexible-vlan-tagging"&gt;2. &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; flexible-vlan-tagging&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Enables advanced VLAN tagging capabilities, allowing for more complex scenarios on a single physical interface.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports logical units with &lt;em&gt;single&lt;/em&gt; VLAN IDs (&lt;code&gt;vlan-id&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Supports logical units with &lt;em&gt;double&lt;/em&gt; (stacked/QinQ) VLAN tags (&lt;code&gt;vlan-tags outer &amp;lt;tag&amp;gt; inner &amp;lt;tag&amp;gt;&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Supports logical units accepting &lt;em&gt;untagged&lt;/em&gt; traffic (&lt;code&gt;vlan-id none&lt;/code&gt;, though configuration details vary slightly by platform/scenario).&lt;/li&gt;
+&lt;li&gt;Allows mixing single-tagged, double-tagged, and untagged logical units on the &lt;em&gt;same&lt;/em&gt; physical interface.&lt;/li&gt;
+&lt;li&gt;Supports VLAN ID lists and ranges on logical units (&lt;code&gt;vlan-id-list [ list-of-vlans ]&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Often a prerequisite for advanced Layer 2 features and services.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Slightly more complex configuration as each logical unit&amp;rsquo;s tagging requirement must be explicitly defined.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;QinQ deployments (Service Provider NNI, Enterprise Campus).&lt;/li&gt;
+&lt;li&gt;Interfaces needing to handle a mix of single-tagged customer traffic and double-tagged infrastructure traffic.&lt;/li&gt;
+&lt;li&gt;Interfaces where some services are tagged and others are untagged.&lt;/li&gt;
+&lt;li&gt;Aggregation points requiring flexible VLAN mapping.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-junos" data-lang="junos"&gt;# Configure the physical interface for advanced tagging
+set interfaces xe-0/1/0 flexible-vlan-tagging
+
+# Configure a logical unit for single-tagged traffic
+set interfaces xe-0/1/0 unit 101 description &amp;#34;Single Tagged Customer A&amp;#34;
+set interfaces xe-0/1/0 unit 101 vlan-id 101
+set interfaces xe-0/1/0 unit 101 family bridge # Example for L2
+
+# Configure a logical unit for double-tagged (QinQ) traffic
+set interfaces xe-0/1/0 unit 500 description &amp;#34;QinQ Customer B (Outer 500, Inner 50)&amp;#34;
+set interfaces xe-0/1/0 unit 500 vlan-tags outer 500 inner 50
+set interfaces xe-0/1/0 unit 500 family bridge # Example for L2
+
+# Configure a logical unit for untagged traffic (config might vary slightly)
+# This often requires specific encapsulation like vlan-bridge or ethenet-bridge
+set interfaces xe-0/1/0 unit 0 description &amp;#34;Untagged Management&amp;#34;
+set interfaces xe-0/1/0 unit 0 encapsulation vlan-bridge
+# Note: No &amp;#39;vlan-id&amp;#39; or &amp;#39;vlan-tags&amp;#39; means it might handle untagged frames if configured correctly
+set interfaces xe-0/1/0 unit 0 family inet address 10.0.0.1/24
+
+# Configure a logical unit accepting a list of VLANs
+set interfaces xe-0/1/0 unit 999 description &amp;#34;VLAN List Service&amp;#34;
+set interfaces xe-0/1/0 unit 999 vlan-id-list [ 200 205-210 300 ]
+set interfaces xe-0/1/0 unit 999 encapsulation vlan-bridge
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="3-encapsulation-flexible-ethernet-services"&gt;3. &lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Level:&lt;/strong&gt; Physical Interface (&lt;code&gt;set interfaces &amp;lt;interface-name&amp;gt; encapsulation flexible-ethernet-services&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; Primarily used on MX Series routers (and some other platforms) to allow a &lt;em&gt;mix of different Layer 2 encapsulation types&lt;/em&gt; (like bridge, ccc, vpls) on different logical units of the &lt;em&gt;same&lt;/em&gt; physical interface. It fundamentally changes how the interface PFE (Packet Forwarding Engine) processes frames to support this service flexibility.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capabilities:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Allows logical units (&lt;code&gt;unit&lt;/code&gt;) under the same physical interface to have different Ethernet service encapsulations (e.g., &lt;code&gt;encapsulation vlan-bridge&lt;/code&gt;, &lt;code&gt;encapsulation vlan-ccc&lt;/code&gt;, &lt;code&gt;encapsulation vlan-vpls&lt;/code&gt;, &lt;code&gt;encapsulation ethernet-ccc&lt;/code&gt;, etc.).&lt;/li&gt;
+&lt;li&gt;Enables maximum service multiplexing onto a single physical port.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Important Note:&lt;/strong&gt; This option &lt;em&gt;must often be used in conjunction with &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/em&gt; if the services running on the logical units need to handle tagged frames (single or double). &lt;code&gt;flexible-ethernet-services&lt;/code&gt; defines the &lt;em&gt;service type&lt;/em&gt; flexibility, while &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; defines the &lt;em&gt;VLAN tag&lt;/em&gt; flexibility.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitations:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Platform-specific (mainly MX Series).&lt;/li&gt;
+&lt;li&gt;Adds configuration complexity.&lt;/li&gt;
+&lt;li&gt;Cannot be combined with &lt;code&gt;vlan-tagging&lt;/code&gt; on the same physical interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typical Use Case:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Service Provider edge routers (PE) terminating multiple customers with different L2VPN service types (E-Line/CCC, E-LAN/VPLS, E-Tree) or bridging requirements on the same physical link (NNI or UNI).&lt;/li&gt;
+&lt;li&gt;Data Center interconnects requiring diverse L2 service types.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Example:&lt;/strong&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-junos" data-lang="junos"&gt;# Configure the physical interface for flexible service encapsulations AND flexible tagging
+set interfaces xe-0/2/0 encapsulation flexible-ethernet-services
+set interfaces xe-0/2/0 flexible-vlan-tagging
+
+# Logical unit for a bridged service (single tag)
+set interfaces xe-0/2/0 unit 1000 description &amp;#34;Bridged Service VLAN 1000&amp;#34;
+set interfaces xe-0/2/0 unit 1000 encapsulation vlan-bridge
+set interfaces xe-0/2/0 unit 1000 vlan-id 1000
+
+# Logical unit for a VPLS service (QinQ tag)
+set interfaces xe-0/2/0 unit 2000 description &amp;#34;VPLS Service Outer 200 Inner 20&amp;#34;
+set interfaces xe-0/2/0 unit 2000 encapsulation vlan-vpls
+set interfaces xe-0/2/0 unit 2000 vlan-tags outer 200 inner 20
+
+# Logical unit for a CCC/L2Circuit service (single tag)
+set interfaces xe-0/2/0 unit 3000 description &amp;#34;CCC/E-Line Service VLAN 3000&amp;#34;
+set interfaces xe-0/2/0 unit 3000 encapsulation vlan-ccc
+set interfaces xe-0/2/0 unit 3000 vlan-id 3000
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="summary-table"&gt;Summary Table&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;Feature&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;&lt;code&gt;vlan-tagging&lt;/code&gt;&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;&lt;code&gt;flexible-vlan-tagging&lt;/code&gt;&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;&lt;code&gt;encapsulation flexible-ethernet-services&lt;/code&gt; (+ &lt;code&gt;flexible-vlan-tagging&lt;/code&gt;)&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Config Level&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Physical Interface&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Physical Interface&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Physical Interface&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Primary Purpose&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Basic 802.1Q tagging&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Advanced VLAN tagging (QinQ, Mixed)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Mix different L2 service types on units&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Single Tag Support&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (via &lt;code&gt;vlan-id&lt;/code&gt; on unit)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (via &lt;code&gt;vlan-id&lt;/code&gt; on unit)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (if &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; also used)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Double Tag (QinQ) Support&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;No&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (via &lt;code&gt;vlan-tags&lt;/code&gt; on unit)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (if &lt;code&gt;flexible-vlan-tagging&lt;/code&gt; also used)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Untagged Support&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (one &lt;code&gt;native-vlan-id&lt;/code&gt;)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (per unit, requires specific config)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (per unit, requires specific config)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Mixed Tag/Untagged Units&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;No (except native)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;VLAN Lists/Ranges&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;No&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Mixed L2 Encapsulations per Port&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;No&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;No&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Yes (e.g., bridge, ccc, vpls on same port)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Common Platforms&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;All Junos platforms&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Most modern Junos platforms&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Primarily MX Series (and some others like PTX, ACX)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;&lt;strong&gt;Use When&amp;hellip;&lt;/strong&gt;&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Simple trunk port, single tags only.&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Need QinQ, mix tagged/untagged, VLAN lists.&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Need to mix L2VPN service types (VPLS, CCC, Bridge) on one port (MX).&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;In essence:&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>
