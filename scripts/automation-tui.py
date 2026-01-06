@@ -408,18 +408,19 @@ class TopNav(Static):
     def compose(self) -> ComposeResult:
         """Compose the navigation bar."""
         with Horizontal(id="nav-bar"):
-            yield Button("Dashboard", id="nav-dashboard", classes="nav-btn")
+            yield Button("Dash", id="nav-dashboard", classes="nav-btn")
             yield Button("Posts", id="nav-posts", classes="nav-btn")
-            yield Button("Automation", id="nav-automation", classes="nav-btn")
-            yield Button("AI Agent", id="nav-ai", classes="nav-btn")
+            yield Button("Auto", id="nav-automation", classes="nav-btn")
+            yield Button("AI", id="nav-ai", classes="nav-btn")
             yield Button("Git", id="nav-git", classes="nav-btn")
-            yield Button("Settings", id="nav-settings", classes="nav-btn")
+            yield Button("Set", id="nav-settings", classes="nav-btn")
             yield Static("", id="nav-spacer", classes="nav-spacer")
-            yield Button("➕ Add", id="nav-add", classes="nav-btn")
-            yield Button("✏️ Rename", id="nav-rename", classes="nav-btn")
-            yield Button("🗑️ Delete", id="nav-delete", classes="nav-btn")
+            yield Button("➕", id="nav-add", classes="nav-btn")
+            yield Button("✏️", id="nav-rename", classes="nav-btn")
+            yield Button("🗑️", id="nav-delete", classes="nav-btn")
+            yield Button("❓", id="nav-help", classes="nav-btn")
             yield Static("", id="nav-spacer-2", classes="nav-spacer")
-            yield Static("[#bf616a]Quit[/#bf616a]", id="nav-quit", classes="nav-link")
+            yield Static("[#bf616a bold]✕ QUIT[/#bf616a bold]", id="nav-quit", classes="nav-link-quit")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         """
@@ -459,6 +460,10 @@ class TopNav(Static):
                         self.app.push_screen(DeleteItemModal(item_path))
             except Exception as e:
                 pass
+            return
+        elif button_id == "nav-help":
+            # Open help screen
+            self.app.push_screen(HelpScreen())
             return
 
         # Handle navigation buttons
@@ -619,13 +624,16 @@ class AIAgentTab(Static):
     def compose(self) -> ComposeResult:
         """Compose the AI Agent tab."""
         with Vertical(id="ai-container"):
-            # AI Actions Section
+            # AI Actions Section - all buttons in one row
             yield Static("🤖 AI Assistant", id="ai-title")
             with Horizontal(id="ai-actions"):
-                yield Button("📝 Create Post", id="btn-ai-create", variant="default")
-                yield Button("🏷️ Suggest Tags", id="btn-ai-tags", variant="default")
-                yield Button("✨ Improve Content", id="btn-ai-improve", variant="default")
-                yield Button("📊 Analyze Post", id="btn-ai-analyze", variant="default")
+                yield Button("📝 Create", id="btn-ai-create", variant="default")
+                yield Button("📋 Posts", id="btn-ai-manage", variant="default")
+                yield Button("🗑 Delete", id="btn-ai-delete", variant="default")
+                yield Button("🏷️ Tags", id="btn-ai-tags", variant="default")
+                yield Button("✨ Improve", id="btn-ai-improve", variant="default")
+                yield Button("📊 Analyze", id="btn-ai-analyze", variant="default")
+                yield Button("❓ Help", id="btn-ai-help", variant="default")
 
             # Status Section
             with Horizontal(id="ai-status"):
@@ -643,12 +651,18 @@ class AIAgentTab(Static):
 
         if event.button.id == "btn-ai-create":
             self._ai_create_post(log, status_text)
+        elif event.button.id == "btn-ai-manage":
+            self._ai_manage_posts(log, status_text)
+        elif event.button.id == "btn-ai-delete":
+            self._ai_delete_post(log, status_text)
         elif event.button.id == "btn-ai-tags":
             self._ai_suggest_tags(log, status_text)
         elif event.button.id == "btn-ai-improve":
             self._ai_improve_content(log, status_text)
         elif event.button.id == "btn-ai-analyze":
             self._ai_analyze_post(log, status_text)
+        elif event.button.id == "btn-ai-help":
+            self._ai_show_help(log, status_text)
 
     def _ai_create_post(self, log, status_text):
         """Create new post with AI assistance."""
@@ -769,6 +783,36 @@ class AIAgentTab(Static):
         except Exception as e:
             log.write(f"[red]Error: {str(e)}[/red]\n")
 
+        status_text.update("Status: Ready")
+
+    def _ai_manage_posts(self, log, status_text):
+        """Filter sidebar to show only posts."""
+        status_text.update("Status: Showing posts...")
+
+        # Switch to dashboard view to show sidebar
+        try:
+            self.app.change_view("dashboard")
+            log.write("[cyan]Showing all posts in sidebar[/cyan]\n")
+            log.write("[dim]• Click any post to edit it[/dim]\n")
+            log.write("[dim]• Use filter to find specific posts[/dim]\n")
+        except Exception as e:
+            log.write(f"[red]Error: {str(e)}[/red]\n")
+
+        status_text.update("Status: Ready")
+
+    def _ai_delete_post(self, log, status_text):
+        """Delete post - show modal with all posts."""
+        status_text.update("Status: Opening delete modal...")
+        log.write("[cyan]Opening delete posts modal...[/cyan]\n")
+        # Open DeletePostScreen
+        self.app.push_screen(DeletePostScreen())
+        status_text.update("Status: Ready")
+
+    def _ai_show_help(self, log, status_text):
+        """Show help documentation."""
+        status_text.update("Status: Opening help...")
+        log.write("[cyan]Opening help documentation...[/cyan]\n")
+        self.app.push_screen(HelpScreen())
         status_text.update("Status: Ready")
 
 
@@ -1684,38 +1728,54 @@ class CreatePostScreen(NiceModal):
             with Vertical(id="create-sidebar"):
                 yield Static("⚙ Options", id="sidebar-title")
 
-                # Category selection
-                yield Static("Category:", classes="field-label")
-                with Horizontal():
-                    yield Static(" [+]", id="link-add-cat", classes="nav-link")
-                    yield Static(" [−]", id="link-delete-cat", classes="nav-link")
+                # Category selection header with [+][-] buttons
+                with Horizontal(id="category-header"):
+                    yield Static("Category", id="cat-label", classes="field-label")
+                    yield Static("", id="cat-spacer")
+                    yield Button("[+]", id="btn-add-cat", classes="nav-btn-small")
+                    yield Button("[−]", id="btn-delete-cat", classes="nav-btn-small")
 
-                # Get categories - ensure unique by tracking lowercase IDs
-                seen_ids = set()  # Track lowercase category IDs to prevent duplicates
+                # Scrollable category list
+                with Vertical(id="category-list"):
+                    # Get all categories from all parent sections
+                    seen_ids = set()
+                    all_categories = []  # List of (display_name, cat_id, button_id)
 
-                # Add default categories first
-                default_cats = ["OSPF", "BGP", "MPLS", "Junos"]
-                for cat in default_cats:
-                    cat_id = cat.lower()
-                    if cat_id not in seen_ids:
-                        seen_ids.add(cat_id)
-                        yield Button(f"• {cat}", id=f"cat_{cat_id}", classes="cat-btn")
+                    # Collect categories from each parent section
+                    for parent in ["routing", "junos", "projects"]:
+                        parent_dir = PROJECT_ROOT / "content" / parent
+                        if parent_dir.exists() and parent_dir.is_dir():
+                            try:
+                                for cat_dir in parent_dir.iterdir():
+                                    if cat_dir.is_dir():
+                                        cat_name = cat_dir.name
+                                        # Skip index files and hidden directories
+                                        if cat_name.startswith('_') or cat_name.startswith('.'):
+                                            continue
+                                        # Category ID with slash (e.g., "projects/automation")
+                                        cat_id = f"{parent}/{cat_name}".lower()
+                                        # Button ID must use underscores instead of slashes
+                                        button_id = f"cat_{parent}_{cat_name}".lower()
+                                        # Display as "Routing/OSPF" or "Projects/Automation"
+                                        display_name = f"{parent.capitalize()}/{cat_name.capitalize()}"
+                                        if cat_id not in seen_ids:
+                                            seen_ids.add(cat_id)
+                                            all_categories.append((display_name, cat_id, button_id))
+                            except:
+                                pass
 
-                # Add categories from filesystem (if not already added)
-                try:
-                    for cat_dir in CONTENT_DIR.iterdir():
-                        if cat_dir.is_dir():
-                            cat_name = cat_dir.name.capitalize()
-                            cat_id = cat_name.lower()
-                            # Only add if we haven't seen this ID before
-                            if cat_id not in seen_ids:
-                                seen_ids.add(cat_id)
-                                yield Button(f"• {cat_name}", id=f"cat_{cat_id}", classes="cat-btn")
-                except:
-                    pass
+                    # Sort categories alphabetically
+                    all_categories.sort(key=lambda x: x[0])
 
-                # Actions
-                yield Static("", id="sidebar-spacer")
+                    # Display all categories
+                    for display_name, cat_id, button_id in all_categories:
+                        yield Button(f"• {display_name}", id=button_id, classes="cat-btn")
+
+                    # If no categories found, show message
+                    if not all_categories:
+                        yield Static("[dim]No categories. Click [+] to create one.[/dim]")
+
+                # Actions - buttons at the bottom
                 yield Button("✓ Create Post", id="btn_create", variant="primary")
                 yield Button("✕ Cancel", id="btn_cancel", variant="default")
 
@@ -1747,7 +1807,9 @@ class CreatePostScreen(NiceModal):
 
         # Category selection
         if event.button.id.startswith("cat_"):
-            self.category = event.button.id.replace("cat_", "")
+            # Extract category from button ID
+            # Button ID format: "cat_projects_automation" -> Category: "projects/automation"
+            self.category = event.button.id.replace("cat_", "").replace("_", "/")
 
             # Update button styles
             for btn in self.query(".cat-btn"):
@@ -1757,43 +1819,33 @@ class CreatePostScreen(NiceModal):
             status.show_info(f"Category: {self.category.upper()}")
 
         # Add category
-        elif event.button.id == "link-add-cat":
+        elif event.button.id == "btn-add-cat":
             def refresh_categories():
-                """Refresh category buttons after adding new category."""
+                """Refresh the entire screen after adding new category."""
                 try:
-                    # Remove existing category buttons
-                    create_sidebar = self.query_one("#create-sidebar")
-                    old_buttons = list(create_sidebar.query(".cat-btn"))
-                    for btn in old_buttons:
-                        btn.remove()
-
-                    # Add category buttons again (including new category)
-                    seen_ids = set()
-                    default_cats = ["OSPF", "BGP", "MPLS", "Junos"]
-                    for cat in default_cats:
-                        cat_id = cat.lower()
-                        if cat_id not in seen_ids:
-                            seen_ids.add(cat_id)
-                            new_btn = Button(f"• {cat}", id=f"cat_{cat_id}", classes="cat-btn")
-                            create_sidebar.mount(new_btn, before="#sidebar-spacer")
-
-                    # Add categories from filesystem
-                    try:
-                        for cat_dir in CONTENT_DIR.iterdir():
-                            if cat_dir.is_dir():
-                                cat_name = cat_dir.name.capitalize()
-                                cat_id = cat_name.lower()
-                                if cat_id not in seen_ids:
-                                    seen_ids.add(cat_id)
-                                    new_btn = Button(f"• {cat_name}", id=f"cat_{cat_id}", classes="cat-btn")
-                                    create_sidebar.mount(new_btn, before="#sidebar-spacer")
-                    except:
-                        pass
+                    # Close current screen and reopen to refresh categories
+                    self.app.pop_screen()
+                    self.app.push_screen(CreatePostScreen())
                 except Exception as e:
                     pass
 
             # Push category creation screen with refresh callback
             self.app.push_screen(CreateCategoryScreen(on_success=refresh_categories))
+            return
+
+        # Delete category
+        elif event.button.id == "btn-delete-cat":
+            def refresh_categories():
+                """Refresh the entire screen after deleting a category."""
+                try:
+                    # Close current screen and reopen to refresh categories
+                    self.app.pop_screen()
+                    self.app.push_screen(CreatePostScreen())
+                except Exception as e:
+                    pass
+
+            # Push category deletion screen with refresh callback
+            self.app.push_screen(DeleteCategoryScreen(on_success=refresh_categories))
             return
 
         # Cancel
@@ -1821,6 +1873,7 @@ class CreatePostScreen(NiceModal):
 
             status.show_info("Creating post...")
             script = SCRIPT_DIR / "create-post.sh"
+            # self.category now includes parent (e.g., "routing/ospf" or "projects/automation")
             code, out, err = run_command([str(script), self.category, title])
 
             if code == 0:
@@ -1831,7 +1884,7 @@ class CreatePostScreen(NiceModal):
                     try:
                         # Find the created file
                         import glob
-                        pattern = f"content/routing/{self.category}/*/index.md"
+                        pattern = f"content/{self.category}/*/index.md"
                         files = glob.glob(str(PROJECT_ROOT / pattern))
                         if files:
                             newest = max(files, key=os.path.getctime)
@@ -1850,22 +1903,27 @@ class CreatePostScreen(NiceModal):
                 except:
                     pass
 
-                # Close after short delay
-                def close_and_open():
-                    try:
-                        self.app.pop_screen()
-                        # Open the created post
-                        import glob
-                        pattern = f"content/routing/{self.category}/*/index.md"
-                        files = glob.glob(str(PROJECT_ROOT / pattern))
-                        if files:
-                            newest = max(files, key=os.path.getctime)
-                            if hasattr(self.app, 'open_file_in_content'):
-                                self.app.open_file_in_content(Path(newest))
-                    except:
-                        pass
+                # Show success modal with options
+                self.post_created = True
+                self.post_title = title
+                self.post_category = self.category
 
-                self.set_timer(1.5, close_and_open)
+                # Find the created file
+                import glob
+                pattern = f"content/{self.category}/*/index.md"
+                files = glob.glob(str(PROJECT_ROOT / pattern))
+                if files:
+                    self.post_file = Path(max(files, key=os.path.getctime))
+                else:
+                    self.post_file = None
+
+                # Push success screen with options
+                self.app.push_screen(PostCreatedSuccessScreen(
+                    title=title,
+                    category=self.category,
+                    file_path=self.post_file
+                ))
+                return
             else:
                 # Show detailed error message
                 error_msg = err if err else out
@@ -1877,84 +1935,67 @@ class CreatePostScreen(NiceModal):
             except Exception:
                 pass
 
-    def on_click(self, event) -> None:
-        """Handle link clicks."""
-        if event.widget.id == "link-add-cat":
-            def refresh_categories():
-                """Refresh category buttons after adding new category."""
-                try:
-                    # Remove existing category buttons
-                    create_sidebar = self.query_one("#create-sidebar")
-                    old_buttons = list(create_sidebar.query(".cat-btn"))
-                    for btn in old_buttons:
-                        btn.remove()
+class PostCreatedSuccessScreen(NiceModal):
+    """
+    Success modal shown after creating a new post.
 
-                    # Add category buttons again (including new category)
-                    seen_ids = set()
-                    default_cats = ["OSPF", "BGP", "MPLS", "Junos"]
-                    for cat in default_cats:
-                        cat_id = cat.lower()
-                        if cat_id not in seen_ids:
-                            seen_ids.add(cat_id)
-                            new_btn = Button(f"• {cat}", id=f"cat_{cat_id}", classes="cat-btn")
-                            create_sidebar.mount(new_btn, before="#sidebar-spacer")
+    Features:
+        - Shows created post title and category
+        - Options to edit, preview, or close
+        - Opens file explorer with new post selected
+    """
 
-                    # Add categories from filesystem
-                    try:
-                        for cat_dir in CONTENT_DIR.iterdir():
-                            if cat_dir.is_dir():
-                                cat_name = cat_dir.name.capitalize()
-                                cat_id = cat_name.lower()
-                                if cat_id not in seen_ids:
-                                    seen_ids.add(cat_id)
-                                    new_btn = Button(f"• {cat_name}", id=f"cat_{cat_id}", classes="cat-btn")
-                                    create_sidebar.mount(new_btn, before="#sidebar-spacer")
-                    except:
-                        pass
-                except Exception as e:
-                    pass
+    def __init__(self, title: str, category: str, file_path: Path):
+        super().__init__("Post Created Successfully")
+        self.title = title
+        self.category = category
+        self.file_path = file_path
 
-            # Push category creation screen with refresh callback
-            self.app.push_screen(CreateCategoryScreen(on_success=refresh_categories))
+    def compose(self) -> ComposeResult:
+        """Compose the success modal."""
+        with Vertical(id="modal-container"):
+            # Header
+            with Horizontal(id="modal-header"):
+                yield Static("✓ Post Created", id="modal-title")
+                yield Button("✕", id="btn_close", classes="modal-close-btn")
 
-        elif event.widget.id == "link-delete-cat":
-            def refresh_categories():
-                """Refresh category buttons after deleting a category."""
-                try:
-                    # Remove existing category buttons
-                    create_sidebar = self.query_one("#create-sidebar")
-                    old_buttons = list(create_sidebar.query(".cat-btn"))
-                    for btn in old_buttons:
-                        btn.remove()
+            with Vertical(id="modal-body"):
+                # Success message
+                yield Static(
+                    f"[#88c0d0]Your post has been created successfully![/#88c0d0]\n\n"
+                    f"[#d8dee9]Title:[/#d8dee9] {self.title}\n"
+                    f"[#d8dee9]Category:[/#d8dee9] {self.category.upper()}\n"
+                    f"[#d8dee9]Location:[/#d8dee9] {self.file_path.relative_to(PROJECT_ROOT) if self.file_path else 'Unknown'}",
+                    id="success-message"
+                )
 
-                    # Add category buttons again (excluding deleted category)
-                    seen_ids = set()
-                    default_cats = ["OSPF", "BGP", "MPLS", "Junos"]
-                    for cat in default_cats:
-                        cat_id = cat.lower()
-                        if cat_id not in seen_ids:
-                            seen_ids.add(cat_id)
-                            new_btn = Button(f"• {cat}", id=f"cat_{cat_id}", classes="cat-btn")
-                            create_sidebar.mount(new_btn, before="#sidebar-spacer")
+                # Action buttons
+                with Horizontal(id="actions"):
+                    yield Button("📝 Edit Post", id="btn_edit", variant="primary")
+                    yield Button("👁️ Preview", id="btn_preview")
+                    yield Button("✕ Done", id="btn_done")
 
-                    # Add categories from filesystem
-                    try:
-                        for cat_dir in CONTENT_DIR.iterdir():
-                            if cat_dir.is_dir():
-                                cat_name = cat_dir.name.capitalize()
-                                cat_id = cat_name.lower()
-                                if cat_id not in seen_ids:
-                                    seen_ids.add(cat_id)
-                                    new_btn = Button(f"• {cat_name}", id=f"cat_{cat_id}", classes="cat-btn")
-                                    create_sidebar.mount(new_btn, before="#sidebar-spacer")
-                    except:
-                        pass
-                except Exception as e:
-                    pass
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle button clicks."""
+        if event.button.id == "btn_close" or event.button.id == "btn_done":
+            # Close modal and return to main menu
+            self.app.pop_screen()
+            return
 
-            # Push category deletion screen with refresh callback
-            self.app.push_screen(DeleteCategoryScreen(on_success=refresh_categories))
+        elif event.button.id == "btn_edit":
+            # Open the post in editor
+            self.app.pop_screen()  # Close success modal
+            if self.file_path and hasattr(self.app, 'open_file_in_content'):
+                self.app.open_file_in_content(self.file_path)
+            return
 
+        elif event.button.id == "btn_preview":
+            # Preview the post
+            self.app.pop_screen()  # Close success modal
+            if self.file_path and hasattr(self.app, 'open_file_in_content'):
+                self.app.open_file_in_content(self.file_path)
+                # Switch to preview mode if available
+            return
 
 class DeleteCategoryScreen(ModalScreen):
     """
@@ -2004,7 +2045,7 @@ class DeleteCategoryScreen(ModalScreen):
                     yield Static("[dim]No categories found[/dim]", id="form-hint")
                 else:
                     yield Select(
-                        [Select.Option(label, value=path) for label, path in categories],
+                        categories,
                         id="select-category",
                         classes="field-select"
                     )
@@ -2076,146 +2117,6 @@ class DeleteCategoryScreen(ModalScreen):
                 self.app.pop_screen()
             except Exception:
                 pass
-
-
-class ViewPostsScreen(NiceModal):
-    """
-    Modal for viewing and managing all posts.
-    
-    Features:
-        - Filter by status (All, Drafts, Published)
-        - DataTable with post information
-        - Preview, Edit, and Open in Editor actions
-    """
-
-    def __init__(self):
-        super().__init__("View & Edit Posts")
-        self.show_all = True  # Show both drafts and published
-
-    def compose(self) -> ComposeResult:
-        """Compose the view posts modal."""
-        # Yield parent components first
-        yield from super().compose()
-
-        # Then yield our content
-        yield Horizontal(
-            Button("All Posts", id="filter_all", variant="primary"),
-            Button("Drafts Only", id="filter_drafts"),
-            Button("Published Only", id="filter_published"),
-            id="filter-buttons"
-        )
-        yield DataTable(id="posts-table")
-        yield Horizontal(
-            Button("Preview", id="btn_preview"),
-            Button("Edit", id="btn_edit"),
-            Button("Open in Editor", id="btn_open_editor"),
-            Button("Close", id="btn_close"),
-            id="table-actions"
-        )
-        yield NiceStatus("", id="status")
-
-    def on_mount(self) -> None:
-        """Load posts on mount."""
-        self.load_posts()
-
-    def load_posts(self):
-        """
-        Load and display posts in the table.
-        
-        Behavior:
-            - Filters based on current filter setting
-            - Updates table columns based on filter
-        """
-        table = self.query_one("#posts-table", DataTable)
-        table.clear(columns=True)
-
-        if self.show_all:
-            table.add_column("Status", key="status", width=8)
-            table.add_column("Title", key="title", width=35)
-            table.add_column("Category", key="category", width=12)
-            table.add_column("Path", key="path", width=50)
-
-            posts = get_all_posts()
-            for post in posts:
-                status_icon = "[DRAFT]" if post['is_draft'] else "[PUB]"
-                table.add_row(
-                    status_icon,
-                    post['title'],
-                    post['category'].upper(),
-                    post['path']
-                )
-        else:
-            table.add_column("Title", key="title", width=35)
-            table.add_column("Category", key="category", width=12)
-            table.add_column("Path", key="path", width=50)
-
-            posts = get_all_posts()
-            filtered_posts = [p for p in posts if p['is_draft']] if "drafts" in str(self.show_all).lower() else [p for p in posts if not p['is_draft']]
-
-            for post in filtered_posts:
-                table.add_row(
-                    post['title'],
-                    post['category'].upper(),
-                    post['path']
-                )
-
-        status = self.query_one("#status", NiceStatus)
-        if table.row_count == 0:
-            status.show_info("No posts found")
-        else:
-            status.clear()
-
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        """
-        Handle button presses in the modal.
-        
-        Args:
-            event: Button press event
-        """
-        status = self.query_one("#status", NiceStatus)
-        table = self.query_one("#posts-table", DataTable)
-
-        if event.button.id in ["filter_all", "filter_drafts", "filter_published"]:
-            if event.button.id == "filter_all":
-                self.show_all = True
-            elif event.button.id == "filter_drafts":
-                self.show_all = "drafts"
-            else:
-                self.show_all = "published"
-            self.load_posts()
-
-        elif event.button.id == "btn_close":
-            self.app.pop_screen()
-
-        elif event.button.id == "btn_preview":
-            if table.row_count == 0:
-                status.show_error("No posts to preview")
-                return
-
-            # Get the actual row key from cursor position
-            row_key = list(table.rows.keys())[table.cursor_row]
-            path_cell = table.get_cell(row_key, "path")
-
-            post_path = str(path_cell)
-            content = read_post_content(post_path)
-
-            # Open preview screen
-            self.app.push_screen(PostPreviewScreen(post_path, content))
-
-        elif event.button.id in ["btn_edit", "btn_open_editor"]:
-            if table.row_count == 0:
-                status.show_error("No posts to edit")
-                return
-
-            # Get the actual row key from cursor position
-            row_key = list(table.rows.keys())[table.cursor_row]
-            path_cell = table.get_cell(row_key, "path")
-
-            post_path = str(path_cell)
-            content = read_post_content(post_path)
-
-            # Open integrated editor/preview
-            self.app.push_screen(EditorPreview(post_path, content))
 
 
 class PostPreviewScreen(NiceModal):
@@ -2374,6 +2275,182 @@ class EditorPreview(NiceModal):
                 status.show_error(f"Failed to save: {str(e)}")
 
 
+class DeletePostScreen(ModalScreen):
+    """
+    Modal for deleting blog posts.
+
+    Features:
+        - Shows all posts in a table
+        - Select and delete posts
+        - Confirmation dialog
+        - Refreshes file tree after deletion
+    """
+
+    def __init__(self):
+        super().__init__("Delete Post")
+        self.posts = []
+        self._load_posts()
+
+    def _load_posts(self):
+        """Load all posts from the content directory."""
+        try:
+            content_dir = PROJECT_ROOT / "content"
+            if not content_dir.exists():
+                return
+
+            # Find all index.md files
+            for index_file in content_dir.rglob("index.md"):
+                try:
+                    # Read frontmatter
+                    with open(index_file, 'r') as f:
+                        content = f.read()
+                        lines = content.split('\n')
+
+                    title = "Untitled"
+                    date = "Unknown"
+                    category = "Unknown"
+                    draft = True
+
+                    # Parse TOML frontmatter
+                    in_frontmatter = False
+                    for line in lines:
+                        if line.startswith("+++"):
+                            in_frontmatter = not in_frontmatter
+                            continue
+                        if in_frontmatter:
+                            if line.startswith("title ="):
+                                title = line.split("=", 1)[1].strip().strip('"')
+                            elif line.startswith("date ="):
+                                date = line.split("=", 1)[1].strip().strip('"')
+                            elif line.startswith("draft ="):
+                                draft = "true" in line.lower()
+
+                    # Get category from path
+                    rel_path = index_file.relative_to(content_dir)
+                    parts = list(rel_path.parts[:-1])  # Remove 'index.md'
+                    if len(parts) >= 2:
+                        category = f"{parts[0]}/{parts[1]}"
+                    elif len(parts) == 1:
+                        category = parts[0]
+
+                    self.posts.append({
+                        "path": index_file,
+                        "title": title,
+                        "date": date,
+                        "category": category,
+                        "draft": draft
+                    })
+                except Exception as e:
+                    pass
+
+            # Sort by date (newest first)
+            self.posts.sort(key=lambda x: x["date"], reverse=True)
+
+        except Exception as e:
+            pass
+
+    def compose(self) -> ComposeResult:
+        """Compose the delete post modal."""
+        with Vertical(id="delete-post-modal"):
+            # Header
+            with Horizontal(id="modal-header"):
+                yield Static("🗑️ Delete Post", id="modal-title")
+                yield Button("✕", id="btn_close", classes="modal-close-btn")
+
+            with Vertical(id="modal-body"):
+                # Instructions
+                yield Static(
+                    "[#d8dee9]Select a post to delete:[/#d8dee9]\n"
+                    "[dim]This action cannot be undone![/dim]",
+                    id="delete-instructions"
+                )
+
+                # Posts table
+                if self.posts:
+                    yield self._create_posts_table()
+                else:
+                    yield Static("[dim]No posts found[/dim]", id="no-posts-message")
+
+                # Action buttons
+                with Horizontal(id="delete-actions"):
+                    yield Button("✕ Cancel", id="btn_cancel", variant="default")
+                    yield Button("🗑️ Delete Selected", id="btn_delete", variant="error")
+
+    def _create_posts_table(self) -> DataTable:
+        """Create a data table with all posts."""
+        table = DataTable(id="posts-table")
+        table.add_columns("Title", "Category", "Date", "Status")
+        table.zebra_stripes = True
+
+        for post in self.posts:
+            status = "[#bf616a]DRAFT[/#bf616a]" if post["draft"] else "[#a3be8c]PUBLISHED[/#a3be8c]"
+            table.add_row(
+                post["title"][:40],  # Truncate long titles
+                post["category"],
+                post["date"][:10],  # Show only date part
+                status,
+                key=str(post["path"])
+            )
+
+        return table
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle button clicks."""
+        if event.button.id == "btn_close" or event.button.id == "btn_cancel":
+            self.app.pop_screen()
+            return
+
+        elif event.button.id == "btn_delete":
+            # Get selected post
+            table = self.query_one("#posts-table", DataTable)
+            if table.cursor_row is None:
+                self.app.query_one("#modal-title", Static).update(
+                    "[#bf616a]⚠ Select a post first![/#bf616a]"
+                )
+                return
+
+            # Get the selected post's path
+            row_key = table.get_row_key(table.cursor_row)
+            if row_key:
+                post_path = Path(row_key)
+                self._delete_post(post_path)
+
+    def _delete_post(self, post_path: Path):
+        """Delete the selected post."""
+        try:
+            # Get the post directory (parent of index.md)
+            post_dir = post_path.parent
+
+            # Delete the directory
+            import shutil
+            shutil.rmtree(post_dir)
+
+            # Show success and close
+            self.app.pop_screen()
+
+            # Refresh file tree
+            try:
+                file_tree = self.app.query_one(FileTree)
+                tree = file_tree.query_one("#file-tree", Tree)
+                file_tree.populate_tree(tree.root)
+                tree.refresh()
+            except:
+                pass
+
+            # Show success message in AI log
+            try:
+                ai_tab = self.app.query_one(AIAgentTab)
+                log = ai_tab.query_one("#ai-log", RichLog)
+                log.write(f"[green]✓ Deleted: {post_dir.name}[/green]\n")
+            except:
+                pass
+
+        except Exception as e:
+            self.app.query_one("#modal-title", Static).update(
+                f"[#bf616a]✗ Error: {str(e)}[/#bf616a]"
+            )
+
+
 class CreateCategoryScreen(ModalScreen):
     """
     Modal for creating new blog categories.
@@ -2405,9 +2482,9 @@ class CreateCategoryScreen(ModalScreen):
                 yield Label("Parent Section:", classes="field-label")
                 yield Select(
                     [
-                        Select.Option("Routing", value="routing"),
-                        Select.Option("Junos", value="junos"),
-                        Select.Option("Projects", value="projects"),
+                        ("Routing", "routing"),
+                        ("Junos", "junos"),
+                        ("Projects", "projects"),
                     ],
                     value="routing",
                     id="select-parent",
@@ -2481,6 +2558,165 @@ class CreateCategoryScreen(ModalScreen):
                 self.app.pop_screen()
             except Exception:
                 pass
+
+
+class HelpScreen(NiceModal):
+    """
+    Comprehensive help and documentation screen.
+
+    Features:
+        - Usage instructions
+        - Keyboard shortcuts
+        - Feature explanations
+        - Tips and tricks
+    """
+
+    def __init__(self):
+        super().__init__("📚 Help & Documentation")
+
+    def compose(self) -> ComposeResult:
+        """Compose the help screen."""
+        yield from super().compose()
+
+        help_text = """
+[bold cyan]╔════════════════════════════════════════════════════════════╗
+║         NGERAN[IO] BLOG AUTOMATION TUI - HELP           ║
+╚════════════════════════════════════════════════════════════╝[/bold cyan]
+
+[bold yellow]📝 CONTENT CREATION[/bold yellow]
+
+[yellow]Create New Post:[/yellow]
+  • Click [cyan]"AI Agent"[/cyan] → [cyan]"📝 Create Post"[/cyan]
+  • Select category from sidebar (OSPF, BGP, MPLS, etc.)
+  • Enter title and content
+  • Click [cyan]"✓ Create Post"[/cyan]
+  • Post is created automatically with frontmatter
+
+[yellow]Create New Category:[/yellow]
+  • In Create Post screen, click [cyan]"[+]"[/cyan] button
+  • Select parent section: [cyan]Routing[/cyan], [cyan]Junos[/cyan], or [cyan]Projects[/cyan]
+  • Enter category name (e.g., "Network Automation")
+  • Category is created instantly!
+
+[yellow]Delete Category:[/yellow]
+  • In Create Post screen, click [cyan]"[−]"[/cyan] button
+  • Select category to delete from dropdown
+  • [red]⚠ Warning: Deletes ALL posts in category![/red]
+
+[yellow]Edit Existing Post:[/yellow]
+  • Navigate to file in sidebar tree
+  • Click on the file to open it
+  • Make changes in the editor
+  • Click [cyan]"💾 Save"[/cyan] to save
+
+[yellow]Delete Post:[/yellow]
+  • Open the post you want to delete
+  • Click [cyan]"AI Agent"[/cyan] → [cyan]"🗑 Delete Post"[/cyan]
+  • [red]⚠ This cannot be undone![/red]
+
+[bold yellow]🤖 AI ASSISTANT FEATURES[/bold yellow]
+
+[yellow]📋 Manage Posts:[/yellow]
+  • View all posts in a table
+  • Filter by draft/published status
+  • Quick access to edit and open
+
+[yellow]🏷️ Suggest Tags:[/yellow]
+  • Open a post first
+  • Click [cyan]"🏷️ Suggest Tags"[/cyan]
+  • Get tag suggestions based on content
+
+[yellow]✨ Improve Content:[/yellow]
+  • Open a post first
+  • Click [cyan]"✨ Improve Content"[/cyan]
+  • Runs quality gate validation
+  • Shows suggestions for improvement
+
+[yellow]📊 Analyze Post:[/yellow]
+  • Open a post first
+  • Click [cyan]"📊 Analyze Post"[/cyan]
+  • Shows word count, line count, frontmatter status
+
+[bold yellow]⚡ AUTOMATION TAB[/bold yellow]
+
+[yellow]✓ Quality Gate:[/yellow]
+  • Validates all draft posts
+  • Checks frontmatter, word count, images
+  • Ensures content meets quality standards
+
+[yellow]▶ Preview:[/yellow]
+  • Starts Hugo development server
+  • Visit http://localhost:1313
+  • See your site in real-time
+  • Auto-reloads on changes
+
+[yellow]⏹ Stop:[/yellow]
+  • Stops the preview server
+  • Use when done previewing
+
+[yellow]⚙ Tests:[/yellow]
+  • Runs Phase 2 test suite
+  • Validates automation scripts
+  • Checks all integrations
+
+[yellow]🔨 Build:[/yellow]
+  • Generates optimized static site
+  • Outputs to [cyan]public/[/cyan] directory
+  • Minified and production-ready
+
+[bold yellow]⌨️ KEYBOARD SHORTCUTS[/bold yellow]
+
+[yellow]Navigation:[/yellow]
+  • [cyan]q[/cyan] or [cyan]Ctrl+C[/cyan] - Quit application
+  • [cyan]Ctrl+R[/cyan] - Refresh file tree
+  • [cyan]Tab[/cyan] - Move between fields
+
+[yellow]Content Actions:[/yellow]
+  • [cyan]Ctrl+N[/cyan] - Create new post
+  • [cyan]Ctrl+O[/cyan] - Preview current file
+  • [cyan]Ctrl+S[/cyan] - Save current file
+  • [cyan]Ctrl+K[/cyan] - Create new category
+  • [cyan]Ctrl+V[/cyan] - View all posts
+  • [cyan]Ctrl+Shift+P[/cyan] - Preview site
+  • [cyan]Esc[/cyan] - Close editor/modal
+
+[bold yellow]💡 TIPS & TRICKS[/bold yellow]
+
+• [green]✓[/green] Categories sync automatically after creation
+• [green]✓[/green] File tree refreshes after add/delete operations
+• [green]✓[/green] You can create posts under Routing, Junos, or Projects
+• [green]✓[/green] Use Quality Gate before publishing
+• [green]✓[/green] Preview locally before pushing to production
+• [green]✓[/green] All posts are backed up automatically (if enabled)
+
+[bold yellow]📂 FILE STRUCTURE[/bold yellow]
+
+[cyan]content/
+├── routing/          # Routing protocol posts
+│   ├── ospf/
+│   ├── bgp/
+│   └── mpls/
+├── junos/            # Juniper-specific content
+└── projects/         # Project-based posts
+    └── automation/   # Your custom categories[/cyan]
+
+[bold yellow]🚀 PUBLISHING WORKFLOW[/bold yellow]
+
+1. Create post (set [cyan]draft = true[/cyan])
+2. Write content
+3. Run [cyan]"✨ Improve Content"[/cyan] to validate
+4. Preview locally ([cyan]"▶ Preview"[/cyan])
+5. When ready, set [cyan]draft = false[/cyan]
+6. Build ([cyan]"🔨 Build"[/cyan])
+7. Commit and push to GitHub
+8. Cloudflare Pages auto-deploys
+
+[bold cyan]╔════════════════════════════════════════════════════════════╗
+║  For more info, check CLAUDE.md and TUI-GUIDE.md in the repo  ║
+╚════════════════════════════════════════════════════════════╝[/bold cyan]
+"""
+
+        yield Static(help_text, id="help-content")
 
 
 # =============================================
@@ -2736,8 +2972,8 @@ class BlogAutomationApp(App):
         self.push_screen(CreateCategoryScreen())
 
     def action_view_posts(self) -> None:
-        """View all posts (Ctrl+V)."""
-        self.push_screen(ViewPostsScreen())
+        """View all posts (Ctrl+V) - shows posts in sidebar."""
+        self.change_view("dashboard")
 
     # =============================================
     # VIEW RENDERERS

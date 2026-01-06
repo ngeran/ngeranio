@@ -264,3 +264,17 @@
 [2026-01-04 17:24:51] [INFO] [ContentManager] [INFO]   4. Validate: ./scripts/quality-gate.sh validate content/routing/automation/junos-snapshot-administrator-jsnapy/index.md
 [2026-01-04 17:24:51] [INFO] [ContentManager] [INFO]   5. Preview: ./scripts/preview.sh
 [2026-01-04 17:24:51] [INFO] [ContentManager] [INFO]   6. When ready, set draft = false
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Creating new post...
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Category: projects/automation
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Title: Junos Snapshot Administrator in Python (JSNAPy)
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Generated slug: junos-snapshot-administrator-in-python-jsnapy
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Creating featured image...
+[2026-01-05 18:20:48] [INFO] [ContentManager] [SUCCESS] ✓ Post created successfully!
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   Location: content/routing/projects/automation/junos-snapshot-administrator-in-python-jsnapy/index.md
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO] Next steps:
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   1. Edit content in: content/routing/projects/automation/junos-snapshot-administrator-in-python-jsnapy/index.md
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   2. Replace featured.png with actual image
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   3. Add diagrams/images to post directory
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   4. Validate: ./scripts/quality-gate.sh validate content/routing/projects/automation/junos-snapshot-administrator-in-python-jsnapy/index.md
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   5. Preview: ./scripts/preview.sh
+[2026-01-05 18:20:48] [INFO] [ContentManager] [INFO]   6. When ready, set draft = false

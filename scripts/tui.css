@@ -3,7 +3,7 @@
    =============================================
    Nord Theme - Clean, Minimalistic Design
    Version: 2.0.0
-   Last Updated: 2026-01-04
+   Last Updated: 2026-01-05
    ============================================= */
 
 /* =============================================
@@ -60,10 +60,26 @@ TopNav {
     height: 1;
     margin: 1 1 0 0;
     padding: 0 1;
+    min-width: 4;
+    text-align: right;
 }
 
 .nav-link:hover {
     text-style: bold;
+}
+
+.nav-link-quit {
+    padding: 0 2;
+    margin: 1 0 0 0;
+    text-style: bold;
+    content-align: right middle;
+    text-align: right;
+    min-width: 10;
+}
+
+.nav-link-quit:hover {
+    text-style: bold underline;
+    background: #3b4252;
 }
 
 /* =============================================
@@ -451,6 +467,7 @@ NiceModal {
 #modal-container {
     width: 70;
     height: auto;
+    max-height: 80%;
     border: thick #616e88;
     background: #2e3440;
     layout: vertical;
@@ -484,6 +501,37 @@ NiceModal {
     overflow-y: auto;
 }
 
+/* Success Modal Styles */
+PostCreatedSuccessScreen {
+    align: center middle;
+}
+
+PostCreatedSuccessScreen > #modal-container {
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#success-message {
+    padding: 1 0;
+    margin-bottom: 1;
+    text-align: left;
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+}
+
+.modal-close-btn {
+    width: 3;
+    height: 1;
+    background: #bf616a;
+    color: #eceff4;
+    border: solid #bf616a;
+    text-style: bold;
+}
+
+.modal-close-btn:hover {
+    background: #d08770;
+}
+
 /* =============================================
    FILE MANAGEMENT MODALS
    ============================================= */
@@ -501,12 +549,60 @@ CreateCategoryScreen {
 #category-modal {
     width: 75;
     height: auto;
-    max-height: 35%;
+    max-height: 80%;
     border: thick #616e88;
     background: #2e3440;
     layout: vertical;
     padding: 1;
     overflow-y: auto;
+}
+
+/* Delete Post Modal */
+#delete-post-modal {
+    width: 90;
+    height: auto;
+    max-height: 85%;
+    border: thick #616e88;
+    background: #2e3440;
+    layout: vertical;
+    padding: 1;
+    overflow-y: auto;
+}
+
+#delete-instructions {
+    padding: 1 0;
+    margin-bottom: 1;
+    text-align: left;
+    border-bottom: solid #3b4252;
+    padding-bottom: 1;
+}
+
+#posts-table {
+    height: 1fr;
+    min-height: 20;
+    margin-bottom: 1;
+}
+
+#delete-actions {
+    height: 3;
+    margin-top: 1;
+    border-top: solid #3b4252;
+    padding-top: 1;
+}
+
+#delete-actions > Button {
+    width: 1fr;
+    margin-right: 1;
+    height: 3;
+}
+
+#delete-actions > Button:last-child {
+    margin-right: 0;
+}
+
+#no-posts-message {
+    padding: 5 0;
+    text-align: center;
 }
 
 /* Link styling for actions */
@@ -531,7 +627,7 @@ CreateCategoryScreen {
 }
 
 #create-sidebar {
-    width: 30;
+    width: 35;
     height: 100%;
     background: #2e3440;
     border-right: solid #616e88;
@@ -552,6 +648,53 @@ CreateCategoryScreen {
     text-align: left;
     color: #d8dee9;
     content-align: left middle;
+}
+
+#category-header {
+    height: 3;
+    margin: 0 0 1 0;
+    padding: 0;
+    align: left middle;
+}
+
+#cat-label {
+    margin: 0;
+    padding: 1 0;
+    height: 3;
+}
+
+#cat-spacer {
+    width: 2;
+}
+
+.nav-btn-small {
+    width: 5;
+    height: 1;
+    min-width: 5;
+    margin: 1 0 1 0;
+    padding: 0;
+    background: #5e81ac;
+    color: #eceff4;
+    border: solid #88c0d0;
+    text-style: bold;
+}
+
+.nav-btn-small:hover {
+    background: #81a1c1;
+    color: #eceff4;
+    text-style: bold;
+    border: solid #88c0d0;
+}
+
+#category-list {
+    height: 1fr;
+    overflow-y: auto;
+    border: none;
+    background: transparent;
+}
+
+#cat-list-spacer {
+    height: 1fr;
 }
 
 .cat-btn:hover {
@@ -805,14 +948,16 @@ Input:focus,
 }
 
 #create-actions,
-#edit-actions {
+#edit-actions,
+#delete-actions {
     height: 3;
     margin-top: 0;
     padding-top: 0;
 }
 
 #create-actions Button,
-#edit-actions Button {
+#edit-actions Button,
+#delete-actions Button {
     width: 1fr;
     margin-right: 1;
 }
@@ -1001,6 +1146,18 @@ Button {
 }
 
 Button:hover {
+    text-style: bold;
+}
+
+/* Error variant (for delete buttons) */
+Button.--error {
+    background: #bf616a;
+    color: #eceff4;
+    border: solid #bf616a;
+}
+
+Button.--error:hover {
+    background: #d08770;
     text-style: bold;
 }
 
