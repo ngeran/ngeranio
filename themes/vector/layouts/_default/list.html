@@ -2,22 +2,28 @@
 <!-- ============================================ -->
 <!-- MAIN CONTENT SECTION                          -->
 <!-- ============================================ -->
-<section class="pt-20 pb-12 px-6 sm:px-8 lg:px-12">
+<section class="pt-12 pb-12 px-6 sm:px-8 lg:px-12 list-page-section">
   <div class="max-w-7xl mx-auto">
 
     <!-- ============================================ -->
     <!-- SECTION HEADER                                -->
     <!-- ============================================ -->
     <div class="mb-16 text-center">
-      <h1 class="text-4xl font-bold text-moon mb-2 mt-8" style="font-family: 'Allerta Stencil', sans-serif;">
+      <h1 class="text-4xl font-bold text-moon mb-4" style="font-family: 'Allerta Stencil', sans-serif;">
         {{ if eq .Title "Routing" }}
           Routing & Networking
+        {{ else if eq .Title "OSPF Posts" }}
+          OSPF
+        {{ else if eq .Title "BGP Posts" }}
+          BGP
+        {{ else if eq .Title "MPLS Posts" }}
+          MPLS
         {{ else }}
           {{ .Title }}
         {{ end }}
       </h1>
       <p class="text-base text-gray-300 leading-relaxed">
-        {{ if eq .Title "OSPF  Posts" }}
+        {{ if eq .Title "OSPF Posts" }}
           Open Shortest Path First protocol concepts and configuration
         {{ else if eq .Title "BGP Posts" }}
           Border Gateway Protocol implementation and best practices
@@ -78,10 +84,10 @@
           <!-- ============================================ -->
           <!-- CARD BOTTOM - METADATA & CONTENT              -->
           <!-- ============================================ -->
-          <div class="resource-link-bottom p-6 bg-[#2a2c33] rounded-b-2xl transition-colors duration-300 group-hover:bg-dust-900">
+          <div class="resource-link-bottom p-6 bg-[#2a2c33] rounded-b-2xl transition-colors duration-300 group-hover:bg-dust-900 text-center">
 
             <!-- Metadata row -->
-            <div class="resource-metadata flex items-center gap-2 text-xs text-dust-400 mb-2">
+            <div class="resource-metadata flex items-center justify-center gap-2 text-xs text-dust-400 mb-2">
               <!-- Category badge -->
               {{ if .Params.tags }}
                 {{ with index .Params.tags 0 }}

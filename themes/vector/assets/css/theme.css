@@ -10,6 +10,49 @@
   transition-duration: 250ms;
 }
 
+/* ===== Homepage Layout - Sticky Footer ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > div {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: calc(100vh - 4rem);
+}
+
+/* Force hero section to fill available space (homepage) */
+#main-content > section {
+  height: 100% !important;
+  min-height: calc(100vh - 14rem) !important;
+  display: flex !important;
+  flex-direction: column;
+}
+
+#main-content > section > div {
+  height: 100% !important;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* List pages - ensure footer is always at bottom */
+#main-content > section.list-page-section {
+  min-height: calc(100vh - 16rem) !important;
+  display: block !important;
+  margin-top: 4rem !important;
+}
+
+#main-content > section.list-page-section > div {
+  height: auto !important;
+  flex: none !important;
+  display: block !important;
+}
+
 /* ===== Custom Background Colors ===== */
 .bg-dust-800 {
   background-color: #22242a;
@@ -412,4 +455,226 @@ footer {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
+}
+
+/* ===== Dropdown Item Hover Effects ===== */
+/* Target menu items using the custom class */
+.menu-item-border:hover {
+  background-color: #1a1b20 !important;
+}
+
+/* Blue border animation - ensure it's visible */
+.menu-item-border:hover .absolute.bottom-0 {
+  transform: scaleX(1) !important;
+}
+
+/* Arrow color change on hover */
+.menu-item-border:hover svg:last-child {
+  color: #00daff !important;
+}
+
+/* Title color change on hover */
+.menu-item-border:hover h4 {
+  color: #00daff !important;
+}
+
+/* Icon color change on hover */
+.menu-item-border:hover .w-10.h-10 svg {
+  color: #00daff !important;
+}
+
+/* =============================================
+   MODERN DROPDOWN MENU STYLES
+   ============================================= */
+
+/* Chevron rotation on hover */
+.group:hover .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu container */
+.dropdown-menu {
+  transform-origin: top center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Dropdown item animations */
+.dropdown-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+  transform: scaleY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-item:hover::before {
+  transform: scaleY(1);
+}
+
+/* Add subtle glow effect on dropdown */
+.dropdown-menu::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.group:hover .dropdown-menu::after {
+  opacity: 1;
+}
+
+/* Enhanced hover states for nav items */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-item-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item-dropdown:hover::after {
+  width: 80%;
+}
+
+/* Dropdown entrance animation with stagger */
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.group:hover .dropdown-menu .dropdown-item {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+/* Stagger animation for each item */
+.group:hover .dropdown-menu .dropdown-item:nth-child(1) { animation-delay: 0.05s; }
+.group:hover .dropdown-menu .dropdown-item:nth-child(2) { animation-delay: 0.1s; }
+.group:hover .dropdown-menu .dropdown-item:nth-child(3) { animation-delay: 0.15s; }
+.group:hover .dropdown-menu .dropdown-item:nth-child(4) { animation-delay: 0.2s; }
+.group:hover .dropdown-menu .dropdown-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* Focus visible styles for accessibility */
+.dropdown-item:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: -2px;
+  background: rgba(6, 182, 212, 0.1);
+}
+
+/* Mobile dropdown improvements */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    width: 100%;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    background: rgba(31, 41, 55, 0.95);
+  }
+
+  .chevron-icon {
+    transition: transform 0.2s;
+  }
+
+  .nav-item-dropdown.active .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-item {
+    padding-left: 2rem;
+  }
+}
+
+/* =============================================
+   ENHANCED DROPDOWN EFFECTS
+   ============================================= */
+
+/* Nav link underline effect */
+.nav-link-enhanced::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-enhanced:hover::after {
+  width: 70%;
+}
+
+/* Enhanced dropdown item animations */
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered animations for dropdown items */
+.group:hover .dropdown-item-enhanced-1 {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: 0.05s;
+}
+
+.group:hover .dropdown-item-enhanced-2 {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: 0.1s;
+}
+
+.group:hover .dropdown-item-enhanced-3 {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: 0.15s;
+}
+
+.group:hover .dropdown-item-enhanced-4 {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: 0.2s;
+}
+
+.group:hover .dropdown-item-enhanced-5 {
+  animation: dropdownSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: 0.25s;
 }

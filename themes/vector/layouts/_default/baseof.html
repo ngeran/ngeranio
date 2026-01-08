@@ -32,7 +32,7 @@
             {{ if .HasChildren }}
               <!-- Dropdown Menu with Grid Icon -->
               <div class="relative group">
-                <a href="{{ .URL }}" class="nav-link flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded-lg transition-all duration-200" style="text-decoration: none; font-size: 1rem;">
+                <a href="{{ .URL }}" class="nav-link-enhanced flex items-center gap-2 px-4 py-3 text-gray-100 hover:bg-dust-900 hover:text-moon rounded-lg transition-all duration-200 relative" style="text-decoration: none; font-size: 1rem;">
                   <svg class="w-5 h-5 text-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 13C9.55228 13 10 12.5523 10 12C10 11.4477 9.55228 11 9 11C8.44772 11 8 11.4477 8 12C8 12.5523 8.44772 13 9 13Z" fill="currentColor"></path>
                     <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" fill="currentColor"></path>
@@ -45,21 +45,27 @@
                     <path d="M6 13C6.55228 13 7 12.5523 7 12C7 11.4477 6.55228 11 6 11C5.44772 11 5 11.4477 5 12C5 12.5523 5.44772 13 6 13Z" fill="currentColor"></path>
                   </svg>
                   <span class="capitalize">{{ .Name }}</span>
+                  <!-- Chevron Arrow -->
+                  <svg class="chevron-indicator w-4 h-4 ml-1 text-gray-500 group-hover:text-moon transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </a>
 
                 <!-- Mega Menu Dropdown -->
                 <div class="megamenu-dropdown absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 400px;">
-                  <div class="bg-dust-800 shadow-2xl overflow-hidden pb-6">
+                  <div class="bg-dust-800 shadow-2xl overflow-hidden">
                     <!-- Header -->
-                    <div class="px-6 py-4 border-b border-gray-700/50 bg-gradient-to-r from-[#5e81ac]/10 to-[#81a1c1]/10">
+                    <div class="px-6 py-4 border-b border-gray-700">
                       <h3 class="text-lg font-semibold text-moon">{{ .Name }}</h3>
                       <p class="text-sm text-dust-400 mt-1">Routing protocols study materials</p>
                     </div>
 
                     <!-- Content List -->
-                    <div class="p-2">
+                    <div class="p-2 pb-6">
                       {{ range .Children }}
-                        <a href="{{ .URL }}" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-dust-900 transition-all duration-200 border-b border-gray-700/50 menu-item-border">
+                        <a href="{{ .URL }}" class="group/item flex items-center gap-4 px-4 py-3 hover:bg-[#1a1b20] transition-all duration-200 border-b border-gray-700 menu-item-border relative">
+                          <!-- Animated blue bottom border -->
+                          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 transform scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300 origin-left z-10"></div>
                           <!-- Icon -->
                           <div class="w-10 h-10 flex items-center justify-center">
                             {{ if eq .Identifier "ospf" }}
@@ -86,8 +92,8 @@
                             <h4 class="font-medium text-gray-100 group-hover/item:text-moon transition-colors duration-200">{{ .Name }}</h4>
                           </div>
 
-                          <!-- Grid Icon -->
-                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:scale-110 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <!-- Arrow Icon -->
+                          <svg class="w-5 h-5 text-gray-600 group-hover/item:text-moon group-hover/item:translate-x-1 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 9C7.55228 9 8 8.55228 8 8C8 7.44772 7.55228 7 7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9Z" fill="currentColor"></path>
                             <path d="M9 11C9.55228 11 10 10.5523 10 10C10 9.44772 9.55228 9 9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11Z" fill="currentColor"></path>
                             <path d="M11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11C10.4477 11 10 11.4477 10 12C10 12.5523 10.4477 13 11 13Z" fill="currentColor"></path>
@@ -104,7 +110,7 @@
                     </div>
 
                       <!-- Footer -->
-                      <div class="mt-6 pt-4 px-6 border-t border-gray-700/50 flex items-center justify-between">
+                      <div class="px-6 py-4 border-t border-gray-700 flex items-center justify-between">
                         <span class="text-sm text-dust-400">
                           <span class="text-moon font-semibold">{{ len .Children }}</span> protocols available
                         </span>
@@ -168,7 +174,7 @@
   <!-- MAIN CONTENT AREA                             -->
   <!-- ============================================ -->
   <div class="pt-16">
-    <main>
+    <main id="main-content">
      {{ block "main" . }}{{ end }}
     </main>
 
