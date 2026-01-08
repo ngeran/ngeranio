@@ -1,2 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on ngeran[io]</title><link>https://ngeranio.com/projects/</link><description>Recent content in Projects on ngeran[io]</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate><atom:link href="https://ngeranio.com/projects/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://ngeranio.com/projects/automation/junos-snapshot-administrator-jsnapy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ngeranio.com/projects/automation/junos-snapshot-administrator-jsnapy/</guid><description>&lt;h2 id="--this-is-the-title"&gt;** This is the title&lt;/h2&gt;
-&lt;p&gt;Junos® Snapshot Administrator in Python (jsnapy) enables you to capture and audit runtime environment snapshots of your networked devices running the Junos OS. You can capture and validate the operational and configuration status of a device and review operational changes to a device. You create configuration files that define the scope of snapshots and customize the test criteria for the snapshot data.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on ngeran[io]</title>
+    <link>http://localhost:1313/projects/</link>
+    <description>Recent content in Projects on ngeran[io]</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Dec 2024 17:36:42 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Junos Snapshot Administrator (jsnapy)</title>
+      <link>http://localhost:1313/projects/automation/junos-snapshot-administrator-jsnapy/</link>
+      <pubDate>Tue, 10 Dec 2024 17:36:42 -0500</pubDate>
+      <guid>http://localhost:1313/projects/automation/junos-snapshot-administrator-jsnapy/</guid>
+      <description>&lt;p&gt;Junos® Snapshot Administrator in Python (jsnapy) enables you to capture and audit runtime environment snapshots of your networked devices running the Junos OS. You can capture and validate the operational and configuration status of a device and review operational changes to a device. You create configuration files that define the scope of snapshots and customize the test criteria for the snapshot data.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -39,11 +39,6 @@ pagerSize = 6
   pageRef = '/routing/mpls'
   weight = 20
 
-[[menus.main]]
-  name = "projects"
-  pageRef = '/projects'
-  weight = 30
-
 
  [params.site]
   logo = "/networking-dark.png"

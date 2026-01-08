@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OSPF Posts on ngeran[io]</title><link>https://ngeranio.com/routing/ospf/</link><description>Recent content in OSPF Posts on ngeran[io]</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 22 Nov 2024 13:14:14 -0500</lastBuildDate><atom:link href="https://ngeranio.com/routing/ospf/index.xml" rel="self" type="application/rss+xml"/><item><title>Headers and Types</title><link>https://ngeranio.com/routing/ospf/packet-types/</link><pubDate>Fri, 22 Nov 2024 13:14:14 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/packet-types/</guid><description>Packet Header and Packet Types</description></item><item><title>Type 5 - AS External</title><link>https://ngeranio.com/routing/ospf/lsa5/</link><pubDate>Fri, 22 Nov 2024 13:13:56 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/lsa5/</guid><description>OSPF Type 4 LSA Summary</description></item><item><title>Type 4 - ASBR Summary</title><link>https://ngeranio.com/routing/ospf/lsa4/</link><pubDate>Fri, 22 Nov 2024 13:13:46 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/lsa4/</guid><description>OSPF Type 4 LSA Summary</description></item><item><title>Type 3 - Summary</title><link>https://ngeranio.com/routing/ospf/lsa3/</link><pubDate>Fri, 22 Nov 2024 13:13:42 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/lsa3/</guid><description>OSPF Type 3 LSA Summary</description></item><item><title>Type 2 - Network</title><link>https://ngeranio.com/routing/ospf/lsa2/</link><pubDate>Fri, 22 Nov 2024 13:13:33 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/lsa2/</guid><description>OSPF Type 2 LSA Summary</description></item><item><title>Type 1 - Router</title><link>https://ngeranio.com/routing/ospf/lsa1/</link><pubDate>Fri, 22 Nov 2024 13:13:23 -0500</pubDate><guid>https://ngeranio.com/routing/ospf/lsa1/</guid><description>OSPF Type 1 LSA Summary</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OSPF Posts on ngeran[io]</title>
+    <link>http://localhost:1313/routing/ospf/</link>
+    <description>Recent content in OSPF Posts on ngeran[io]</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Nov 2024 13:14:14 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/routing/ospf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Headers and Types</title>
+      <link>http://localhost:1313/routing/ospf/packet-types/</link>
+      <pubDate>Fri, 22 Nov 2024 13:14:14 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/packet-types/</guid>
+      <description>Packet Header and Packet Types</description>
+    </item>
+    <item>
+      <title>Type 5 - AS External</title>
+      <link>http://localhost:1313/routing/ospf/lsa5/</link>
+      <pubDate>Fri, 22 Nov 2024 13:13:56 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/lsa5/</guid>
+      <description>OSPF Type 4 LSA Summary</description>
+    </item>
+    <item>
+      <title>Type 4 - ASBR Summary</title>
+      <link>http://localhost:1313/routing/ospf/lsa4/</link>
+      <pubDate>Fri, 22 Nov 2024 13:13:46 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/lsa4/</guid>
+      <description>OSPF Type 4 LSA Summary</description>
+    </item>
+    <item>
+      <title>Type 3 - Summary</title>
+      <link>http://localhost:1313/routing/ospf/lsa3/</link>
+      <pubDate>Fri, 22 Nov 2024 13:13:42 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/lsa3/</guid>
+      <description>OSPF Type 3 LSA Summary</description>
+    </item>
+    <item>
+      <title>Type 2 - Network</title>
+      <link>http://localhost:1313/routing/ospf/lsa2/</link>
+      <pubDate>Fri, 22 Nov 2024 13:13:33 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/lsa2/</guid>
+      <description>OSPF Type 2 LSA Summary</description>
+    </item>
+    <item>
+      <title>Type 1 - Router</title>
+      <link>http://localhost:1313/routing/ospf/lsa1/</link>
+      <pubDate>Fri, 22 Nov 2024 13:13:23 -0500</pubDate>
+      <guid>http://localhost:1313/routing/ospf/lsa1/</guid>
+      <description>OSPF Type 1 LSA Summary</description>
+    </item>
+  </channel>
+</rss>

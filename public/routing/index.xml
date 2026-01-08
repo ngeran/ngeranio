@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Routing Section on ngeran[io]</title><link>https://ngeranio.com/routing/</link><description>Recent content in Routing Section on ngeran[io]</description><generator>Hugo</generator><language>en-us</language><lastBuildDate/><atom:link href="https://ngeranio.com/routing/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Routing Section on ngeran[io]</title>
+    <link>http://localhost:1313/routing/</link>
+    <description>Recent content in Routing Section on ngeran[io]</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jan 2026 18:20:48 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/routing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Junos Snapshot Administrator in Python (JSNAPy)</title>
+      <link>http://localhost:1313/routing/projects/automation/junos-snapshot-administrator-in-python-jsnapy/</link>
+      <pubDate>Mon, 05 Jan 2026 18:20:48 -0500</pubDate>
+      <guid>http://localhost:1313/routing/projects/automation/junos-snapshot-administrator-in-python-jsnapy/</guid>
+      <description>Add a 2-3 sentence summary of this post</description>
+    </item>
+  </channel>
+</rss>
