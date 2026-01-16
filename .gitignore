@@ -59,3 +59,10 @@ AI_AGENT_GUIDE.md    # AI agent documentation
 *claude*             # Any files with "claude" in name
 *ai-*                # Any files starting with "ai-"
 .ai-*                # Any files starting with ".ai-"
+
+# ============================================
+# Documentation (Root Directory)
+# ============================================
+# Ignore all .md files in root directory except README.md
+/*.md
+!/README.md
