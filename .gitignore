@@ -40,3 +40,22 @@ venv/                # Python virtual environment (alt name)
 .cloudflare/         # Cloudflare local state
 .functions/          # Cloudflare Functions builds
 dist/                # Distribution builds
+
+# ============================================
+# AI & Assistant Tools
+# ============================================
+# Claude Code (Anthropic)
+CLAUDE.md            # Claude Code project instructions
+.claude/              # Claude Code local data
+
+# Other AI Assistants
+.cursorrules         # Cursor AI rules
+.cursor/             # Cursor AI local data
+.copilot-instructions.md  # GitHub Copilot instructions
+.ai-content-template.md    # AI content templates
+AI_AGENT_GUIDE.md    # AI agent documentation
+
+# General AI Patterns
+*claude*             # Any files with "claude" in name
+*ai-*                # Any files starting with "ai-"
+.ai-*                # Any files starting with ".ai-"
