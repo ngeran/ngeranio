@@ -1,0 +1,11 @@
+name = "0xComa"
+license = "MIT"
+description = "Terminal/hacker aesthetic Hugo theme for ngeran[io]"
+homepage = "https://ngeranio.com/"
+tags = ["blog", "dark", "terminal", "minimal"]
+features = ["responsive", "dark-mode", "tailwind"]
+min_version = "0.111.0"
+
+[author]
+  name = "nikos"
+  homepage = "https://ngeranio.com/"

@@ -1,0 +1,166 @@
+{{ define "main" }}
+
+{{ $siblings := slice }}
+{{ if .Parent.IsHome }}
+  {{ $siblings = .Sections }}
+{{ else if .Parent }}
+  {{ $siblings = .Parent.Sections }}
+{{ end }}
+
+{{ $tags := slice }}
+{{ range .Pages }}
+  {{ range .Params.tags }}
+    {{ $tags = $tags | append . }}
+  {{ end }}
+{{ end }}
+
+<main class="pt-32 pb-24 px-4 sm:px-8 max-w-7xl mx-auto relative min-h-screen">
+  <!-- Page Header Schematic -->
+  <section class="mb-12 sm:mb-16 coma-border p-6 sm:p-8 bg-surface-lowest/50 relative overflow-hidden">
+    <div class="scanline"></div>
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">Category // {{ if and .Parent (not .Parent.IsHome) }}{{ upper .Parent.Title }}{{ else }}{{ upper .Section }}{{ end }}</span>
+        <div class="h-px flex-grow bg-border-muted"></div>
+      </div>
+      <h1 class="text-[32px] sm:text-headline-lg text-white mb-2 uppercase tracking-tight font-semibold">
+        {{ .Title }}
+      </h1>
+      <p class="text-on-surface-variant max-w-3xl text-sm leading-relaxed">
+        {{ .Params.summary | default (printf "Technical manifest: deep-dives into %s." (lower .Title)) }}
+      </p>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start">
+    <!-- Post Feed -->
+    {{ $pages := .Paginator.Pages }}
+    {{ if gt (len .Sections) 0 }}
+      {{ $allPages := slice }}
+      {{ range .Sections }}
+        {{ $allPages = $allPages | append (where .RegularPages "Params.draft" "ne" true) }}
+      {{ end }}
+      {{ $pages = first 5 (sort $allPages "Date" "desc") }}
+    {{ end }}
+    <div class="space-y-0 coma-border divide-y divide-border-muted">
+      {{ $counter := 0 }}
+      {{ range $pages }}
+        {{ $counter = add $counter 1 }}
+        <article class="group relative bg-black hover:bg-surface-lowest transition-colors p-5 sm:p-8 article-entry">
+          <a href="{{ .RelPermalink }}" class="block">
+            <div class="flex flex-col gap-4 sm:gap-6">
+              <div class="flex items-center justify-between font-mono text-[10px] text-on-surface-variant tracking-widest">
+                <div class="flex items-center gap-2 sm:gap-4">
+                  <span class="text-primary font-bold">ENTRY.{{ printf "%02d" $counter }}</span>
+                  <span class="w-px h-3 bg-border-muted"></span>
+                  {{ with index .Params.tags 0 }}
+                    <span class="text-primary">{{ upper . }}</span>
+                  {{ end }}
+                </div>
+                <span>{{ .Date.Format "Jan 02 2006" | upper }}</span>
+              </div>
+              <div class="space-y-2">
+                <h2 class="text-headline-md text-on-surface group-hover:text-primary transition-colors uppercase font-medium">
+                  {{ .Title }}
+                </h2>
+                <p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed">
+                  {{ .Params.summary | default .Summary }}
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 sm:gap-8 font-mono text-[10px] text-on-surface-variant">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">timer</span>
+                  <span>READ_TIME: {{ printf "%02d" .ReadingTime }}M</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">description</span>
+                  <span>SIZE: {{ .WordCount }}_WORDS</span>
+                </div>
+                <div class="flex-grow"></div>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      {{ end }}
+    </div>
+
+    <!-- Sidebar (desktop) -->
+    <aside class="space-y-12 hidden lg:block sticky top-32">
+      {{ if gt (len $siblings) 0 }}
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Index: Protocols</h3>
+          <div class="h-px flex-grow bg-border-muted"></div>
+        </div>
+        <ul class="space-y-3 font-mono text-[10px] uppercase tracking-wider">
+          {{ $i := 0 }}
+          {{ range $siblings }}
+            {{ $i = add $i 1 }}
+            <li>
+              <a class="flex items-center gap-2 {{ if eq .RelPermalink $.RelPermalink }}text-primary{{ else }}text-on-surface-variant hover:text-white{{ end }} transition-colors group" href="{{ .RelPermalink }}">
+                <span class="w-1.5 h-1.5 {{ if eq .RelPermalink $.RelPermalink }}bg-primary{{ else }}bg-border-muted group-hover:bg-primary{{ end }} transition-colors"></span>
+                {{ printf "%02d." $i }} {{ .Title }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3>
+          <div class="h-px flex-grow bg-border-muted"></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {{ range uniq $tags }}
+            <span class="tag-registry">#{{ upper . }}</span>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ partial "author.html" . }}
+    </aside>
+  </div>
+
+  <!-- Mobile Sidebar (below post feed on small screens) -->
+  <div class="lg:hidden mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+    {{ if gt (len $siblings) 0 }}
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Index: Protocols</h3>
+        <div class="h-px flex-grow bg-border-muted"></div>
+      </div>
+      <ul class="space-y-2 font-mono text-[10px] uppercase tracking-wider">
+        {{ $mi := 0 }}
+        {{ range $siblings }}
+          {{ $mi = add $mi 1 }}
+          <li>
+            <a class="flex items-center gap-2 {{ if eq .RelPermalink $.RelPermalink }}text-primary{{ else }}text-on-surface-variant hover:text-white{{ end }} transition-colors group" href="{{ .RelPermalink }}">
+              <span class="w-1.5 h-1.5 {{ if eq .RelPermalink $.RelPermalink }}bg-primary{{ else }}bg-border-muted group-hover:bg-primary{{ end }} transition-colors"></span>
+              {{ printf "%02d." $mi }} {{ .Title }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3>
+        <div class="h-px flex-grow bg-border-muted"></div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {{ range uniq $tags }}
+          <span class="tag-registry">#{{ upper . }}</span>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  {{ template "_internal/pagination.html" . }}
+</main>
+{{ end }}

@@ -1,0 +1,19 @@
+<footer class="mt-32 pt-12 border-t dim-border">
+  <div class="flex justify-between items-center font-mono text-xs">
+    {{ with .PrevInSection }}
+    <a class="group" href="{{ .RelPermalink }}">
+      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">PREVIOUS_LOG</span>
+      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">&larr; [ {{ .Title }} ]</span>
+    </a>
+    {{ else }}
+    <div></div>
+    {{ end }}
+
+    {{ with .NextInSection }}
+    <a class="group text-right" href="{{ .RelPermalink }}">
+      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">NEXT_LOG</span>
+      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">[ {{ .Title }} ] &rarr;</span>
+    </a>
+    {{ end }}
+  </div>
+</footer>

@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="max-w-[1200px] mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-20 sm:pb-40 border-x coma-border">
+  {{ partial "hero.html" . }}
+</section>
+
+<!-- Protocol Grid -->
+{{ partial "protocol-grid.html" . }}
+
+<!-- Data Log / Terminal Section -->
+<section class="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 sm:py-32 border-x coma-border" id="recent">
+  {{ partial "data-log.html" . }}
+</section>
+
+{{ partial "hero-flip-js.html" . }}
+
+{{ end }}

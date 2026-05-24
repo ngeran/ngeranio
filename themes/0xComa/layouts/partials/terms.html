@@ -1,0 +1,9 @@
+{{- $taxonomy := .taxonomy -}}
+{{- $page := .page -}}
+{{- with $page.GetTerms $taxonomy }}
+<div class="flex flex-wrap gap-2">
+  {{ range . }}
+    <a href="{{ .RelPermalink }}" class="tag-registry">#{{ upper .LinkTitle }}</a>
+  {{ end }}
+</div>
+{{- end }}

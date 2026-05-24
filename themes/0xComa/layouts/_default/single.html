@@ -1,0 +1,78 @@
+{{ define "main" }}
+<main class="max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-16">
+  <!-- Sidebar (desktop) -->
+  <aside class="hidden lg:block w-72 shrink-0">
+    {{ partial "sidebar-toc.html" . }}
+  </aside>
+
+  <!-- Article -->
+  <article class="flex-grow max-w-[840px]">
+    <header class="mb-10 sm:mb-16 border-b dim-border pb-8 sm:pb-12">
+      <!-- Breadcrumb -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-primary font-mono text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
+        <span>Routing</span>
+        <span class="text-outline">/</span>
+        <span>{{ with .CurrentSection }}{{ .Title }}{{ end }}</span>
+        <span class="text-outline">/</span>
+        <span class="text-high-contrast">{{ .Title }}</span>
+      </div>
+
+      <h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">{{ .Title }}</h1>
+
+      <div class="flex flex-wrap items-center gap-4 sm:gap-8 text-on-surface-variant font-mono text-[11px] uppercase tracking-wider">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          <span>{{ .Date.Format "02.01.2006" }}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">description</span>
+          <span>{{ .WordCount }} words</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">schedule</span>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile TOC (collapsible) -->
+    {{ with .TableOfContents }}
+    <details class="lg:hidden mb-8 coma-border bg-surface-lowest">
+      <summary class="p-4 font-mono text-xs text-primary uppercase tracking-[0.2em] cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-sm">list</span>
+        Table of Contents
+        <span class="material-symbols-outlined text-sm ml-auto">expand_more</span>
+      </summary>
+      <div class="px-4 pb-4">
+        <ul class="space-y-2 font-mono text-[10px] text-on-surface-variant">
+          {{ $toc := findRE `<a href="([^"]+)">([^<]+)</a>` . }}
+          {{ $i := 0 }}
+          {{ range $toc }}
+            {{ $i = add $i 1 }}
+            {{ $href := replaceRE `.*href="([^"]+)".*` "$1" . }}
+            {{ $text := replaceRE `.*>([^<]+)<.*` "$1" . }}
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="{{ $href }}">
+                <span class="text-primary">{{ printf "%02d" $i }}</span> {{ upper $text }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </details>
+    {{ end }}
+
+    <!-- Article Content -->
+    <div class="article-content max-w-none mb-20">
+      {{ .Content }}
+    </div>
+
+    <!-- Prev/Next Navigation -->
+    {{ if .Site.Params.enableNextPrevPages }}
+      {{ partial "article-prevnext.html" . }}
+    {{ end }}
+  </article>
+</main>
+
+{{ partial "article-js.html" . }}
+{{ end }}

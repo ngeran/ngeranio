@@ -1,0 +1,38 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Copy button for code blocks
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var pre = btn.closest('.ide-block').querySelector('pre');
+      navigator.clipboard.writeText(pre.textContent).then(function() {
+        var icon = btn.querySelector('.material-symbols-outlined');
+        icon.textContent = 'done';
+        icon.classList.add('text-primary');
+        setTimeout(function() {
+          icon.textContent = 'content_copy';
+          icon.classList.remove('text-primary');
+        }, 2000);
+      });
+    });
+  });
+
+  // TOC active state tracking
+  var tocLinks = document.querySelectorAll('.toc-link');
+  var headings = document.querySelectorAll('.article-content h3[id], .article-content h2[id]');
+
+  if (headings.length > 0 && tocLinks.length > 0) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          tocLinks.forEach(function(l) { l.classList.remove('active', 'text-high-contrast'); });
+          var active = document.querySelector('.toc-link[href="#' + id + '"]');
+          if (active) active.classList.add('active', 'text-high-contrast');
+        }
+      });
+    }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    headings.forEach(function(h) { observer.observe(h); });
+  }
+});
+</script>

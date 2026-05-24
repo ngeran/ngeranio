@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main class="min-h-screen flex items-center justify-center">
+  <div class="text-center space-y-8">
+    <div class="font-mono text-[10px] text-primary uppercase tracking-[0.3em]">Error_Code: 404</div>
+    <h1 class="text-headline-lg text-white font-semibold tracking-tighter">
+      PAGE_NOT_FOUND<span class="text-primary terminal-cursor"></span>
+    </h1>
+    <p class="text-on-surface-variant text-sm max-w-md mx-auto">
+      The requested resource does not exist or has been moved.
+    </p>
+    <a href="/" class="coma-border-white bg-white text-black px-8 py-3 font-mono text-xs uppercase tracking-widest hover:bg-primary hover:border-primary transition-all duration-300 inline-flex items-center gap-3">
+      <span class="material-symbols-outlined text-sm">home</span>
+      Return Home
+    </a>
+  </div>
+</main>
+{{ end }}

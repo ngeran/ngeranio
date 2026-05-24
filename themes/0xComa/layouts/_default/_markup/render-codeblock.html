@@ -1,0 +1,19 @@
+{{ $lang := .Type | default "text" }}
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        {{ if eq $lang "text" }}terminal{{ else }}{{ $lang }}{{ end }}
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>{{ .Inner }}</code></pre>
+</div>

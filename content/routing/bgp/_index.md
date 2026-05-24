@@ -1,10 +1,13 @@
 ---
-title: BGP Posts
+title: BGP
 date: 2024-11-28
 publishdate: 2024-11-28
 tags : ["BGP","Routing","JUNOS"]
 featured_image : 'featured.png'
-summary : 'Demystify the Border Gateway Protocol (BGP). Option deep dives and more.'
+summary : 'TECHNICAL MANIFEST: A comprehensive collection of deep-dives into path selection, community attributes, and advanced JNCIE-SP level configurations. Analyzing the backbone of modern internet routing through precision engineering.'
+featured: true
+icon: "hub"
+grid_desc: "Deep dive into external peering, confederations, and route reflectors."
 ---
 
 

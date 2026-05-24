@@ -1,0 +1,39 @@
+<nav class="sticky top-32 space-y-10">
+  {{ with .TableOfContents }}
+  <!-- TOC Index -->
+  <div class="precision-border p-6 bg-surface-container-lowest">
+    <h4 class="font-mono text-xs text-high-contrast mb-4 uppercase tracking-[0.2em]">Index</h4>
+    <ul class="space-y-4 font-mono text-[10px] text-on-surface-variant">
+      {{ $toc := findRE `<a href="([^"]+)">([^<]+)</a>` . }}
+      {{ $i := 0 }}
+      {{ range $toc }}
+        {{ $i = add $i 1 }}
+        {{ $href := replaceRE `.*href="([^"]+)".*` "$1" . }}
+        {{ $text := replaceRE `.*>([^<]+)<.*` "$1" . }}
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="{{ $href }}">
+            <span class="group-hover:text-high-contrast transition-colors">{{ printf "%02d" $i }} {{ upper $text }}</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  <!-- Author Card -->
+  <div class="dim-border p-5 bg-surface-container-lowest flex items-center gap-4">
+    {{ $avatar := resources.Get "author/avatar.png" }}
+    {{ if $avatar }}
+    <img alt="Avatar" class="w-10 h-10 grayscale contrast-125 dim-border" src="{{ $avatar.RelPermalink }}">
+    {{ else }}
+    <div class="w-10 h-10 dim-border flex items-center justify-center bg-surface-container-lowest">
+      <span class="material-symbols-outlined text-primary text-lg">memory</span>
+    </div>
+    {{ end }}
+    <div>
+      <p class="font-mono text-[10px] text-high-contrast leading-none mb-1">{{ .Site.Params.author.name }}</p>
+      <p class="font-mono text-[9px] text-on-surface-variant leading-none">JNCIE-SP JOURNEY</p>
+    </div>
+  </div>
+</nav>

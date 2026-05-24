@@ -1,0 +1,25 @@
+{{ $dst := .Destination }}
+{{ $alt := .Text | default "Diagram" }}
+{{ $img := $dst }}
+
+{{ if and (not (strings.HasPrefix $dst "http")) .Page }}
+  {{ with .Page.Resources.GetMatch $dst }}
+    {{ $img = .RelPermalink }}
+  {{ else }}
+    {{ $img = $dst | relURL }}
+  {{ end }}
+{{ end }}
+
+<figure class="article-figure">
+  <div class="fig-wrap relative group">
+    <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div>
+    <img src="{{ $img }}" alt="{{ $alt }}" loading="lazy" class="w-full fig-img">
+  </div>
+  <div class="fig-caption">
+    <div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant tracking-wider uppercase">
+      <span class="w-2 h-2 bg-primary"></span>
+      {{ $alt }}
+    </div>
+    <span class="fig-number font-mono text-[10px] text-outline"></span>
+  </div>
+</figure>

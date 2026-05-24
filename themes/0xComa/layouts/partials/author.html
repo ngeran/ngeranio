@@ -1,0 +1,23 @@
+{{ with site.Params.author }}
+<div class="coma-border-muted p-6 bg-surface-low/30 space-y-4">
+  <div class="flex items-center gap-3">
+    {{ $avatar := resources.Get "author/avatar.png" }}
+    {{ if $avatar }}
+    <div class="w-10 h-10 coma-border-muted flex items-center justify-center bg-black overflow-hidden">
+      <img src="{{ $avatar.RelPermalink }}" alt="{{ .name }}" class="w-full h-full object-cover grayscale contrast-125">
+    </div>
+    {{ else }}
+    <div class="w-10 h-10 coma-border-muted flex items-center justify-center bg-black">
+      <span class="material-symbols-outlined text-primary text-lg">memory</span>
+    </div>
+    {{ end }}
+    <div class="flex flex-col">
+      <span class="font-mono text-xs text-white tracking-widest">{{ .name }}</span>
+      <span class="text-[10px] font-mono text-primary">ARCHITECT_V1.0</span>
+    </div>
+  </div>
+  <p class="text-xs text-on-surface-variant leading-relaxed opacity-80">
+    {{ .bio }}
+  </p>
+</div>
+{{ end }}

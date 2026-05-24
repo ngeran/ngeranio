@@ -1,0 +1,26 @@
+{{ $featured := where .Site.Pages "Params.featured" true }}
+{{ $featured := first 3 $featured }}
+
+{{ if gt (len $featured) 0 }}
+<section class="border-y coma-border">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 border-x coma-border divide-x coma-border">
+    {{ range $idx, $sec := $featured }}
+      {{ $icon := $sec.Params.icon | default "folder" }}
+      {{ $desc := $sec.Params.grid_desc | default $sec.Params.summary }}
+      {{ $postCount := len (where $sec.RegularPages "Params.draft" "ne" true) }}
+      <a href="{{ $sec.RelPermalink }}" class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block">
+        <div class="flex justify-between items-start mb-16">
+          <span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ {{ printf "0x%02X" (add $idx 1) }} ]</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">{{ $icon }}</span>
+        </div>
+        <h3 class="text-headline-md text-white mb-3 font-medium">{{ $sec.Title }}</h3>
+        <p class="text-on-surface/50 text-sm mb-8 line-clamp-2">{{ $desc }}</p>
+        <div class="flex items-center justify-between border-t coma-border pt-4 mt-auto">
+          <span class="font-mono text-[10px] text-primary">{{ printf "%02d" $postCount }} Entries Available</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

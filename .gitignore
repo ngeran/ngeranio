@@ -32,6 +32,9 @@ venv/                # Python virtual environment (alt name)
 *.swp                # Vim swap files
 *~                   # Backup files
 
+# Hugo dev server (Docker)
+.dev/                # Dev container state
+
 # ============================================
 # Cloudflare & Deployment (Safety)
 # ============================================
