@@ -70,6 +70,10 @@ cd themes/0xComa && npx tailwindcss -i src/input.css -o assets/css/styles.css --
 ./scripts/quality-gate.sh validate content/routing/bgp/bgp-communities/index.md
 ```
 
+## Known Fixes
+
+A log of identified issues and their fixes lives in **[FIX.md](FIX.md)**.
+
 ## Project Structure
 
 ```

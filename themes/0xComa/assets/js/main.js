@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   document.querySelectorAll('pre code').forEach(block => {
     const pre = block.parentElement;
+    if (!pre || pre.closest('.ide-block')) return;
     const wrapper = document.createElement('div');
     wrapper.className = 'ide-block relative mb-6';
 
