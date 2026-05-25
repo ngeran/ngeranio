@@ -410,13 +410,6 @@
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    background-color: #0c0f0d;
-    border: 1px solid #1F2420;
-    padding: 1.5rem;
-    margin: 2.5rem 0;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    line-height: 1.6;
   }
   .article-content pre::-webkit-scrollbar {
     display: none;
@@ -424,14 +417,6 @@
   .article-content pre code {
     background: none;
     padding: 0;
-    font-size: 13px;
-  }
-  /* When ide-block render hook fires, reset the base pre styles */
-  .ide-block pre.ide-pre {
-    border: none;
-    background: none;
-    padding: 1.5rem;
-    margin: 0;
   }
 
   .article-content blockquote {
