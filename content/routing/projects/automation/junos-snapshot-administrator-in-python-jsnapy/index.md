@@ -41,7 +41,7 @@ summary = 'Add a 2-3 sentence summary of this post'
 
 ## Exam Tips
 
-[JNCIE-SP specific tips]
+[Practical tips for network validation and pre/post-change checks]
 
 ## Summary
 

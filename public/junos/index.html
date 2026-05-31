@@ -1,21 +1,672 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Junos | ngeran[io]</title><link rel=stylesheet href=/css/styles.min.db8b7b9aeed944afb38a8ed2722cc1de8740300ddbeda13d79cca76a7a553639.css integrity="sha256-24t7mu7ZRK+zio7ScizB3odAMA3b7aE9ecynanpVNjk=" crossorigin=anonymous><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel=stylesheet><link rel=icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png></head><body class="bg-black text-on-surface antialiased bg-grid font-sans"><header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border"><div class="max-w-[1200px] mx-auto flex items-center h-16 px-6"><div class="flex items-center gap-6 w-full"><a href=/ class="font-mono text-sm tracking-widest text-primary flex items-center gap-1"><span class="w-2 h-2 bg-primary"></span>
-ngeran<span class=text-primary>[</span>io<span class=text-primary>]</span></a><div class="h-4 w-px bg-white/10 hidden md:block"></div><nav class="hidden md:flex items-center gap-6"><div class="nav-dropdown relative"><button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
-[ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span></button><div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50"><div class="bg-surface-lowest coma-border p-2 min-w-[200px]"><a href=/routing/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap"><span class="material-symbols-outlined text-sm">chevron_right</span>
-All routing</a>
-<a href=/routing/bgp/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-BGP</a>
-<a href=/routing/ospf/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-OSPF</a></div></div></div></nav><div class="ml-auto flex items-center gap-4"><a href=/index.xml class="text-on-surface/60 hover:text-white transition-colors"><span class="material-symbols-outlined text-xl">rss_feed</span></a>
-<button id=mobile-menu-button class="md:hidden text-on-surface/60 hover:text-white transition-colors">
-<span class="material-symbols-outlined text-xl">menu</span></button></div></div></div><div id=mobile-menu class="hidden md:hidden border-t coma-border"><nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1"><a href=/routing/ class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">[ routing ]</a>
-<a href=/routing/bgp/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; BGP</a>
-<a href=/routing/ospf/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; OSPF</a></nav></div></header><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".nav-dropdown-trigger").forEach(e=>{e.addEventListener("click",t=>{t.stopPropagation();const s=e.closest(".nav-dropdown"),n=s.querySelector(".nav-dropdown-menu"),o=n.classList.contains("is-open");document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")}),o||(n.classList.add("is-open"),n.classList.remove("opacity-0","invisible"))})}),document.addEventListener("click",()=>{document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")})}),document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.addEventListener("click",e=>{if(e.target.tagName==="A")return;e.stopPropagation()})})})</script><main><main class="pt-32 pb-24 px-4 sm:px-8 max-w-7xl mx-auto relative min-h-screen"><section class="mb-12 sm:mb-16 coma-border p-6 sm:p-8 bg-surface-lowest/50 relative overflow-hidden"><div class=scanline></div><div class="flex flex-col gap-4"><div class="flex items-center gap-3"><span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">Category // JUNOS</span><div class="h-px flex-grow bg-border-muted"></div></div><h1 class="text-[32px] sm:text-headline-lg text-white mb-2 uppercase tracking-tight font-semibold">Junos</h1><p class="text-on-surface-variant max-w-3xl text-sm leading-relaxed">Technical manifest: deep-dives into junos.</p></div></section><div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start"><div class="space-y-0 coma-border divide-y divide-border-muted"><article class="group relative bg-black hover:bg-surface-lowest transition-colors p-5 sm:p-8 article-entry"><a href=/junos/tagging/ class=block><div class="flex flex-col gap-4 sm:gap-6"><div class="flex items-center justify-between font-mono text-[10px] text-on-surface-variant tracking-widest"><div class="flex items-center gap-2 sm:gap-4"><span class="text-primary font-bold">ENTRY.01</span>
-<span class="w-px h-3 bg-border-muted"></span></div><span>APR 14 2025</span></div><div class=space-y-2><h2 class="text-headline-md text-on-surface group-hover:text-primary transition-colors uppercase font-medium">Tagging</h2><p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed">Junos VLAN Tagging Options Explained Here&rsquo;s a comparison of vlan-tagging, flexible-vlan-tagging, and encapsulation flexible-ethernet-services.
-1. vlan-tagging Configuration Level: Physical Interface (set interfaces &lt;interface-name> vlan-tagging) Purpose: Enables basic IEEE 802.1Q VLAN tagging support on the physical interface. Capabilities: Allows logical units (unit) under this interface to be configured with a single VLAN ID (set interfaces &lt;interface-name> unit &lt;number> vlan-id &lt;id>). Supports sending and receiving standard single-tagged Ethernet frames. Can support one untagged VLAN using the native-vlan-id option on the physical interface.</p></div><div class="flex flex-wrap items-center gap-4 sm:gap-8 font-mono text-[10px] text-on-surface-variant"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">timer</span>
-<span>READ_TIME: 06M</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">description</span>
-<span>SIZE: 1122_WORDS</span></div><div class=flex-grow></div><span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></div></div></a></article></div><aside class="space-y-12 hidden lg:block sticky top-32"><div class=space-y-6><div class="flex items-center gap-3"><h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3><div class="h-px flex-grow bg-border-muted"></div></div><div class="flex flex-wrap gap-2"></div></div><div class="coma-border-muted p-6 bg-surface-low/30 space-y-4"><div class="flex items-center gap-3"><div class="w-10 h-10 coma-border-muted flex items-center justify-center bg-black overflow-hidden"><img src=/author/avatar.png alt="ngeran a.k.a nikos" class="w-full h-full object-cover grayscale contrast-125"></div><div class="flex flex-col"><span class="font-mono text-xs text-white tracking-widest">ngeran a.k.a nikos</span>
-<span class="text-[10px] font-mono text-primary">ARCHITECT_V1.0</span></div></div><p class="text-xs text-on-surface-variant leading-relaxed opacity-80">I'm a network engineer by day and an aspiring JNCIE-SP by night. The JNCIE-SP journey is demanding—it requires time, dedication, and relentless hard work. To stay organized and focused, I'll be sharing my study notes here. My hope is that these notes not only aid my own preparation but also help others pursuing the same goal. Thanks for visiting, and enjoy the journey with me!. Enjoy :-)</p></div></aside></div><div class="lg:hidden mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8"><div class=space-y-4><div class="flex items-center gap-3"><h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3><div class="h-px flex-grow bg-border-muted"></div></div><div class="flex flex-wrap gap-2"></div></div></div></main></main><footer><footer class="bg-black border-t coma-border mt-20 sm:mt-32 py-10 sm:py-16"><div class="max-w-[1400px] mx-auto px-4 sm:px-8"><div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12"><div class="text-center md:text-left"><a class="font-mono text-sm text-white mb-4 block" href=/>[ngeran[io]]</a><p class="font-mono text-[10px] text-outline max-w-sm">SYSTEM_LOG: SESSION_ACTIVE. PROFESSIONAL_JNCIE_SP_JOURNEY. &copy; 2026. ALL RIGHTS RESERVED.</p></div><div class="flex flex-wrap justify-center gap-6 md:gap-12 font-mono text-[11px] text-on-surface-variant"><a class="hover:text-primary transition-colors uppercase" href=#>About</a>
-<a class="hover:text-primary transition-colors uppercase" href=/index.xml>RSS</a>
-<a class="hover:text-primary transition-colors uppercase" href=#>Privacy</a>
-<a class="hover:text-primary transition-colors uppercase" href=#>Contact</a></div><div class="w-16 h-px bg-primary"></div></div></div></footer></footer><script src=/js/main.min.c5f4780595cfc535915a7fb1e41435cbef4737ba6e14bec11ebeef71ee0957c3.js integrity="sha256-xfR4BZXPxTWRWn+x5BQ1y+9HN7puFL7BHr7vce4JV8M=" crossorigin=anonymous></script>
-<script>document.getElementById("mobile-menu-button")?.addEventListener("click",()=>{document.getElementById("mobile-menu")?.classList.toggle("hidden")})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junos | ngeran[io]</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+</head>
+<body class="bg-black text-on-surface antialiased bg-grid font-sans">
+
+  <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border">
+  <div class="max-w-[1200px] mx-auto flex items-center h-16 px-6">
+    <div class="flex items-center gap-6 w-full">
+      <a href="/" class="font-mono text-sm tracking-widest text-primary flex items-center gap-1">
+        <span class="w-2 h-2 bg-primary"></span>
+        ngeran<span class="text-primary">[</span>io<span class="text-primary">]</span>
+      </a>
+      <div class="h-4 w-px bg-white/10 hidden md:block"></div>
+      <nav class="hidden md:flex items-center gap-6">
+        
+          
+            
+          
+          
+          
+            
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            
+              <div class="nav-dropdown relative">
+                <button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
+                  [ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span>
+                </button>
+                <div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50">
+                  <div class="bg-surface-lowest coma-border p-2 min-w-[200px]">
+                    <a href="/routing/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap">
+                      <span class="material-symbols-outlined text-sm">chevron_right</span>
+                      All routing
+                    </a>
+                    
+                      
+                        <a href="/routing/mpls/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          MPLS
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/bgp/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          BGP
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/ospf/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          OSPF
+                        </a>
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+            
+            
+            
+              <a href="/observability/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ observability ]
+              </a>
+            
+          
+        
+      </nav>
+      <div class="ml-auto flex items-center gap-4">
+        <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">rss_feed</span>
+        </a>
+        <button id="mobile-menu-button" class="md:hidden text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden border-t coma-border">
+    <nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1">
+      
+        
+          
+        
+        
+        
+          <a href="/routing/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ routing ]
+          </a>
+          
+            
+              <a href="/routing/mpls/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; MPLS
+              </a>
+            
+          
+            
+              <a href="/routing/bgp/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; BGP
+              </a>
+            
+          
+            
+              <a href="/routing/ospf/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; OSPF
+              </a>
+            
+          
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+          <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ observability ]
+          </a>
+          
+        
+      
+    </nav>
+  </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dropdown = btn.closest('.nav-dropdown');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      const isOpen = menu.classList.contains('is-open');
+
+      
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+        m.classList.remove('is-open');
+        m.classList.add('opacity-0', 'invisible');
+      });
+
+      if (!isOpen) {
+        menu.classList.add('is-open');
+        menu.classList.remove('opacity-0', 'invisible');
+      }
+    });
+  });
+
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+      m.classList.remove('is-open');
+      m.classList.add('opacity-0', 'invisible');
+    });
+  });
+
+  
+  document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return; 
+      e.stopPropagation();
+    });
+  });
+});
+</script>
+
+
+  <main>
+    
+
+
+
+  
+
+
+
+
+  
+
+
+<main class="pt-32 pb-24 px-4 sm:px-8 max-w-7xl mx-auto relative min-h-screen">
+  
+  <section class="mb-12 sm:mb-16 coma-border p-6 sm:p-8 bg-surface-lowest/50 relative overflow-hidden">
+    <div class="scanline"></div>
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">Category // JUNOS</span>
+        <div class="h-px flex-grow bg-border-muted"></div>
+      </div>
+      <h1 class="text-[32px] sm:text-headline-lg text-white mb-2 uppercase tracking-tight font-semibold">
+        Junos
+      </h1>
+      <p class="text-on-surface-variant max-w-3xl text-sm leading-relaxed">
+        Technical manifest: deep-dives into junos.
+      </p>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start">
+    
+    
+    
+    <div class="space-y-0 coma-border divide-y divide-border-muted">
+      
+      
+        
+        <article class="group relative bg-black hover:bg-surface-lowest transition-colors p-5 sm:p-8 article-entry">
+          <a href="/junos/tagging/" class="block">
+            <div class="flex flex-col gap-4 sm:gap-6">
+              <div class="flex items-center justify-between font-mono text-[10px] text-on-surface-variant tracking-widest">
+                <div class="flex items-center gap-2 sm:gap-4">
+                  <span class="text-primary font-bold">ENTRY.01</span>
+                  <span class="w-px h-3 bg-border-muted"></span>
+                  
+                </div>
+                <span>APR 14 2025</span>
+              </div>
+              <div class="space-y-2">
+                <h2 class="text-headline-md text-on-surface group-hover:text-primary transition-colors uppercase font-medium">
+                  Tagging
+                </h2>
+                <p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed">
+                  <h2 id="junos-vlan-tagging-options-explained">Junos VLAN Tagging Options Explained</h2>
+<p>Here&rsquo;s a comparison of <code>vlan-tagging</code>, <code>flexible-vlan-tagging</code>, and <code>encapsulation flexible-ethernet-services</code>.</p>
+<h3 id="1-vlan-tagging">1. <code>vlan-tagging</code></h3>
+<ul>
+<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; vlan-tagging</code>)</li>
+<li><strong>Purpose:</strong> Enables basic IEEE 802.1Q VLAN tagging support on the physical interface.</li>
+<li><strong>Capabilities:</strong>
+<ul>
+<li>Allows logical units (<code>unit</code>) under this interface to be configured with a <em>single</em> VLAN ID (<code>set interfaces &lt;interface-name&gt; unit &lt;number&gt; vlan-id &lt;id&gt;</code>).</li>
+<li>Supports sending and receiving standard single-tagged Ethernet frames.</li>
+<li>Can support one untagged VLAN using the <code>native-vlan-id</code> option on the physical interface.</li>
+</ul>
+</li>
+<li><strong>Limitations:</strong>
+<ul>
+<li>Does <em>not</em> natively support receiving or sending double-tagged (QinQ/Stacked VLAN) frames on logical units.</li>
+<li>Does <em>not</em> easily support mixing tagged and untagged traffic across <em>different</em> logical units on the same physical interface (only one native/untagged VLAN is easily supported for the whole port).</li>
+<li>Limited flexibility in VLAN mapping per logical unit.</li>
+</ul>
+</li>
+<li><strong>Typical Use Case:</strong>
+<ul>
+<li>Standard &ldquo;trunk&rdquo; ports connecting to switches or other routers where multiple VLANs, each identified by a single tag, need to be carried.</li>
+<li>Simple Layer 2 or Layer 3 sub-interfaces.</li>
+</ul>
+</li>
+<li><strong>Example:</strong>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        junos
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Configure the physical interface for basic single-tagging
+set interfaces ge-0/0/1 vlan-tagging
+set interfaces ge-0/0/1 native-vlan-id 10  # Optional: VLAN 10 is untagged
+
+# Configure logical units with single VLAN IDs
+set interfaces ge-0/0/1 unit 100 vlan-id 100
+set interfaces ge-0/0/1 unit 100 family inet address 192.168.100.1/24
+
+set interfaces ge-0/0/1 unit 200 vlan-id 200
+set interfaces ge-0/0/1 unit 200 family inet address 192.168.200.1/24</code></pre>
+</div>
+</li>
+</ul>
+<hr>
+<h3 id="2-flexible-vlan-tagging">2. <code>flexible-vlan-tagging</code></h3>
+<ul>
+<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; flexible-vlan-tagging</code>)</li>
+<li><strong>Purpose:</strong> Enables advanced VLAN tagging capabilities, allowing for more complex scenarios on a single physical interface.</li>
+<li><strong>Capabilities:</strong>
+<ul>
+<li>Supports logical units with <em>single</em> VLAN IDs (<code>vlan-id</code>).</li>
+<li>Supports logical units with <em>double</em> (stacked/QinQ) VLAN tags (<code>vlan-tags outer &lt;tag&gt; inner &lt;tag&gt;</code>).</li>
+<li>Supports logical units accepting <em>untagged</em> traffic (<code>vlan-id none</code>, though configuration details vary slightly by platform/scenario).</li>
+<li>Allows mixing single-tagged, double-tagged, and untagged logical units on the <em>same</em> physical interface.</li>
+<li>Supports VLAN ID lists and ranges on logical units (<code>vlan-id-list [ list-of-vlans ]</code>).</li>
+<li>Often a prerequisite for advanced Layer 2 features and services.</li>
+</ul>
+</li>
+<li><strong>Limitations:</strong>
+<ul>
+<li>Slightly more complex configuration as each logical unit&rsquo;s tagging requirement must be explicitly defined.</li>
+</ul>
+</li>
+<li><strong>Typical Use Case:</strong>
+<ul>
+<li>QinQ deployments (Service Provider NNI, Enterprise Campus).</li>
+<li>Interfaces needing to handle a mix of single-tagged customer traffic and double-tagged infrastructure traffic.</li>
+<li>Interfaces where some services are tagged and others are untagged.</li>
+<li>Aggregation points requiring flexible VLAN mapping.</li>
+</ul>
+</li>
+<li><strong>Example:</strong>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        junos
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Configure the physical interface for advanced tagging
+set interfaces xe-0/1/0 flexible-vlan-tagging
+
+# Configure a logical unit for single-tagged traffic
+set interfaces xe-0/1/0 unit 101 description &#34;Single Tagged Customer A&#34;
+set interfaces xe-0/1/0 unit 101 vlan-id 101
+set interfaces xe-0/1/0 unit 101 family bridge # Example for L2
+
+# Configure a logical unit for double-tagged (QinQ) traffic
+set interfaces xe-0/1/0 unit 500 description &#34;QinQ Customer B (Outer 500, Inner 50)&#34;
+set interfaces xe-0/1/0 unit 500 vlan-tags outer 500 inner 50
+set interfaces xe-0/1/0 unit 500 family bridge # Example for L2
+
+# Configure a logical unit for untagged traffic (config might vary slightly)
+# This often requires specific encapsulation like vlan-bridge or ethenet-bridge
+set interfaces xe-0/1/0 unit 0 description &#34;Untagged Management&#34;
+set interfaces xe-0/1/0 unit 0 encapsulation vlan-bridge
+# Note: No &#39;vlan-id&#39; or &#39;vlan-tags&#39; means it might handle untagged frames if configured correctly
+set interfaces xe-0/1/0 unit 0 family inet address 10.0.0.1/24
+
+# Configure a logical unit accepting a list of VLANs
+set interfaces xe-0/1/0 unit 999 description &#34;VLAN List Service&#34;
+set interfaces xe-0/1/0 unit 999 vlan-id-list [ 200 205-210 300 ]
+set interfaces xe-0/1/0 unit 999 encapsulation vlan-bridge</code></pre>
+</div>
+</li>
+</ul>
+<hr>
+<h3 id="3-encapsulation-flexible-ethernet-services">3. <code>encapsulation flexible-ethernet-services</code></h3>
+<ul>
+<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; encapsulation flexible-ethernet-services</code>)</li>
+<li><strong>Purpose:</strong> Primarily used on MX Series routers (and some other platforms) to allow a <em>mix of different Layer 2 encapsulation types</em> (like bridge, ccc, vpls) on different logical units of the <em>same</em> physical interface. It fundamentally changes how the interface PFE (Packet Forwarding Engine) processes frames to support this service flexibility.</li>
+<li><strong>Capabilities:</strong>
+<ul>
+<li>Allows logical units (<code>unit</code>) under the same physical interface to have different Ethernet service encapsulations (e.g., <code>encapsulation vlan-bridge</code>, <code>encapsulation vlan-ccc</code>, <code>encapsulation vlan-vpls</code>, <code>encapsulation ethernet-ccc</code>, etc.).</li>
+<li>Enables maximum service multiplexing onto a single physical port.</li>
+</ul>
+</li>
+<li><strong>Important Note:</strong> This option <em>must often be used in conjunction with <code>flexible-vlan-tagging</code></em> if the services running on the logical units need to handle tagged frames (single or double). <code>flexible-ethernet-services</code> defines the <em>service type</em> flexibility, while <code>flexible-vlan-tagging</code> defines the <em>VLAN tag</em> flexibility.</li>
+<li><strong>Limitations:</strong>
+<ul>
+<li>Platform-specific (mainly MX Series).</li>
+<li>Adds configuration complexity.</li>
+<li>Cannot be combined with <code>vlan-tagging</code> on the same physical interface.</li>
+</ul>
+</li>
+<li><strong>Typical Use Case:</strong>
+<ul>
+<li>Service Provider edge routers (PE) terminating multiple customers with different L2VPN service types (E-Line/CCC, E-LAN/VPLS, E-Tree) or bridging requirements on the same physical link (NNI or UNI).</li>
+<li>Data Center interconnects requiring diverse L2 service types.</li>
+</ul>
+</li>
+<li><strong>Example:</strong>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        junos
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Configure the physical interface for flexible service encapsulations AND flexible tagging
+set interfaces xe-0/2/0 encapsulation flexible-ethernet-services
+set interfaces xe-0/2/0 flexible-vlan-tagging
+
+# Logical unit for a bridged service (single tag)
+set interfaces xe-0/2/0 unit 1000 description &#34;Bridged Service VLAN 1000&#34;
+set interfaces xe-0/2/0 unit 1000 encapsulation vlan-bridge
+set interfaces xe-0/2/0 unit 1000 vlan-id 1000
+
+# Logical unit for a VPLS service (QinQ tag)
+set interfaces xe-0/2/0 unit 2000 description &#34;VPLS Service Outer 200 Inner 20&#34;
+set interfaces xe-0/2/0 unit 2000 encapsulation vlan-vpls
+set interfaces xe-0/2/0 unit 2000 vlan-tags outer 200 inner 20
+
+# Logical unit for a CCC/L2Circuit service (single tag)
+set interfaces xe-0/2/0 unit 3000 description &#34;CCC/E-Line Service VLAN 3000&#34;
+set interfaces xe-0/2/0 unit 3000 encapsulation vlan-ccc
+set interfaces xe-0/2/0 unit 3000 vlan-id 3000</code></pre>
+</div>
+</li>
+</ul>
+<hr>
+<h3 id="summary-table">Summary Table</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Feature</th>
+          <th style="text-align: left"><code>vlan-tagging</code></th>
+          <th style="text-align: left"><code>flexible-vlan-tagging</code></th>
+          <th style="text-align: left"><code>encapsulation flexible-ethernet-services</code> (+ <code>flexible-vlan-tagging</code>)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Config Level</strong></td>
+          <td style="text-align: left">Physical Interface</td>
+          <td style="text-align: left">Physical Interface</td>
+          <td style="text-align: left">Physical Interface</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Primary Purpose</strong></td>
+          <td style="text-align: left">Basic 802.1Q tagging</td>
+          <td style="text-align: left">Advanced VLAN tagging (QinQ, Mixed)</td>
+          <td style="text-align: left">Mix different L2 service types on units</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Single Tag Support</strong></td>
+          <td style="text-align: left">Yes (via <code>vlan-id</code> on unit)</td>
+          <td style="text-align: left">Yes (via <code>vlan-id</code> on unit)</td>
+          <td style="text-align: left">Yes (if <code>flexible-vlan-tagging</code> also used)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Double Tag (QinQ) Support</strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">Yes (via <code>vlan-tags</code> on unit)</td>
+          <td style="text-align: left">Yes (if <code>flexible-vlan-tagging</code> also used)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Untagged Support</strong></td>
+          <td style="text-align: left">Yes (one <code>native-vlan-id</code>)</td>
+          <td style="text-align: left">Yes (per unit, requires specific config)</td>
+          <td style="text-align: left">Yes (per unit, requires specific config)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Mixed Tag/Untagged Units</strong></td>
+          <td style="text-align: left">No (except native)</td>
+          <td style="text-align: left">Yes</td>
+          <td style="text-align: left">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>VLAN Lists/Ranges</strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">Yes</td>
+          <td style="text-align: left">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Mixed L2 Encapsulations per Port</strong></td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">No</td>
+          <td style="text-align: left">Yes (e.g., bridge, ccc, vpls on same port)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Common Platforms</strong></td>
+          <td style="text-align: left">All Junos platforms</td>
+          <td style="text-align: left">Most modern Junos platforms</td>
+          <td style="text-align: left">Primarily MX Series (and some others like PTX, ACX)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Use When&hellip;</strong></td>
+          <td style="text-align: left">Simple trunk port, single tags only.</td>
+          <td style="text-align: left">Need QinQ, mix tagged/untagged, VLAN lists.</td>
+          <td style="text-align: left">Need to mix L2VPN service types (VPLS, CCC, Bridge) on one port (MX).</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>In essence:</strong></p>
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 sm:gap-8 font-mono text-[10px] text-on-surface-variant">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">timer</span>
+                  <span>READ_TIME: 06M</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm">description</span>
+                  <span>SIZE: 1122_WORDS</span>
+                </div>
+                <div class="flex-grow"></div>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+    </div>
+
+    
+    <aside class="space-y-12 hidden lg:block sticky top-32">
+      
+
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3>
+          <div class="h-px flex-grow bg-border-muted"></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          
+        </div>
+      </div>
+
+      
+<div class="coma-border-muted p-6 bg-surface-low/30 space-y-4">
+  <div class="flex items-center gap-3">
+    
+    
+    <div class="w-10 h-10 coma-border-muted flex items-center justify-center bg-black overflow-hidden">
+      <img src="/author/avatar.png" alt="ngeran a.k.a nikos" class="w-full h-full object-cover grayscale contrast-125">
+    </div>
+    
+    <div class="flex flex-col">
+      <span class="font-mono text-xs text-white tracking-widest">ngeran a.k.a nikos</span>
+      <span class="text-[10px] font-mono text-primary">ARCHITECT_V1.0</span>
+    </div>
+  </div>
+  <p class="text-xs text-on-surface-variant leading-relaxed opacity-80">
+    Every packet tells a story — we read them all. A network engineering blog covering routing, automation, observability, and the art of solving problems at scale.
+  </p>
+</div>
+
+
+    </aside>
+  </div>
+
+  
+  <div class="lg:hidden mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+    
+
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <h3 class="font-mono text-xs text-primary tracking-widest uppercase">Registry: Tags</h3>
+        <div class="h-px flex-grow bg-border-muted"></div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        
+      </div>
+    </div>
+  </div>
+
+  
+  
+</main>
+
+  </main>
+
+  <footer>
+    
+      <footer class="bg-black border-t coma-border mt-20 sm:mt-32 py-10 sm:py-16">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+      <div class="text-center md:text-left">
+        <a class="font-mono text-sm text-white mb-4 block" href="/">[ngeran[io]]</a>
+        <p class="font-mono text-[10px] text-outline max-w-sm">SYSTEM_LOG: SESSION_ACTIVE. EVERY_PACKET_TELLS_A_STORY. &copy; 2026. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12 font-mono text-[11px] text-on-surface-variant">
+        <a class="hover:text-primary transition-colors uppercase" href="#">About</a>
+        <a class="hover:text-primary transition-colors uppercase" href="/index.xml">RSS</a>
+        <a class="hover:text-primary transition-colors uppercase" href="#">Privacy</a>
+        <a class="hover:text-primary transition-colors uppercase" href="#">Contact</a>
+      </div>
+      <div class="w-16 h-px bg-primary"></div>
+    </div>
+  </div>
+</footer>
+
+    
+  </footer>
+
+  
+
+  
+    <script src="/js/main.js"></script>
+
+
+  <script>
+    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

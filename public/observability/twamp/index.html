@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Local Preference | ngeran[io]</title>
+<title>Beyond the Ping: Mastering TWAMP on Juniper MX | ngeran[io]</title>
 
     <link rel="stylesheet" href="/css/styles.css">
 
@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#local-preference-power">
-            <span class="group-hover:text-high-contrast transition-colors">01 LOCAL PREFERENCE POWER</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#why-ping-isnt-enough">
+            <span class="group-hover:text-high-contrast transition-colors">01 WHY PING ISN&amp;RSQUO;T ENOUGH</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#topology">
-            <span class="group-hover:text-high-contrast transition-colors">02 TOPOLOGY</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#twamp-vs-twamp-light-vs-stamp">
+            <span class="group-hover:text-high-contrast transition-colors">02 TWAMP VS. TWAMP-LIGHT VS. STAMP</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -269,8 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#initial-set-up">
-            <span class="group-hover:text-high-contrast transition-colors">03 INITIAL SET UP</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-1-preparing-the-chassis-the-hardware-secret">
+            <span class="group-hover:text-high-contrast transition-colors">03 PHASE 1: PREPARING THE CHASSIS (THE HARDWARE SECRET)</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -279,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#configuration">
-            <span class="group-hover:text-high-contrast transition-colors">04 CONFIGURATION</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-2-the-golden-config-for-juniper-mx">
+            <span class="group-hover:text-high-contrast transition-colors">04 PHASE 2: THE &amp;LDQUO;GOLDEN CONFIG&amp;RDQUO; FOR JUNIPER MX</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#the-result">
-            <span class="group-hover:text-high-contrast transition-colors">05 THE RESULT</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-3-optimizing-for-accuracy">
+            <span class="group-hover:text-high-contrast transition-colors">05 PHASE 3: OPTIMIZING FOR ACCURACY</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -299,8 +299,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#advertise-to-ebgp-non-transitive">
-            <span class="group-hover:text-high-contrast transition-colors">06 ADVERTISE TO EBGP (NON-TRANSITIVE)</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-4-verifying-and-analyzing-slowness">
+            <span class="group-hover:text-high-contrast transition-colors">06 PHASE 4: VERIFYING AND ANALYZING &amp;LDQUO;SLOWNESS&amp;RDQUO;</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#conclusion">
+            <span class="group-hover:text-high-contrast transition-colors">07 CONCLUSION</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -331,21 +341,21 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-primary font-mono text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
         <span>Routing</span>
         <span class="text-outline">/</span>
-        <span>BGP</span>
+        <span>Observability</span>
         <span class="text-outline">/</span>
-        <span class="text-high-contrast">Local Preference</span>
+        <span class="text-high-contrast">Beyond the Ping: Mastering TWAMP on Juniper MX</span>
       </div>
 
-      <h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">Local Preference</h1>
+      <h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">Beyond the Ping: Mastering TWAMP on Juniper MX</h1>
 
       <div class="flex flex-wrap items-center gap-4 sm:gap-8 text-on-surface-variant font-mono text-[11px] uppercase tracking-wider">
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">calendar_today</span>
-          <span>12.12.2024</span>
+          <span>30.05.2026</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">description</span>
-          <span>1012 words</span>
+          <span>944 words</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">schedule</span>
@@ -371,8 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#local-preference-power">
-                <span class="text-primary">01</span> LOCAL PREFERENCE POWER
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#why-ping-isnt-enough">
+                <span class="text-primary">01</span> WHY PING ISN&amp;RSQUO;T ENOUGH
               </a>
             </li>
           
@@ -380,8 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#topology">
-                <span class="text-primary">02</span> TOPOLOGY
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#twamp-vs-twamp-light-vs-stamp">
+                <span class="text-primary">02</span> TWAMP VS. TWAMP-LIGHT VS. STAMP
               </a>
             </li>
           
@@ -389,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#initial-set-up">
-                <span class="text-primary">03</span> INITIAL SET UP
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-1-preparing-the-chassis-the-hardware-secret">
+                <span class="text-primary">03</span> PHASE 1: PREPARING THE CHASSIS (THE HARDWARE SECRET)
               </a>
             </li>
           
@@ -398,8 +408,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#configuration">
-                <span class="text-primary">04</span> CONFIGURATION
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-2-the-golden-config-for-juniper-mx">
+                <span class="text-primary">04</span> PHASE 2: THE &amp;LDQUO;GOLDEN CONFIG&amp;RDQUO; FOR JUNIPER MX
               </a>
             </li>
           
@@ -407,8 +417,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#the-result">
-                <span class="text-primary">05</span> THE RESULT
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-3-optimizing-for-accuracy">
+                <span class="text-primary">05</span> PHASE 3: OPTIMIZING FOR ACCURACY
               </a>
             </li>
           
@@ -416,8 +426,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#advertise-to-ebgp-non-transitive">
-                <span class="text-primary">06</span> ADVERTISE TO EBGP (NON-TRANSITIVE)
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-4-verifying-and-analyzing-slowness">
+                <span class="text-primary">06</span> PHASE 4: VERIFYING AND ANALYZING &amp;LDQUO;SLOWNESS&amp;RDQUO;
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#conclusion">
+                <span class="text-primary">07</span> CONCLUSION
               </a>
             </li>
           
@@ -428,74 +447,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     <div class="article-content max-w-none mb-20">
-      <h3 id="local-preference-power">Local Preference Power</h3>
-<p>Local preference is the highest tiebreaker in the BGP path selection process. If a BGP next hop is reachable and BGP knows multiple routes, BGP always chooses the route with the highest local preference to exit the AS.<br>
-The local preference is a <strong>well-known</strong>, <strong>discretionary</strong> attribute, which means it must be supported by all BGP-speaking neighbors but does not have to be included in the BGP update message.<br>
-Local preference is also <strong>non-transitive</strong>, meaning it stays within its own internal AS and cannot be advertised to an external BGP neighbor.</p>
-<p>Let&rsquo;s now see how to configure and influance traffic with Local Preference.</p>
-<h3 id="topology">Topology</h3>
-<blockquote>
-<p>Taken from Juniper vLabs</p>
-</blockquote>
-<p>
-
-
-
-
-  
-    
-  
-
-
-<figure class="article-figure">
-  <div class="fig-wrap relative group">
-    <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div>
-    <img src="/routing/bgp/local_preference/bgp-topology-diagram.jpg" alt="BGP Topology" loading="lazy" class="w-full fig-img">
-  </div>
-  <div class="fig-caption">
-    <div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant tracking-wider uppercase">
-      <span class="w-2 h-2 bg-primary"></span>
-      BGP Topology
-    </div>
-    <span class="fig-number font-mono text-[10px] text-outline"></span>
-  </div>
-</figure>
-</p>
-<h3 id="initial-set-up">Initial set up</h3>
-<p>vMX5 advertises the same route <strong>192.168.235.0/24</strong> to both vMX3 and vMX2.</p>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>jcluser@vMX5# run show route advertising-protocol bgp 10.100.25.1 
-
-inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
-  Prefix  Nexthop       MED     Lclpref    AS path
-* 192.168.235.0/24        Self                                    I
-
-[edit]
-jcluser@vMX5# run show route advertising-protocol bgp 10.100.35.1    
-
-inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
-  Prefix  Nexthop       MED     Lclpref    AS path
-* 192.168.235.0/24        Self                                    I</code></pre>
-</div>
-<p>vMX1 learns the same route from vMX2 and vMX3. Goes throught the Best Path Selection<br>
-process and chooses the route from vMX2 because of the lower <strong>Router ID</strong>.<br>
-In this case both neighbors advertise the route with the &ldquo;Localpref&rdquo; of <strong>100</strong> which is the <strong>default</strong>.</p>
+      <h3 id="why-ping-isnt-enough">Why Ping Isn&rsquo;t Enough</h3>
+<p>In modern service provider networks, &ldquo;Down&rdquo; is easy to detect. The real challenge is <strong>&ldquo;Sick but Not Dead.&rdquo;</strong> These are the gray failures — micro-bursts, jitter spikes, and intermittent slowness — that frustrate users but leave traditional monitoring tools green.</p>
+<p>The <strong>Two-Way Active Measurement Protocol (TWAMP)</strong> is the industry-standard answer to this problem. In this guide, we will explore how to deploy TWAMP on Juniper MX routers to catch slowness before your customers report it.</p>
+<hr>
+<h3 id="twamp-vs-twamp-light-vs-stamp">TWAMP vs. TWAMP-Light vs. STAMP</h3>
+<p>Choosing the right flavor of the protocol is the difference between a stable monitoring platform and a &ldquo;flickering&rdquo; inventory.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Feature</th>
+          <th style="text-align: left">Standard TWAMP</th>
+          <th style="text-align: left">TWAMP-Light / STAMP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Control Plane</strong></td>
+          <td style="text-align: left">Uses TCP Port 862 for handshaking.</td>
+          <td style="text-align: left"><strong>No Control Plane.</strong> Only UDP Probes.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Statefulness</strong></td>
+          <td style="text-align: left">High overhead; sessions can flap if TCP lags.</td>
+          <td style="text-align: left">Low overhead; stateless and resilient.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Evolution</strong></td>
+          <td style="text-align: left">Defined in RFC 5357.</td>
+          <td style="text-align: left">STAMP (RFC 8762) is the modern version of Light.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>&ldquo;Sick&rdquo; Network</strong></td>
+          <td style="text-align: left">May fail if packet loss kills the TCP session.</td>
+          <td style="text-align: left"><strong>Keeps probing</strong> even during 50% packet loss.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>The Verdict:</strong> For high-precision &ldquo;Slowness&rdquo; detection on Juniper, <strong>TWAMP-Light</strong> is superior because it remains active even when the network is degraded.</p>
+<hr>
+<h3 id="phase-1-preparing-the-chassis-the-hardware-secret">Phase 1: Preparing the Chassis (The Hardware Secret)</h3>
+<p>On Juniper MX routers, high-precision timestamping requires either <strong>Microkernel-based</strong> timestamping or <strong>Inline</strong> (Services Interface) timestamping. If you choose the Inline route (<code>si-</code> interfaces), you <strong>must</strong> reserve bandwidth on the chassis, or the service will not start.</p>
+<h4 id="step-1-reserve-inline-services-bandwidth">Step 1: Reserve Inline Services Bandwidth</h4>
+<p>This command tells the Packet Forwarding Engine (PFE) to set aside capacity for the TWAMP service.</p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -513,53 +507,11 @@ In this case both neighbors advertise the route with the &ldquo;Localpref&rdquo;
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX1# run show route 192.168.235.0/24 exact detail 
-
-inet.0: 13 destinations, 14 routes (13 active, 0 holddown, 0 hidden)
-192.168.235.0/24 (2 entries, 1 announced)
-        *BGP    Preference: 170/-101
-                Next hop type: Indirect, Next hop index: 0
-                Address: 0xc4b5dbc
-                Next-hop reference count: 2
-                Source: 10.100.100.2
-                Next hop type: Router, Next hop index: 343
-                Next hop: 100.123.0.1 via fxp0.0, selected
-                Session Id: 0x0
-                Protocol next hop: 10.100.25.2
-                Indirect next hop: 0xc61de84 347 INH Session ID: 0x0
-                State: &lt;Active Int Ext&gt;
-                Local AS: 64522 Peer AS: 64522
-                Age: 8:04 Metric2: 0 
-                Validation State: unverified 
-                Task: BGP_64522.10.100.100.2
-                Announcement bits (2): 0-KRT 5-Resolve tree 1 
-                AS path: 64544 I 
-                Accepted
-                Localpref: 100
-                Router ID: 10.100.100.2
-                Thread: junos-main 
-         BGP    Preference: 170/-101
-                Next hop type: Indirect, Next hop index: 0
-                Address: 0xc4b5e8c
-                Next-hop reference count: 1
-                Source: 10.100.100.3
-                Next hop type: Router, Next hop index: 343
-                Next hop: 100.123.0.1 via fxp0.0, selected
-                Session Id: 0x0
-                Protocol next hop: 10.100.35.2
-                Indirect next hop: 0xc61e004 - INH Session ID: 0x0
-                State: &lt;NotBest Int Ext Changed&gt;
-                Inactive reason: Not Best in its group - Router ID
-                Local AS: 64522 Peer AS: 64522
-                Age: 8:04 Metric2: 0 
-                Validation State: unverified 
-                Task: BGP_64522.10.100.100.3
-                AS path: 64544 I 
-                Accepted
-                Localpref: 100
-                Router ID: 10.100.100.3
-                Thread: junos-main </code></pre>
+  <pre class="ide-pre"><code># Replace slot and pic with your hardware values
+set chassis fpc 0 pic 0 inline-services bandwidth 1g</code></pre>
 </div>
+<h4 id="step-2-configure-the-services-interface-optional">Step 2: Configure the Services Interface (Optional)</h4>
+<p>If you require Inline timestamping (highest accuracy), define the si interface:</p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -577,23 +529,15 @@ inet.0: 13 destinations, 14 routes (13 active, 0 holddown, 0 hidden)
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# run show route protocol bgp   
-
-inet.0: 17 destinations, 18 routes (17 active, 0 holddown, 0 hidden)
-&#43; = Active Route, - = Last Active, * = Both
-
-192.168.235.0/24   *[BGP/170] 00:20:44, localpref 100
-                      AS path: 64544 I, validation-state: unverified
-                    &gt;  to 10.100.35.2 via ge-0/0/0.0
-                    [BGP/170] 00:20:43, localpref 100, from 10.100.100.2
-                      AS path: 64544 I, validation-state: unverified
-                    &gt;  to 100.123.0.1 via fxp0.0</code></pre>
+  <pre class="ide-pre"><code>set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
+# Note: Do not use Unit 0 for TWAMP; it will result in a configuration error.</code></pre>
 </div>
-<h3 id="configuration">Configuration</h3>
-<p>Now lets create a policy to change the Local_Pref value to <strong>200</strong> and observe the impact.</p>
-<blockquote>
-<p>Change the the Local_Pref for all inbounds routes</p>
-</blockquote>
+<p><strong>Note:</strong> For many modern vMX and MX deployments, Microkernel-based timestamping is sufficient and does not require an si interface; it establishes sessions based on the target route.</p>
+<hr>
+<h3 id="phase-2-the-golden-config-for-juniper-mx">Phase 2: The &ldquo;Golden Config&rdquo; for Juniper MX</h3>
+<p>We will use three sessions: <strong>Voice (EF)</strong>, <strong>Video (AF41)</strong>, and <strong>Best Effort (BE)</strong> to identify which specific traffic class is &ldquo;slow.&rdquo;</p>
+<h4 id="pe1-the-controller-client">PE1: The Controller (Client)</h4>
+<p><em>Targeting PE2 (10.100.249.4) from Source (10.100.249.1)</em></p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -611,20 +555,28 @@ inet.0: 17 destinations, 18 routes (17 active, 0 holddown, 0 hidden)
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# show policy-options 
-policy-statement SET_LOCAL_PREF {
-    term ROUTE {
-        from next-hop 10.100.35.2;
-        then {
-            local-preference 200;
-            accept;
-        }
-    }
-}</code></pre>
+  <pre class="ide-pre"><code># 1. Global Client Settings
+set services rpm twamp client control-connection pe1-to-pe2 control-type light
+set services rpm twamp client control-connection pe1-to-pe2 history-size 512
+set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
+# IMPORTANT: Keeps results visible even between test iterations
+set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+
+# 2. Voice Test (Catching Jitter/Slowness)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.4
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 0.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 1
+
+# 3. Slowness Thresholds (Triggers SNMP Traps)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000</code></pre>
 </div>
-<blockquote>
-<p>Change the the Local_Pref for a specific inbound route.</p>
-</blockquote>
+<h4 id="pe2-the-responder-server">PE2: The Responder (Server)</h4>
+<p><em>Listening for PE1 (10.100.249.1)</em></p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -642,22 +594,16 @@ policy-statement SET_LOCAL_PREF {
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# show policy-options 
-policy-statement SET_LOCAL_PREF {
-    term ROUTE {
-        from {
-            route-filter 192.168.235.0/24 exact;
-        }
-        then {
-            local-preference 200;
-            accept;
-        }
-    }
-}</code></pre>
+  <pre class="ide-pre"><code>set services rpm twamp server authentication-mode none
+set services rpm twamp server light
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.1/32</code></pre>
 </div>
-<blockquote>
-<p>Apply the policy inbound (<strong>import</strong>) to change the AS exit point.</p>
-</blockquote>
+<hr>
+<h3 id="phase-3-optimizing-for-accuracy">Phase 3: Optimizing for Accuracy</h3>
+<p>The MX480 can offload probes to the hardware to ensure the &ldquo;slowness&rdquo; you see is real network delay and not just a busy router CPU.</p>
+<h4 id="delegate-probes">Delegate Probes</h4>
+<p>Move processing from the Routing Engine (RE) to the Packet Forwarding Engine (PFE).</p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -675,14 +621,9 @@ policy-statement SET_LOCAL_PREF {
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# show protocols bgp group to-AS64544 
-type external;
-import SET_LOCAL_PREF; &lt;-- Inbound 
-peer-as 64544;
-neighbor 10.100.35.2;</code></pre>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 delegate-probes</code></pre>
 </div>
-<h3 id="the-result">The Result</h3>
-<p>After applying the policy vMX1 chooses the route learned from vMX3 because of the higher Local_Pref value.</p>
+<h4 id="hardware-timestamps">Hardware Timestamps</h4>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -700,32 +641,14 @@ neighbor 10.100.35.2;</code></pre>
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX1# run show route 192.168.235.0/24 exact detail    
-
-inet.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
-192.168.235.0/24 (1 entry, 1 announced)
-        *BGP    Preference: 170/-201
-                Next hop type: Indirect, Next hop index: 0
-                Address: 0xc4b5e8c
-                Next-hop reference count: 2
-                Source: 10.100.100.3
-                Next hop type: Router, Next hop index: 343
-                Next hop: 100.123.0.1 via fxp0.0, selected
-                Session Id: 0x0
-                Protocol next hop: 10.100.35.2
-                Indirect next hop: 0xc61e004 348 INH Session ID: 0x0
-                State: &lt;Active Int Ext&gt;
-                Local AS: 64522 Peer AS: 64522
-                Age: 13 Metric2: 0 
-                Validation State: unverified 
-                Task: BGP_64522.10.100.100.3
-                Announcement bits (2): 0-KRT 5-Resolve tree 1 
-                AS path: 64544 I 
-                Accepted
-                Localpref: 200 &lt;--- Higher than the default 
-                Router ID: 10.100.100.3
-                Thread: junos-main </code></pre>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping</code></pre>
 </div>
+<hr>
+<h3 id="phase-4-verifying-and-analyzing-slowness">Phase 4: Verifying and Analyzing &ldquo;Slowness&rdquo;</h3>
+<h4 id="the-disappearing-session-problem">The Disappearing Session Problem</h4>
+<p>If you run <code>show services rpm twamp client session</code> and it returns empty, it is usually because the router is in a &ldquo;Gap&rdquo; between test iterations.</p>
+<p><strong>Solution:</strong> Use <code>persistent-results</code> in your config and check <code>probe-results</code>.</p>
+<h4 id="key-analysis-commands">Key Analysis Commands</h4>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -743,116 +666,30 @@ inet.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>jcluser@vMX1# run show route protocol bgp   
+  <pre class="ide-pre"><code># 1. See if the sessions are defined
+run show services rpm twamp client session
 
-inet.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
-&#43; = Active Route, - = Last Active, * = Both
-
-192.168.235.0/24   *[BGP/170] 00:01:32, localpref 200, from 10.100.100.3
-                      AS path: 64544 I, validation-state: unverified
-                    &gt;  to 100.123.0.1 via fxp0.0</code></pre>
+# 2. The most important command for slowness:
+run show services rpm twamp client probe-results</code></pre>
 </div>
-<h3 id="advertise-to-ebgp-non-transitive">Advertise to eBGP (non-transitive)</h3>
-<p>vMX3 has the route <strong>192.168.123.0/24</strong> with <strong>localpref</strong> of  <strong>123</strong></p>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# run show route protocol bgp                         
-
-inet.0: 19 destinations, 20 routes (19 active, 0 holddown, 0 hidden)
-&#43; = Active Route, - = Last Active, * = Both
-
-192.168.123.0/24    [BGP/170] 00:04:39, localpref 123, from 10.100.100.1
-                      AS path: I, validation-state: unverified
-                    &gt;  to 10.100.13.1 via ge-0/0/4.0
-192.168.235.0/24   *[BGP/170] 00:53:00, localpref 200
-                      AS path: 64544 I, validation-state: unverified
-                    &gt;  to 10.100.35.2 via ge-0/0/0.0</code></pre>
-</div>
-<blockquote>
-<p>When the route is advertised to a neighbor with a diffrent AS.</p>
-</blockquote>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>jcluser@vMX3# run show route advertising-protocol bgp 10.100.35.2 
-
-inet.0: 19 destinations, 20 routes (19 active, 0 holddown, 0 hidden)
-  Prefix  Nexthop       MED     Lclpref    AS path
-* 192.168.123.0/24        Self                 1                  I</code></pre>
-</div>
-<blockquote>
-<p>The Local Preference resets back to the default value.</p>
-</blockquote>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>jcluser@vMX5# run show route protocol bgp detail
-
-inet.0: 17 destinations, 17 routes (17 active, 0 holddown, 0 hidden)
-192.168.123.0/24 (1 entry, 1 announced)
-        *BGP    Preference: 170/-101
-                Next hop type: Router, Next hop index: 596
-                Address: 0xc4b5f5c
-                Next-hop reference count: 2
-                Source: 10.100.35.1
-                Next hop: 10.100.35.1 via ge-0/0/0.0, selected
-                Session Id: 0x141
-                State: &lt;Active Ext&gt;
-                Local AS: 64544 Peer AS: 64522
-                Age: 1:56 Metric: 1 
-                Validation State: unverified 
-                Task: BGP_64522.10.100.35.1
-                Announcement bits (3): 0-KRT 4-BGP_RT_Background 
-                                       5-Resolve tree 1 
-                AS path: 64522 I 
-                Accepted
-                Localpref: 100 &lt;-- Original Value
-                Router ID: 10.100.100.3
-                Thread: junos-main </code></pre>
-</div>
+<h4 id="how-to-read-the-output">How to Read the Output</h4>
+<p>Look at these three metrics in the probe-results to diagnose a &ldquo;sick&rdquo; network:</p>
+<ul>
+<li><strong>Standard Deviation (Stddev):</strong> If high (&gt;15ms), the network is jittery. This is the primary cause of &ldquo;slowness&rdquo; in real-time apps.</li>
+<li><strong>Peak-to-Peak Jitter:</strong> Shows the worst-case variance. Large gaps indicate micro-bursts saturating a link.</li>
+<li><strong>Positive vs. Negative Jitter:</strong> Distinguishes if the congestion is on the transmit (Egress) or return (Ingress) path.</li>
+</ul>
+<h4 id="inventory-management-logic">Inventory Management Logic</h4>
+<p>If you are building a monitoring dashboard, use this logic to manage your device inventory:</p>
+<ul>
+<li><strong>Status: Green</strong> — 0% Loss, Stddev &lt; 5ms.</li>
+<li><strong>Status: Yellow (Sick)</strong> — 0% Loss, Stddev &gt; 20ms. <strong>Action:</strong> Proactive check for interface congestion.</li>
+<li><strong>Status: Red (Dead)</strong> — 100% Loss. <strong>Action:</strong> Immediate circuit troubleshooting.</li>
+</ul>
+<p><strong>Pro-Tip:</strong> If the <code>show session</code> command is empty but <code>probe-results</code> still shows data, the device is still &ldquo;Connected.&rdquo; Do not remove it from your inventory unless both commands return empty for more than 5 minutes.</p>
+<hr>
+<h3 id="conclusion">Conclusion</h3>
+<p>By moving from simple Pings to TWAMP-Light with Delegated Probes and properly configured Chassis Bandwidth, you gain a microscopic view of your network health. You no longer have to wait for the &ldquo;Down&rdquo; alert; you can see the &ldquo;Slowness&rdquo; in the jitter trends and act before the customer calls.</p>
 
     </div>
 
@@ -861,17 +698,9 @@ inet.0: 17 destinations, 17 routes (17 active, 0 holddown, 0 hidden)
       <footer class="mt-32 pt-12 border-t dim-border">
   <div class="flex justify-between items-center font-mono text-xs">
     
-    <a class="group" href="/routing/bgp/bgp-attributes/">
-      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">PREVIOUS_LOG</span>
-      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">&larr; [ BGP Attributes ]</span>
-    </a>
+    <div></div>
     
 
-    
-    <a class="group text-right" href="/routing/bgp/as_path/">
-      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">NEXT_LOG</span>
-      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">[ AS Path ] &rarr;</span>
-    </a>
     
   </div>
 </footer>

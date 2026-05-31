@@ -1,34 +1,696 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Finite State Machine | ngeran[io]</title><link rel=stylesheet href=/css/styles.min.db8b7b9aeed944afb38a8ed2722cc1de8740300ddbeda13d79cca76a7a553639.css integrity="sha256-24t7mu7ZRK+zio7ScizB3odAMA3b7aE9ecynanpVNjk=" crossorigin=anonymous><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel=stylesheet><link rel=icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png></head><body class="bg-black text-on-surface antialiased bg-grid font-sans"><header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border"><div class="max-w-[1200px] mx-auto flex items-center h-16 px-6"><div class="flex items-center gap-6 w-full"><a href=/ class="font-mono text-sm tracking-widest text-primary flex items-center gap-1"><span class="w-2 h-2 bg-primary"></span>
-ngeran<span class=text-primary>[</span>io<span class=text-primary>]</span></a><div class="h-4 w-px bg-white/10 hidden md:block"></div><nav class="hidden md:flex items-center gap-6"><div class="nav-dropdown relative"><button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
-[ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span></button><div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50"><div class="bg-surface-lowest coma-border p-2 min-w-[200px]"><a href=/routing/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap"><span class="material-symbols-outlined text-sm">chevron_right</span>
-All routing</a>
-<a href=/routing/bgp/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-BGP</a>
-<a href=/routing/ospf/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-OSPF</a></div></div></div></nav><div class="ml-auto flex items-center gap-4"><a href=/index.xml class="text-on-surface/60 hover:text-white transition-colors"><span class="material-symbols-outlined text-xl">rss_feed</span></a>
-<button id=mobile-menu-button class="md:hidden text-on-surface/60 hover:text-white transition-colors">
-<span class="material-symbols-outlined text-xl">menu</span></button></div></div></div><div id=mobile-menu class="hidden md:hidden border-t coma-border"><nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1"><a href=/routing/ class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">[ routing ]</a>
-<a href=/routing/bgp/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; BGP</a>
-<a href=/routing/ospf/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; OSPF</a></nav></div></header><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".nav-dropdown-trigger").forEach(e=>{e.addEventListener("click",t=>{t.stopPropagation();const s=e.closest(".nav-dropdown"),n=s.querySelector(".nav-dropdown-menu"),o=n.classList.contains("is-open");document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")}),o||(n.classList.add("is-open"),n.classList.remove("opacity-0","invisible"))})}),document.addEventListener("click",()=>{document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")})}),document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.addEventListener("click",e=>{if(e.target.tagName==="A")return;e.stopPropagation()})})})</script><main><main class="max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-16"><aside class="hidden lg:block w-72 shrink-0"><nav class="sticky top-32 space-y-10"><div class="precision-border p-6 bg-surface-container-lowest"><h4 class="font-mono text-xs text-high-contrast mb-4 uppercase tracking-[0.2em]">Index</h4><ul class="space-y-4 font-mono text-[10px] text-on-surface-variant"><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#idle-state><span class="group-hover:text-high-contrast transition-colors">01 IDLE STATE</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#connect-state><span class="group-hover:text-high-contrast transition-colors">02 CONNECT STATE</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#active-state><span class="group-hover:text-high-contrast transition-colors">03 ACTIVE STATE</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#opensent><span class="group-hover:text-high-contrast transition-colors">04 OPENSENT</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#openconfirm><span class="group-hover:text-high-contrast transition-colors">05 OPENCONFIRM</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li><li><a class="toc-link flex items-center justify-between group py-1 transition-colors" href=#established><span class="group-hover:text-high-contrast transition-colors">06 ESTABLISHED</span>
-<span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span></a></li></ul></div><div class="dim-border p-5 bg-surface-container-lowest flex items-center gap-4"><img alt=Avatar class="w-10 h-10 grayscale contrast-125 dim-border" src=/author/avatar.png><div><p class="font-mono text-[10px] text-high-contrast leading-none mb-1">ngeran a.k.a nikos</p><p class="font-mono text-[9px] text-on-surface-variant leading-none">JNCIE-SP JOURNEY</p></div></div></nav></aside><article class="flex-grow max-w-[840px]"><header class="mb-10 sm:mb-16 border-b dim-border pb-8 sm:pb-12"><div class="flex flex-wrap items-center gap-2 sm:gap-3 text-primary font-mono text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]"><span>Routing</span>
-<span class=text-outline>/</span>
-<span>BGP</span>
-<span class=text-outline>/</span>
-<span class=text-high-contrast>Finite State Machine</span></div><h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">Finite State Machine</h1><div class="flex flex-wrap items-center gap-4 sm:gap-8 text-on-surface-variant font-mono text-[11px] uppercase tracking-wider"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_today</span>
-<span>22.11.2024</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">description</span>
-<span>800 words</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span>
-<span>4 min read</span></div></div></header><details class="lg:hidden mb-8 coma-border bg-surface-lowest"><summary class="p-4 font-mono text-xs text-primary uppercase tracking-[0.2em] cursor-pointer flex items-center gap-3"><span class="material-symbols-outlined text-sm">list</span>
-Table of Contents
-<span class="material-symbols-outlined text-sm ml-auto">expand_more</span></summary><div class="px-4 pb-4"><ul class="space-y-2 font-mono text-[10px] text-on-surface-variant"><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#idle-state><span class=text-primary>01</span> IDLE STATE</a></li><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#connect-state><span class=text-primary>02</span> CONNECT STATE</a></li><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#active-state><span class=text-primary>03</span> ACTIVE STATE</a></li><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#opensent><span class=text-primary>04</span> OPENSENT</a></li><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#openconfirm><span class=text-primary>05</span> OPENCONFIRM</a></li><li><a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href=#established><span class=text-primary>06</span> ESTABLISHED</a></li></ul></div></details><div class="article-content max-w-none mb-20"><p>This article explains the BGP-FSM, the different states during the BGP neighbor negotiation and is based on Based on RFC 4271. Unlike IGP, BGP does not have its own transport protocol, the BGP peering sessions are manually defined and rely on TCP. TCP eliminates the need to implement explicit update fragmentation, retransmission, acknowledgement, and sequencing.</p><p>BGP listens on TCP port 179 and BGP MUST maintain a separate FSM for each configured peer.</p><p>Each BGP peer paired in a potential connection will attempt to connect to the other, unless configured to remain in the ‘idle’ state, or configured to remain passive. Active or connecting is the side of the TCP connection sending the first TCP SYN packet. Passive or listening side is the sender of the first SYN/ACK.</p><p>BGP Neighbor States
-Six states are involved in the BGP process three for TCP connectivity and three for BGP connectivity as defined by RFC 4271.</p><table><thead><tr><th>TCP Connectivity</th><th>BGP Connectivity</th></tr></thead><tbody><tr><td>Idle</td><td>OpenSent</td></tr><tr><td>Connect</td><td>OpenConfirm</td></tr><tr><td>Active</td><td>Established</td></tr></tbody></table><p><figure class=article-figure><div class="fig-wrap relative group"><div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div><img src=/routing/bgp/fsm/fsm-v1.png alt="Finite State Machine" loading=lazy class="w-full fig-img"></div><div class=fig-caption><div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant tracking-wider uppercase"><span class="w-2 h-2 bg-primary"></span>
-Finite State Machine</div><span class="fig-number font-mono text-[10px] text-outline"></span></div></figure></p><h3 id=idle-state>Idle State</h3><blockquote><p>In this state, BGP refuses all incoming connections for the local system and no resources are allocated. In response to a ManualStart ( manually configure BGP on the local system ) event or an AutomaticStart ( restart existing session) BGP:</p></blockquote><ul><li>initializes all BGP resources for the peer connection,</li><li>sets ConncectRetryCounter to zero,</li><li>starts the ConnectRetryTimer with the initial value,</li><li>initiates the TCP connection to the other peer,</li><li>listens for a connection that may be initiated by the remote BGP peer and</li><li>changes its state to Connect.<br>In case of errors, BGP falls back to the Idle state.</li></ul><h3 id=connect-state>Connect State</h3><blockquote><p>BGP is waiting for the transport protocol connection to be completed.</p></blockquote><p><strong>If the TCP connection succeeds.</strong></p><ul><li>stops the ConnectRetryTimer ( if running ) and sets the ConnectRetryTimer to zero,</li><li>completes the BGP initialization</li><li>sends an OPEN message to its peer,</li><li>sets the HoldTimer to a large value ( the suggestion is 5min), and</li><li>changes its state to OpenSent.</li></ul><p><strong>If the TCP connection fails</strong></p><ul><li>restarts the ConnectRetryTimer,</li><li>changes its state to Active.</li></ul><p><strong>If the ConnectRetry timer expires</strong></p><ul><li>remains in the Connect state</li><li>the timer is reset, and transport connection is initiated</li></ul><p>In case of any other event the state goes back to Idle.</p><h3 id=active-state>Active State</h3><blockquote><p>In this state, BGP is trying to acquire a peer by listening for, and accepting a TCP connection</p></blockquote><p><strong>If the TCP connection succeeds</strong></p><ul><li>clears the BGP ConnectRetryTimer,</li><li>sends an OPEN message to its peer,</li><li>changes its state to OpenSent.</li></ul><p><strong>If the TCP connection fails</strong></p><ul><li>resets the ConnectRetryTimer,</li><li>changes its state to Idle.</li></ul><p><strong>If the ConnectRetry timer expires</strong></p><ul><li>BGP restarts the ConnectRetry timer</li><li>falls back to the Connect.</li></ul><p>The state might go back to Idle in case of other events, such as a Stop event initiated by the system or the operator. If the state is oscillating between Connect and Active indicates that something is wrong with the TCP transport connection.</p><h3 id=opensent>OpenSent</h3><blockquote><p>In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.</p></blockquote><p><strong>The OPEN message contains:</strong></p><ul><li>BGP version.</li><li>The autonomous system (AS) number.</li><li>The source IP address of the configured neighbor.</li><li>Router-ID uniqueness.</li><li>Security parameters ( TTL, password, etc)</li><li>Capabilities.</li></ul><p><strong>If there are errors or capabilities mismatch in the OPEN message the local system:</strong></p><ul><li>the system sends an error NOTIFICATION message</li><li>goes back to Active.</li></ul><p><strong>If there is an error due to TCP event</strong></p><ul><li>the state will change to Active</li><li>will attempt to complete the three-way handshake.</li></ul><p><strong>If there are no errors in the OPEN message the local system:</strong></p><ul><li>resets the DelayOpenTimer to zero,</li><li>sets ConnectRetryTimer to zero,</li><li>sends a KEEPALIVE message, and</li><li>sets the HoldTimer per the negotiated value, and</li><li>changes its state to OpenConfirm.</li></ul><h3 id=openconfirm>OpenConfirm</h3><blockquote><p>In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.</p></blockquote><p><strong>If a NOTIFICATION message is received,</strong></p><ul><li>falls back to the Idle state</li></ul><p><strong>In case of any transport disconnect notification or in response to any stop event</strong></p><ul><li>the state falls back to Idle state</li></ul><p><strong>If the local system receives a KEPALIVE the local system:</strong></p><ul><li>restarts the HoldTimer and</li><li>changes its state to Established.<br>The system sends periodic KEEPALIVE messages at the rate set by the KEEPALIVE timer.</li></ul><h3 id=established>Established</h3><blockquote><p>In the Established state, BGP can exchange UPDATE, NOTIFICATION and KEEPALIVE messages with its peer.</p></blockquote><p>If the HoldTimer expires before the local system receives a KEPALIVE, NOTIFICATION or an UPADTE message BGP will change its state to Idle.</p><p>The UPDATE messages are checked for errors or missing attributes such as missing attributes. If errors are found, a NOTIFICATION message is sent to the peer, and the state falls back to Idle.</p><p>If the Hold Timer expires, or a disconnect notification is received from the transport protocol, or a Stop event is received, or in response to any other event, the system falls back to the Idle state.</p></div><footer class="mt-32 pt-12 border-t dim-border"><div class="flex justify-between items-center font-mono text-xs"><div></div><a class="group text-right" href=/routing/bgp/bgp-route-selection/><span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">NEXT_LOG</span>
-<span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">[ Route Selection ] &rarr;</span></a></div></footer></article></main><script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".copy-btn").forEach(function(e){e.addEventListener("click",function(){var t=e.closest(".ide-block").querySelector("pre");navigator.clipboard.writeText(t.textContent).then(function(){var t=e.querySelector(".material-symbols-outlined");t.textContent="done",t.classList.add("text-primary"),setTimeout(function(){t.textContent="content_copy",t.classList.remove("text-primary")},2e3)})})});var n,e=document.querySelectorAll(".toc-link"),t=document.querySelectorAll(".article-content h3[id], .article-content h2[id]");t.length>0&&e.length>0&&(n=new IntersectionObserver(function(t){t.forEach(function(t){if(t.isIntersecting){var n,s=t.target.getAttribute("id");e.forEach(function(e){e.classList.remove("active","text-high-contrast")}),n=document.querySelector('.toc-link[href="#'+s+'"]'),n&&n.classList.add("active","text-high-contrast")}})},{root:null,rootMargin:"-20% 0px -70% 0px",threshold:0}),t.forEach(function(e){n.observe(e)}))})</script></main><footer><footer class="bg-black border-t coma-border mt-20 sm:mt-32 py-10 sm:py-16"><div class="max-w-[1400px] mx-auto px-4 sm:px-8"><div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12"><div class="text-center md:text-left"><a class="font-mono text-sm text-white mb-4 block" href=/>[ngeran[io]]</a><p class="font-mono text-[10px] text-outline max-w-sm">SYSTEM_LOG: SESSION_ACTIVE. PROFESSIONAL_JNCIE_SP_JOURNEY. &copy; 2026. ALL RIGHTS RESERVED.</p></div><div class="flex flex-wrap justify-center gap-6 md:gap-12 font-mono text-[11px] text-on-surface-variant"><a class="hover:text-primary transition-colors uppercase" href=#>About</a>
-<a class="hover:text-primary transition-colors uppercase" href=/index.xml>RSS</a>
-<a class="hover:text-primary transition-colors uppercase" href=#>Privacy</a>
-<a class="hover:text-primary transition-colors uppercase" href=#>Contact</a></div><div class="w-16 h-px bg-primary"></div></div></div></footer></footer><script src=/js/main.min.c5f4780595cfc535915a7fb1e41435cbef4737ba6e14bec11ebeef71ee0957c3.js integrity="sha256-xfR4BZXPxTWRWn+x5BQ1y+9HN7puFL7BHr7vce4JV8M=" crossorigin=anonymous></script>
-<script>document.getElementById("mobile-menu-button")?.addEventListener("click",()=>{document.getElementById("mobile-menu")?.classList.toggle("hidden")})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finite State Machine | ngeran[io]</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+</head>
+<body class="bg-black text-on-surface antialiased bg-grid font-sans">
+
+  <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border">
+  <div class="max-w-[1200px] mx-auto flex items-center h-16 px-6">
+    <div class="flex items-center gap-6 w-full">
+      <a href="/" class="font-mono text-sm tracking-widest text-primary flex items-center gap-1">
+        <span class="w-2 h-2 bg-primary"></span>
+        ngeran<span class="text-primary">[</span>io<span class="text-primary">]</span>
+      </a>
+      <div class="h-4 w-px bg-white/10 hidden md:block"></div>
+      <nav class="hidden md:flex items-center gap-6">
+        
+          
+            
+          
+          
+          
+            
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            
+              <div class="nav-dropdown relative">
+                <button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
+                  [ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span>
+                </button>
+                <div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50">
+                  <div class="bg-surface-lowest coma-border p-2 min-w-[200px]">
+                    <a href="/routing/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap">
+                      <span class="material-symbols-outlined text-sm">chevron_right</span>
+                      All routing
+                    </a>
+                    
+                      
+                        <a href="/routing/mpls/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          MPLS
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/bgp/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          BGP
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/ospf/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          OSPF
+                        </a>
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+            
+            
+            
+              <a href="/observability/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ observability ]
+              </a>
+            
+          
+        
+      </nav>
+      <div class="ml-auto flex items-center gap-4">
+        <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">rss_feed</span>
+        </a>
+        <button id="mobile-menu-button" class="md:hidden text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden border-t coma-border">
+    <nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1">
+      
+        
+          
+        
+        
+        
+          <a href="/routing/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ routing ]
+          </a>
+          
+            
+              <a href="/routing/mpls/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; MPLS
+              </a>
+            
+          
+            
+              <a href="/routing/bgp/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; BGP
+              </a>
+            
+          
+            
+              <a href="/routing/ospf/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; OSPF
+              </a>
+            
+          
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+          <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ observability ]
+          </a>
+          
+        
+      
+    </nav>
+  </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dropdown = btn.closest('.nav-dropdown');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      const isOpen = menu.classList.contains('is-open');
+
+      
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+        m.classList.remove('is-open');
+        m.classList.add('opacity-0', 'invisible');
+      });
+
+      if (!isOpen) {
+        menu.classList.add('is-open');
+        menu.classList.remove('opacity-0', 'invisible');
+      }
+    });
+  });
+
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+      m.classList.remove('is-open');
+      m.classList.add('opacity-0', 'invisible');
+    });
+  });
+
+  
+  document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return; 
+      e.stopPropagation();
+    });
+  });
+});
+</script>
+
+
+  <main>
+    
+<main class="max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-16">
+  
+  <aside class="hidden lg:block w-72 shrink-0">
+    <nav class="sticky top-32 space-y-10">
+  
+  
+  <div class="precision-border p-6 bg-surface-container-lowest">
+    <h4 class="font-mono text-xs text-high-contrast mb-4 uppercase tracking-[0.2em]">Index</h4>
+    <ul class="space-y-4 font-mono text-[10px] text-on-surface-variant">
+      
+      
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#idle-state">
+            <span class="group-hover:text-high-contrast transition-colors">01 IDLE STATE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#connect-state">
+            <span class="group-hover:text-high-contrast transition-colors">02 CONNECT STATE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#active-state">
+            <span class="group-hover:text-high-contrast transition-colors">03 ACTIVE STATE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#opensent">
+            <span class="group-hover:text-high-contrast transition-colors">04 OPENSENT</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#openconfirm">
+            <span class="group-hover:text-high-contrast transition-colors">05 OPENCONFIRM</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#established">
+            <span class="group-hover:text-high-contrast transition-colors">06 ESTABLISHED</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+
+  
+  <div class="dim-border p-5 bg-surface-container-lowest flex items-center gap-4">
+    
+    
+    <img alt="Avatar" class="w-10 h-10 grayscale contrast-125 dim-border" src="/author/avatar.png">
+    
+    <div>
+      <p class="font-mono text-[10px] text-high-contrast leading-none mb-1">ngeran a.k.a nikos</p>
+      <p class="font-mono text-[9px] text-on-surface-variant leading-none">EVERY PACKET TELLS A STORY</p>
+    </div>
+  </div>
+</nav>
+
+  </aside>
+
+  
+  <article class="flex-grow max-w-[840px]">
+    <header class="mb-10 sm:mb-16 border-b dim-border pb-8 sm:pb-12">
+      
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-primary font-mono text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
+        <span>Routing</span>
+        <span class="text-outline">/</span>
+        <span>BGP</span>
+        <span class="text-outline">/</span>
+        <span class="text-high-contrast">Finite State Machine</span>
+      </div>
+
+      <h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">Finite State Machine</h1>
+
+      <div class="flex flex-wrap items-center gap-4 sm:gap-8 text-on-surface-variant font-mono text-[11px] uppercase tracking-wider">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          <span>22.11.2024</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">description</span>
+          <span>800 words</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">schedule</span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </header>
+
+    
+    
+    <details class="lg:hidden mb-8 coma-border bg-surface-lowest">
+      <summary class="p-4 font-mono text-xs text-primary uppercase tracking-[0.2em] cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-sm">list</span>
+        Table of Contents
+        <span class="material-symbols-outlined text-sm ml-auto">expand_more</span>
+      </summary>
+      <div class="px-4 pb-4">
+        <ul class="space-y-2 font-mono text-[10px] text-on-surface-variant">
+          
+          
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#idle-state">
+                <span class="text-primary">01</span> IDLE STATE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#connect-state">
+                <span class="text-primary">02</span> CONNECT STATE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#active-state">
+                <span class="text-primary">03</span> ACTIVE STATE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#opensent">
+                <span class="text-primary">04</span> OPENSENT
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#openconfirm">
+                <span class="text-primary">05</span> OPENCONFIRM
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#established">
+                <span class="text-primary">06</span> ESTABLISHED
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </details>
+    
+
+    
+    <div class="article-content max-w-none mb-20">
+      <p>This article explains the BGP-FSM, the different states during the BGP neighbor negotiation and is based on Based on RFC 4271.  Unlike IGP, BGP does not have its own transport protocol, the BGP peering sessions are manually defined and rely on TCP. TCP eliminates the need to implement explicit update fragmentation, retransmission, acknowledgement, and sequencing.</p>
+<p>BGP listens on TCP port 179 and BGP MUST maintain a separate FSM for each configured peer.</p>
+<p>Each BGP peer paired in a potential connection will attempt to connect to the other, unless configured to remain in the ‘idle’ state, or configured to remain passive. Active or connecting is the side of the TCP connection sending the first TCP SYN packet. Passive or listening side is the sender of the first SYN/ACK.</p>
+<p>BGP Neighbor States
+Six states are involved in the BGP process three for TCP connectivity and three for BGP connectivity as defined by RFC 4271.</p>
+<table>
+  <thead>
+      <tr>
+          <th>TCP Connectivity</th>
+          <th>BGP Connectivity</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Idle</td>
+          <td>OpenSent</td>
+      </tr>
+      <tr>
+          <td>Connect</td>
+          <td>OpenConfirm</td>
+      </tr>
+      <tr>
+          <td>Active</td>
+          <td>Established</td>
+      </tr>
+  </tbody>
+</table>
+<p>
+
+
+
+
+  
+    
+  
+
+
+<figure class="article-figure">
+  <div class="fig-wrap relative group">
+    <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div>
+    <img src="/routing/bgp/fsm/fsm-v1.png" alt="Finite State Machine" loading="lazy" class="w-full fig-img">
+  </div>
+  <div class="fig-caption">
+    <div class="flex items-center gap-3 font-mono text-[10px] text-on-surface-variant tracking-wider uppercase">
+      <span class="w-2 h-2 bg-primary"></span>
+      Finite State Machine
+    </div>
+    <span class="fig-number font-mono text-[10px] text-outline"></span>
+  </div>
+</figure>
+</p>
+<h3 id="idle-state">Idle State</h3>
+<blockquote>
+<p>In this state, BGP refuses all incoming connections for the local system and no resources are allocated. In response to a ManualStart ( manually configure BGP on the local system ) event or an AutomaticStart ( restart existing session) BGP:</p>
+</blockquote>
+<ul>
+<li>initializes all BGP resources for the peer connection,</li>
+<li>sets ConncectRetryCounter to zero,</li>
+<li>starts the ConnectRetryTimer with the initial value,</li>
+<li>initiates the TCP connection to the other peer,</li>
+<li>listens for a connection that may be initiated by the remote BGP peer and</li>
+<li>changes its state to Connect.<br>
+In case of errors, BGP falls back to the Idle state.</li>
+</ul>
+<h3 id="connect-state">Connect State</h3>
+<blockquote>
+<p>BGP is waiting for the transport protocol connection to be completed.</p>
+</blockquote>
+<p><strong>If the TCP connection succeeds.</strong></p>
+<ul>
+<li>stops the ConnectRetryTimer ( if running ) and sets the ConnectRetryTimer to zero,</li>
+<li>completes the BGP initialization</li>
+<li>sends an OPEN message to its peer,</li>
+<li>sets the HoldTimer to a large value ( the suggestion is 5min), and</li>
+<li>changes its state to OpenSent.</li>
+</ul>
+<p><strong>If the TCP connection fails</strong></p>
+<ul>
+<li>restarts the ConnectRetryTimer,</li>
+<li>changes its state to Active.</li>
+</ul>
+<p><strong>If the ConnectRetry timer expires</strong></p>
+<ul>
+<li>remains in the Connect state</li>
+<li>the timer is reset, and transport connection is initiated</li>
+</ul>
+<p>In case of any other event the state goes back to Idle.</p>
+<h3 id="active-state">Active State</h3>
+<blockquote>
+<p>In this state, BGP is trying to acquire a peer by listening for, and accepting a TCP connection</p>
+</blockquote>
+<p><strong>If the TCP connection succeeds</strong></p>
+<ul>
+<li>clears the BGP ConnectRetryTimer,</li>
+<li>sends an OPEN message to its peer,</li>
+<li>changes its state to OpenSent.</li>
+</ul>
+<p><strong>If the TCP connection fails</strong></p>
+<ul>
+<li>resets the ConnectRetryTimer,</li>
+<li>changes its state to Idle.</li>
+</ul>
+<p><strong>If the ConnectRetry timer expires</strong></p>
+<ul>
+<li>BGP restarts the ConnectRetry timer</li>
+<li>falls back to the Connect.</li>
+</ul>
+<p>The state might go back to Idle in case of other events, such as a Stop event initiated by the system or the operator. If the state is oscillating between Connect and Active indicates that something is wrong with the TCP transport connection.</p>
+<h3 id="opensent">OpenSent</h3>
+<blockquote>
+<p>In this state, BGP waits for an OPEN message from its peer. Once received checks all fields for correctness.</p>
+</blockquote>
+<p><strong>The OPEN message contains:</strong></p>
+<ul>
+<li>BGP version.</li>
+<li>The autonomous system (AS) number.</li>
+<li>The source IP address of the configured neighbor.</li>
+<li>Router-ID uniqueness.</li>
+<li>Security parameters ( TTL, password, etc)</li>
+<li>Capabilities.</li>
+</ul>
+<p><strong>If there are errors or capabilities mismatch in the OPEN message the local system:</strong></p>
+<ul>
+<li>the system sends an error NOTIFICATION message</li>
+<li>goes back to Active.</li>
+</ul>
+<p><strong>If there is an error due to TCP event</strong></p>
+<ul>
+<li>the state will change to Active</li>
+<li>will attempt to complete the three-way handshake.</li>
+</ul>
+<p><strong>If there are no errors in the OPEN message the local system:</strong></p>
+<ul>
+<li>resets the DelayOpenTimer to zero,</li>
+<li>sets ConnectRetryTimer to zero,</li>
+<li>sends a KEEPALIVE message, and</li>
+<li>sets the HoldTimer per the negotiated value, and</li>
+<li>changes its state to OpenConfirm.</li>
+</ul>
+<h3 id="openconfirm">OpenConfirm</h3>
+<blockquote>
+<p>In this state, BGP waits for a KEEPALIVE or NOTIFICATION message.</p>
+</blockquote>
+<p><strong>If a NOTIFICATION message is received,</strong></p>
+<ul>
+<li>falls back to the Idle state</li>
+</ul>
+<p><strong>In case of any transport disconnect notification or in response to any stop event</strong></p>
+<ul>
+<li>the state falls back to Idle state</li>
+</ul>
+<p><strong>If the local system receives a KEPALIVE the local system:</strong></p>
+<ul>
+<li>restarts the HoldTimer and</li>
+<li>changes its state to Established.<br>
+The system sends periodic KEEPALIVE messages at the rate set by the KEEPALIVE timer.</li>
+</ul>
+<h3 id="established">Established</h3>
+<blockquote>
+<p>In the Established state, BGP can exchange UPDATE, NOTIFICATION and KEEPALIVE messages with its peer.</p>
+</blockquote>
+<p>If the HoldTimer expires before the local system receives a KEPALIVE, NOTIFICATION or an UPADTE message BGP will change its state to Idle.</p>
+<p>The UPDATE messages are checked for errors or missing attributes such as missing attributes. If errors are found, a NOTIFICATION message is sent to the peer, and the state falls back to Idle.</p>
+<p>If the Hold Timer expires, or a disconnect notification is received from the transport protocol, or a Stop event is received, or in response to any other event, the system falls back to the Idle state.</p>
+
+    </div>
+
+    
+    
+      <footer class="mt-32 pt-12 border-t dim-border">
+  <div class="flex justify-between items-center font-mono text-xs">
+    
+    <div></div>
+    
+
+    
+    <a class="group text-right" href="/routing/bgp/bgp-route-selection/">
+      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">NEXT_LOG</span>
+      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">[ Route Selection ] &rarr;</span>
+    </a>
+    
+  </div>
+</footer>
+
+    
+  </article>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var pre = btn.closest('.ide-block').querySelector('pre');
+      navigator.clipboard.writeText(pre.textContent).then(function() {
+        var icon = btn.querySelector('.material-symbols-outlined');
+        icon.textContent = 'done';
+        icon.classList.add('text-primary');
+        setTimeout(function() {
+          icon.textContent = 'content_copy';
+          icon.classList.remove('text-primary');
+        }, 2000);
+      });
+    });
+  });
+
+  
+  var tocLinks = document.querySelectorAll('.toc-link');
+  var headings = document.querySelectorAll('.article-content h3[id], .article-content h2[id]');
+
+  if (headings.length > 0 && tocLinks.length > 0) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          tocLinks.forEach(function(l) { l.classList.remove('active', 'text-high-contrast'); });
+          var active = document.querySelector('.toc-link[href="#' + id + '"]');
+          if (active) active.classList.add('active', 'text-high-contrast');
+        }
+      });
+    }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    headings.forEach(function(h) { observer.observe(h); });
+  }
+});
+</script>
+
+
+  </main>
+
+  <footer>
+    
+      <footer class="bg-black border-t coma-border mt-20 sm:mt-32 py-10 sm:py-16">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+      <div class="text-center md:text-left">
+        <a class="font-mono text-sm text-white mb-4 block" href="/">[ngeran[io]]</a>
+        <p class="font-mono text-[10px] text-outline max-w-sm">SYSTEM_LOG: SESSION_ACTIVE. EVERY_PACKET_TELLS_A_STORY. &copy; 2026. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12 font-mono text-[11px] text-on-surface-variant">
+        <a class="hover:text-primary transition-colors uppercase" href="#">About</a>
+        <a class="hover:text-primary transition-colors uppercase" href="/index.xml">RSS</a>
+        <a class="hover:text-primary transition-colors uppercase" href="#">Privacy</a>
+        <a class="hover:text-primary transition-colors uppercase" href="#">Contact</a>
+      </div>
+      <div class="w-16 h-px bg-primary"></div>
+    </div>
+  </div>
+</footer>
+
+    
+  </footer>
+
+  
+
+  
+    <script src="/js/main.js"></script>
+
+
+  <script>
+    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

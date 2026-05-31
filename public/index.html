@@ -1,34 +1,599 @@
-<!doctype html><html lang=en dir=ltr class=scroll-smooth><head><meta name=generator content="Hugo 0.111.3"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>ngeran[io]</title><link rel=stylesheet href=/css/styles.min.db8b7b9aeed944afb38a8ed2722cc1de8740300ddbeda13d79cca76a7a553639.css integrity="sha256-24t7mu7ZRK+zio7ScizB3odAMA3b7aE9ecynanpVNjk=" crossorigin=anonymous><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel=stylesheet><link rel=icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png></head><body class="bg-black text-on-surface antialiased bg-grid font-sans"><header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border"><div class="max-w-[1200px] mx-auto flex items-center h-16 px-6"><div class="flex items-center gap-6 w-full"><a href=/ class="font-mono text-sm tracking-widest text-primary flex items-center gap-1"><span class="w-2 h-2 bg-primary"></span>
-ngeran<span class=text-primary>[</span>io<span class=text-primary>]</span></a><div class="h-4 w-px bg-white/10 hidden md:block"></div><nav class="hidden md:flex items-center gap-6"><div class="nav-dropdown relative"><button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
-[ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span></button><div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50"><div class="bg-surface-lowest coma-border p-2 min-w-[200px]"><a href=/routing/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap"><span class="material-symbols-outlined text-sm">chevron_right</span>
-All routing</a>
-<a href=/routing/bgp/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-BGP</a>
-<a href=/routing/ospf/ class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span>
-OSPF</a></div></div></div></nav><div class="ml-auto flex items-center gap-4"><a href=/index.xml class="text-on-surface/60 hover:text-white transition-colors"><span class="material-symbols-outlined text-xl">rss_feed</span></a>
-<button id=mobile-menu-button class="md:hidden text-on-surface/60 hover:text-white transition-colors">
-<span class="material-symbols-outlined text-xl">menu</span></button></div></div></div><div id=mobile-menu class="hidden md:hidden border-t coma-border"><nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1"><a href=/routing/ class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">[ routing ]</a>
-<a href=/routing/bgp/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; BGP</a>
-<a href=/routing/ospf/ class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">&rdsh; OSPF</a></nav></div></header><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".nav-dropdown-trigger").forEach(e=>{e.addEventListener("click",t=>{t.stopPropagation();const s=e.closest(".nav-dropdown"),n=s.querySelector(".nav-dropdown-menu"),o=n.classList.contains("is-open");document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")}),o||(n.classList.add("is-open"),n.classList.remove("opacity-0","invisible"))})}),document.addEventListener("click",()=>{document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.classList.remove("is-open"),e.classList.add("opacity-0","invisible")})}),document.querySelectorAll(".nav-dropdown-menu").forEach(e=>{e.addEventListener("click",e=>{if(e.target.tagName==="A")return;e.stopPropagation()})})})</script><main><section class="max-w-[1200px] mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-20 sm:pb-40 border-x coma-border"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"><div class="lg:col-span-8 space-y-6 sm:space-y-8"><div class="relative overflow-hidden coma-border p-6 sm:p-12 bg-surface-lowest corner-brackets-all"><div class=corner-tl></div><div class=corner-tr></div><div class=corner-bl></div><div class=corner-br></div><div class=space-y-4><div class="font-mono text-[10px] text-white/40 uppercase tracking-[0.3em]">Module_Identifier: JNCIE-SP_00</div><h1 id=hero-title class="text-[32px] sm:text-[48px] lg:text-headline-lg text-white leading-none tracking-tighter font-semibold" data-text=NETWORKING><span class=flip-board></span><span class="text-primary terminal-cursor"></span></h1><div class="flex gap-4"><div class="h-1 flex-1 bg-white/5"><div class="h-full bg-primary w-1/3"></div></div><span class="font-mono text-[10px] text-white/20">STATUS: ACTIVE</span></div></div></div><div class=max-w-2xl><p class="text-base text-on-surface/70 leading-relaxed">My learning journey through networking, automation, and AI. I'm a network engineer pushing toward JNCIE-SP certification while exploring Python, network automation, and AI-driven infrastructure. This blog is my study companion — learning by writing and sharing knowledge to help others along the way.</p></div><div class=pt-4><a class="coma-border-white bg-white text-black px-6 sm:px-8 py-3 font-mono text-xs uppercase tracking-widest hover:bg-primary hover:border-primary transition-all duration-300 inline-flex items-center gap-3" href=/routing>Start Reading <span class="material-symbols-outlined !text-sm">arrow_forward</span></a></div></div><div class="lg:col-span-4 hidden lg:block border-l coma-border pl-8 py-4"><div class="sticky top-24 space-y-12"><div><h5 class="text-white font-mono text-xs mb-6 uppercase tracking-widest">Dashboard</h5><nav class=space-y-2></nav></div><div class=space-y-4><div class="coma-border p-4 bg-surface-lowest"><p class="font-mono text-[10px] text-white/40 mb-2 uppercase">Next Milestone:</p><p class="font-mono text-xs text-primary mb-4">JNCIE-SP Mock Lab #4</p><div class="w-full bg-white/5 h-0.5"><div class="bg-primary h-full w-[65%] shadow-[0_0_8px_rgba(77,224,130,0.5)]"></div></div></div><div class="flex items-center gap-3 px-1"><div class="w-1.5 h-1.5 bg-primary animate-pulse"></div><span class="font-mono text-[10px] text-white/40 uppercase">Lab Status: Active</span></div></div></div></div></div></section><section class="border-y coma-border"><div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 border-x coma-border divide-x coma-border"><a href=/routing/mpls/ class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block"><div class="flex justify-between items-start mb-16"><span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x01 ]</span>
-<span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">layers</span></div><h3 class="text-headline-md text-white mb-3 font-medium">MPLS</h3><p class="text-on-surface/50 text-sm mb-8 line-clamp-2">L3VPN, VPLS, and EVPN implementation strategies for SP networks.</p><div class="flex items-center justify-between border-t coma-border pt-4 mt-auto"><span class="font-mono text-[10px] text-primary">00 Entries Available</span>
-<span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span></div></a><a href=/routing/bgp/ class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block"><div class="flex justify-between items-start mb-16"><span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x02 ]</span>
-<span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">hub</span></div><h3 class="text-headline-md text-white mb-3 font-medium">BGP</h3><p class="text-on-surface/50 text-sm mb-8 line-clamp-2">Deep dive into external peering, confederations, and route reflectors.</p><div class="flex items-center justify-between border-t coma-border pt-4 mt-auto"><span class="font-mono text-[10px] text-primary">05 Entries Available</span>
-<span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span></div></a><a href=/routing/ospf/ class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block"><div class="flex justify-between items-start mb-16"><span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x03 ]</span>
-<span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">account_tree</span></div><h3 class="text-headline-md text-white mb-3 font-medium">OSPF</h3><p class="text-on-surface/50 text-sm mb-8 line-clamp-2">Mastering area types, LSA propagation, and convergence tuning.</p><div class="flex items-center justify-between border-t coma-border pt-4 mt-auto"><span class="font-mono text-[10px] text-primary">06 Entries Available</span>
-<span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span></div></a></div></section><section class="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 sm:py-32 border-x coma-border" id=recent><div class="flex items-center justify-between mb-12"><div><h2 class="font-mono text-xs text-white uppercase tracking-widest mb-2">/usr/log/entries</h2><div class="h-px w-24 bg-primary"></div></div><div class="font-mono text-[10px] text-white/20">SYSTEM_TIME: 2026.Q5</div></div><div class="space-y-px coma-border bg-white/5"><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/bgp/as_path/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-12-17</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">AS Path</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">Indicate path back to the route source and prevents routing loops.</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-2M_RD</div></div></a><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/bgp/local_preference/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-12-12</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Local Preference</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">The Power of Local Preference. The first BGP attribute used to favor one route over another.</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-5M_RD</div></div></a><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/bgp/bgp-attributes/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-12-10</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">BGP Attributes</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">BGP uses different attributes to control the advertisement and influence path selection</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-1M_RD</div></div></a><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/bgp/bgp-route-selection/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-12-01</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Route Selection</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">How to influance the route selection with the approptiate attributes.</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-12M_RD</div></div></a><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/bgp/fsm/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-11-22</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Finite State Machine</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">This article explains the different states during the BGP neighbor negotiation</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-4M_RD</div></div></a><a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href=/routing/ospf/packet-types/><div class="flex flex-col md:flex-row md:items-center gap-6"><div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0"><span class="font-mono text-[10px] text-white/40">2024-11-22</span>
-<span class="h-px flex-1 bg-white/10 md:hidden"></span></div><div class=flex-1><div class="flex items-center gap-3 mb-2"><span class=tag-pill>ROUTING</span><h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Headers and Types</h4></div><p class="text-on-surface/50 text-sm max-w-3xl">Packet Header and Packet Types</p></div><div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap"><span class="material-symbols-outlined text-sm">timer</span>
-8M_RD</div></div></a></div></section><script>document.addEventListener("DOMContentLoaded",function(){var e,n,s,o,i,a,t=document.getElementById("hero-title");if(!t)return;s=t.getAttribute("data-text"),i=t.querySelector(".flip-board"),o="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";for(n=0;n<s.length;n++)e=document.createElement("span"),e.className="flip-letter",e.textContent=" ",e.setAttribute("data-target",s[n]),i.appendChild(e);a=t.querySelectorAll(".flip-letter"),a.forEach(function(e,t){var s=e.getAttribute("data-target"),i=6+t,a=55,n=0,r=t*120;setTimeout(function(){var t=setInterval(function(){if(n++,n>=i){clearInterval(t),e.classList.add("flip-out"),setTimeout(function(){e.textContent=s,e.classList.remove("flip-out"),e.classList.add("flip-in")},150);return}var a=o[Math.floor(Math.random()*o.length)];e.textContent=a},a)},r)})})</script></main><footer><footer class="border-t coma-border mt-20 bg-surface-lowest"><div class="max-w-[1200px] mx-auto px-6 py-20 coma-border-x"><div class="flex flex-col items-center text-center"><div class="font-mono text-sm text-primary mb-12 uppercase tracking-[0.4em]">ngeran[io]</div><div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 w-full max-w-md"><a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href=#>About</a>
-<a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href=/index.xml>RSS</a>
-<a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href=#>Privacy</a>
-<a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href=#>Contact</a></div><p class="font-mono text-[10px] text-white/20 max-w-sm mb-8 leading-relaxed">&copy; 2026 ngeran[io]. All rights reserved. JNCIE-SP Study Journey.</p><div class="pt-8 border-t coma-border w-full max-w-xs"><span class="font-mono text-[10px] text-white/10 uppercase tracking-widest">Built for infrastructure professionals</span></div></div></div></footer></footer><script src=/js/main.min.c5f4780595cfc535915a7fb1e41435cbef4737ba6e14bec11ebeef71ee0957c3.js integrity="sha256-xfR4BZXPxTWRWn+x5BQ1y+9HN7puFL7BHr7vce4JV8M=" crossorigin=anonymous></script>
-<script>document.getElementById("mobile-menu-button")?.addEventListener("click",()=>{document.getElementById("mobile-menu")?.classList.toggle("hidden")})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+	<meta name="generator" content="Hugo 0.161.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ngeran[io]</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+</head>
+<body class="bg-black text-on-surface antialiased bg-grid font-sans">
+
+  <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border">
+  <div class="max-w-[1200px] mx-auto flex items-center h-16 px-6">
+    <div class="flex items-center gap-6 w-full">
+      <a href="/" class="font-mono text-sm tracking-widest text-primary flex items-center gap-1">
+        <span class="w-2 h-2 bg-primary"></span>
+        ngeran<span class="text-primary">[</span>io<span class="text-primary">]</span>
+      </a>
+      <div class="h-4 w-px bg-white/10 hidden md:block"></div>
+      <nav class="hidden md:flex items-center gap-6">
+        
+          
+            
+          
+          
+          
+            
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            
+              <div class="nav-dropdown relative">
+                <button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
+                  [ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span>
+                </button>
+                <div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50">
+                  <div class="bg-surface-lowest coma-border p-2 min-w-[200px]">
+                    <a href="/routing/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap">
+                      <span class="material-symbols-outlined text-sm">chevron_right</span>
+                      All routing
+                    </a>
+                    
+                      
+                        <a href="/routing/mpls/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          MPLS
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/bgp/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          BGP
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/ospf/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          OSPF
+                        </a>
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+            
+            
+            
+              <a href="/observability/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ observability ]
+              </a>
+            
+          
+        
+      </nav>
+      <div class="ml-auto flex items-center gap-4">
+        <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">rss_feed</span>
+        </a>
+        <button id="mobile-menu-button" class="md:hidden text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden border-t coma-border">
+    <nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1">
+      
+        
+          
+        
+        
+        
+          <a href="/routing/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ routing ]
+          </a>
+          
+            
+              <a href="/routing/mpls/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; MPLS
+              </a>
+            
+          
+            
+              <a href="/routing/bgp/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; BGP
+              </a>
+            
+          
+            
+              <a href="/routing/ospf/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; OSPF
+              </a>
+            
+          
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+          <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ observability ]
+          </a>
+          
+        
+      
+    </nav>
+  </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dropdown = btn.closest('.nav-dropdown');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      const isOpen = menu.classList.contains('is-open');
+
+      
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+        m.classList.remove('is-open');
+        m.classList.add('opacity-0', 'invisible');
+      });
+
+      if (!isOpen) {
+        menu.classList.add('is-open');
+        menu.classList.remove('opacity-0', 'invisible');
+      }
+    });
+  });
+
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+      m.classList.remove('is-open');
+      m.classList.add('opacity-0', 'invisible');
+    });
+  });
+
+  
+  document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return; 
+      e.stopPropagation();
+    });
+  });
+});
+</script>
+
+
+  <main>
+    
+
+
+<section class="max-w-[1200px] mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-20 sm:pb-40 border-x coma-border">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  <div class="lg:col-span-8 space-y-6 sm:space-y-8">
+    
+    <div class="relative overflow-hidden coma-border p-6 sm:p-12 bg-surface-lowest corner-brackets-all">
+      <div class="corner-tl"></div>
+      <div class="corner-tr"></div>
+      <div class="corner-bl"></div>
+      <div class="corner-br"></div>
+      <div class="space-y-4">
+        <div class="font-mono text-[10px] text-white/40 uppercase tracking-[0.3em]">Every packet tells a story — we read them all.</div>
+        <h1 id="hero-title" class="text-[32px] sm:text-[48px] lg:text-headline-lg text-white leading-none tracking-tighter font-semibold" data-text="NETWORKING">
+          <span class="flip-board"></span><span class="text-primary terminal-cursor"></span>
+        </h1>
+        <div class="flex gap-4">
+          <div class="h-1 flex-1 bg-white/5">
+            <div class="h-full bg-primary w-1/3"></div>
+          </div>
+          <span class="font-mono text-[10px] text-white/20">STATUS: ACTIVE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-2xl">
+      <p class="text-base text-on-surface/70 leading-relaxed">
+        Every packet tells a story — we read them all. A network engineering blog covering routing protocols, automation, observability, and the art of solving problems at scale. Deep technical analysis, practical configs, and lessons from the wire.
+      </p>
+    </div>
+
+    <div class="pt-4">
+      <a class="coma-border-white bg-white text-black px-6 sm:px-8 py-3 font-mono text-xs uppercase tracking-widest hover:bg-primary hover:border-primary transition-all duration-300 inline-flex items-center gap-3" href="/routing">
+        Start Reading <span class="material-symbols-outlined !text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  
+  <div class="lg:col-span-4 hidden lg:block border-l coma-border pl-8 py-4">
+    <div class="sticky top-24 space-y-12">
+  
+  <div>
+    <h5 class="text-white font-mono text-xs mb-6 uppercase tracking-widest">Dashboard</h5>
+    <nav class="space-y-2">
+      
+      
+      
+    </nav>
+  </div>
+
+  
+  <div class="space-y-4">
+    <div class="coma-border p-4 bg-surface-lowest">
+      <p class="font-mono text-[10px] text-white/40 mb-2 uppercase">Next Milestone:</p>
+      <p class="font-mono text-xs text-primary mb-4">Network Problem Solving</p>
+      <div class="w-full bg-white/5 h-0.5">
+        <div class="bg-primary h-full w-[65%] shadow-[0_0_8px_rgba(77,224,130,0.5)]"></div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 px-1">
+      <div class="w-1.5 h-1.5 bg-primary animate-pulse"></div>
+      <span class="font-mono text-[10px] text-white/40 uppercase">Lab Status: Active</span>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+</section>
+
+
+
+
+
+
+<section class="border-y coma-border">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 border-x coma-border divide-x coma-border">
+    
+      
+      
+      
+      <a href="/routing/mpls/" class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block">
+        <div class="flex justify-between items-start mb-16">
+          <span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x01 ]</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">layers</span>
+        </div>
+        <h3 class="text-headline-md text-white mb-3 font-medium">MPLS</h3>
+        <p class="text-on-surface/50 text-sm mb-8 line-clamp-2">L3VPN, VPLS, and EVPN implementation strategies for SP networks.</p>
+        <div class="flex items-center justify-between border-t coma-border pt-4 mt-auto">
+          <span class="font-mono text-[10px] text-primary">00 Entries Available</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span>
+        </div>
+      </a>
+    
+      
+      
+      
+      <a href="/routing/bgp/" class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block">
+        <div class="flex justify-between items-start mb-16">
+          <span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x02 ]</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">hub</span>
+        </div>
+        <h3 class="text-headline-md text-white mb-3 font-medium">BGP</h3>
+        <p class="text-on-surface/50 text-sm mb-8 line-clamp-2">Deep dive into external peering, confederations, and route reflectors.</p>
+        <div class="flex items-center justify-between border-t coma-border pt-4 mt-auto">
+          <span class="font-mono text-[10px] text-primary">05 Entries Available</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span>
+        </div>
+      </a>
+    
+      
+      
+      
+      <a href="/routing/ospf/" class="p-8 group hover:bg-surface-lowest transition-colors relative overflow-hidden block">
+        <div class="flex justify-between items-start mb-16">
+          <span class="font-mono text-[10px] text-primary bg-primary/10 px-2 py-1">[ 0x03 ]</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:text-primary transition-colors">account_tree</span>
+        </div>
+        <h3 class="text-headline-md text-white mb-3 font-medium">OSPF</h3>
+        <p class="text-on-surface/50 text-sm mb-8 line-clamp-2">Mastering area types, LSA propagation, and convergence tuning.</p>
+        <div class="flex items-center justify-between border-t coma-border pt-4 mt-auto">
+          <span class="font-mono text-[10px] text-primary">06 Entries Available</span>
+          <span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span>
+        </div>
+      </a>
+    
+  </div>
+</section>
+
+
+
+
+<section class="max-w-[1200px] mx-auto px-4 sm:px-6 py-20 sm:py-32 border-x coma-border" id="recent">
+  <div class="flex items-center justify-between mb-12">
+  <div>
+    <h2 class="font-mono text-xs text-white uppercase tracking-widest mb-2">/usr/log/entries</h2>
+    <div class="h-px w-24 bg-primary"></div>
+  </div>
+  <div class="font-mono text-[10px] text-white/20">SYSTEM_TIME: 2026.Q5</div>
+</div>
+
+
+
+<div class="space-y-px coma-border bg-white/5">
+  
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/observability/twamp/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2026-05-30</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">OBSERVABILITY</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Beyond the Ping: Mastering TWAMP on Juniper MX</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">TWAMP and TWAMP-Light on Juniper MX — detecting gray failures, jitter, and slowness before your customers report it.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          5M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/as_path/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2024-12-17</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">AS Path</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">Indicate path back to the route source and prevents routing loops.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          2M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/local_preference/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2024-12-12</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Local Preference</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">The Power of Local Preference. The first BGP attribute used to favor one route over another.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          5M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/bgp-attributes/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2024-12-10</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">BGP Attributes</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">BGP uses different attributes to control the advertisement and influence path selection</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          1M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/bgp-route-selection/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2024-12-01</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Route Selection</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">How to influance the route selection with the approptiate attributes.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          12M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/fsm/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2024-11-22</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Finite State Machine</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">This article explains the different states during the BGP neighbor negotiation</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          4M_RD
+        </div>
+      </div>
+    </a>
+  
+</div>
+
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('hero-title');
+  if (!el) return;
+
+  var text = el.getAttribute('data-text');
+  var container = el.querySelector('.flip-board');
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+  
+  for (var i = 0; i < text.length; i++) {
+    var span = document.createElement('span');
+    span.className = 'flip-letter';
+    span.textContent = ' ';
+    span.setAttribute('data-target', text[i]);
+    container.appendChild(span);
+  }
+
+  var letters = el.querySelectorAll('.flip-letter');
+
+  
+  letters.forEach(function(span, idx) {
+    var target = span.getAttribute('data-target');
+    var cycles = 6 + idx;
+    var speed = 55;
+    var step = 0;
+    var delay = idx * 120;
+
+    setTimeout(function() {
+      var timer = setInterval(function() {
+        step++;
+        if (step >= cycles) {
+          clearInterval(timer);
+          span.classList.add('flip-out');
+          setTimeout(function() {
+            span.textContent = target;
+            span.classList.remove('flip-out');
+            span.classList.add('flip-in');
+          }, 150);
+          return;
+        }
+        var rand = chars[Math.floor(Math.random() * chars.length)];
+        span.textContent = rand;
+      }, speed);
+    }, delay);
+  });
+});
+</script>
+
+
+
+  </main>
+
+  <footer>
+    
+      <footer class="border-t coma-border mt-20 bg-surface-lowest">
+  <div class="max-w-[1200px] mx-auto px-6 py-20 coma-border-x">
+    <div class="flex flex-col items-center text-center">
+      <div class="font-mono text-sm text-primary mb-12 uppercase tracking-[0.4em]">ngeran[io]</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 w-full max-w-md">
+        <a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href="#">About</a>
+        <a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href="/index.xml">RSS</a>
+        <a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href="#">Privacy</a>
+        <a class="font-mono text-[10px] text-white/40 hover:text-white transition-colors uppercase" href="#">Contact</a>
+      </div>
+      <p class="font-mono text-[10px] text-white/20 max-w-sm mb-8 leading-relaxed">
+        &copy; 2026 ngeran[io]. Every packet tells a story — we read them all.
+      </p>
+      <div class="pt-8 border-t coma-border w-full max-w-xs">
+        <span class="font-mono text-[10px] text-white/10 uppercase tracking-widest">Built for infrastructure professionals</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+  </footer>
+
+  
+
+  
+    <script src="/js/main.js"></script>
+
+
+  <script>
+    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

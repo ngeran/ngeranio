@@ -12,7 +12,7 @@
             {{ continue }}
           {{ end }}
           {{ $sec := $.Site.GetPage .Name }}
-          {{ if and $sec (gt (len $sec.Pages) 1) }}
+          {{ if and $sec (gt (len $sec.Pages) 0) }}
             {{ $hasSubs := false }}
             {{ range $sec.Sections }}
               {{ if gt (len .Pages) 1 }}
@@ -67,7 +67,7 @@
           {{ continue }}
         {{ end }}
         {{ $sec := $.Site.GetPage .Name }}
-        {{ if and $sec (gt (len $sec.Pages) 1) }}
+        {{ if and $sec (gt (len $sec.Pages) 0) }}
           <a href="{{ .URL }}" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
             [ {{ .Name }} ]
           </a>

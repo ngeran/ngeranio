@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Observability on ngeran[io]</title><link>https://ngeranio.com/observability/</link><description>Recent content in Observability on ngeran[io]</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ngeranio.com/observability/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Observability on ngeran[io]</title>
+    <link>http://localhost:1313/observability/</link>
+    <description>Recent content in Observability on ngeran[io]</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 May 2026 12:00:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/observability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beyond the Ping: Mastering TWAMP on Juniper MX</title>
+      <link>http://localhost:1313/observability/twamp/</link>
+      <pubDate>Sat, 30 May 2026 12:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/observability/twamp/</guid>
+      <description>TWAMP and TWAMP-Light on Juniper MX — detecting gray failures, jitter, and slowness before your customers report it.</description>
+    </item>
+  </channel>
+</rss>

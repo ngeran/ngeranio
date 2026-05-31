@@ -1,0 +1,123 @@
+---
+title: "Beyond the Ping: Mastering TWAMP on Juniper MX for 'Sick but Not Dead' Networks"
+date: 2023-10-27    
+description: "A comprehensive guide to TWAMP and TWAMP-Light on Juniper MX, focusing on detecting slowness and gray failures."
+categories: ["Networking", "Juniper"]
+tags: ["TWAMP", "Juniper MX", "SLA", "RPM", "Troubleshooting"]
+---
+
+# Why Ping Isn't Enough
+
+In modern service provider networks, "Down" is easy to detect. The real challenge is **"Sick but Not Dead."** These are the gray failures—micro-bursts, jitter spikes, and intermittent slowness—that frustrate users but leave traditional monitoring tools green.
+
+The **Two-Way Active Measurement Protocol (TWAMP)** is the industry-standard answer to this problem. In this guide, we will explore how to deploy TWAMP on Juniper MX480 routers to catch slowness before your customers report it.
+
+---
+
+## 1. TWAMP vs. TWAMP-Light: Which to Choose?
+
+TWAMP (RFC 5357) comes in two flavors. Choosing the right one is the difference between a stable monitoring platform and a "flickering" inventory.
+
+| Feature | Standard TWAMP | TWAMP-Light |
+| :--- | :--- | :--- |
+| **Control Plane** | Uses TCP Port 862 for handshaking. | **No Control Plane.** Only UDP Probes. |
+| **Statefulness** | High overhead; sessions can flap if TCP lags. | Low overhead; stateless and resilient. |
+| **Use Case** | Multi-vendor interoperability. | **Performance Monitoring & Slowness detection.** |
+| **"Sick" Network** | May fail if packet loss kills the TCP session. | **Keeps probing** even during 50% packet loss. |
+
+**The Verdict:** For high-precision "Slowness" detection on Juniper, **TWAMP-Light** is superior because it remains active even when the network is degraded.
+
+---
+
+## 2. Architecture & Roles
+
+*   **Control-Client / Session-Sender (The Controller):** The device that initiates the probes.
+*   **Server / Session-Reflector (The Responder):** The device that bounces the packets back with high-precision timestamps.
+
+---
+
+## 3. The "Golden Config" for Juniper MX480
+
+On the MX480, we want to offload processing from the CPU to the hardware for maximum accuracy. We will use three sessions: **Voice (EF)**, **Video (AF41)**, and **Best Effort (BE)** to identify which specific traffic class is "slow."
+
+### PE1: The Controller (Client)
+*Targeting PE2 (10.100.249.4) from Source (10.100.249.1)*
+
+```junos
+# 1. Global Client Settings
+set services rpm twamp client control-connection pe1-to-pe2 control-type light
+set services rpm twamp client control-connection pe1-to-pe2 history-size 512
+set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
+
+# IMPORTANT: Keeps results visible even between test iterations
+set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+
+# 2. Voice Test (Catching Jitter/Slowness)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.4
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 0.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 1
+
+# 3. Slowness Thresholds (Triggers SNMP Traps)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000
+
+### PE2: The Responder (Server)
+*Listening for PE1 (10.100.249.1)*
+
+```junos
+set services rpm twamp server authentication-mode none
+set services rpm twamp server light
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.1/32
+
+4. Hardware Optimization for MX480
+The MX480 supports Hardware Timestamping. Without this, your jitter measurements will include "noise" from the router's own CPU.
+
+Delegate Probes: Move processing from the Routing Engine (RE) to the Packet Forwarding Engine (PFE).
+
+Hardware Timestamps:
+
+junos
+set services rpm twamp client control-connection pe1-to-pe2 delegate-probes
+set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping
+5. Verifying and Analyzing the "Slowness"
+The Disappearing Session Problem
+If you run show services rpm twamp client session and it returns empty, it is usually because the router is in a "Gap" between test iterations.
+
+Solution: Always check results, not just sessions.
+
+Key Analysis Commands
+bash
+# 1. See if the sessions are defined
+run show services rpm twamp client session
+
+# 2. The most important command for slowness:
+run show services rpm twamp client probe-results
+How to Read the Output
+When a user complains of slowness, look at these three metrics in the probe-results:
+
+Standard Deviation (Stddev): If this is high (>15ms), the network is jittery. This is the #1 cause of "slowness" in VoIP and Citrix.
+
+Peak-to-Peak Jitter: This shows the worst-case variance. Large gaps here indicate micro-bursts of traffic saturating a link.
+
+Positive vs. Negative Jitter:
+
+High Egress Jitter = Congestion leaving the Controller.
+
+High Ingress Jitter = Congestion returning from the Reflector.
+
+6. Actionable Insights for Inventory Management
+If you are building a monitoring dashboard, use this logic to manage your device inventory:
+
+Status	Metrics	Action Required
+Green	0% Loss, Stddev < 5ms	None. Stable network.
+Yellow (Sick)	0% Loss, Stddev > 20ms	Check for interface congestion.
+Red (Dead)	100% Loss	Immediate circuit troubleshooting.
+💡 Pro-Tip: If the show session command is empty but probe-results still shows data, the device is still "Connected." Do not remove it from your inventory unless both commands return empty for more than 5 minutes.
+
+Conclusion
+By moving from simple Pings to TWAMP-Light with Delegated Probes, you gain a microscopic view of your network health. You no longer have to wait for the "Down" alert to know your network is failing; you can see the "Slowness" in the jitter trends and act before the customer calls.
