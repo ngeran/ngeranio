@@ -1,15 +1,16 @@
 +++
-title = 'Tagging'
+title = 'Junos VLAN Tagging Options Explained'
 date = 2025-04-14T16:52:11-04:00
-draft = false
+draft = true
+tags = ["Juniper", "Junos", "VLAN", "QinQ", "MX-Series"]
+summary = 'Comparison of vlan-tagging, flexible-vlan-tagging, and encapsulation flexible-ethernet-services on Junos — when to use each.'
 +++
 
-
-## Junos VLAN Tagging Options Explained
+### Junos VLAN Tagging Options Explained
 
 Here's a comparison of `vlan-tagging`, `flexible-vlan-tagging`, and `encapsulation flexible-ethernet-services`.
 
-### 1. `vlan-tagging`
+#### 1. `vlan-tagging`
 
 *   **Configuration Level:** Physical Interface (`set interfaces <interface-name> vlan-tagging`)
 *   **Purpose:** Enables basic IEEE 802.1Q VLAN tagging support on the physical interface.
@@ -40,7 +41,7 @@ Here's a comparison of `vlan-tagging`, `flexible-vlan-tagging`, and `encapsulati
 
 ---
 
-### 2. `flexible-vlan-tagging`
+#### 2. `flexible-vlan-tagging`
 
 *   **Configuration Level:** Physical Interface (`set interfaces <interface-name> flexible-vlan-tagging`)
 *   **Purpose:** Enables advanced VLAN tagging capabilities, allowing for more complex scenarios on a single physical interface.
@@ -88,7 +89,7 @@ Here's a comparison of `vlan-tagging`, `flexible-vlan-tagging`, and `encapsulati
 
 ---
 
-### 3. `encapsulation flexible-ethernet-services`
+#### 3. `encapsulation flexible-ethernet-services`
 
 *   **Configuration Level:** Physical Interface (`set interfaces <interface-name> encapsulation flexible-ethernet-services`)
 *   **Purpose:** Primarily used on MX Series routers (and some other platforms) to allow a *mix of different Layer 2 encapsulation types* (like bridge, ccc, vpls) on different logical units of the *same* physical interface. It fundamentally changes how the interface PFE (Packet Forwarding Engine) processes frames to support this service flexibility.

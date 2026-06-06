@@ -109,6 +109,18 @@
             
           
         
+          
+          
+          
+            
+            
+            
+              <a href="/junos/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ junos ]
+              </a>
+            
+          
+        
       </nav>
       <div class="ml-auto flex items-center gap-4">
         <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
@@ -174,6 +186,15 @@
           
         
       
+        
+        
+        
+          <a href="/junos/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ junos ]
+          </a>
+          
+        
+      
     </nav>
   </div>
 </header>
@@ -231,6 +252,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
 
 <main class="pt-32 pb-24 px-4 sm:px-8 max-w-7xl mx-auto relative min-h-screen">
@@ -246,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Junos
       </h1>
       <p class="text-on-surface-variant max-w-3xl text-sm leading-relaxed">
-        Technical manifest: deep-dives into junos.
+        Junos OS platform engineering — PFE internals, ASIC diagnostics, configuration deep-dives, and hardware-level troubleshooting on MX-Series.
       </p>
     </div>
   </section>
@@ -260,301 +293,34 @@ document.addEventListener('DOMContentLoaded', () => {
       
         
         <article class="group relative bg-black hover:bg-surface-lowest transition-colors p-5 sm:p-8 article-entry">
-          <a href="/junos/tagging/" class="block">
+          <a href="/junos/pfe-deep-dive/" class="block">
             <div class="flex flex-col gap-4 sm:gap-6">
               <div class="flex items-center justify-between font-mono text-[10px] text-on-surface-variant tracking-widest">
                 <div class="flex items-center gap-2 sm:gap-4">
                   <span class="text-primary font-bold">ENTRY.01</span>
                   <span class="w-px h-3 bg-border-muted"></span>
                   
+                    <span class="text-primary">JUNIPER</span>
+                  
                 </div>
-                <span>APR 14 2025</span>
+                <span>JUN 05 2026</span>
               </div>
               <div class="space-y-2">
                 <h2 class="text-headline-md text-on-surface group-hover:text-primary transition-colors uppercase font-medium">
-                  Tagging
+                  Juniper PFE Deep Dive: Diagnosing Silent Packet Drops When BGP Is Up
                 </h2>
                 <p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed">
-                  <h2 id="junos-vlan-tagging-options-explained">Junos VLAN Tagging Options Explained</h2>
-<p>Here&rsquo;s a comparison of <code>vlan-tagging</code>, <code>flexible-vlan-tagging</code>, and <code>encapsulation flexible-ethernet-services</code>.</p>
-<h3 id="1-vlan-tagging">1. <code>vlan-tagging</code></h3>
-<ul>
-<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; vlan-tagging</code>)</li>
-<li><strong>Purpose:</strong> Enables basic IEEE 802.1Q VLAN tagging support on the physical interface.</li>
-<li><strong>Capabilities:</strong>
-<ul>
-<li>Allows logical units (<code>unit</code>) under this interface to be configured with a <em>single</em> VLAN ID (<code>set interfaces &lt;interface-name&gt; unit &lt;number&gt; vlan-id &lt;id&gt;</code>).</li>
-<li>Supports sending and receiving standard single-tagged Ethernet frames.</li>
-<li>Can support one untagged VLAN using the <code>native-vlan-id</code> option on the physical interface.</li>
-</ul>
-</li>
-<li><strong>Limitations:</strong>
-<ul>
-<li>Does <em>not</em> natively support receiving or sending double-tagged (QinQ/Stacked VLAN) frames on logical units.</li>
-<li>Does <em>not</em> easily support mixing tagged and untagged traffic across <em>different</em> logical units on the same physical interface (only one native/untagged VLAN is easily supported for the whole port).</li>
-<li>Limited flexibility in VLAN mapping per logical unit.</li>
-</ul>
-</li>
-<li><strong>Typical Use Case:</strong>
-<ul>
-<li>Standard &ldquo;trunk&rdquo; ports connecting to switches or other routers where multiple VLANs, each identified by a single tag, need to be carried.</li>
-<li>Simple Layer 2 or Layer 3 sub-interfaces.</li>
-</ul>
-</li>
-<li><strong>Example:</strong>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        junos
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code># Configure the physical interface for basic single-tagging
-set interfaces ge-0/0/1 vlan-tagging
-set interfaces ge-0/0/1 native-vlan-id 10  # Optional: VLAN 10 is untagged
-
-# Configure logical units with single VLAN IDs
-set interfaces ge-0/0/1 unit 100 vlan-id 100
-set interfaces ge-0/0/1 unit 100 family inet address 192.168.100.1/24
-
-set interfaces ge-0/0/1 unit 200 vlan-id 200
-set interfaces ge-0/0/1 unit 200 family inet address 192.168.200.1/24</code></pre>
-</div>
-</li>
-</ul>
-<hr>
-<h3 id="2-flexible-vlan-tagging">2. <code>flexible-vlan-tagging</code></h3>
-<ul>
-<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; flexible-vlan-tagging</code>)</li>
-<li><strong>Purpose:</strong> Enables advanced VLAN tagging capabilities, allowing for more complex scenarios on a single physical interface.</li>
-<li><strong>Capabilities:</strong>
-<ul>
-<li>Supports logical units with <em>single</em> VLAN IDs (<code>vlan-id</code>).</li>
-<li>Supports logical units with <em>double</em> (stacked/QinQ) VLAN tags (<code>vlan-tags outer &lt;tag&gt; inner &lt;tag&gt;</code>).</li>
-<li>Supports logical units accepting <em>untagged</em> traffic (<code>vlan-id none</code>, though configuration details vary slightly by platform/scenario).</li>
-<li>Allows mixing single-tagged, double-tagged, and untagged logical units on the <em>same</em> physical interface.</li>
-<li>Supports VLAN ID lists and ranges on logical units (<code>vlan-id-list [ list-of-vlans ]</code>).</li>
-<li>Often a prerequisite for advanced Layer 2 features and services.</li>
-</ul>
-</li>
-<li><strong>Limitations:</strong>
-<ul>
-<li>Slightly more complex configuration as each logical unit&rsquo;s tagging requirement must be explicitly defined.</li>
-</ul>
-</li>
-<li><strong>Typical Use Case:</strong>
-<ul>
-<li>QinQ deployments (Service Provider NNI, Enterprise Campus).</li>
-<li>Interfaces needing to handle a mix of single-tagged customer traffic and double-tagged infrastructure traffic.</li>
-<li>Interfaces where some services are tagged and others are untagged.</li>
-<li>Aggregation points requiring flexible VLAN mapping.</li>
-</ul>
-</li>
-<li><strong>Example:</strong>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        junos
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code># Configure the physical interface for advanced tagging
-set interfaces xe-0/1/0 flexible-vlan-tagging
-
-# Configure a logical unit for single-tagged traffic
-set interfaces xe-0/1/0 unit 101 description &#34;Single Tagged Customer A&#34;
-set interfaces xe-0/1/0 unit 101 vlan-id 101
-set interfaces xe-0/1/0 unit 101 family bridge # Example for L2
-
-# Configure a logical unit for double-tagged (QinQ) traffic
-set interfaces xe-0/1/0 unit 500 description &#34;QinQ Customer B (Outer 500, Inner 50)&#34;
-set interfaces xe-0/1/0 unit 500 vlan-tags outer 500 inner 50
-set interfaces xe-0/1/0 unit 500 family bridge # Example for L2
-
-# Configure a logical unit for untagged traffic (config might vary slightly)
-# This often requires specific encapsulation like vlan-bridge or ethenet-bridge
-set interfaces xe-0/1/0 unit 0 description &#34;Untagged Management&#34;
-set interfaces xe-0/1/0 unit 0 encapsulation vlan-bridge
-# Note: No &#39;vlan-id&#39; or &#39;vlan-tags&#39; means it might handle untagged frames if configured correctly
-set interfaces xe-0/1/0 unit 0 family inet address 10.0.0.1/24
-
-# Configure a logical unit accepting a list of VLANs
-set interfaces xe-0/1/0 unit 999 description &#34;VLAN List Service&#34;
-set interfaces xe-0/1/0 unit 999 vlan-id-list [ 200 205-210 300 ]
-set interfaces xe-0/1/0 unit 999 encapsulation vlan-bridge</code></pre>
-</div>
-</li>
-</ul>
-<hr>
-<h3 id="3-encapsulation-flexible-ethernet-services">3. <code>encapsulation flexible-ethernet-services</code></h3>
-<ul>
-<li><strong>Configuration Level:</strong> Physical Interface (<code>set interfaces &lt;interface-name&gt; encapsulation flexible-ethernet-services</code>)</li>
-<li><strong>Purpose:</strong> Primarily used on MX Series routers (and some other platforms) to allow a <em>mix of different Layer 2 encapsulation types</em> (like bridge, ccc, vpls) on different logical units of the <em>same</em> physical interface. It fundamentally changes how the interface PFE (Packet Forwarding Engine) processes frames to support this service flexibility.</li>
-<li><strong>Capabilities:</strong>
-<ul>
-<li>Allows logical units (<code>unit</code>) under the same physical interface to have different Ethernet service encapsulations (e.g., <code>encapsulation vlan-bridge</code>, <code>encapsulation vlan-ccc</code>, <code>encapsulation vlan-vpls</code>, <code>encapsulation ethernet-ccc</code>, etc.).</li>
-<li>Enables maximum service multiplexing onto a single physical port.</li>
-</ul>
-</li>
-<li><strong>Important Note:</strong> This option <em>must often be used in conjunction with <code>flexible-vlan-tagging</code></em> if the services running on the logical units need to handle tagged frames (single or double). <code>flexible-ethernet-services</code> defines the <em>service type</em> flexibility, while <code>flexible-vlan-tagging</code> defines the <em>VLAN tag</em> flexibility.</li>
-<li><strong>Limitations:</strong>
-<ul>
-<li>Platform-specific (mainly MX Series).</li>
-<li>Adds configuration complexity.</li>
-<li>Cannot be combined with <code>vlan-tagging</code> on the same physical interface.</li>
-</ul>
-</li>
-<li><strong>Typical Use Case:</strong>
-<ul>
-<li>Service Provider edge routers (PE) terminating multiple customers with different L2VPN service types (E-Line/CCC, E-LAN/VPLS, E-Tree) or bridging requirements on the same physical link (NNI or UNI).</li>
-<li>Data Center interconnects requiring diverse L2 service types.</li>
-</ul>
-</li>
-<li><strong>Example:</strong>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        junos
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code># Configure the physical interface for flexible service encapsulations AND flexible tagging
-set interfaces xe-0/2/0 encapsulation flexible-ethernet-services
-set interfaces xe-0/2/0 flexible-vlan-tagging
-
-# Logical unit for a bridged service (single tag)
-set interfaces xe-0/2/0 unit 1000 description &#34;Bridged Service VLAN 1000&#34;
-set interfaces xe-0/2/0 unit 1000 encapsulation vlan-bridge
-set interfaces xe-0/2/0 unit 1000 vlan-id 1000
-
-# Logical unit for a VPLS service (QinQ tag)
-set interfaces xe-0/2/0 unit 2000 description &#34;VPLS Service Outer 200 Inner 20&#34;
-set interfaces xe-0/2/0 unit 2000 encapsulation vlan-vpls
-set interfaces xe-0/2/0 unit 2000 vlan-tags outer 200 inner 20
-
-# Logical unit for a CCC/L2Circuit service (single tag)
-set interfaces xe-0/2/0 unit 3000 description &#34;CCC/E-Line Service VLAN 3000&#34;
-set interfaces xe-0/2/0 unit 3000 encapsulation vlan-ccc
-set interfaces xe-0/2/0 unit 3000 vlan-id 3000</code></pre>
-</div>
-</li>
-</ul>
-<hr>
-<h3 id="summary-table">Summary Table</h3>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Feature</th>
-          <th style="text-align: left"><code>vlan-tagging</code></th>
-          <th style="text-align: left"><code>flexible-vlan-tagging</code></th>
-          <th style="text-align: left"><code>encapsulation flexible-ethernet-services</code> (+ <code>flexible-vlan-tagging</code>)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Config Level</strong></td>
-          <td style="text-align: left">Physical Interface</td>
-          <td style="text-align: left">Physical Interface</td>
-          <td style="text-align: left">Physical Interface</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Primary Purpose</strong></td>
-          <td style="text-align: left">Basic 802.1Q tagging</td>
-          <td style="text-align: left">Advanced VLAN tagging (QinQ, Mixed)</td>
-          <td style="text-align: left">Mix different L2 service types on units</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Single Tag Support</strong></td>
-          <td style="text-align: left">Yes (via <code>vlan-id</code> on unit)</td>
-          <td style="text-align: left">Yes (via <code>vlan-id</code> on unit)</td>
-          <td style="text-align: left">Yes (if <code>flexible-vlan-tagging</code> also used)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Double Tag (QinQ) Support</strong></td>
-          <td style="text-align: left">No</td>
-          <td style="text-align: left">Yes (via <code>vlan-tags</code> on unit)</td>
-          <td style="text-align: left">Yes (if <code>flexible-vlan-tagging</code> also used)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Untagged Support</strong></td>
-          <td style="text-align: left">Yes (one <code>native-vlan-id</code>)</td>
-          <td style="text-align: left">Yes (per unit, requires specific config)</td>
-          <td style="text-align: left">Yes (per unit, requires specific config)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Mixed Tag/Untagged Units</strong></td>
-          <td style="text-align: left">No (except native)</td>
-          <td style="text-align: left">Yes</td>
-          <td style="text-align: left">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>VLAN Lists/Ranges</strong></td>
-          <td style="text-align: left">No</td>
-          <td style="text-align: left">Yes</td>
-          <td style="text-align: left">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Mixed L2 Encapsulations per Port</strong></td>
-          <td style="text-align: left">No</td>
-          <td style="text-align: left">No</td>
-          <td style="text-align: left">Yes (e.g., bridge, ccc, vpls on same port)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Common Platforms</strong></td>
-          <td style="text-align: left">All Junos platforms</td>
-          <td style="text-align: left">Most modern Junos platforms</td>
-          <td style="text-align: left">Primarily MX Series (and some others like PTX, ACX)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Use When&hellip;</strong></td>
-          <td style="text-align: left">Simple trunk port, single tags only.</td>
-          <td style="text-align: left">Need QinQ, mix tagged/untagged, VLAN lists.</td>
-          <td style="text-align: left">Need to mix L2VPN service types (VPLS, CCC, Bridge) on one port (MX).</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<p><strong>In essence:</strong></p>
+                  Move beyond show route — hardware-level diagnostics, FIB sync issues, ASIC discards, JSIM simulation, and packet-via-dmem captures on Juniper MX-Series.
                 </p>
               </div>
               <div class="flex flex-wrap items-center gap-4 sm:gap-8 font-mono text-[10px] text-on-surface-variant">
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-sm">timer</span>
-                  <span>READ_TIME: 06M</span>
+                  <span>READ_TIME: 15M</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-sm">description</span>
-                  <span>SIZE: 1122_WORDS</span>
+                  <span>SIZE: 3108_WORDS</span>
                 </div>
                 <div class="flex-grow"></div>
                 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -575,6 +341,18 @@ set interfaces xe-0/2/0 unit 3000 vlan-id 3000</code></pre>
           <div class="h-px flex-grow bg-border-muted"></div>
         </div>
         <div class="flex flex-wrap gap-2">
+          
+            <span class="tag-registry">#JUNIPER</span>
+          
+            <span class="tag-registry">#JUNOS</span>
+          
+            <span class="tag-registry">#PFE</span>
+          
+            <span class="tag-registry">#TROUBLESHOOTING</span>
+          
+            <span class="tag-registry">#BGP</span>
+          
+            <span class="tag-registry">#MX-SERIES</span>
           
         </div>
       </div>
@@ -612,6 +390,18 @@ set interfaces xe-0/2/0 unit 3000 vlan-id 3000</code></pre>
         <div class="h-px flex-grow bg-border-muted"></div>
       </div>
       <div class="flex flex-wrap gap-2">
+        
+          <span class="tag-registry">#JUNIPER</span>
+        
+          <span class="tag-registry">#JUNOS</span>
+        
+          <span class="tag-registry">#PFE</span>
+        
+          <span class="tag-registry">#TROUBLESHOOTING</span>
+        
+          <span class="tag-registry">#BGP</span>
+        
+          <span class="tag-registry">#MX-SERIES</span>
         
       </div>
     </div>

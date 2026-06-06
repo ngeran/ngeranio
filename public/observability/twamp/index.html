@@ -109,6 +109,18 @@
             
           
         
+          
+          
+          
+            
+            
+            
+              <a href="/junos/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ junos ]
+              </a>
+            
+          
+        
       </nav>
       <div class="ml-auto flex items-center gap-4">
         <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
@@ -170,6 +182,15 @@
         
           <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
             [ observability ]
+          </a>
+          
+        
+      
+        
+        
+        
+          <a href="/junos/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ junos ]
           </a>
           
         
@@ -258,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-1-preparing-the-chassis-the-hardware-secret">
-            <span class="group-hover:text-high-contrast transition-colors">03 PHASE 1: PREPARING THE CHASSIS (THE HARDWARE SECRET)</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#the-four-twamp-roles-simplified">
+            <span class="group-hover:text-high-contrast transition-colors">03 THE FOUR TWAMP ROLES (SIMPLIFIED)</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -268,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-2-the-golden-config-for-juniper-mx">
-            <span class="group-hover:text-high-contrast transition-colors">04 PHASE 2: THE &amp;LDQUO;GOLDEN CONFIG&amp;RDQUO; FOR JUNIPER MX</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#our-lab-topology">
+            <span class="group-hover:text-high-contrast transition-colors">04 OUR LAB TOPOLOGY</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -278,8 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-3-optimizing-for-accuracy">
-            <span class="group-hover:text-high-contrast transition-colors">05 PHASE 3: OPTIMIZING FOR ACCURACY</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#global-client-settings-explained">
+            <span class="group-hover:text-high-contrast transition-colors">05 GLOBAL CLIENT SETTINGS EXPLAINED</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -288,8 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#phase-4-verifying-and-analyzing-slowness">
-            <span class="group-hover:text-high-contrast transition-colors">06 PHASE 4: VERIFYING AND ANALYZING &amp;LDQUO;SLOWNESS&amp;RDQUO;</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#voice-session-ef--line-by-line">
+            <span class="group-hover:text-high-contrast transition-colors">06 VOICE SESSION (EF) — LINE BY LINE</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -298,8 +319,98 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         <li>
-          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#conclusion">
-            <span class="group-hover:text-high-contrast transition-colors">07 CONCLUSION</span>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#video-session-af41--line-by-line">
+            <span class="group-hover:text-high-contrast transition-colors">07 VIDEO SESSION (AF41) — LINE BY LINE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#best-effort-session-be--line-by-line">
+            <span class="group-hover:text-high-contrast transition-colors">08 BEST EFFORT SESSION (BE) — LINE BY LINE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#server-reflector-configuration--line-by-line">
+            <span class="group-hover:text-high-contrast transition-colors">09 SERVER (REFLECTOR) CONFIGURATION — LINE BY LINE</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#chassis-preparation-if-using-inline-timestamping">
+            <span class="group-hover:text-high-contrast transition-colors">10 CHASSIS PREPARATION (IF USING INLINE TIMESTAMPING)</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#complete-configuration-pe1">
+            <span class="group-hover:text-high-contrast transition-colors">11 COMPLETE CONFIGURATION: PE1</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#complete-configuration-pe2">
+            <span class="group-hover:text-high-contrast transition-colors">12 COMPLETE CONFIGURATION: PE2</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#verification-commands">
+            <span class="group-hover:text-high-contrast transition-colors">13 VERIFICATION COMMANDS</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#how-to-read-the-metrics-the-sick-network-checklist">
+            <span class="group-hover:text-high-contrast transition-colors">14 HOW TO READ THE METRICS: THE &amp;LDQUO;SICK NETWORK&amp;RDQUO; CHECKLIST</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#troubleshooting-common-issues">
+            <span class="group-hover:text-high-contrast transition-colors">15 TROUBLESHOOTING COMMON ISSUES</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#next-steps">
+            <span class="group-hover:text-high-contrast transition-colors">16 NEXT STEPS</span>
             <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         </li>
@@ -344,11 +455,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">description</span>
-          <span>944 words</span>
+          <span>3223 words</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">schedule</span>
-          <span>5 min read</span>
+          <span>16 min read</span>
         </div>
       </div>
     </header>
@@ -388,8 +499,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-1-preparing-the-chassis-the-hardware-secret">
-                <span class="text-primary">03</span> PHASE 1: PREPARING THE CHASSIS (THE HARDWARE SECRET)
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#the-four-twamp-roles-simplified">
+                <span class="text-primary">03</span> THE FOUR TWAMP ROLES (SIMPLIFIED)
               </a>
             </li>
           
@@ -397,8 +508,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-2-the-golden-config-for-juniper-mx">
-                <span class="text-primary">04</span> PHASE 2: THE &amp;LDQUO;GOLDEN CONFIG&amp;RDQUO; FOR JUNIPER MX
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#our-lab-topology">
+                <span class="text-primary">04</span> OUR LAB TOPOLOGY
               </a>
             </li>
           
@@ -406,8 +517,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-3-optimizing-for-accuracy">
-                <span class="text-primary">05</span> PHASE 3: OPTIMIZING FOR ACCURACY
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#global-client-settings-explained">
+                <span class="text-primary">05</span> GLOBAL CLIENT SETTINGS EXPLAINED
               </a>
             </li>
           
@@ -415,8 +526,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#phase-4-verifying-and-analyzing-slowness">
-                <span class="text-primary">06</span> PHASE 4: VERIFYING AND ANALYZING &amp;LDQUO;SLOWNESS&amp;RDQUO;
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#voice-session-ef--line-by-line">
+                <span class="text-primary">06</span> VOICE SESSION (EF) — LINE BY LINE
               </a>
             </li>
           
@@ -424,8 +535,89 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
             <li>
-              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#conclusion">
-                <span class="text-primary">07</span> CONCLUSION
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#video-session-af41--line-by-line">
+                <span class="text-primary">07</span> VIDEO SESSION (AF41) — LINE BY LINE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#best-effort-session-be--line-by-line">
+                <span class="text-primary">08</span> BEST EFFORT SESSION (BE) — LINE BY LINE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#server-reflector-configuration--line-by-line">
+                <span class="text-primary">09</span> SERVER (REFLECTOR) CONFIGURATION — LINE BY LINE
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#chassis-preparation-if-using-inline-timestamping">
+                <span class="text-primary">10</span> CHASSIS PREPARATION (IF USING INLINE TIMESTAMPING)
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#complete-configuration-pe1">
+                <span class="text-primary">11</span> COMPLETE CONFIGURATION: PE1
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#complete-configuration-pe2">
+                <span class="text-primary">12</span> COMPLETE CONFIGURATION: PE2
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#verification-commands">
+                <span class="text-primary">13</span> VERIFICATION COMMANDS
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#how-to-read-the-metrics-the-sick-network-checklist">
+                <span class="text-primary">14</span> HOW TO READ THE METRICS: THE &amp;LDQUO;SICK NETWORK&amp;RDQUO; CHECKLIST
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#troubleshooting-common-issues">
+                <span class="text-primary">15</span> TROUBLESHOOTING COMMON ISSUES
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#next-steps">
+                <span class="text-primary">16</span> NEXT STEPS
               </a>
             </li>
           
@@ -438,10 +630,9 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="article-content max-w-none mb-20">
       <h3 id="why-ping-isnt-enough">Why Ping Isn&rsquo;t Enough</h3>
 <p>In modern service provider networks, &ldquo;Down&rdquo; is easy to detect. The real challenge is <strong>&ldquo;Sick but Not Dead.&rdquo;</strong> These are the gray failures — micro-bursts, jitter spikes, and intermittent slowness — that frustrate users but leave traditional monitoring tools green.</p>
-<p>The <strong>Two-Way Active Measurement Protocol (TWAMP)</strong> is the industry-standard answer to this problem. In this guide, we will explore how to deploy TWAMP on Juniper MX routers to catch slowness before your customers report it.</p>
+<p><strong>Two-Way Active Measurement Protocol (TWAMP)</strong> is the industry-standard answer. This guide walks through a <strong>real production deployment</strong> on Juniper MX routers: bidirectional measurement across three QoS classes (Voice, Video, Best Effort), with every config line explained.</p>
 <hr>
 <h3 id="twamp-vs-twamp-light-vs-stamp">TWAMP vs. TWAMP-Light vs. STAMP</h3>
-<p>Choosing the right flavor of the protocol is the difference between a stable monitoring platform and a &ldquo;flickering&rdquo; inventory.</p>
 <table>
   <thead>
       <tr>
@@ -454,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <tr>
           <td style="text-align: left"><strong>Control Plane</strong></td>
           <td style="text-align: left">Uses TCP Port 862 for handshaking.</td>
-          <td style="text-align: left"><strong>No Control Plane.</strong> Only UDP Probes.</td>
+          <td style="text-align: left"><strong>No Control Plane.</strong> Only UDP probes.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Statefulness</strong></td>
@@ -473,60 +664,17 @@ document.addEventListener('DOMContentLoaded', () => {
       </tr>
   </tbody>
 </table>
-<p><strong>The Verdict:</strong> For high-precision &ldquo;Slowness&rdquo; detection on Juniper, <strong>TWAMP-Light</strong> is superior because it remains active even when the network is degraded.</p>
+<p><strong>The Verdict:</strong> For high-precision slowness detection on Juniper, <strong>TWAMP-Light</strong> is superior because it remains active even when the network is degraded. This entire guide uses <code>control-type light</code>.</p>
 <hr>
-<h3 id="phase-1-preparing-the-chassis-the-hardware-secret">Phase 1: Preparing the Chassis (The Hardware Secret)</h3>
-<p>On Juniper MX routers, high-precision timestamping requires either <strong>Microkernel-based</strong> timestamping or <strong>Inline</strong> (Services Interface) timestamping. If you choose the Inline route (<code>si-</code> interfaces), you <strong>must</strong> reserve bandwidth on the chassis, or the service will not start.</p>
-<h4 id="step-1-reserve-inline-services-bandwidth">Step 1: Reserve Inline Services Bandwidth</h4>
-<p>This command tells the Packet Forwarding Engine (PFE) to set aside capacity for the TWAMP service.</p>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code># Replace slot and pic with your hardware values
-set chassis fpc 0 pic 0 inline-services bandwidth 1g</code></pre>
-</div>
-<h4 id="step-2-configure-the-services-interface-optional">Step 2: Configure the Services Interface (Optional)</h4>
-<p>If you require Inline timestamping (highest accuracy), define the si interface:</p>
-
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
-# Note: Do not use Unit 0 for TWAMP; it will result in a configuration error.</code></pre>
-</div>
-<p><strong>Note:</strong> For many modern vMX and MX deployments, Microkernel-based timestamping is sufficient and does not require an si interface; it establishes sessions based on the target route.</p>
+<h3 id="the-four-twamp-roles-simplified">The Four TWAMP Roles (Simplified)</h3>
+<p>TWAMP defines four logical roles, but in practice you only need <strong>two devices</strong>:</p>
+<ul>
+<li><strong>Controller</strong> (Control-Client + Session-Sender) — initiates probes and collects metrics.</li>
+<li><strong>Responder</strong> (Server + Session-Reflector) — receives probes and reflects them back with timestamps.</li>
+</ul>
+<p>Both devices run a <strong>client</strong> (to send probes) and a <strong>server</strong> (to reflect probes from the other side). This gives you bidirectional visibility.</p>
 <hr>
-<h3 id="phase-2-the-golden-config-for-juniper-mx">Phase 2: The &ldquo;Golden Config&rdquo; for Juniper MX</h3>
-<p>We will use three sessions: <strong>Voice (EF)</strong>, <strong>Video (AF41)</strong>, and <strong>Best Effort (BE)</strong> to identify which specific traffic class is &ldquo;slow.&rdquo;</p>
-<h4 id="pe1-the-controller-client">PE1: The Controller (Client)</h4>
-<p><em>Targeting PE2 (10.100.249.4) from Source (10.100.249.1)</em></p>
+<h3 id="our-lab-topology">Our Lab Topology</h3>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -544,28 +692,347 @@ set chassis fpc 0 pic 0 inline-services bandwidth 1g</code></pre>
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code># 1. Global Client Settings
-set services rpm twamp client control-connection pe1-to-pe2 control-type light
-set services rpm twamp client control-connection pe1-to-pe2 history-size 512
-set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
-# IMPORTANT: Keeps results visible even between test iterations
-set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+  <pre class="ide-pre"><code>    PE1 (10.100.249.1)  &lt;----------&gt;  PE2 (10.100.249.3)
+    AS 65001                              AS 65001
 
-# 2. Voice Test (Catching Jitter/Slowness)
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.4
+    PE1 sends probes to PE2 (Voice, Video, BE)
+    PE2 sends probes to PE1 (Voice, Video, BE)
+    Both act as client AND server simultaneously</code></pre>
+</div>
+<p>We create <strong>three test sessions per direction</strong>, each matching a real traffic class:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Session</th>
+          <th style="text-align: left">DSCP</th>
+          <th style="text-align: left">Destination Port</th>
+          <th style="text-align: left">Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>voice-ef</code></td>
+          <td style="text-align: left">EF (46)</td>
+          <td style="text-align: left">862</td>
+          <td style="text-align: left">Detect jitter and latency in voice traffic</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>video-af41</code></td>
+          <td style="text-align: left">AF41 (34)</td>
+          <td style="text-align: left">862</td>
+          <td style="text-align: left">Detect slowness in video streaming</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>best-effort</code></td>
+          <td style="text-align: left">BE (0)</td>
+          <td style="text-align: left">862</td>
+          <td style="text-align: left">Baseline for all other traffic</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Important note on destination ports:</strong> In TWAMP Light, the server listens on a single UDP port (configured with <code>set services rpm twamp server port 862</code>). The client <strong>must</strong> send all test sessions to that same port. The protocol distinguishes sessions using source port, DSCP, data size, and sequence numbers — <strong>not</strong> the destination port. Using separate destination ports (e.g., 863, 864) will cause the server to ignore those probes, resulting in 100% loss. This is a common misconfiguration, as seen in the failure analysis below.</p>
+</blockquote>
+<p>Using separate DSCP values means the probes experience the same queuing and scheduling as the real traffic they represent.</p>
+<hr>
+<h3 id="global-client-settings-explained">Global Client Settings Explained</h3>
+<p>Before defining test sessions, you configure the <strong>control connection</strong> — the container that holds all sessions for a given peer. Both PE1 and PE2 get the same global settings.</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 control-type light
+set services rpm twamp client control-connection pe1-to-pe2 history-size 255
+set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32</code></pre>
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+          <th style="text-align: left">Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>control-type light</code></td>
+          <td style="text-align: left">Uses TWAMP-Light (no TCP control plane).</td>
+          <td style="text-align: left">Stateless and resilient — keeps probing even during degradation.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>history-size 255</code></td>
+          <td style="text-align: left">Stores the last 255 probe results per session.</td>
+          <td style="text-align: left">Enough data for trend analysis without consuming excessive memory. Increase to 512 or 1000 for long-term dashboards.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>moving-average-size 32</code></td>
+          <td style="text-align: left">Calculates a moving average over the last 32 probes.</td>
+          <td style="text-align: left">Smooths out individual spikes to reveal the real trend. 32 is a good balance between responsiveness and stability.</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Pro tip:</strong> Add <code>persistent-results</code> to keep results visible between test iterations. Without it, the <code>show probe-results</code> output can appear empty during gaps.</p>
+</blockquote>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 persistent-results</code></pre>
+</div>
+<hr>
+<h3 id="voice-session-ef--line-by-line">Voice Session (EF) — Line by Line</h3>
+<p>This session simulates voice traffic. It uses Expedited Forwarding (EF) DSCP and tight thresholds because voice is the most sensitive to delay and jitter.</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.3
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 0.1
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 1
-
-# 3. Slowness Thresholds (Triggers SNMP Traps)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 60
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000</code></pre>
 </div>
-<h4 id="pe2-the-responder-server">PE2: The Responder (Server)</h4>
-<p><em>Listening for PE1 (10.100.249.1)</em></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+          <th style="text-align: left">Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>source-address 10.100.249.1</code></td>
+          <td style="text-align: left">Sets the source IP of the probes.</td>
+          <td style="text-align: left">Must match a locally configured address (typically a loopback).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>target-address 10.100.249.3</code></td>
+          <td style="text-align: left">Sets the destination IP (the reflector).</td>
+          <td style="text-align: left">This is the remote PE&rsquo;s address (PE2).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>destination-port 862</code></td>
+          <td style="text-align: left">UDP port the probes are sent to.</td>
+          <td style="text-align: left">Must match the server&rsquo;s listening port. In TWAMP Light, <strong>all</strong> sessions use the same port.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>dscp-code-points ef</code></td>
+          <td style="text-align: left">Marks probes with EF (DSCP 46).</td>
+          <td style="text-align: left">Probes experience the same QoS treatment as real voice packets in your policy.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>probe-count 1000</code></td>
+          <td style="text-align: left">Sends 1000 packets per test iteration.</td>
+          <td style="text-align: left">More probes = more accurate averages. 1000 at 1-second interval = ~16 minutes per iteration.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>probe-interval 1</code></td>
+          <td style="text-align: left">Waits 1 second between each probe.</td>
+          <td style="text-align: left">1 second is standard. Lower values (0.1) give finer granularity but consume more resources.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>iteration-interval 60</code></td>
+          <td style="text-align: left">Waits 60 seconds between iterations.</td>
+          <td style="text-align: left">After 1000 probes complete, pause 60 seconds, then start the next iteration. Prevents CPU saturation.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>thresholds rtt 50000</code></td>
+          <td style="text-align: left">Traps if RTT exceeds 50,000 microseconds (50ms).</td>
+          <td style="text-align: left">Voice becomes unusable above ~150ms RTT. 50ms gives early warning.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>thresholds jitter-egress 10000</code></td>
+          <td style="text-align: left">Traps if egress jitter exceeds 10,000 microseconds (10ms).</td>
+          <td style="text-align: left">Voice degrades noticeably above 30ms jitter. 10ms is a tight but realistic early-warning threshold.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="video-session-af41--line-by-line">Video Session (AF41) — Line by Line</h3>
+<p>This session simulates video traffic. It uses AF41 DSCP and includes a <code>data-size</code> parameter to match typical video packet sizes.</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds jitter-egress 20000</code></pre>
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+          <th style="text-align: left">Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>target-address 10.100.249.3</code></td>
+          <td style="text-align: left">Sets the destination IP (PE2).</td>
+          <td style="text-align: left">Same reflector as the voice session — PE2.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>destination-port 862</code></td>
+          <td style="text-align: left">Same port as all other sessions.</td>
+          <td style="text-align: left">In TWAMP Light, the server is statically bound to a single port. All sessions must target it.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>data-size 1200</code></td>
+          <td style="text-align: left">Sets probe payload to 1200 bytes.</td>
+          <td style="text-align: left">Video packets are larger than voice. Matching the size means probes traverse the same queue behavior as real video traffic. Without this, the default small probes may skip fragmentation or queue effects.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>dscp-code-points af41</code></td>
+          <td style="text-align: left">Marks probes with AF41 (DSCP 34).</td>
+          <td style="text-align: left">Matches the QoS class for real-time video.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>thresholds rtt 80000</code></td>
+          <td style="text-align: left">Traps at 80ms RTT.</td>
+          <td style="text-align: left">Video is more tolerant than voice, so the threshold is higher.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>thresholds jitter-egress 20000</code></td>
+          <td style="text-align: left">Traps at 20ms jitter.</td>
+          <td style="text-align: left">Video buffering absorbs some jitter, but 20ms+ is a warning sign.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="best-effort-session-be--line-by-line">Best Effort Session (BE) — Line by Line</h3>
+<p>This session measures the baseline — how the network treats traffic with no special QoS marking.</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort thresholds rtt 150000</code></pre>
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+          <th style="text-align: left">Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>target-address 10.100.249.3</code></td>
+          <td style="text-align: left">Sets the destination IP (PE2).</td>
+          <td style="text-align: left">Same reflector as the other sessions.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>destination-port 862</code></td>
+          <td style="text-align: left">Same port as all other sessions.</td>
+          <td style="text-align: left">The server only listens on one port. Using a different port (e.g., 864) causes the server to silently drop the probes.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>dscp-code-points be</code></td>
+          <td style="text-align: left">No QoS marking (DSCP 0).</td>
+          <td style="text-align: left">Probes experience the default queue — best indication of congestion for bulk traffic.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>thresholds rtt 150000</code></td>
+          <td style="text-align: left">Traps at 150ms RTT.</td>
+          <td style="text-align: left">BE traffic is more tolerant. 150ms catches severe congestion without alert fatigue.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">No jitter threshold</td>
+          <td style="text-align: left">BE traffic doesn&rsquo;t need jitter monitoring.</td>
+          <td style="text-align: left">Jitter matters for real-time apps. BE is best-effort — if RTT is healthy, jitter is less relevant.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="server-reflector-configuration--line-by-line">Server (Reflector) Configuration — Line by Line</h3>
+<p>Both PE1 and PE2 run a TWAMP server to reflect probes from the other side. Each server must allow the remote peer&rsquo;s source address.</p>
+<p><strong>PE1&rsquo;s server</strong> (reflecting probes from PE2):</p>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -584,15 +1051,206 @@ set services rpm twamp client control-connection pe1-to-pe2 test-session voice-e
     </button>
   </div>
   <pre class="ide-pre"><code>set services rpm twamp server authentication-mode none
-set services rpm twamp server light
 set services rpm twamp server port 862
-set services rpm twamp server client-list pe1-client address 10.100.249.1/32</code></pre>
+set services rpm twamp server client-list pe2-client address 10.100.249.0/24
+set services rpm twamp server light</code></pre>
+</div>
+<p><strong>PE2&rsquo;s server</strong> (reflecting probes from PE1):</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.0/24
+set services rpm twamp server light</code></pre>
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+          <th style="text-align: left">Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>authentication-mode none</code></td>
+          <td style="text-align: left">No authentication required for incoming TWAMP sessions.</td>
+          <td style="text-align: left">Standard for internal monitoring. Enable authentication if probes cross untrusted networks.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>port 862</code></td>
+          <td style="text-align: left">Server listens on UDP 862.</td>
+          <td style="text-align: left">Default TWAMP port. The client&rsquo;s <code>destination-port</code> must match this.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>client-list ... address 10.100.249.0/24</code></td>
+          <td style="text-align: left">Only accepts probes from this subnet.</td>
+          <td style="text-align: left"><strong>Security boundary.</strong> Only trusted sources can trigger the reflector. Use /32 for a single host, or a subnet if you have multiple PEs.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>light</code></td>
+          <td style="text-align: left">Runs in TWAMP-Light mode (no TCP control plane).</td>
+          <td style="text-align: left">Must match the client&rsquo;s <code>control-type light</code>.</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Important:</strong> The <code>client-list</code> is <strong>mandatory</strong> — without it, the server will not accept any probes. If you see sessions defined but zero probe-results, check that the client-list covers the sender&rsquo;s source address.</p>
+</blockquote>
+<hr>
+<h3 id="chassis-preparation-if-using-inline-timestamping">Chassis Preparation (If Using Inline Timestamping)</h3>
+<p>On MX routers, you can offload timestamping to the hardware for maximum accuracy. This is optional — many deployments use Microkernel-based timestamping without an <code>si-</code> interface.</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Reserve bandwidth on the FPC for inline services
+set chassis fpc 0 pic 0 inline-services bandwidth 1g
+
+# Create the services interface (use unit 10&#43;, never unit 0)
+set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24</code></pre>
+</div>
+<p>For additional accuracy, delegate probes and enable hardware timestamps on each control connection:</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 delegate-probes
+set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping</code></pre>
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Statement</th>
+          <th style="text-align: left">What it does</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>delegate-probes</code></td>
+          <td style="text-align: left">Moves probe processing from the RE (CPU) to the PFE (hardware). Lower CPU impact, higher accuracy.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>hardware-timestamping</code></td>
+          <td style="text-align: left">Uses ASIC-level timestamps instead of software timestamps. Eliminates RE scheduling jitter from measurements.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="complete-configuration-pe1">Complete Configuration: PE1</h3>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># ============================================
+# PE1 - TWAMP Client (Controller)
+# Probes PE2 at 10.100.249.3
+# ============================================
+
+# --- Global Client Settings ---
+set services rpm twamp client control-connection pe1-to-pe2 control-type light
+set services rpm twamp client control-connection pe1-to-pe2 history-size 255
+set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
+set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+
+# --- Voice Session (EF) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000
+
+# --- Video Session (AF41) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds jitter-egress 20000
+
+# --- Best Effort Session (BE) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort thresholds rtt 150000
+
+# ============================================
+# PE1 - TWAMP Server (Reflector)
+# Reflects probes from PE2 (10.100.249.0/24)
+# ============================================
+set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe2-client address 10.100.249.0/24
+set services rpm twamp server light</code></pre>
 </div>
 <hr>
-<h3 id="phase-3-optimizing-for-accuracy">Phase 3: Optimizing for Accuracy</h3>
-<p>The MX480 can offload probes to the hardware to ensure the &ldquo;slowness&rdquo; you see is real network delay and not just a busy router CPU.</p>
-<h4 id="delegate-probes">Delegate Probes</h4>
-<p>Move processing from the Routing Engine (RE) to the Packet Forwarding Engine (PFE).</p>
+<h3 id="complete-configuration-pe2">Complete Configuration: PE2</h3>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -610,34 +1268,62 @@ set services rpm twamp server client-list pe1-client address 10.100.249.1/32</co
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 delegate-probes</code></pre>
-</div>
-<h4 id="hardware-timestamps">Hardware Timestamps</h4>
+  <pre class="ide-pre"><code># ============================================
+# PE2 - TWAMP Client (Controller)
+# Probes PE1 at 10.100.249.1
+# ============================================
 
-<div class="ide-block">
-  <div class="ide-header">
-    <div class="flex items-center gap-2">
-      <span class="ide-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </span>
-      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
-        terminal
-      </span>
-    </div>
-    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
-      <span class="material-symbols-outlined text-base">content_copy</span>
-    </button>
-  </div>
-  <pre class="ide-pre"><code>set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping</code></pre>
+# --- Global Client Settings ---
+set services rpm twamp client control-connection pe2-to-pe1 control-type light
+set services rpm twamp client control-connection pe2-to-pe1 history-size 255
+set services rpm twamp client control-connection pe2-to-pe1 moving-average-size 32
+set services rpm twamp client control-connection pe2-to-pe1 persistent-results
+
+# --- Voice Session (EF) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef thresholds jitter-egress 10000
+
+# --- Video Session (AF41) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 thresholds jitter-egress 20000
+
+# --- Best Effort Session (BE) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort thresholds rtt 150000
+
+# ============================================
+# PE2 - TWAMP Server (Reflector)
+# Reflects probes from PE1 (10.100.249.0/24)
+# ============================================
+set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.0/24
+set services rpm twamp server light</code></pre>
 </div>
 <hr>
-<h3 id="phase-4-verifying-and-analyzing-slowness">Phase 4: Verifying and Analyzing &ldquo;Slowness&rdquo;</h3>
-<h4 id="the-disappearing-session-problem">The Disappearing Session Problem</h4>
-<p>If you run <code>show services rpm twamp client session</code> and it returns empty, it is usually because the router is in a &ldquo;Gap&rdquo; between test iterations.</p>
-<p><strong>Solution:</strong> Use <code>persistent-results</code> in your config and check <code>probe-results</code>.</p>
-<h4 id="key-analysis-commands">Key Analysis Commands</h4>
+<h3 id="verification-commands">Verification Commands</h3>
+<h4 id="check-client-sessions">Check client sessions</h4>
 
 <div class="ide-block">
   <div class="ide-header">
@@ -655,30 +1341,205 @@ set services rpm twamp server client-list pe1-client address 10.100.249.1/32</co
       <span class="material-symbols-outlined text-base">content_copy</span>
     </button>
   </div>
-  <pre class="ide-pre"><code># 1. See if the sessions are defined
-run show services rpm twamp client session
+  <pre class="ide-pre"><code># Show all active client sessions
+show services rpm twamp client session
 
-# 2. The most important command for slowness:
-run show services rpm twamp client probe-results</code></pre>
+# Show results for a specific session
+show services rpm twamp client probe-results test-session voice-ef</code></pre>
 </div>
-<h4 id="how-to-read-the-output">How to Read the Output</h4>
-<p>Look at these three metrics in the probe-results to diagnose a &ldquo;sick&rdquo; network:</p>
+<p>Expected output for a healthy session:</p>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>Session name: voice-ef
+  Control connection: pe1-to-pe2
+  State: Active
+  Probe count: 1000
+  Probe interval: 1
+  Source address: 10.100.249.1
+  Target address: 10.100.249.3
+  Destination port: 862</code></pre>
+</div>
+<h4 id="check-server-sessions">Check server sessions</h4>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Show all reflected sessions
+show services rpm twamp server session</code></pre>
+</div>
+<p>This tells you the reflector is receiving and bouncing back probes. If this is empty but the client shows sessions, check the server <code>client-list</code>.</p>
+<h4 id="the-most-important-command-for-slowness">The most important command for slowness</h4>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code>show services rpm twamp client probe-results</code></pre>
+</div>
+<p>This is where you find the real data. Look for:</p>
 <ul>
-<li><strong>Standard Deviation (Stddev):</strong> If high (&gt;15ms), the network is jittery. This is the primary cause of &ldquo;slowness&rdquo; in real-time apps.</li>
-<li><strong>Peak-to-Peak Jitter:</strong> Shows the worst-case variance. Large gaps indicate micro-bursts saturating a link.</li>
-<li><strong>Positive vs. Negative Jitter:</strong> Distinguishes if the congestion is on the transmit (Egress) or return (Ingress) path.</li>
+<li><strong>RTT (Round-Trip Time):</strong> Total time for a packet to travel to the reflector and back, in microseconds.</li>
+<li><strong>Egress Jitter:</strong> Variation in delay on the outbound path. High values indicate congestion toward the reflector.</li>
+<li><strong>Ingress Jitter:</strong> Variation on the return path. High values indicate congestion coming back.</li>
+<li><strong>Stddev (Standard Deviation):</strong> If this is high (&gt;15ms), the network is jittery regardless of the average RTT.</li>
 </ul>
-<h4 id="inventory-management-logic">Inventory Management Logic</h4>
-<p>If you are building a monitoring dashboard, use this logic to manage your device inventory:</p>
-<ul>
-<li><strong>Status: Green</strong> — 0% Loss, Stddev &lt; 5ms.</li>
-<li><strong>Status: Yellow (Sick)</strong> — 0% Loss, Stddev &gt; 20ms. <strong>Action:</strong> Proactive check for interface congestion.</li>
-<li><strong>Status: Red (Dead)</strong> — 100% Loss. <strong>Action:</strong> Immediate circuit troubleshooting.</li>
-</ul>
+<h4 id="quick-filters">Quick filters</h4>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># Show only active (non-gap) results
+show services rpm twamp client probe-results | match &#34;Session|State|RTT|Jitter&#34;
+
+# Check if thresholds have been crossed
+show services rpm twamp client probe-results | match &#34;threshold&#34;
+
+# Verify a specific control connection
+show services rpm twamp client session control-connection pe1-to-pe2</code></pre>
+</div>
+<hr>
+<h3 id="how-to-read-the-metrics-the-sick-network-checklist">How to Read the Metrics: The &ldquo;Sick Network&rdquo; Checklist</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Metric</th>
+          <th style="text-align: left">Green</th>
+          <th style="text-align: left">Yellow (Sick)</th>
+          <th style="text-align: left">Red (Down)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>RTT</strong></td>
+          <td style="text-align: left">&lt; 50ms</td>
+          <td style="text-align: left">50–150ms</td>
+          <td style="text-align: left">&gt; 150ms or 100% loss</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Jitter</strong></td>
+          <td style="text-align: left">&lt; 5ms</td>
+          <td style="text-align: left">5–30ms</td>
+          <td style="text-align: left">&gt; 30ms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Stddev</strong></td>
+          <td style="text-align: left">&lt; 5ms</td>
+          <td style="text-align: left">5–20ms</td>
+          <td style="text-align: left">&gt; 20ms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Packet Loss</strong></td>
+          <td style="text-align: left">0%</td>
+          <td style="text-align: left">0% (but high jitter)</td>
+          <td style="text-align: left">&gt; 0%</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Key insight:</strong> A network can be <strong>Yellow without any packet loss</strong>. High jitter alone is enough to make voice choppy and video buffer. This is why ping (which only measures loss and RTT) misses the real problem — TWAMP catches the jitter that ping ignores.</p>
 <p><strong>Pro-Tip:</strong> If the <code>show session</code> command is empty but <code>probe-results</code> still shows data, the device is still &ldquo;Connected.&rdquo; Do not remove it from your inventory unless both commands return empty for more than 5 minutes.</p>
 <hr>
-<h3 id="conclusion">Conclusion</h3>
-<p>By moving from simple Pings to TWAMP-Light with Delegated Probes and properly configured Chassis Bandwidth, you gain a microscopic view of your network health. You no longer have to wait for the &ldquo;Down&rdquo; alert; you can see the &ldquo;Slowness&rdquo; in the jitter trends and act before the customer calls.</p>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Symptom</th>
+          <th style="text-align: left">Likely Cause</th>
+          <th style="text-align: left">Fix</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>show session</code> returns empty</td>
+          <td style="text-align: left">Router is in a gap between iterations</td>
+          <td style="text-align: left">Check <code>probe-results</code> instead. Add <code>persistent-results</code> to config.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Session defined but 0% probes returned</td>
+          <td style="text-align: left">Server <code>client-list</code> doesn&rsquo;t cover source IP</td>
+          <td style="text-align: left">Update <code>client-list</code> to include the sender&rsquo;s subnet or /32.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Session flaps up and down</td>
+          <td style="text-align: left">TCP control plane instability (standard TWAMP)</td>
+          <td style="text-align: left">Switch to <code>control-type light</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">High RTT but no congestion</td>
+          <td style="text-align: left">RE timestamping includes CPU scheduling delays</td>
+          <td style="text-align: left">Enable <code>delegate-probes</code> and <code>hardware-timestamping</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Probes work one direction only</td>
+          <td style="text-align: left">One side&rsquo;s server missing or misconfigured</td>
+          <td style="text-align: left">Verify server config on the non-working side. Check <code>client-list</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Some test sessions from PE1 show 100% loss while reverse direction works</td>
+          <td style="text-align: left">Client uses different destination ports (e.g., 863, 864) but server listens only on 862</td>
+          <td style="text-align: left">Set all test sessions on the client to use the server&rsquo;s listening port (e.g., <code>862</code>). In TWAMP Light there is no control connection — the server is statically bound to a single port.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="next-steps">Next Steps</h3>
+<ul>
+<li><strong>Export metrics</strong> to Prometheus or Grafana via Junos Telemetry Interface (gNMI/gRPC).</li>
+<li><strong>Configure trap groups</strong> to get SNMP alerts when thresholds are crossed.</li>
+<li><strong>Add <code>twampy</code></strong> (open-source Python tool by Nokia) to validate interoperability with non-Juniper devices.</li>
+</ul>
 
     </div>
 

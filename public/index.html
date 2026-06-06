@@ -110,6 +110,18 @@
             
           
         
+          
+          
+          
+            
+            
+            
+              <a href="/junos/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ junos ]
+              </a>
+            
+          
+        
       </nav>
       <div class="ml-auto flex items-center gap-4">
         <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
@@ -171,6 +183,15 @@
         
           <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
             [ observability ]
+          </a>
+          
+        
+      
+        
+        
+        
+          <a href="/junos/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ junos ]
           </a>
           
         
@@ -330,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3 class="text-headline-md text-white mb-3 font-medium">BGP</h3>
         <p class="text-on-surface/50 text-sm mb-8 line-clamp-2">Deep dive into external peering, confederations, and route reflectors.</p>
         <div class="flex items-center justify-between border-t coma-border pt-4 mt-auto">
-          <span class="font-mono text-[10px] text-primary">05 Entries Available</span>
+          <span class="font-mono text-[10px] text-primary">06 Entries Available</span>
           <span class="material-symbols-outlined text-white/20 group-hover:translate-x-1 transition-transform">east</span>
         </div>
       </a>
@@ -363,13 +384,53 @@ document.addEventListener('DOMContentLoaded', () => {
     <h2 class="font-mono text-xs text-white uppercase tracking-widest mb-2">/usr/log/entries</h2>
     <div class="h-px w-24 bg-primary"></div>
   </div>
-  <div class="font-mono text-[10px] text-white/20">SYSTEM_TIME: 2026.Q5</div>
+  <div class="font-mono text-[10px] text-white/20">SYSTEM_TIME: 2026.Q6</div>
 </div>
 
 
 
 <div class="space-y-px coma-border bg-white/5">
   
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/beyond-bgp-path-selection/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2026-06-05</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">ROUTING</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Beyond BGP Path Selection: eBGP vs iBGP on Juniper Junos</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">A deep comparison of the BGP path selection process between eBGP and iBGP on Juniper platforms — tie-breakers, CLI output analysis, and production configs.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          9M_RD
+        </div>
+      </div>
+    </a>
+  
+    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/junos/pfe-deep-dive/">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
+          <span class="font-mono text-[10px] text-white/40">2026-06-05</span>
+          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="tag-pill">JUNOS</span>
+            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Juniper PFE Deep Dive: Diagnosing Silent Packet Drops When BGP Is Up</h4>
+          </div>
+          <p class="text-on-surface/50 text-sm max-w-3xl">Move beyond show route — hardware-level diagnostics, FIB sync issues, ASIC discards, JSIM simulation, and packet-via-dmem captures on Juniper MX-Series.</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm">timer</span>
+          15M_RD
+        </div>
+      </div>
+    </a>
   
     <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/observability/twamp/">
       <div class="flex flex-col md:flex-row md:items-center gap-6">
@@ -382,11 +443,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="tag-pill">OBSERVABILITY</span>
             <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Beyond the Ping: Mastering TWAMP on Juniper MX</h4>
           </div>
-          <p class="text-on-surface/50 text-sm max-w-3xl">TWAMP and TWAMP-Light on Juniper MX — detecting gray failures, jitter, and slowness before your customers report it.</p>
+          <p class="text-on-surface/50 text-sm max-w-3xl">A production TWAMP-Light deployment on Juniper MX — three QoS classes (Voice, Video, Best Effort), bidirectional measurement, line-by-line config explanation, and verification commands.</p>
         </div>
         <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
           <span class="material-symbols-outlined text-sm">timer</span>
-          5M_RD
+          16M_RD
         </div>
       </div>
     </a>
@@ -447,46 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
           <span class="material-symbols-outlined text-sm">timer</span>
           1M_RD
-        </div>
-      </div>
-    </a>
-  
-    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/bgp-route-selection/">
-      <div class="flex flex-col md:flex-row md:items-center gap-6">
-        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
-          <span class="font-mono text-[10px] text-white/40">2024-12-01</span>
-          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag-pill">ROUTING</span>
-            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Route Selection</h4>
-          </div>
-          <p class="text-on-surface/50 text-sm max-w-3xl">How to influance the route selection with the approptiate attributes.</p>
-        </div>
-        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
-          <span class="material-symbols-outlined text-sm">timer</span>
-          12M_RD
-        </div>
-      </div>
-    </a>
-  
-    <a class="block bg-black group p-6 hover:bg-white/5 transition-colors border-b coma-border" href="/routing/bgp/fsm/">
-      <div class="flex flex-col md:flex-row md:items-center gap-6">
-        <div class="flex items-center gap-4 w-full md:w-32 flex-shrink-0">
-          <span class="font-mono text-[10px] text-white/40">2024-11-22</span>
-          <span class="h-px flex-1 bg-white/10 md:hidden"></span>
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag-pill">ROUTING</span>
-            <h4 class="font-mono text-xs text-white group-hover:text-primary transition-colors">Finite State Machine</h4>
-          </div>
-          <p class="text-on-surface/50 text-sm max-w-3xl">This article explains the different states during the BGP neighbor negotiation</p>
-        </div>
-        <div class="flex items-center gap-2 font-mono text-[10px] text-white/30 whitespace-nowrap">
-          <span class="material-symbols-outlined text-sm">timer</span>
-          4M_RD
         </div>
       </div>
     </a>

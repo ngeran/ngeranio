@@ -10,8 +10,9 @@
         "linux" "terminal"
         "labs" "science"
         "observability" "monitoring"
+        "junos" "memory"
       }}
-      {{ $allSections := where .Site.Sections "Section" "in" (slice "routing" "automation" "ai" "linux" "labs" "observability") }}
+      {{ $allSections := where .Site.Sections "Section" "in" (slice "routing" "automation" "ai" "linux" "labs" "observability" "junos") }}
       {{ range where $allSections "Pages" "ge" 2 }}
         {{ $icon := index $sectionMeta .Section | default "folder" }}
         <a class="flex items-center gap-3 py-2 text-white/40 hover:text-white font-mono text-xs transition-all" href="{{ .RelPermalink }}">

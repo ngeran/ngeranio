@@ -3,159 +3,442 @@ title = 'Beyond the Ping: Mastering TWAMP on Juniper MX'
 date = 2026-05-30T12:00:00-04:00
 draft = false
 tags = ["TWAMP", "Observability", "Measurement", "Juniper"]
-summary = 'TWAMP and TWAMP-Light on Juniper MX — detecting gray failures, jitter, and slowness before your customers report it.'
+summary = 'A production TWAMP-Light deployment on Juniper MX — three QoS classes (Voice, Video, Best Effort), bidirectional measurement, line-by-line config explanation, and verification commands.'
 +++
 
 ### Why Ping Isn't Enough
 
 In modern service provider networks, "Down" is easy to detect. The real challenge is **"Sick but Not Dead."** These are the gray failures — micro-bursts, jitter spikes, and intermittent slowness — that frustrate users but leave traditional monitoring tools green.
 
-The **Two-Way Active Measurement Protocol (TWAMP)** is the industry-standard answer to this problem. In this guide, we will explore how to deploy TWAMP on Juniper MX routers to catch slowness before your customers report it.
+**Two-Way Active Measurement Protocol (TWAMP)** is the industry-standard answer. This guide walks through a **real production deployment** on Juniper MX routers: bidirectional measurement across three QoS classes (Voice, Video, Best Effort), with every config line explained.
 
 ---
 
 ### TWAMP vs. TWAMP-Light vs. STAMP
 
-Choosing the right flavor of the protocol is the difference between a stable monitoring platform and a "flickering" inventory.
-
 | Feature | Standard TWAMP | TWAMP-Light / STAMP |
 | :--- | :--- | :--- |
-| **Control Plane** | Uses TCP Port 862 for handshaking. | **No Control Plane.** Only UDP Probes. |
+| **Control Plane** | Uses TCP Port 862 for handshaking. | **No Control Plane.** Only UDP probes. |
 | **Statefulness** | High overhead; sessions can flap if TCP lags. | Low overhead; stateless and resilient. |
 | **Evolution** | Defined in RFC 5357. | STAMP (RFC 8762) is the modern version of Light. |
 | **"Sick" Network** | May fail if packet loss kills the TCP session. | **Keeps probing** even during 50% packet loss. |
 
-**The Verdict:** For high-precision "Slowness" detection on Juniper, **TWAMP-Light** is superior because it remains active even when the network is degraded.
+**The Verdict:** For high-precision slowness detection on Juniper, **TWAMP-Light** is superior because it remains active even when the network is degraded. This entire guide uses `control-type light`.
 
 ---
 
-### Phase 1: Preparing the Chassis (The Hardware Secret)
+### The Four TWAMP Roles (Simplified)
 
-On Juniper MX routers, high-precision timestamping requires either **Microkernel-based** timestamping or **Inline** (Services Interface) timestamping. If you choose the Inline route (`si-` interfaces), you **must** reserve bandwidth on the chassis, or the service will not start.
+TWAMP defines four logical roles, but in practice you only need **two devices**:
 
-#### Step 1: Reserve Inline Services Bandwidth
+- **Controller** (Control-Client + Session-Sender) — initiates probes and collects metrics.
+- **Responder** (Server + Session-Reflector) — receives probes and reflects them back with timestamps.
 
-This command tells the Packet Forwarding Engine (PFE) to set aside capacity for the TWAMP service.
-
-```text
-# Replace slot and pic with your hardware values
-set chassis fpc 0 pic 0 inline-services bandwidth 1g
-```
-
-#### Step 2: Configure the Services Interface (Optional)
-
-If you require Inline timestamping (highest accuracy), define the si interface:
-
-```text
-set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
-# Note: Do not use Unit 0 for TWAMP; it will result in a configuration error.
-```
-
-**Note:** For many modern vMX and MX deployments, Microkernel-based timestamping is sufficient and does not require an si interface; it establishes sessions based on the target route.
+Both devices run a **client** (to send probes) and a **server** (to reflect probes from the other side). This gives you bidirectional visibility.
 
 ---
 
-### Phase 2: The "Golden Config" for Juniper MX
-
-We will use three sessions: **Voice (EF)**, **Video (AF41)**, and **Best Effort (BE)** to identify which specific traffic class is "slow."
-
-#### PE1: The Controller (Client)
-
-*Targeting PE2 (10.100.249.4) from Source (10.100.249.1)*
+### Our Lab Topology
 
 ```text
-# 1. Global Client Settings
+    PE1 (10.100.249.1)  <---------->  PE2 (10.100.249.3)
+    AS 65001                              AS 65001
+
+    PE1 sends probes to PE2 (Voice, Video, BE)
+    PE2 sends probes to PE1 (Voice, Video, BE)
+    Both act as client AND server simultaneously
+```
+
+We create **three test sessions per direction**, each matching a real traffic class:
+
+| Session | DSCP | Destination Port | Purpose |
+| :--- | :--- | :--- | :--- |
+| `voice-ef` | EF (46) | 862 | Detect jitter and latency in voice traffic |
+| `video-af41` | AF41 (34) | 862 | Detect slowness in video streaming |
+| `best-effort` | BE (0) | 862 | Baseline for all other traffic |
+
+> **Important note on destination ports:** In TWAMP Light, the server listens on a single UDP port (configured with `set services rpm twamp server port 862`). The client **must** send all test sessions to that same port. The protocol distinguishes sessions using source port, DSCP, data size, and sequence numbers — **not** the destination port. Using separate destination ports (e.g., 863, 864) will cause the server to ignore those probes, resulting in 100% loss. This is a common misconfiguration, as seen in the failure analysis below.
+
+Using separate DSCP values means the probes experience the same queuing and scheduling as the real traffic they represent.
+
+---
+
+### Global Client Settings Explained
+
+Before defining test sessions, you configure the **control connection** — the container that holds all sessions for a given peer. Both PE1 and PE2 get the same global settings.
+
+```text
 set services rpm twamp client control-connection pe1-to-pe2 control-type light
-set services rpm twamp client control-connection pe1-to-pe2 history-size 512
+set services rpm twamp client control-connection pe1-to-pe2 history-size 255
 set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
-# IMPORTANT: Keeps results visible even between test iterations
-set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+```
 
-# 2. Voice Test (Catching Jitter/Slowness)
+| Statement | What it does | Why it matters |
+| :--- | :--- | :--- |
+| `control-type light` | Uses TWAMP-Light (no TCP control plane). | Stateless and resilient — keeps probing even during degradation. |
+| `history-size 255` | Stores the last 255 probe results per session. | Enough data for trend analysis without consuming excessive memory. Increase to 512 or 1000 for long-term dashboards. |
+| `moving-average-size 32` | Calculates a moving average over the last 32 probes. | Smooths out individual spikes to reveal the real trend. 32 is a good balance between responsiveness and stability. |
+
+> **Pro tip:** Add `persistent-results` to keep results visible between test iterations. Without it, the `show probe-results` output can appear empty during gaps.
+
+```text
+set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+```
+
+---
+
+### Voice Session (EF) — Line by Line
+
+This session simulates voice traffic. It uses Expedited Forwarding (EF) DSCP and tight thresholds because voice is the most sensitive to delay and jitter.
+
+```text
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.4
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.3
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 0.1
-set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 1
-
-# 3. Slowness Thresholds (Triggers SNMP Traps)
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 60
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
 set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000
 ```
 
-#### PE2: The Responder (Server)
+| Statement | What it does | Why it matters |
+| :--- | :--- | :--- |
+| `source-address 10.100.249.1` | Sets the source IP of the probes. | Must match a locally configured address (typically a loopback). |
+| `target-address 10.100.249.3` | Sets the destination IP (the reflector). | This is the remote PE's address (PE2). |
+| `destination-port 862` | UDP port the probes are sent to. | Must match the server's listening port. In TWAMP Light, **all** sessions use the same port. |
+| `dscp-code-points ef` | Marks probes with EF (DSCP 46). | Probes experience the same QoS treatment as real voice packets in your policy. |
+| `probe-count 1000` | Sends 1000 packets per test iteration. | More probes = more accurate averages. 1000 at 1-second interval = ~16 minutes per iteration. |
+| `probe-interval 1` | Waits 1 second between each probe. | 1 second is standard. Lower values (0.1) give finer granularity but consume more resources. |
+| `iteration-interval 60` | Waits 60 seconds between iterations. | After 1000 probes complete, pause 60 seconds, then start the next iteration. Prevents CPU saturation. |
+| `thresholds rtt 50000` | Traps if RTT exceeds 50,000 microseconds (50ms). | Voice becomes unusable above ~150ms RTT. 50ms gives early warning. |
+| `thresholds jitter-egress 10000` | Traps if egress jitter exceeds 10,000 microseconds (10ms). | Voice degrades noticeably above 30ms jitter. 10ms is a tight but realistic early-warning threshold. |
 
-*Listening for PE1 (10.100.249.1)*
+---
+
+### Video Session (AF41) — Line by Line
+
+This session simulates video traffic. It uses AF41 DSCP and includes a `data-size` parameter to match typical video packet sizes.
+
+```text
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds jitter-egress 20000
+```
+
+| Statement | What it does | Why it matters |
+| :--- | :--- | :--- |
+| `target-address 10.100.249.3` | Sets the destination IP (PE2). | Same reflector as the voice session — PE2. |
+| `destination-port 862` | Same port as all other sessions. | In TWAMP Light, the server is statically bound to a single port. All sessions must target it. |
+| `data-size 1200` | Sets probe payload to 1200 bytes. | Video packets are larger than voice. Matching the size means probes traverse the same queue behavior as real video traffic. Without this, the default small probes may skip fragmentation or queue effects. |
+| `dscp-code-points af41` | Marks probes with AF41 (DSCP 34). | Matches the QoS class for real-time video. |
+| `thresholds rtt 80000` | Traps at 80ms RTT. | Video is more tolerant than voice, so the threshold is higher. |
+| `thresholds jitter-egress 20000` | Traps at 20ms jitter. | Video buffering absorbs some jitter, but 20ms+ is a warning sign. |
+
+---
+
+### Best Effort Session (BE) — Line by Line
+
+This session measures the baseline — how the network treats traffic with no special QoS marking.
+
+```text
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort thresholds rtt 150000
+```
+
+| Statement | What it does | Why it matters |
+| :--- | :--- | :--- |
+| `target-address 10.100.249.3` | Sets the destination IP (PE2). | Same reflector as the other sessions. |
+| `destination-port 862` | Same port as all other sessions. | The server only listens on one port. Using a different port (e.g., 864) causes the server to silently drop the probes. |
+| `dscp-code-points be` | No QoS marking (DSCP 0). | Probes experience the default queue — best indication of congestion for bulk traffic. |
+| `thresholds rtt 150000` | Traps at 150ms RTT. | BE traffic is more tolerant. 150ms catches severe congestion without alert fatigue. |
+| No jitter threshold | BE traffic doesn't need jitter monitoring. | Jitter matters for real-time apps. BE is best-effort — if RTT is healthy, jitter is less relevant. |
+
+---
+
+### Server (Reflector) Configuration — Line by Line
+
+Both PE1 and PE2 run a TWAMP server to reflect probes from the other side. Each server must allow the remote peer's source address.
+
+**PE1's server** (reflecting probes from PE2):
 
 ```text
 set services rpm twamp server authentication-mode none
-set services rpm twamp server light
 set services rpm twamp server port 862
-set services rpm twamp server client-list pe1-client address 10.100.249.1/32
+set services rpm twamp server client-list pe2-client address 10.100.249.0/24
+set services rpm twamp server light
 ```
+
+**PE2's server** (reflecting probes from PE1):
+
+```text
+set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.0/24
+set services rpm twamp server light
+```
+
+| Statement | What it does | Why it matters |
+| :--- | :--- | :--- |
+| `authentication-mode none` | No authentication required for incoming TWAMP sessions. | Standard for internal monitoring. Enable authentication if probes cross untrusted networks. |
+| `port 862` | Server listens on UDP 862. | Default TWAMP port. The client's `destination-port` must match this. |
+| `client-list ... address 10.100.249.0/24` | Only accepts probes from this subnet. | **Security boundary.** Only trusted sources can trigger the reflector. Use /32 for a single host, or a subnet if you have multiple PEs. |
+| `light` | Runs in TWAMP-Light mode (no TCP control plane). | Must match the client's `control-type light`. |
+
+> **Important:** The `client-list` is **mandatory** — without it, the server will not accept any probes. If you see sessions defined but zero probe-results, check that the client-list covers the sender's source address.
 
 ---
 
-### Phase 3: Optimizing for Accuracy
+### Chassis Preparation (If Using Inline Timestamping)
 
-The MX480 can offload probes to the hardware to ensure the "slowness" you see is real network delay and not just a busy router CPU.
+On MX routers, you can offload timestamping to the hardware for maximum accuracy. This is optional — many deployments use Microkernel-based timestamping without an `si-` interface.
 
-#### Delegate Probes
+```text
+# Reserve bandwidth on the FPC for inline services
+set chassis fpc 0 pic 0 inline-services bandwidth 1g
 
-Move processing from the Routing Engine (RE) to the Packet Forwarding Engine (PFE).
+# Create the services interface (use unit 10+, never unit 0)
+set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
+```
+
+For additional accuracy, delegate probes and enable hardware timestamps on each control connection:
 
 ```text
 set services rpm twamp client control-connection pe1-to-pe2 delegate-probes
+set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping
 ```
 
-#### Hardware Timestamps
+| Statement | What it does |
+| :--- | :--- |
+| `delegate-probes` | Moves probe processing from the RE (CPU) to the PFE (hardware). Lower CPU impact, higher accuracy. |
+| `hardware-timestamping` | Uses ASIC-level timestamps instead of software timestamps. Eliminates RE scheduling jitter from measurements. |
+
+---
+
+### Complete Configuration: PE1
 
 ```text
-set services rpm twamp client control-connection pe1-to-pe2 hardware-timestamping
+# ============================================
+# PE1 - TWAMP Client (Controller)
+# Probes PE2 at 10.100.249.3
+# ============================================
+
+# --- Global Client Settings ---
+set services rpm twamp client control-connection pe1-to-pe2 control-type light
+set services rpm twamp client control-connection pe1-to-pe2 history-size 255
+set services rpm twamp client control-connection pe1-to-pe2 moving-average-size 32
+set services rpm twamp client control-connection pe1-to-pe2 persistent-results
+
+# --- Voice Session (EF) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe1-to-pe2 test-session voice-ef thresholds jitter-egress 10000
+
+# --- Video Session (AF41) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe1-to-pe2 test-session video-af41 thresholds jitter-egress 20000
+
+# --- Best Effort Session (BE) ---
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort source-address 10.100.249.1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort target-address 10.100.249.3
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe1-to-pe2 test-session best-effort thresholds rtt 150000
+
+# ============================================
+# PE1 - TWAMP Server (Reflector)
+# Reflects probes from PE2 (10.100.249.0/24)
+# ============================================
+set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe2-client address 10.100.249.0/24
+set services rpm twamp server light
 ```
 
 ---
 
-### Phase 4: Verifying and Analyzing "Slowness"
-
-#### The Disappearing Session Problem
-
-If you run `show services rpm twamp client session` and it returns empty, it is usually because the router is in a "Gap" between test iterations.
-
-**Solution:** Use `persistent-results` in your config and check `probe-results`.
-
-#### Key Analysis Commands
+### Complete Configuration: PE2
 
 ```text
-# 1. See if the sessions are defined
-run show services rpm twamp client session
+# ============================================
+# PE2 - TWAMP Client (Controller)
+# Probes PE1 at 10.100.249.1
+# ============================================
 
-# 2. The most important command for slowness:
-run show services rpm twamp client probe-results
+# --- Global Client Settings ---
+set services rpm twamp client control-connection pe2-to-pe1 control-type light
+set services rpm twamp client control-connection pe2-to-pe1 history-size 255
+set services rpm twamp client control-connection pe2-to-pe1 moving-average-size 32
+set services rpm twamp client control-connection pe2-to-pe1 persistent-results
+
+# --- Voice Session (EF) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef dscp-code-points ef
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef thresholds rtt 50000
+set services rpm twamp client control-connection pe2-to-pe1 test-session voice-ef thresholds jitter-egress 10000
+
+# --- Video Session (AF41) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 data-size 1200
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 dscp-code-points af41
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 thresholds rtt 80000
+set services rpm twamp client control-connection pe2-to-pe1 test-session video-af41 thresholds jitter-egress 20000
+
+# --- Best Effort Session (BE) ---
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort source-address 10.100.249.3
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort target-address 10.100.249.1
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort destination-port 862
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort dscp-code-points be
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort probe-count 1000
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort probe-interval 1
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort iteration-interval 60
+set services rpm twamp client control-connection pe2-to-pe1 test-session best-effort thresholds rtt 150000
+
+# ============================================
+# PE2 - TWAMP Server (Reflector)
+# Reflects probes from PE1 (10.100.249.0/24)
+# ============================================
+set services rpm twamp server authentication-mode none
+set services rpm twamp server port 862
+set services rpm twamp server client-list pe1-client address 10.100.249.0/24
+set services rpm twamp server light
 ```
 
-#### How to Read the Output
+---
 
-Look at these three metrics in the probe-results to diagnose a "sick" network:
+### Verification Commands
 
-- **Standard Deviation (Stddev):** If high (>15ms), the network is jittery. This is the primary cause of "slowness" in real-time apps.
-- **Peak-to-Peak Jitter:** Shows the worst-case variance. Large gaps indicate micro-bursts saturating a link.
-- **Positive vs. Negative Jitter:** Distinguishes if the congestion is on the transmit (Egress) or return (Ingress) path.
+#### Check client sessions
 
-#### Inventory Management Logic
+```text
+# Show all active client sessions
+show services rpm twamp client session
 
-If you are building a monitoring dashboard, use this logic to manage your device inventory:
+# Show results for a specific session
+show services rpm twamp client probe-results test-session voice-ef
+```
 
-- **Status: Green** — 0% Loss, Stddev < 5ms.
-- **Status: Yellow (Sick)** — 0% Loss, Stddev > 20ms. **Action:** Proactive check for interface congestion.
-- **Status: Red (Dead)** — 100% Loss. **Action:** Immediate circuit troubleshooting.
+Expected output for a healthy session:
+
+```text
+Session name: voice-ef
+  Control connection: pe1-to-pe2
+  State: Active
+  Probe count: 1000
+  Probe interval: 1
+  Source address: 10.100.249.1
+  Target address: 10.100.249.3
+  Destination port: 862
+```
+
+#### Check server sessions
+
+```text
+# Show all reflected sessions
+show services rpm twamp server session
+```
+
+This tells you the reflector is receiving and bouncing back probes. If this is empty but the client shows sessions, check the server `client-list`.
+
+#### The most important command for slowness
+
+```text
+show services rpm twamp client probe-results
+```
+
+This is where you find the real data. Look for:
+
+- **RTT (Round-Trip Time):** Total time for a packet to travel to the reflector and back, in microseconds.
+- **Egress Jitter:** Variation in delay on the outbound path. High values indicate congestion toward the reflector.
+- **Ingress Jitter:** Variation on the return path. High values indicate congestion coming back.
+- **Stddev (Standard Deviation):** If this is high (>15ms), the network is jittery regardless of the average RTT.
+
+#### Quick filters
+
+```text
+# Show only active (non-gap) results
+show services rpm twamp client probe-results | match "Session|State|RTT|Jitter"
+
+# Check if thresholds have been crossed
+show services rpm twamp client probe-results | match "threshold"
+
+# Verify a specific control connection
+show services rpm twamp client session control-connection pe1-to-pe2
+```
+
+---
+
+### How to Read the Metrics: The "Sick Network" Checklist
+
+| Metric | Green | Yellow (Sick) | Red (Down) |
+| :--- | :--- | :--- | :--- |
+| **RTT** | < 50ms | 50–150ms | > 150ms or 100% loss |
+| **Jitter** | < 5ms | 5–30ms | > 30ms |
+| **Stddev** | < 5ms | 5–20ms | > 20ms |
+| **Packet Loss** | 0% | 0% (but high jitter) | > 0% |
+
+**Key insight:** A network can be **Yellow without any packet loss**. High jitter alone is enough to make voice choppy and video buffer. This is why ping (which only measures loss and RTT) misses the real problem — TWAMP catches the jitter that ping ignores.
 
 **Pro-Tip:** If the `show session` command is empty but `probe-results` still shows data, the device is still "Connected." Do not remove it from your inventory unless both commands return empty for more than 5 minutes.
 
 ---
 
-### Conclusion
+### Troubleshooting Common Issues
 
-By moving from simple Pings to TWAMP-Light with Delegated Probes and properly configured Chassis Bandwidth, you gain a microscopic view of your network health. You no longer have to wait for the "Down" alert; you can see the "Slowness" in the jitter trends and act before the customer calls.
+| Symptom | Likely Cause | Fix |
+| :--- | :--- | :--- |
+| `show session` returns empty | Router is in a gap between iterations | Check `probe-results` instead. Add `persistent-results` to config. |
+| Session defined but 0% probes returned | Server `client-list` doesn't cover source IP | Update `client-list` to include the sender's subnet or /32. |
+| Session flaps up and down | TCP control plane instability (standard TWAMP) | Switch to `control-type light`. |
+| High RTT but no congestion | RE timestamping includes CPU scheduling delays | Enable `delegate-probes` and `hardware-timestamping`. |
+| Probes work one direction only | One side's server missing or misconfigured | Verify server config on the non-working side. Check `client-list`. |
+| Some test sessions from PE1 show 100% loss while reverse direction works | Client uses different destination ports (e.g., 863, 864) but server listens only on 862 | Set all test sessions on the client to use the server's listening port (e.g., `862`). In TWAMP Light there is no control connection — the server is statically bound to a single port. |
+
+---
+
+### Next Steps
+
+- **Export metrics** to Prometheus or Grafana via Junos Telemetry Interface (gNMI/gRPC).
+- **Configure trap groups** to get SNMP alerts when thresholds are crossed.
+- **Add `twampy`** (open-source Python tool by Nokia) to validate interoperability with non-Juniper devices.

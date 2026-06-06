@@ -13,7 +13,7 @@
       <link>https://ngeranio.com/observability/twamp/</link>
       <pubDate>Sat, 30 May 2026 12:00:00 -0400</pubDate>
       <guid>https://ngeranio.com/observability/twamp/</guid>
-      <description>TWAMP and TWAMP-Light on Juniper MX — detecting gray failures, jitter, and slowness before your customers report it.</description>
+      <description>A production TWAMP-Light deployment on Juniper MX — three QoS classes (Voice, Video, Best Effort), bidirectional measurement, line-by-line config explanation, and verification commands.</description>
     </item>
   </channel>
 </rss>

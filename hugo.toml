@@ -6,7 +6,7 @@ pagerSize = 6
 
 
   [params]
-  mainSections = ['routing', 'automation', 'ai', 'linux', 'labs', 'observability']
+  mainSections = ['routing', 'automation', 'ai', 'linux', 'labs', 'observability', 'junos']
   enableNextPrevPages = true
 
 # -- Site Menu (flat top-level categories) --
@@ -45,6 +45,11 @@ pagerSize = 6
  name = 'observability'
  pageRef = '/observability'
  weight = 70
+
+[[menus.main]]
+ name = 'junos'
+ pageRef = '/junos'
+ weight = 80
 
 
  [params.site]

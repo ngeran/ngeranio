@@ -6,8 +6,15 @@
     <description>Recent content in BGP on ngeran[io]</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2024 16:04:48 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 10:00:00 -0400</lastBuildDate>
     <atom:link href="https://ngeranio.com/routing/bgp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beyond BGP Path Selection: eBGP vs iBGP on Juniper Junos</title>
+      <link>https://ngeranio.com/routing/bgp/beyond-bgp-path-selection/</link>
+      <pubDate>Fri, 05 Jun 2026 10:00:00 -0400</pubDate>
+      <guid>https://ngeranio.com/routing/bgp/beyond-bgp-path-selection/</guid>
+      <description>A deep comparison of the BGP path selection process between eBGP and iBGP on Juniper platforms — tie-breakers, CLI output analysis, and production configs.</description>
+    </item>
     <item>
       <title>AS Path</title>
       <link>https://ngeranio.com/routing/bgp/as_path/</link>
