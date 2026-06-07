@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forwarding Equivalence Class | ngeran[io]</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+</head>
+<body class="bg-black text-on-surface antialiased bg-grid font-sans">
+
+  <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b coma-border">
+  <div class="max-w-[1200px] mx-auto flex items-center h-16 px-6">
+    <div class="flex items-center gap-6 w-full">
+      <a href="/" class="font-mono text-sm tracking-widest text-primary flex items-center gap-1">
+        <span class="w-2 h-2 bg-primary"></span>
+        ngeran<span class="text-primary">[</span>io<span class="text-primary">]</span>
+      </a>
+      <div class="h-4 w-px bg-white/10 hidden md:block"></div>
+      <nav class="hidden md:flex items-center gap-6">
+        
+          
+            
+          
+          
+          
+            
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            
+              <div class="nav-dropdown relative">
+                <button class="nav-dropdown-trigger font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors flex items-center gap-1">
+                  [ routing ] <span class="material-symbols-outlined text-sm text-white/30 transition-colors">expand_more</span>
+                </button>
+                <div class="nav-dropdown-menu absolute left-0 top-full pt-2 opacity-0 invisible transition-all duration-200 z-50">
+                  <div class="bg-surface-lowest coma-border p-2 min-w-[200px]">
+                    <a href="/routing/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary hover:bg-white/5 transition-colors whitespace-nowrap">
+                      <span class="material-symbols-outlined text-sm">chevron_right</span>
+                      All routing
+                    </a>
+                    
+                      
+                        <a href="/routing/mpls/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          MPLS
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/bgp/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          BGP
+                        </a>
+                      
+                    
+                      
+                        <a href="/routing/ospf/" class="flex items-center gap-3 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-on-surface/60 hover:text-primary hover:bg-white/5 transition-colors">
+                          <span class="material-symbols-outlined text-sm">chevron_right</span>
+                          OSPF
+                        </a>
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+            
+            
+            
+              <a href="/observability/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ observability ]
+              </a>
+            
+          
+        
+          
+          
+          
+            
+            
+            
+              <a href="/junos/" class="font-mono text-xs uppercase tracking-widest text-on-surface/60 hover:text-white transition-colors">
+                [ junos ]
+              </a>
+            
+          
+        
+      </nav>
+      <div class="ml-auto flex items-center gap-4">
+        <a href="/index.xml" class="text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">rss_feed</span>
+        </a>
+        <button id="mobile-menu-button" class="md:hidden text-on-surface/60 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden border-t coma-border">
+    <nav class="max-w-[1200px] mx-auto px-6 py-4 space-y-1">
+      
+        
+          
+        
+        
+        
+          <a href="/routing/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ routing ]
+          </a>
+          
+            
+              <a href="/routing/mpls/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; MPLS
+              </a>
+            
+          
+            
+              <a href="/routing/bgp/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; BGP
+              </a>
+            
+          
+            
+              <a href="/routing/ospf/" class="block px-4 py-1.5 pl-8 font-mono text-[10px] uppercase tracking-wider text-on-surface/40 hover:text-primary transition-colors">
+                &rdsh; OSPF
+              </a>
+            
+          
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+          <a href="/observability/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ observability ]
+          </a>
+          
+        
+      
+        
+        
+        
+          <a href="/junos/" class="block px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface/60 hover:text-primary transition-colors">
+            [ junos ]
+          </a>
+          
+        
+      
+    </nav>
+  </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dropdown = btn.closest('.nav-dropdown');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      const isOpen = menu.classList.contains('is-open');
+
+      
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+        m.classList.remove('is-open');
+        m.classList.add('opacity-0', 'invisible');
+      });
+
+      if (!isOpen) {
+        menu.classList.add('is-open');
+        menu.classList.remove('opacity-0', 'invisible');
+      }
+    });
+  });
+
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+      m.classList.remove('is-open');
+      m.classList.add('opacity-0', 'invisible');
+    });
+  });
+
+  
+  document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return; 
+      e.stopPropagation();
+    });
+  });
+});
+</script>
+
+
+  <main>
+    
+<main class="max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-16 flex flex-col lg:flex-row gap-8 lg:gap-16">
+  
+  <aside class="hidden lg:block w-72 shrink-0">
+    <nav class="sticky top-32 space-y-10">
+  
+  
+  <div class="precision-border p-6 bg-surface-container-lowest">
+    <h4 class="font-mono text-xs text-high-contrast mb-4 uppercase tracking-[0.2em]">Index</h4>
+    <ul class="space-y-4 font-mono text-[10px] text-on-surface-variant">
+      
+      
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#forwarding-equivalence-class">
+            <span class="group-hover:text-high-contrast transition-colors">01 FORWARDING EQUIVALENCE CLASS</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#packet-flow-diagram-and-explanation">
+            <span class="group-hover:text-high-contrast transition-colors">02 PACKET FLOW DIAGRAM AND EXPLANATION</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a class="toc-link flex items-center justify-between group py-1 transition-colors" href="#explanation-of-packet-flow">
+            <span class="group-hover:text-high-contrast transition-colors">03 EXPLANATION OF PACKET FLOW</span>
+            <span class="toc-dot w-1 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+
+  
+  <div class="dim-border p-5 bg-surface-container-lowest flex items-center gap-4">
+    
+    
+    <img alt="Avatar" class="w-10 h-10 grayscale contrast-125 dim-border" src="/author/avatar.png">
+    
+    <div>
+      <p class="font-mono text-[10px] text-high-contrast leading-none mb-1">ngeran a.k.a nikos</p>
+      <p class="font-mono text-[9px] text-on-surface-variant leading-none">EVERY PACKET TELLS A STORY</p>
+    </div>
+  </div>
+</nav>
+
+  </aside>
+
+  
+  <article class="flex-grow max-w-[840px]">
+    <header class="mb-10 sm:mb-16 border-b dim-border pb-8 sm:pb-12">
+      
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-primary font-mono text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
+        <span>Routing</span>
+        <span class="text-outline">/</span>
+        <span>MPLS</span>
+        <span class="text-outline">/</span>
+        <span class="text-high-contrast">Forwarding Equivalence Class</span>
+      </div>
+
+      <h1 class="text-[28px] sm:text-headline-lg text-high-contrast mb-8 sm:mb-10 tracking-tighter leading-[0.95] font-semibold">Forwarding Equivalence Class</h1>
+
+      <div class="flex flex-wrap items-center gap-4 sm:gap-8 text-on-surface-variant font-mono text-[11px] uppercase tracking-wider">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          <span>28.05.2025</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">description</span>
+          <span>799 words</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">schedule</span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </header>
+
+    
+    
+    <details class="lg:hidden mb-8 coma-border bg-surface-lowest">
+      <summary class="p-4 font-mono text-xs text-primary uppercase tracking-[0.2em] cursor-pointer flex items-center gap-3">
+        <span class="material-symbols-outlined text-sm">list</span>
+        Table of Contents
+        <span class="material-symbols-outlined text-sm ml-auto">expand_more</span>
+      </summary>
+      <div class="px-4 pb-4">
+        <ul class="space-y-2 font-mono text-[10px] text-on-surface-variant">
+          
+          
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#forwarding-equivalence-class">
+                <span class="text-primary">01</span> FORWARDING EQUIVALENCE CLASS
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#packet-flow-diagram-and-explanation">
+                <span class="text-primary">02</span> PACKET FLOW DIAGRAM AND EXPLANATION
+              </a>
+            </li>
+          
+            
+            
+            
+            <li>
+              <a class="toc-link flex items-center gap-2 py-1 transition-colors hover:text-white" href="#explanation-of-packet-flow">
+                <span class="text-primary">03</span> EXPLANATION OF PACKET FLOW
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </details>
+    
+
+    
+    <div class="article-content max-w-none mb-20">
+      <h3 id="forwarding-equivalence-class">Forwarding Equivalence Class</h3>
+<p><strong>Forwarding Equivalence Class (FEC)</strong> is a fundamental concept in MPLS  is
+essentially a classification of packets that are treated identically by the
+MPLS network. The packets share the same forwarding treatment in terms of
+path, priority, or other network policies.</p>
+<h4 id="key-characteristics-of-fec">Key Characteristics of FEC:</h4>
+<ul>
+<li><strong>Definition</strong>: An FEC is a group of packets that are forwarded in the same way (e.g., same destination, QoS, or path).</li>
+<li><strong>Label Mapping</strong>: Each FEC is associated with a unique MPLS label at each router, stored in the Label Forwarding Information Base (LFIB).</li>
+<li><strong>Examples of FEC</strong>:
+<ul>
+<li>Packets destined for the same IP subnet (e.g., 192.168.1.0/24).</li>
+<li>Packets belonging to a specific VPN.</li>
+<li>Packets requiring the same traffic engineering constraints (e.g., low-latency path).</li>
+</ul>
+</li>
+<li><strong>Role in MPLS</strong>: FECs allow routers to group packets for consistent treatment, enabling scalable and efficient forwarding.</li>
+</ul>
+<h4 id="mpls-components-related-to-fec">MPLS Components Related to FEC:</h4>
+<ul>
+<li><strong>Label Edge Router (LER)</strong>: Ingress and egress routers that assign or remove MPLS labels.</li>
+<li><strong>Label Switch Router (LSR)</strong>: Core routers that forward packets based on labels.</li>
+<li><strong>Label Switched Path (LSP)</strong>: The path a packet takes through the MPLS network, determined by the FEC and labels.</li>
+<li><strong>Label Distribution Protocol (LDP)</strong>: A protocol used to distribute labels and map them to FECs among routers.</li>
+<li><strong>LFIB</strong>: The table used by LSRs to map incoming labels to outgoing labels and interfaces.</li>
+</ul>
+<h4 id="packet-flow-in-mpls-with-fec">Packet Flow in MPLS with FEC:</h4>
+<ol>
+<li><strong>Ingress LER (Label Push)</strong>:
+<ul>
+<li>The ingress LER receives an IP packet and classifies it into an FEC based on attributes like destination IP, QoS, or VPN.</li>
+<li>It assigns an MPLS label to the packet based on the FEC and forwards it to the next hop along the LSP.</li>
+</ul>
+</li>
+<li><strong>Core LSR (Label Swap)</strong>:
+<ul>
+<li>Core LSRs receive the labeled packet, look up the label in their LFIB, and swap it with a new label for the next hop.</li>
+<li>The packet is forwarded without inspecting the IP header, improving efficiency.</li>
+</ul>
+</li>
+<li><strong>Egress LER (Label Pop)</strong>:
+<ul>
+<li>The egress LER removes the MPLS label (label popping) and forwards the packet as a regular IP packet to its destination.</li>
+</ul>
+</li>
+</ol>
+<h4 id="benefits-of-fec-in-mpls">Benefits of FEC in MPLS:</h4>
+<ul>
+<li><strong>Efficiency</strong>: Reduces IP header lookups, speeding up packet forwarding.</li>
+<li><strong>Scalability</strong>: Groups packets into FECs, simplifying routing decisions.</li>
+<li><strong>Flexibility</strong>: Supports advanced features like traffic engineering, QoS, and VPNs.</li>
+<li><strong>Fast Rerouting</strong>: Enables quick path recovery by precomputing alternate LSPs for an FEC.</li>
+</ul>
+<h3 id="packet-flow-diagram-and-explanation">Packet Flow Diagram and Explanation</h3>
+
+<div class="ide-block">
+  <div class="ide-header">
+    <div class="flex items-center gap-2">
+      <span class="ide-dots">
+        <span style="background:#ff5f57"></span>
+        <span style="background:#febc2e"></span>
+        <span style="background:#28c840"></span>
+      </span>
+      <span class="font-mono text-[10px] text-on-surface ml-4 tracking-widest uppercase">
+        terminal
+      </span>
+    </div>
+    <button class="copy-btn text-on-surface-variant hover:text-high-contrast transition-colors" aria-label="Copy code">
+      <span class="material-symbols-outlined text-base">content_copy</span>
+    </button>
+  </div>
+  <pre class="ide-pre"><code># MPLS Packet Flow Diagram
+
+## Network Topology
+[IP Packet] --&gt; [Ingress LER] --&gt; [LSR 1] --&gt; [LSR 2] --&gt; [Egress LER] --&gt; [Destination]
+
+## Packet Flow Steps
+1. Ingress LER (R1):
+   - Input: IP Packet (Dest: 10.0.0.1)
+   - Classifies into FEC (e.g., Dest IP 10.0.0.0/24)
+   - Action: Push Label (Label 100)
+   - Output: Labeled Packet (Label 100)
+
+2. LSR 1 (R2):
+   - Input: Labeled Packet (Label 100)
+   - Looks up LFIB: Label 100 -&gt; Swap to Label 200, Forward to R3
+   - Action: Swap Label
+   - Output: Labeled Packet (Label 200)
+
+3. LSR 2 (R3):
+   - Input: Labeled Packet (Label 200)
+   - Looks up LFIB: Label 200 -&gt; Swap to Label 300, Forward to R4
+   - Action: Swap Label
+   - Output: Labeled Packet (Label 300)
+
+4. Egress LER (R4):
+   - Input: Labeled Packet (Label 300)
+   - Looks up LFIB: Label 300 -&gt; Pop Label
+   - Action: Remove Label
+   - Output: IP Packet (Dest: 10.0.0.1)
+
+## LFIB Tables (Simplified)
+R1 (Ingress LER):
+| FEC            | Label | Action | Next Hop |
+|----------------|-------|--------|----------|
+| 10.0.0.0/24    | 100   | Push   | R2       |
+
+R2 (LSR 1):
+| In Label | Out Label | Action | Next Hop |
+|----------|-----------|--------|----------|
+| 100      | 200       | Swap   | R3       |
+
+R3 (LSR 2):
+| In Label | Out Label | Action | Next Hop |
+|----------|-----------|--------|----------|
+| 200      | 300       | Swap   | R4       |
+
+R4 (Egress LER):
+| In Label | Action | Next Hop     |
+|----------|--------|--------------|
+| 300      | Pop    | 10.0.0.1     |</code></pre>
+</div>
+<h3 id="explanation-of-packet-flow">Explanation of Packet Flow</h3>
+<ol>
+<li>
+<p><strong>Ingress LER (R1)</strong>:</p>
+<ul>
+<li>An IP packet arrives with a destination IP (e.g., 10.0.0.1).</li>
+<li>R1 classifies the packet into an FEC based on its destination (e.g., FEC for 10.0.0.0/24).</li>
+<li>R1 consults its LFIB, assigns Label 100 to the packet (label push), and forwards it to LSR 1 (R2).</li>
+</ul>
+</li>
+<li>
+<p><strong>LSR 1 (R2)</strong>:</p>
+<ul>
+<li>R2 receives the packet with Label 100.</li>
+<li>It looks up Label 100 in its LFIB, swaps it with Label 200, and forwards the packet to LSR 2 (R3).</li>
+<li>No IP header inspection is needed, making the process fast.</li>
+</ul>
+</li>
+<li>
+<p><strong>LSR 2 (R3)</strong>:</p>
+<ul>
+<li>R3 receives the packet with Label 200.</li>
+<li>It swaps Label 200 with Label 300 based on its LFIB and forwards the packet to the egress LER (R4).</li>
+</ul>
+</li>
+<li>
+<p><strong>Egress LER (R4)</strong>:</p>
+<ul>
+<li>R4 receives the packet with Label 300.</li>
+<li>Its LFIB indicates that Label 300 should be popped, revealing the original IP packet.</li>
+<li>The IP packet is forwarded to its final destination (10.0.0.1) using standard IP routing.</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+      <footer class="mt-32 pt-12 border-t dim-border">
+  <div class="flex justify-between items-center font-mono text-xs">
+    
+    <a class="group" href="/routing/mpls/follow-the-label/">
+      <span class="text-[9px] text-outline block mb-2 tracking-[0.2em]">PREVIOUS_LOG</span>
+      <span class="text-on-surface-variant group-hover:text-high-contrast transition-colors">&larr; [ Follow the Label ]</span>
+    </a>
+    
+
+    
+  </div>
+</footer>
+
+    
+  </article>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var pre = btn.closest('.ide-block').querySelector('pre');
+      navigator.clipboard.writeText(pre.textContent).then(function() {
+        var icon = btn.querySelector('.material-symbols-outlined');
+        icon.textContent = 'done';
+        icon.classList.add('text-primary');
+        setTimeout(function() {
+          icon.textContent = 'content_copy';
+          icon.classList.remove('text-primary');
+        }, 2000);
+      });
+    });
+  });
+
+  
+  var tocLinks = document.querySelectorAll('.toc-link');
+  var headings = document.querySelectorAll('.article-content h3[id], .article-content h2[id]');
+
+  if (headings.length > 0 && tocLinks.length > 0) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          tocLinks.forEach(function(l) { l.classList.remove('active', 'text-high-contrast'); });
+          var active = document.querySelector('.toc-link[href="#' + id + '"]');
+          if (active) active.classList.add('active', 'text-high-contrast');
+        }
+      });
+    }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    headings.forEach(function(h) { observer.observe(h); });
+  }
+});
+</script>
+
+
+  </main>
+
+  <footer>
+    
+      <footer class="bg-black border-t coma-border mt-20 sm:mt-32 py-10 sm:py-16">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+      <div class="text-center md:text-left">
+        <a class="font-mono text-sm text-white mb-4 block" href="/">[ngeran[io]]</a>
+        <p class="font-mono text-[10px] text-outline max-w-sm">SYSTEM_LOG: SESSION_ACTIVE. EVERY_PACKET_TELLS_A_STORY. &copy; 2026. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12 font-mono text-[11px] text-on-surface-variant">
+        <a class="hover:text-primary transition-colors uppercase" href="#">About</a>
+        <a class="hover:text-primary transition-colors uppercase" href="/index.xml">RSS</a>
+        <a class="hover:text-primary transition-colors uppercase" href="/privacy/">Privacy</a>
+      </div>
+      <div class="w-16 h-px bg-primary"></div>
+    </div>
+  </div>
+</footer>
+
+    
+  </footer>
+
+  
+
+  
+    <script src="/js/main.js"></script>
+
+
+  <script>
+    document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

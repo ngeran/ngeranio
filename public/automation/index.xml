@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Automation on ngeran[io]</title>
-    <link>https://ngeranio.com/automation/</link>
+    <link>http://localhost:1313/automation/</link>
     <description>Recent content in Automation on ngeran[io]</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://ngeranio.com/automation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/automation/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

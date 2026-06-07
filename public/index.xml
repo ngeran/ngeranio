@@ -2,115 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ngeran[io]</title>
-    <link>https://ngeranio.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on ngeran[io]</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jun 2026 10:00:00 -0400</lastBuildDate>
-    <atom:link href="https://ngeranio.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jun 2026 12:50:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Architectural Deep Dive: Demystifying Junos Local Routes and BGP Policy Chains</title>
+      <link>http://localhost:1313/routing/bgp/local-routes-bgp-policy/</link>
+      <pubDate>Sun, 07 Jun 2026 12:50:00 -0400</pubDate>
+      <guid>http://localhost:1313/routing/bgp/local-routes-bgp-policy/</guid>
+      <description>A deep dive into why an operational inline services /32 interface prefix failed to advertise across an iBGP full mesh, exposing the inner workings of the Junos routing engine.</description>
+    </item>
     <item>
       <title>Beyond BGP Path Selection: eBGP vs iBGP on Juniper Junos</title>
-      <link>https://ngeranio.com/routing/bgp/beyond-bgp-path-selection/</link>
+      <link>http://localhost:1313/routing/bgp/beyond-bgp-path-selection/</link>
       <pubDate>Fri, 05 Jun 2026 10:00:00 -0400</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/beyond-bgp-path-selection/</guid>
+      <guid>http://localhost:1313/routing/bgp/beyond-bgp-path-selection/</guid>
       <description>A deep comparison of the BGP path selection process between eBGP and iBGP on Juniper platforms — tie-breakers, CLI output analysis, and production configs.</description>
     </item>
     <item>
       <title>Juniper PFE Deep Dive: Diagnosing Silent Packet Drops When BGP Is Up</title>
-      <link>https://ngeranio.com/junos/pfe-deep-dive/</link>
+      <link>http://localhost:1313/junos/pfe-deep-dive/</link>
       <pubDate>Fri, 05 Jun 2026 10:00:00 -0400</pubDate>
-      <guid>https://ngeranio.com/junos/pfe-deep-dive/</guid>
+      <guid>http://localhost:1313/junos/pfe-deep-dive/</guid>
       <description>Move beyond show route — hardware-level diagnostics, FIB sync issues, ASIC discards, JSIM simulation, and packet-via-dmem captures on Juniper MX-Series.</description>
     </item>
     <item>
       <title>Privacy Policy</title>
-      <link>https://ngeranio.com/privacy/</link>
+      <link>http://localhost:1313/privacy/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://ngeranio.com/privacy/</guid>
+      <guid>http://localhost:1313/privacy/</guid>
       <description>Privacy policy for ngeran[io].</description>
     </item>
     <item>
       <title>Beyond the Ping: Mastering TWAMP on Juniper MX</title>
-      <link>https://ngeranio.com/observability/twamp/</link>
+      <link>http://localhost:1313/observability/twamp/</link>
       <pubDate>Sat, 30 May 2026 12:00:00 -0400</pubDate>
-      <guid>https://ngeranio.com/observability/twamp/</guid>
+      <guid>http://localhost:1313/observability/twamp/</guid>
       <description>A production TWAMP-Light deployment on Juniper MX — three QoS classes (Voice, Video, Best Effort), bidirectional measurement, line-by-line config explanation, and verification commands.</description>
     </item>
     <item>
       <title>AS Path</title>
-      <link>https://ngeranio.com/routing/bgp/as_path/</link>
+      <link>http://localhost:1313/routing/bgp/as_path/</link>
       <pubDate>Tue, 17 Dec 2024 16:04:48 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/as_path/</guid>
+      <guid>http://localhost:1313/routing/bgp/as_path/</guid>
       <description>Indicate path back to the route source and prevents routing loops.</description>
     </item>
     <item>
       <title>Local Preference</title>
-      <link>https://ngeranio.com/routing/bgp/local_preference/</link>
+      <link>http://localhost:1313/routing/bgp/local_preference/</link>
       <pubDate>Thu, 12 Dec 2024 17:30:21 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/local_preference/</guid>
+      <guid>http://localhost:1313/routing/bgp/local_preference/</guid>
       <description>The Power of Local Preference. The first BGP attribute used to favor one route over another.</description>
     </item>
     <item>
       <title>BGP Attributes</title>
-      <link>https://ngeranio.com/routing/bgp/bgp-attributes/</link>
+      <link>http://localhost:1313/routing/bgp/bgp-attributes/</link>
       <pubDate>Tue, 10 Dec 2024 17:36:42 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/bgp-attributes/</guid>
+      <guid>http://localhost:1313/routing/bgp/bgp-attributes/</guid>
       <description>BGP uses different attributes to control the advertisement and influence path selection</description>
     </item>
     <item>
       <title>Route Selection</title>
-      <link>https://ngeranio.com/routing/bgp/bgp-route-selection/</link>
+      <link>http://localhost:1313/routing/bgp/bgp-route-selection/</link>
       <pubDate>Sun, 01 Dec 2024 09:15:27 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/bgp-route-selection/</guid>
+      <guid>http://localhost:1313/routing/bgp/bgp-route-selection/</guid>
       <description>How to influance the route selection with the approptiate attributes.</description>
     </item>
     <item>
       <title>Finite State Machine</title>
-      <link>https://ngeranio.com/routing/bgp/fsm/</link>
+      <link>http://localhost:1313/routing/bgp/fsm/</link>
       <pubDate>Fri, 22 Nov 2024 13:14:14 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/bgp/fsm/</guid>
+      <guid>http://localhost:1313/routing/bgp/fsm/</guid>
       <description>This article explains the different states during the BGP neighbor negotiation</description>
     </item>
     <item>
       <title>Headers and Types</title>
-      <link>https://ngeranio.com/routing/ospf/packet-types/</link>
+      <link>http://localhost:1313/routing/ospf/packet-types/</link>
       <pubDate>Fri, 22 Nov 2024 13:14:14 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/packet-types/</guid>
+      <guid>http://localhost:1313/routing/ospf/packet-types/</guid>
       <description>Packet Header and Packet Types</description>
     </item>
     <item>
       <title>Type 5 - AS External</title>
-      <link>https://ngeranio.com/routing/ospf/lsa5/</link>
+      <link>http://localhost:1313/routing/ospf/lsa5/</link>
       <pubDate>Fri, 22 Nov 2024 13:13:56 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/lsa5/</guid>
+      <guid>http://localhost:1313/routing/ospf/lsa5/</guid>
       <description>OSPF Type 4 LSA Summary</description>
     </item>
     <item>
       <title>Type 4 - ASBR Summary</title>
-      <link>https://ngeranio.com/routing/ospf/lsa4/</link>
+      <link>http://localhost:1313/routing/ospf/lsa4/</link>
       <pubDate>Fri, 22 Nov 2024 13:13:46 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/lsa4/</guid>
+      <guid>http://localhost:1313/routing/ospf/lsa4/</guid>
       <description>OSPF Type 4 LSA Summary</description>
     </item>
     <item>
       <title>Type 3 - Summary</title>
-      <link>https://ngeranio.com/routing/ospf/lsa3/</link>
+      <link>http://localhost:1313/routing/ospf/lsa3/</link>
       <pubDate>Fri, 22 Nov 2024 13:13:42 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/lsa3/</guid>
+      <guid>http://localhost:1313/routing/ospf/lsa3/</guid>
       <description>OSPF Type 3 LSA Summary</description>
     </item>
     <item>
       <title>Type 2 - Network</title>
-      <link>https://ngeranio.com/routing/ospf/lsa2/</link>
+      <link>http://localhost:1313/routing/ospf/lsa2/</link>
       <pubDate>Fri, 22 Nov 2024 13:13:33 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/lsa2/</guid>
+      <guid>http://localhost:1313/routing/ospf/lsa2/</guid>
       <description>OSPF Type 2 LSA Summary</description>
     </item>
     <item>
       <title>Type 1 - Router</title>
-      <link>https://ngeranio.com/routing/ospf/lsa1/</link>
+      <link>http://localhost:1313/routing/ospf/lsa1/</link>
       <pubDate>Fri, 22 Nov 2024 13:13:23 -0500</pubDate>
-      <guid>https://ngeranio.com/routing/ospf/lsa1/</guid>
+      <guid>http://localhost:1313/routing/ospf/lsa1/</guid>
       <description>OSPF Type 1 LSA Summary</description>
     </item>
   </channel>
