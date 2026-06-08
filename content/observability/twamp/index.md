@@ -90,8 +90,9 @@ set chassis fpc 0 pic 0 inline-services bandwidth 1g
 
 # Create the services interface with BOTH client and server tags
 # Use unit 10+, never unit 0
-set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
-set interfaces si-0/0/0 unit 10 rpm twamp-server family inet address 10.30.30.1/24
+set interfaces si-0/0/0 unit 10 rpm twamp-client
+set interfaces si-0/0/0 unit 10 rpm twamp-server
+set interfaces si-0/0/0 unit 10 family inet address 10.100.249.1/32
 ```
 
 > **Important:** The `rpm twamp-client` and `rpm twamp-server` statements are **mandatory** under the `si-` interface. Without them, the control plane has no service tags bound to the IFL and TWAMP sessions will not establish.
@@ -238,8 +239,9 @@ set services rpm twamp client control-connection pe1-to-pe2 test-session best-ef
 # PE1 - Chassis & Inline Services Interface
 # ============================================
 set chassis fpc 0 pic 0 inline-services bandwidth 1g
-set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.1/24
-set interfaces si-0/0/0 unit 10 rpm twamp-server family inet address 10.30.30.1/24
+set interfaces si-0/0/0 unit 10 rpm twamp-client
+set interfaces si-0/0/0 unit 10 rpm twamp-server
+set interfaces si-0/0/0 unit 10 family inet address 10.100.249.1/32
 
 # ============================================
 # PE1 - TWAMP Server (Reflector)
@@ -300,8 +302,9 @@ set services rpm twamp client control-connection pe1-to-pe2 test-session best-ef
 # PE2 - Chassis & Inline Services Interface
 # ============================================
 set chassis fpc 0 pic 0 inline-services bandwidth 1g
-set interfaces si-0/0/0 unit 10 rpm twamp-client family inet address 10.30.30.2/24
-set interfaces si-0/0/0 unit 10 rpm twamp-server family inet address 10.30.30.2/24
+set interfaces si-0/0/0 unit 10 rpm twamp-client
+set interfaces si-0/0/0 unit 10 rpm twamp-server
+set interfaces si-0/0/0 unit 10 family inet address 10.100.249.2/32
 
 # ============================================
 # PE2 - TWAMP Server (Reflector)
