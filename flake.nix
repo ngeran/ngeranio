@@ -1,15 +1,22 @@
 # =========================================================================
-# ngeranio — Hugo static-site devShell
+# ngeranio — Hugo static-site devShell + Nix-built nginx image
 # =========================================================================
-# Auto-loaded by direnv (./.envrc → `use flake`). Provides the two tools the
-# site needs: Hugo itself, and Node for the Tailwind/PostCSS asset pipeline
-# (see package.json — @tailwindcss/typography).
+# Auto-loaded by direnv (./.envrc → `use flake`).
 #
-# Serve:   ./server.sh start        (or:  hugo server -D --bind 0.0.0.0)
-# Build:   hugo --gc --minify
+# Defines two things:
+#   1. devShells.default — hugo + node (Tailwind/PostCSS asset pipeline).
+#   2. packages.image    — an OCI image: nginx serving the built static site.
+#
+# This repo predates the pipeline, so the Hugo project root IS the repo root
+# (hugo.toml, content/, themes/ all at top level) — staticAssets therefore
+# builds from ${./.}, not a site/ subdir. Hugo builds OFFLINE (no network,
+# no lock/hash step); nixpkgs ships the EXTENDED Hugo (SCSS + js.Build via
+# embedded esbuild — no node_modules needed at build time).
+#
+# Dev → deploy loop:  git add -A && just build && just push && just deploy
 # =========================================================================
 {
-  description = "ngeranio — Hugo site devShell";
+  description = "ngeranio — Hugo site devShell + nginx image, just → k3s";
 
   inputs.nixpkgs.url = "nixpkgs/nixos-26.05";
 
@@ -18,7 +25,87 @@
       systems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       pkgsFor = system: nixpkgs.legacyPackages.${system};
+
+      imageName = "localhost:5000/hugo-site";   # keep in lockstep with justfile + manifests
+      imageTag  = "latest";
     in {
+      packages = forAllSystems (system:
+        let
+          pkgs = pkgsFor system;
+
+          # ── build the static site (offline, reproducible) ────────────────
+          # ${./.} is the repo root as a store path (git-index-filtered).
+          staticAssets = pkgs.runCommand "hugo-site" {
+            nativeBuildInputs = [ pkgs.hugo ];
+          } ''
+            mkdir -p $out build
+            cp -r ${./.}/. build/        # repo root IS the Hugo project — not a site/ subdir
+            chmod -R u+w build           # store path is read-only → copy first; hugo may write lock/resources
+            hugo -s "$PWD/build" --minify --destination "$out"
+          '';
+
+          # ── nginx config ─────────────────────────────────────────────────
+          # A from-scratch image has no writable /tmp, no /etc/passwd, and
+          # nginx's default config points pid/logs/temp at read-only store
+          # paths. Override ALL of them or nginx dies at startup. The docroot
+          # is the store path of the built site.
+          nginxConf = pkgs.writeText "nginx.conf" ''
+            daemon off;                # run in foreground (PID 1) — default daemon mode
+                                        # forks to background, the entry process exits 0,
+                                        # and the container stops → "Completed" loop.
+            user root;                 # from-scratch image has only root in /etc/passwd;
+                                        # nginx's default worker user is "nobody", which
+                                        # doesn't exist here → getpwnam("nobody") failed.
+            worker_processes 1;
+            error_log /dev/stderr warn;
+            pid        /tmp/nginx.pid;
+            events { worker_connections 1024; }
+            http {
+              access_log /dev/stdout;
+              client_body_temp_path /tmp/client_temp;
+              proxy_temp_path       /tmp/proxy_temp;
+              fastcgi_temp_path     /tmp/fastcgi_temp;
+              uwsgi_temp_path       /tmp/uwsgi_temp;
+              scgi_temp_path        /tmp/scgi_temp;
+              include ${pkgs.nginx}/conf/mime.types;
+              default_type application/octet-stream;
+              server {
+                listen 80;
+                root  ${staticAssets};
+                index index.html;
+                location / { try_files $uri $uri/ =404; }
+              }
+            }
+          '';
+
+          # ── writable runtime dirs ──────────────────────────────────────
+          # A from-scratch image has no /tmp or /var/log/nginx. nginx writes
+          # its pid + client/proxy/... temp files under /tmp, and opens
+          # /var/log/nginx/error.log before parsing config — both must exist
+          # or nginx dies at startup (mkdir() "/tmp/client_temp" failed).
+          runtimeDirs = pkgs.runCommand "nginx-runtime-dirs" { } ''
+            mkdir -p $out/tmp $out/var/log/nginx $out/var/cache/nginx
+            chmod 1777 $out/tmp
+          '';
+        in {
+          default = self.packages.${system}.image;
+          image = pkgs.dockerTools.buildImage {
+            name = imageName;
+            tag  = imageTag;
+            copyToRoot = [
+              pkgs.nginx
+              staticAssets
+              runtimeDirs
+              (pkgs.writeTextDir "etc/passwd" "root:x:0:0::/root:/bin/sh")
+              (pkgs.writeTextDir "etc/group"  "root:x:0:")
+            ];
+            config = {
+              Cmd          = [ "${pkgs.nginx}/bin/nginx" "-c" nginxConf ];
+              ExposedPorts = { "80/tcp" = { }; };
+            };
+          };
+        });
+
       devShells = forAllSystems (system:
         let pkgs = pkgsFor system; in {
           default = pkgs.mkShell {

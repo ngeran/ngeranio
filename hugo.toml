@@ -6,7 +6,7 @@ pagerSize = 6
 
 
   [params]
-  mainSections = ['routing', 'automation', 'ai', 'linux', 'labs', 'observability', 'junos']
+  mainSections = ['routing', 'automation', 'ai', 'linux', 'labs', 'observability', 'junos', 'homelab']
   enableNextPrevPages = true
 
 # -- Site Menu (flat top-level categories) --
@@ -50,6 +50,11 @@ pagerSize = 6
  name = 'junos'
  pageRef = '/junos'
  weight = 80
+
+[[menus.main]]
+ name = 'homelab'
+ pageRef = '/homelab'
+ weight = 90
 
 
  [params.site]

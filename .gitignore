@@ -1,67 +1,96 @@
+# NOTE: gitignore has NO inline comments — a trailing "# ..." on a pattern line
+# becomes part of the pattern and silently breaks it (e.g. "node_modules/  # ..."
+# matches nothing). Keep every comment on its OWN line, above the pattern.
+
 # ============================================
 # Build Outputs (NEVER commit these)
 # ============================================
-public/              # Hugo build output - syncs to Cloudflare Pages
-resources/_gen/      # Hugo generated files and cache
-.hugo_build.lock     # Hugo build lock file
+# Hugo build output - syncs to Cloudflare Pages
+public/
+# Hugo generated files and cache
+resources/_gen/
+# Hugo build lock file
+.hugo_build.lock
 
 # ============================================
 # Logs & Temporary Files
 # ============================================
-logs/                # Automation logs
-*.log                # Log files
-tmp/                 # Temporary files
-temp/                # Temporary files
-*.tmp                # Temporary files
+# Automation logs
+logs/
+# Log files
+*.log
+# Temporary files
+tmp/
+temp/
+*.tmp
 
 # ============================================
 # Environment & Configuration
 # ============================================
-.env                 # Environment variables (API tokens, secrets)
-.env.local           # Local environment overrides
-.env.*.local         # Local environment overrides
+# Environment variables (API tokens, secrets)
+.env
+# Local environment overrides
+.env.local
+.env.*.local
 
 # ============================================
 # Dependencies
 # ============================================
-node_modules/        # Node.js dependencies
-.venv/               # Python virtual environment
-venv/                # Python virtual environment (alt name)
-.vscode/             # VS Code settings
-.DS_Store            # macOS files
-*.swp                # Vim swap files
-*~                   # Backup files
+# Node.js dependencies
+node_modules/
+# Python virtual environments
+.venv/
+venv/
+# Editor / OS
+.vscode/
+.DS_Store
+*.swp
+*~
 
-# Hugo dev server (Docker)
-.dev/                # Dev container state
+# Hugo dev server (Docker) — dev container state
+.dev/
 
 # ============================================
 # Cloudflare & Deployment (Safety)
 # ============================================
 # Never commit files that could auto-deploy and break the site
-.wrangler/           # Wrangler CLI state
-.cloudflare/         # Cloudflare local state
-.functions/          # Cloudflare Functions builds
-dist/                # Distribution builds
+.wrangler/
+.cloudflare/
+.functions/
+dist/
 
 # ============================================
 # AI & Assistant Tools
 # ============================================
 # Claude Code (Anthropic)
-CLAUDE.md            # Claude Code project instructions
-.claude/              # Claude Code local data
+CLAUDE.md
+.claude/
 
 # Other AI Assistants
-.cursorrules         # Cursor AI rules
-.cursor/             # Cursor AI local data
-.copilot-instructions.md  # GitHub Copilot instructions
-.ai-content-template.md    # AI content templates
-AI_AGENT_GUIDE.md    # AI agent documentation
+.cursorrules
+.cursor/
+.copilot-instructions.md
+.ai-content-template.md
+AI_AGENT_GUIDE.md
 
-# General AI Patterns
-*claude*             # Any files with "claude" in name
-*ai-*                # Any files starting with "ai-"
-.ai-*                # Any files starting with ".ai-"
+# General AI patterns — anchored to repo root (/) so they catch stray AI-tool
+# files at the top level WITHOUT swallowing real project files in subdirs
+# (e.g. scripts/ai-content-manager.sh, which must stay tracked).
+# Any root-level file with "claude" in the name
+/*claude*
+# Any root-level file starting with "ai-"
+/*ai-*
+/.ai-*
+
+# ============================================
+# Nix / Pipeline Build Artifacts
+# ============================================
+# nix build out-link (OCI image tarball)
+result
+# parallel nix builds
+result-*
+# direnv / nix-direnv cache
+.direnv/
 
 # ============================================
 # Documentation (Root Directory)

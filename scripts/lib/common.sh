@@ -226,7 +226,14 @@ require_command() {
 # Validate category by checking if directory exists
 validate_category() {
   local category="$1"
-  local category_dir="${CONTENT_DIR}/${category}"
+  # homelab posts sit directly under content/homelab/; routing/junos categories
+  # nest under a sub-directory within CONTENT_DIR (content/routing/<category>).
+  local category_dir
+  if [[ "$category" == "homelab" ]]; then
+    category_dir="${PROJECT_ROOT}/content/homelab"
+  else
+    category_dir="${CONTENT_DIR}/${category}"
+  fi
 
   if [[ -d "${category_dir}" ]]; then
     return 0

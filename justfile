@@ -19,7 +19,7 @@ build:
 push: build
     #!/usr/bin/env bash
     set -euo pipefail
-    skopeo copy --dest-tls-verify=false \
+    skopeo copy --insecure-policy --dest-tls-verify=false \
       docker-archive:"$(readlink -f result)" \
       docker://"{{image}}:{{tag}}"
 
@@ -38,9 +38,9 @@ serve:
 logs:
     kubectl -n {{ns}} logs deploy/{{dep}} -f
 
-# Forward the cluster's :80 → local :8080.
+# Forward the cluster's :80 → local :8088 (8080 is taken by Pi-hole on this host).
 forward:
-    kubectl -n {{ns}} port-forward svc/{{dep}} 8080:80
+    kubectl -n {{ns}} port-forward svc/{{dep}} 8088:80
 
 shell:
     nix develop

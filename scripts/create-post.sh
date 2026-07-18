@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ============================================
 # CREATE POST - Enhanced with Phase 1 Libraries
 # ============================================
@@ -24,7 +24,7 @@ source "${PROJECT_ROOT}/scripts/lib/config.sh"
 # CONFIGURATION
 # ============================================
 CONTENT_DIR=$(get_config "CONTENT_DIR" "content/routing")
-VALID_CATEGORIES=("ospf" "bgp" "mpls" "junos")
+VALID_CATEGORIES=("ospf" "bgp" "mpls" "junos" "homelab")
 AUTO_BACKUP=$(get_config "CONTENT_AUTO_BACKUP" "true")
 IMAGE_DEFAULT_WIDTH=$(get_config "IMAGE_DEFAULT_WIDTH" "1200")
 IMAGE_DEFAULT_HEIGHT=$(get_config "IMAGE_DEFAULT_HEIGHT" "630")
@@ -39,7 +39,7 @@ show_usage() {
 Usage: ${0##*/} <category> <post-title> [options]
 
 Arguments:
-  category      Post category (ospf, bgp, mpls, junos)
+  category      Post category (ospf, bgp, mpls, junos, homelab)
   post-title    Title of the post (use quotes for multi-word titles)
 
 Options:
@@ -51,6 +51,7 @@ Examples:
   ${0##*/} ospf "OSPF Virtual Links"
   ${0##*/} bgp "BGP Communities" --force
   ${0##*/} mpls "MPLS Labels"
+  ${0##*/} homelab "Hugo on k3s with Nix"
 
 EOF
   exit 0
@@ -79,8 +80,14 @@ create_post() {
 
   log_content "INFO" "Generated slug: $slug"
 
-  # Create directory path
-  local post_dir="${CONTENT_DIR}/${category}/${slug}"
+  # Create directory path — homelab posts sit directly under their section
+  # (tags carry the sub-topic); routing/junos nest under a category directory.
+  local post_dir
+  if [[ "$category" == "homelab" ]]; then
+    post_dir="${PROJECT_ROOT}/content/homelab/${slug}"
+  else
+    post_dir="${CONTENT_DIR}/${category}/${slug}"
+  fi
 
   # Check if directory already exists
   if [[ -d "$post_dir" ]]; then
@@ -100,8 +107,43 @@ create_post() {
   local current_date
   current_date=$(date -Iseconds)
 
-  # Create index.md with enhanced template
-  cat > "${post_dir}/index.md" << EOF
+  # Create index.md — homelab gets a failure-first "journey" template;
+  # everything else keeps the original routing/Junos study template.
+  if [[ "$category" == "homelab" ]]; then
+    cat > "${post_dir}/index.md" << EOF
++++
+title = '${title}'
+date = ${current_date}
+draft = true
+tags = ["Homelab", "NixOS", "Kubernetes"]
+featured_image = 'featured.png'
+summary = 'One or two sentences — lead with the failure or the question.'
++++
+
+## TL;DR
+[One paragraph: what broke, what fixed it, the one thing to remember.]
+
+## The setup
+[What you were trying to do. Version-stamp it — these stacks drift fast:
+e.g. NixOS 26.05, k3s v1.35.6, as of YYYY-MM. Link the real config/commit.]
+
+## What actually happened
+[Narrate the failure chronologically. Paste logs and exact error messages.]
+
+## The fix
+[What worked, with the smallest reproducible snippet.]
+
+## What I tried that didn't work
+[The graveyard — this is the part readers can't get anywhere else.]
+
+## Lessons
+[Generalizable takeaways — what to check first next time.]
+
+## References
+- [Docs, commits, dotfiles]
+EOF
+  else
+    cat > "${post_dir}/index.md" << EOF
 +++
 title = '${title}'
 date = ${current_date}
@@ -155,6 +197,7 @@ summary = 'Add a 2-3 sentence summary of this post'
 
 - [Juniper Documentation](https://www.juniper.net/documentation/)
 EOF
+  fi
 
   # Create featured image placeholder
   log_content "INFO" "Creating featured image..."
